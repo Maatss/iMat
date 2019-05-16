@@ -96,7 +96,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
       
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         model.getShoppingCart().addShoppingCartListener(this);
 
         updateProductList(model.getProducts());
@@ -122,8 +121,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @Override
      public void shoppingCartChanged(CartEvent evt) {
         updateBottomPanel();
+        updateProductCounts();
     }
-   
+
+
+   private void updateProductCounts(){
+        //todo lägg till antal i varje ProductPanel som uppdateras här
+   }
     
     private void updateProductList(List<Product> products) {
 

@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
@@ -22,10 +23,13 @@ import java.io.IOException;
 public class ProductPanel extends AnchorPane {
 
     @FXML ImageView imageView;
+    @FXML ImageView favoriteItemImageView;
+
     @FXML Label nameLabel;
     @FXML Label prizeLabel;
     @FXML Label ecoLabel;
-    
+    @FXML Label countLabel;
+
     private Model model = Model.getInstance();
 
     private Product product;
@@ -64,5 +68,25 @@ public class ProductPanel extends AnchorPane {
     private void handleRemoveAction(ActionEvent event){
         System.out.println("Remove " + product.getName());
         model.removeFromShoppingCart(product);
+    }
+
+    @FXML
+    private void handleFavoriteAction(){
+        model.toggleFavorite(product);
+        String iconPath;
+        if (model.checkIfFavorite(product)) {
+            iconPath = "images/favoriteFilled.png";
+        }else{
+            iconPath = "images/favoriteEmpty.png";
+        }
+        favoriteItemImageView.setImage(getImage(iconPath));
+    }
+
+    private void setFavoriteItemImageView(){
+        //todo kanske lägga till denna funktionen? behöver ha så den sätter rätt bild vid start av programmet
+    }
+
+    private Image getImage(String path){
+        return new Image(getClass().getClassLoader().getResourceAsStream(path));
     }
 }

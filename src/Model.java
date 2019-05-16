@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  *
  * @author oloft
@@ -49,9 +43,7 @@ public class Model {
     }
 
     private void init() {
-
         iMatDataHandler = IMatDataHandler.getInstance();
-
     }
 
     public List<Product> getProducts() {
@@ -117,25 +109,30 @@ public class Model {
     }
 
     public void clearShoppingCart() {
-
         iMatDataHandler.getShoppingCart().clear();
-
     }
 
     public void placeOrder() {
-
         iMatDataHandler.placeOrder();
-
     }
 
-    
     public int getNumberOfOrders() {
-
         return iMatDataHandler.getOrders().size();
-
     }
 
     public void shutDown() {
         iMatDataHandler.shutDown();
+    }
+
+    public void toggleFavorite(Product p){
+        if (iMatDataHandler.isFavorite(p)) {
+            iMatDataHandler.removeFavorite(p);
+        }else{
+            iMatDataHandler.addFavorite(p);
+        }
+    }
+
+    public boolean checkIfFavorite(Product p){
+        return iMatDataHandler.isFavorite(p);
     }
 }
