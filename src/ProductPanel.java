@@ -53,6 +53,7 @@ public class ProductPanel extends AnchorPane {
         nameLabel.setText(product.getName());
         prizeLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
         imageView.setImage(model.getImage(product, kImageWidth, kImageWidth*kImageRatio));
+        updateFavoriteItemImageView();
         if (!product.isEcological()) {
             ecoLabel.setText("");
         }
@@ -73,6 +74,15 @@ public class ProductPanel extends AnchorPane {
     @FXML
     private void handleFavoriteAction(){
         model.toggleFavorite(product);
+        updateFavoriteItemImageView();
+    }
+
+    /**
+     * Updates the star image based on if the picture is a favorite or not.
+     * Favorite = filled
+     * Not a favorite = just edges
+     */
+    private void updateFavoriteItemImageView(){
         String iconPath;
         if (model.checkIfFavorite(product)) {
             iconPath = "images/favoriteFilled.png";
@@ -82,9 +92,6 @@ public class ProductPanel extends AnchorPane {
         favoriteItemImageView.setImage(getImage(iconPath));
     }
 
-    private void setFavoriteItemImageView(){
-        //todo kanske lägga till denna funktionen? behöver ha så den sätter rätt bild vid start av programmet
-    }
 
     private Image getImage(String path){
         return new Image(getClass().getClassLoader().getResourceAsStream(path));
