@@ -24,6 +24,10 @@ public class Model {
      private final ArrayList<String> availableCardTypes = new ArrayList<String>(Arrays.asList("MasterCard", "Visa"));
      private final ArrayList<String> months = new ArrayList<String>(Arrays.asList("1", "2","3", "4", "5", "6"));
      private final ArrayList<String> years = new ArrayList<String>(Arrays.asList("19", "20", "21", "22", "23", "24", "25"));
+
+     private boolean doShowHelpWizard = false;
+     private int helpWizardIndex = 0;
+
     /**
      * Constructor that should never be called, use getInstance() instead.
      */
@@ -134,5 +138,21 @@ public class Model {
 
     public boolean checkIfFavorite(Product p){
         return iMatDataHandler.isFavorite(p);
+    }
+
+    public boolean isDoShowHelpWizard() {
+        return doShowHelpWizard;
+    }
+
+    public void setDoShowHelpWizard(boolean doShowHelpWizard) {
+        this.doShowHelpWizard = doShowHelpWizard;
+    }
+
+    public int getHelpWizardIndex() {
+        return helpWizardIndex;
+    }
+
+    public void setHelpWizardIndex(int helpWizardIndex) {
+        this.helpWizardIndex = helpWizardIndex;
     }
 }
