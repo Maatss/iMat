@@ -137,12 +137,16 @@ public class iMatController implements Initializable, ShoppingCartListener {
      */
     //todo Lägg till subkategorier och så att den faktiskt ändrar de som visas
     private void handleCategorySelection(String id){
+        String category = id;
+        ProductCategory pc = ProductCategory.BERRY;
         switch(id){
             case ("favoritesCategory"): //set favorites to show
                 System.out.println("favo");
+                category = "favoritesCategory";
                 break;
             case ("breadCategory"): //set bread to show
                 System.out.println("b");
+                pc = ProductCategory.BREAD;
                 break;
             case ("drinksCategory"): //set drinks to show
                 System.out.println("d");
@@ -162,6 +166,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
             default:
                 System.out.println("no category matched :OOOOOOOO");
                 updateProductList(model.getProducts());
+        }
+        if(category.equals("favoritesCategory")){
+            updateProductList(model.getFavoriteProducts());
+        }else{
+            updateProductList(model.getCategoryProducts(pc));
         }
     }
       
