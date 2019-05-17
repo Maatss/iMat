@@ -18,7 +18,7 @@ public class iMat extends Application {
 
         stage.setScene(scene);
         stage.show();
-    }
+    }//memo
 
     /**
      * @param args the command line arguments

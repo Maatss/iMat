@@ -8,6 +8,8 @@
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.StackPane?>
@@ -15,63 +17,92 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" stylesheets="@iMatCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
     <children>
-      <AnchorPane fx:id="accountPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+      <StackPane fx:id="homeScreen" prefHeight="600.0" prefWidth="1000.0">
          <children>
-            <AnchorPane layoutX="251.0" layoutY="187.0" prefHeight="289.0" prefWidth="444.0" style="-fx-background-color: #e0e0e0;">
+            <AnchorPane fx:id="cartPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
                <children>
-                  <Label layoutX="135.0" layoutY="56.0" text="Korttyp:" textAlignment="RIGHT" />
-                  <Label layoutX="105.0" layoutY="98.0" text="Kortnummer:" textAlignment="RIGHT" />
-                  <Label layoutX="36.0" layoutY="136.0" text="Kortinnehavarens namn:" textAlignment="RIGHT" />
-                  <Label layoutX="84.0" layoutY="173.0" text="Giltighetsdatum:" textAlignment="RIGHT" />
-                  <Label layoutX="154.0" layoutY="210.0" text="CVC:" textAlignment="RIGHT" />
-                  <ComboBox fx:id="cardTypeCombo" layoutX="193.0" layoutY="51.0" prefWidth="150.0" />
-                  <TextField fx:id="numberTextField" layoutX="193.0" layoutY="93.0" prefHeight="27.0" prefWidth="150.0" promptText="1234123412341234" />
-                  <TextField fx:id="nameTextField" layoutX="193.0" layoutY="131.0" prefHeight="27.0" prefWidth="235.0" promptText="Förnamn Efternamn" />
-                  <ComboBox fx:id="monthCombo" layoutX="193.0" layoutY="168.0" prefHeight="27.0" prefWidth="64.0" promptText="04" />
-                  <ComboBox fx:id="yearCombo" layoutX="279.0" layoutY="168.0" prefHeight="27.0" prefWidth="64.0" promptText="18" />
-                  <Label layoutX="266.0" layoutY="173.0" text="/" textAlignment="RIGHT" />
-                  <TextField fx:id="cvcField" layoutX="196.0" layoutY="205.0" prefHeight="27.0" prefWidth="43.0" promptText="123" />
-                  <Label fx:id="purchasesLabel" layoutX="14.0" layoutY="258.0" text="3747 tidigare inköp hos iMat" />
-                  <Button layoutX="388.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleDoneAction" text="Klar" />
-                  <Label layoutX="14.0" layoutY="14.0" text="Kunduppgifter">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Label>
+                  <AnchorPane layoutX="150.0" layoutY="75.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
+                     <children>
+                        <Label layoutX="14.0" layoutY="14.0" text="Varukorg">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
-         </children>
-      </AnchorPane>
-      <StackPane prefHeight="600.0" prefWidth="1000.0">
-         <children>
+            <AnchorPane fx:id="accountPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+               <children>
+                  <AnchorPane layoutX="150.0" layoutY="75.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
+                     <children>
+                        <Label layoutX="135.0" layoutY="56.0" text="Korttyp:" textAlignment="RIGHT" />
+                        <Label layoutX="105.0" layoutY="98.0" text="Kortnummer:" textAlignment="RIGHT" />
+                        <Label layoutX="36.0" layoutY="136.0" text="Kortinnehavarens namn:" textAlignment="RIGHT" />
+                        <Label layoutX="84.0" layoutY="173.0" text="Giltighetsdatum:" textAlignment="RIGHT" />
+                        <Label layoutX="154.0" layoutY="210.0" text="CVC:" textAlignment="RIGHT" />
+                        <ComboBox fx:id="cardTypeCombo" layoutX="193.0" layoutY="51.0" prefWidth="150.0" />
+                        <TextField fx:id="numberTextField" layoutX="193.0" layoutY="93.0" prefHeight="27.0" prefWidth="150.0" promptText="1234123412341234" />
+                        <TextField fx:id="nameTextField" layoutX="193.0" layoutY="131.0" prefHeight="27.0" prefWidth="235.0" promptText="Förnamn Efternamn" />
+                        <ComboBox fx:id="monthCombo" layoutX="193.0" layoutY="168.0" prefHeight="27.0" prefWidth="64.0" promptText="04" />
+                        <ComboBox fx:id="yearCombo" layoutX="279.0" layoutY="168.0" prefHeight="27.0" prefWidth="64.0" promptText="18" />
+                        <Label layoutX="266.0" layoutY="173.0" text="/" textAlignment="RIGHT" />
+                        <TextField fx:id="cvcField" layoutX="196.0" layoutY="205.0" prefHeight="27.0" prefWidth="43.0" promptText="123" />
+                        <Label fx:id="purchasesLabel" layoutX="14.0" layoutY="258.0" text="3747 tidigare inköp hos iMat" />
+                        <Button layoutX="388.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleDoneAction" text="Klar" />
+                        <Label layoutX="14.0" layoutY="14.0" text="Kunduppgifter">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
             <AnchorPane fx:id="shopPane" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #FFF000;">
                <children>
-                  <AnchorPane prefHeight="102.0" prefWidth="1000.0" style="-fx-background-color: #ff6600;">
+                  <AnchorPane fx:id="headerPane" prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: #ff6600;">
                      <children>
-                        <TextField fx:id="searchField" layoutX="150.0" layoutY="34.0" prefHeight="35.0" prefWidth="476.0" promptText="Sök vara">
+                        <TextField fx:id="searchField" layoutX="150.0" layoutY="34.0" prefHeight="35.0" prefWidth="480.0" promptText="Sök vara">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <Button layoutX="650.0" layoutY="33.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="36.0" prefWidth="64.0" text="Sök" AnchorPane.rightAnchor="286.0" />
-                        <Button layoutX="27.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleShowAccountAction" text="iMat Mini">
+                        <Button fx:id="searchButton" layoutX="630.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="35.0" prefWidth="64.0" text="Sök" />
+                        <Button fx:id="homeButton" mnemonicParsing="false" onAction="#handleShowAccountAction" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: transparent;">
                            <font>
                               <Font size="18.0" />
                            </font>
+                           <graphic>
+                              <ImageView fx:id="homelogoImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/iMatLogga.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
                         </Button>
+                        <Button fx:id="cartButton" layoutX="878.0" layoutY="22.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="100.0" style="-fx-content-display: top;" text="Kundvagn">
+                           <graphic>
+                              <ImageView fitHeight="43.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/shoppingCart.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic></Button>
+                        <Button fx:id="previousPurchasesButton" layoutX="764.0" layoutY="35.0" mnemonicParsing="false" text="Tidigare köp" />
+                        <Label fx:id="itemsLabel" layoutX="740.0" layoutY="67.0" prefHeight="12.0" prefWidth="100.0" text="Antal varor: 3456" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutY="501.0" prefHeight="59.0" prefWidth="1000.0" style="-fx-background-color: #ff6600;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <AnchorPane fx:id="footerPane" layoutY="501.0" prefHeight="59.0" prefWidth="1000.0" style="-fx-background-color: #ff6600;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <children>
                         <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleClearCartAction" text="Töm" />
                         <Button layoutX="663.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleBuyItemsAction" text="Köp" />
-                        <Label fx:id="itemsLabel" layoutX="139.0" layoutY="21.0" prefHeight="17.0" prefWidth="150.0" text="Antal varor: 3456" />
                         <Label fx:id="costLabel" layoutX="479.0" layoutY="21.0" text="Kostnad: 3456.60" />
                      </children>
                   </AnchorPane>
-                  <SplitPane dividerPositions="0.29797979797979796" layoutY="105.0" prefHeight="428.0" prefWidth="1000.0" AnchorPane.topAnchor="102.0">
+                  <SplitPane fx:id="middlePane" dividerPositions="0.29797979797979796" layoutY="105.0" prefHeight="428.0" prefWidth="1000.0" AnchorPane.topAnchor="102.0">
                     <items>
-                      <AnchorPane maxWidth="200.0" minHeight="0.0" minWidth="0.0" prefHeight="426.0" prefWidth="198.0">
+                      <AnchorPane fx:id="categoryPane" maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="426.0" prefWidth="200.0">
                            <children>
                               <Accordion layoutX="31.0" layoutY="64.0" styleClass="category-expandable" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <panes>
@@ -137,11 +168,11 @@
                               </Accordion>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="800.0">
+                      <AnchorPane fx:id="browsePane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="800.0">
                            <children>
                               <ScrollPane hbarPolicy="NEVER" prefHeight="427.0" prefWidth="800.0" vbarPolicy="ALWAYS" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <content>
-                                    <FlowPane fx:id="productsFlowPane" prefHeight="536.0" prefWidth="800.0" style="-fx-background-color: #5e6d70;" vgap="4.0" />
+                                    <FlowPane fx:id="productsFlowPane" prefHeight="459.0" prefWidth="800.0" style="-fx-background-color: #5e6d70;" vgap="4.0" />
                                  </content>
                               </ScrollPane>
                            </children>
@@ -152,5 +183,30 @@
             </AnchorPane>
          </children>
       </StackPane>
+      <AnchorPane fx:id="welcomePane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFFFF;">
+         <children>
+            <Label layoutX="305.0" layoutY="94.0" prefHeight="158.0" prefWidth="405.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="53.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="330.0" layoutY="163.0" prefHeight="158.0" prefWidth="324.0" text="iMat" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="96.0" />
+               </font>
+            </Label>
+            <Button fx:id="acceptHelpButton" layoutX="352.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="282.0" text="Ja, ge mig en kort introduktion">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="denyHelpButton" layoutX="376.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="27.0" prefWidth="235.0" text="Nej, jag klarar mig själv!" textFill="#0000008f" />
+            <Label layoutX="290.0" layoutY="314.0" prefHeight="72.0" prefWidth="405.0" text="Vill du ha hjälp medan du handlar? (kort introduktion)" textAlignment="CENTER" textFill="#0000007e" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
