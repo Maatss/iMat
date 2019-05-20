@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,11 +25,20 @@ import java.util.ResourceBundle;
 
 
 /**
- *
  * @author oloft
  */
 public class iMatController implements Initializable, ShoppingCartListener {
-    
+
+    // Welcome Pane
+    @FXML
+    protected AnchorPane welcomePane; // Loot - I must use 'protected' for it to work?
+
+    @FXML
+    protected Button acceptHelpButton;
+
+    @FXML
+    protected Button denyHelpButton;
+
     // Shopping Pane
     @FXML
     private AnchorPane shopPane;
@@ -40,17 +50,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private Label costLabel;
     @FXML
     private FlowPane productsFlowPane;
-    
+
     // Account Pane
     @FXML
     private AnchorPane accountPane;
-    @FXML 
+    @FXML
     ComboBox cardTypeCombo;
     @FXML
     private TextField numberTextField;
     @FXML
     private TextField nameTextField;
-    @FXML 
+    @FXML
     private ComboBox monthCombo;
     @FXML
     private ComboBox yearCombo;
@@ -67,43 +77,54 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML private TitledPane meatAndFishCategory;
     @FXML private TitledPane pantryCategory;
     @FXML private TitledPane snacksCategory;
-
-    
     // Other variables
     private final Model model = Model.getInstance();
+
+    // Welcome pane actions
+    @FXML
+    protected void handleAcceptHelpAction(ActionEvent event) {
+        model.setDoShowHelpWizard(true);
+        welcomePane.toBack();
+        shopPane.toFront();
+    }
+
+    @FXML
+    protected void handleDenyHelpAction(ActionEvent event) {
+        model.setDoShowHelpWizard(false);
+        welcomePane.toBack();
+        shopPane.toFront();
+    }
 
     // Shop pane actions
     @FXML
     private void handleShowAccountAction(ActionEvent event) {
         openAccountView();
     }
-    
+
     @FXML
     private void handleSearchAction(ActionEvent event) {
-        
         List<Product> matches = model.findProducts(searchField.getText());
         updateProductList(matches);
         System.out.println("# matching products: " + matches.size());
-
     }
-    
+
     @FXML
     private void handleClearCartAction(ActionEvent event) {
         model.clearShoppingCart();
     }
-    
+
     @FXML
     private void handleBuyItemsAction(ActionEvent event) {
-        if(!model.getShoppingCart().getItems().isEmpty()){
+        if (!model.getShoppingCart().getItems().isEmpty()) {
             model.placeOrder();
             costLabel.setText("Köpet klart!");
-        }else{
+        } else {
             costLabel.setText("Lägg till varor i varukorgen först");
         }
     }
-    
+
     // Account pane actions
-     @FXML
+    @FXML
     private void handleDoneAction(ActionEvent event) {
         closeAccountView();
     }
@@ -173,18 +194,16 @@ public class iMatController implements Initializable, ShoppingCartListener {
             updateProductList(model.getCategoryProducts(pc));
         }
     }
-      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         model.getShoppingCart().addShoppingCartListener(this);
 
         updateProductList(model.getProducts());
         updateBottomPanel();
-        
+
         setupAccountPane();
-        
-    }    
-    
+    }
+
     // Navigation
     public void openAccountView() {
         updateAccountPanel();
@@ -196,83 +215,73 @@ public class iMatController implements Initializable, ShoppingCartListener {
         shopPane.toFront();
         accountPane.toBack();
     }
-    
-    // Shope pane methods
+
+    // Shop pane methods
     @Override
-     public void shoppingCartChanged(CartEvent evt) {
+    public void shoppingCartChanged(CartEvent evt) {
         updateBottomPanel();
         updateProductCounts();
     }
-
 
    private void updateProductCounts(){
         //todo lägg till antal i varje ProductPanel som uppdateras här, kanske inte går att lösas
        // utan får göra updateProductList istället
    }
-    
-    private void updateProductList(List<Product> products) {
 
+    private void updateProductList(List<Product> products) {
         productsFlowPane.getChildren().clear();
 
         for (Product product : products) {
             productsFlowPane.getChildren().add(new ProductPanel(product));
         }
-
     }
 
     private void updateBottomPanel() {
-        
         ShoppingCart shoppingCart = model.getShoppingCart();
-        
+
         itemsLabel.setText("Antal varor: " + shoppingCart.getItems().size());
-        costLabel.setText("Kostnad: " + String.format("%.2f",shoppingCart.getTotal()));
-        
+        costLabel.setText("Kostnad: " + String.format("%.2f", shoppingCart.getTotal()));
+
     }
-    
+
     private void updateAccountPanel() {
-        
         CreditCard card = model.getCreditCard();
-        
+
         numberTextField.setText(card.getCardNumber());
         nameTextField.setText(card.getHoldersName());
-        
-        cardTypeCombo.getSelectionModel().select(card.getCardType());
-        monthCombo.getSelectionModel().select(""+card.getValidMonth());
-        yearCombo.getSelectionModel().select(""+card.getValidYear());
 
-        cvcField.setText(""+card.getVerificationCode());
-        
-        purchasesLabel.setText(model.getNumberOfOrders()+ " tidigare inköp hos iMat");
-        
+        cardTypeCombo.getSelectionModel().select(card.getCardType());
+        monthCombo.getSelectionModel().select("" + card.getValidMonth());
+        yearCombo.getSelectionModel().select("" + card.getValidYear());
+
+        cvcField.setText("" + card.getVerificationCode());
+
+        purchasesLabel.setText(model.getNumberOfOrders() + " tidigare inköp hos iMat");
     }
-    
+
     private void updateCreditCard() {
-        
         CreditCard card = model.getCreditCard();
-        
+
         card.setCardNumber(numberTextField.getText());
         card.setHoldersName(nameTextField.getText());
-        
+
         String selectedValue = (String) cardTypeCombo.getSelectionModel().getSelectedItem();
         card.setCardType(selectedValue);
-        
+
         selectedValue = (String) monthCombo.getSelectionModel().getSelectedItem();
         card.setValidMonth(Integer.parseInt(selectedValue));
-        
+
         selectedValue = (String) yearCombo.getSelectionModel().getSelectedItem();
         card.setValidYear(Integer.parseInt(selectedValue));
-        
-        card.setVerificationCode(Integer.parseInt(cvcField.getText()));
 
+        card.setVerificationCode(Integer.parseInt(cvcField.getText()));
     }
-    
+
     private void setupAccountPane() {
-                
         cardTypeCombo.getItems().addAll(model.getCardTypes());
-        
+
         monthCombo.getItems().addAll(model.getMonths());
-        
+
         yearCombo.getItems().addAll(model.getYears());
-        
     }
 }

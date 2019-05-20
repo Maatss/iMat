@@ -30,7 +30,7 @@ public class ProductPanel extends AnchorPane {
     @FXML Label ecoLabel;
     @FXML Label countLabel;
 
-    private Model model = Model.getInstance();
+    private final Model model = Model.getInstance();
 
     private Product product;
     
