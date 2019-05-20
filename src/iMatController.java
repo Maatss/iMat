@@ -13,6 +13,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
@@ -50,6 +52,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private Label costLabel;
     @FXML
     private FlowPane productsFlowPane;
+    @FXML
+    protected Button cartButton;
+    @FXML
+    protected ImageView cartButtonImage;
 
     // Account Pane
     @FXML
@@ -70,13 +76,20 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private Label purchasesLabel;
 
     //Category Pane
-    @FXML private TitledPane favoritesCategory;
-    @FXML private TitledPane breadCategory;
-    @FXML private TitledPane drinksCategory;
-    @FXML private TitledPane greensCategory;
-    @FXML private TitledPane meatAndFishCategory;
-    @FXML private TitledPane pantryCategory;
-    @FXML private TitledPane snacksCategory;
+    @FXML
+    private TitledPane favoritesCategory;
+    @FXML
+    private TitledPane breadCategory;
+    @FXML
+    private TitledPane drinksCategory;
+    @FXML
+    private TitledPane greensCategory;
+    @FXML
+    private TitledPane meatAndFishCategory;
+    @FXML
+    private TitledPane pantryCategory;
+    @FXML
+    private TitledPane snacksCategory;
     // Other variables
     private final Model model = Model.getInstance();
 
@@ -123,6 +136,16 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
+    @FXML
+    protected void handleShoppingCartHoverEnter(ActionEvent event) {
+        cartButtonImage.setImage(new Image("@images/shoppingCartDark.png"));
+    }
+
+    @FXML
+    protected void handleShoppingCartHoverExit(ActionEvent event) {
+        cartButtonImage.setImage(new Image("@images/shoppingCartDark.png"));
+    }
+
     // Account pane actions
     @FXML
     private void handleDoneAction(ActionEvent event) {
@@ -130,37 +153,49 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     // Category pane actions
-    @FXML private void handleFavoriteSelectionAction(){
+    @FXML
+    private void handleFavoriteSelectionAction() {
         handleCategorySelection("favoritesCategory");
     }
-    @FXML private void handleBreadSelectionAction(){
+
+    @FXML
+    private void handleBreadSelectionAction() {
         handleCategorySelection("breadCategory");
     }
-    @FXML private void handleDrinksSelectionAction(){
+
+    @FXML
+    private void handleDrinksSelectionAction() {
         handleCategorySelection("drinksCategory");
     }
-    @FXML private void handleGreensSelectionAction(){
+
+    @FXML
+    private void handleGreensSelectionAction() {
         handleCategorySelection("greensCategory");
     }
-    @FXML private void handleMeatAndFishSelectionAction(){
+
+    @FXML
+    private void handleMeatAndFishSelectionAction() {
         handleCategorySelection("meatAndFishCategory");
     }
-    @FXML private void handlePantrySelectionAction(){
+
+    @FXML
+    private void handlePantrySelectionAction() {
         handleCategorySelection("pantryCategory");
     }
-    @FXML private void handleSnacksSelectionAction(){
+
+    @FXML
+    private void handleSnacksSelectionAction() {
         handleCategorySelection("snacksCategory");
     }
 
     /**
-     *
      * See which category was pressed and update the product pane based on that
      */
     //todo Lägg till subkategorier och så att den faktiskt ändrar de som visas
-    private void handleCategorySelection(String id){
+    private void handleCategorySelection(String id) {
         String category = id;
         ProductCategory pc = ProductCategory.BERRY;
-        switch(id){
+        switch (id) {
             case ("favoritesCategory"): //set favorites to show
                 System.out.println("favo");
                 category = "favoritesCategory";
@@ -188,12 +223,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 System.out.println("no category matched :OOOOOOOO");
                 updateProductList(model.getProducts());
         }
-        if(category.equals("favoritesCategory")){
+        if (category.equals("favoritesCategory")) {
             updateProductList(model.getFavoriteProducts());
-        }else{
+        } else {
             updateProductList(model.getCategoryProducts(pc));
         }
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         model.getShoppingCart().addShoppingCartListener(this);
@@ -223,10 +259,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateProductCounts();
     }
 
-   private void updateProductCounts(){
+    private void updateProductCounts() {
         //todo lägg till antal i varje ProductPanel som uppdateras här, kanske inte går att lösas
-       // utan får göra updateProductList istället
-   }
+        // utan får göra updateProductList istället
+    }
 
     private void updateProductList(List<Product> products) {
         productsFlowPane.getChildren().clear();
