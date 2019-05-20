@@ -54,6 +54,14 @@ public class Model {
         return iMatDataHandler.getProducts();
     }
 
+    public List<Product> getFavoriteProducts() {
+        return iMatDataHandler.favorites();
+    }
+
+    public List<Product> getCategoryProducts(ProductCategory pc) {
+        return iMatDataHandler.getProducts(pc);
+    }
+
     public Product getProduct(int idNbr) {
         return iMatDataHandler.getProduct(idNbr);
     }

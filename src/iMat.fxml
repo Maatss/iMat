@@ -106,60 +106,60 @@
                            <children>
                               <Accordion layoutX="31.0" layoutY="64.0" styleClass="category-expandable" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                 <panes>
-                                  <TitledPane animated="false" prefHeight="0.0" prefWidth="202.0" styleClass="favorite-category" text="Favoriter" />
-                                  <TitledPane animated="false" styleClass="category-static" text="Bröd" />
-                                  <TitledPane animated="false" styleClass="category-expandable" text="Drycker">
+                                  <TitledPane fx:id="favoritesCategory" animated="false" onMouseClicked="#handleFavoriteSelectionAction" prefHeight="0.0" prefWidth="202.0" styleClass="favorite-category" text="Favoriter" />
+                                  <TitledPane fx:id="breadCategory" animated="false" onMouseClicked="#handleBreadSelectionAction" styleClass="category-static" text="Bröd" />
+                                  <TitledPane fx:id="drinksCategory" animated="false" onMouseClicked="#handleDrinksSelectionAction" styleClass="category-expandable" text="Drycker">
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="218.0">
                                              <children>
-                                                <Button layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Kalla drycker" />
-                                                <Button layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Varma drycker" />
+                                                <Button fx:id="coldDrinksCategory" layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Kalla drycker" />
+                                                <Button fx:id="hotDrinksCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Varma drycker" />
                                              </children>
                                           </AnchorPane>
                                     </content>
                                   </TitledPane>
-                                    <TitledPane animated="false" styleClass="category-expandable" text="Frukt och grönt">
+                                    <TitledPane fx:id="greensCategory" animated="false" onMouseClicked="#handleGreensSelectionAction" styleClass="category-expandable" text="Frukt och grönt">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="145.0" prefWidth="200.0">
                                              <children>
-                                                <Button layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Bär" />
-                                                <Button layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Frukter" />
-                                                <Button layoutX="20.0" layoutY="58.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Grönsaker" />
-                                                <Button layoutX="20.0" layoutY="87.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Kål" />
-                                                <Button layoutX="20.0" layoutY="116.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Rotfrukter" />
+                                                <Button fx:id="berriesCategory" layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Bär" />
+                                                <Button fx:id="fruitCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Frukter" />
+                                                <Button fx:id="vegetablesCategory" layoutX="20.0" layoutY="58.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Grönsaker" />
+                                                <Button fx:id="cabbageCategory" layoutX="20.0" layoutY="87.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Kål" />
+                                                <Button fx:id="rootsCategory" layoutX="20.0" layoutY="116.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Rotfrukter" />
                                              </children>
                                           </AnchorPane>
                                        </content>
                                     </TitledPane>
-                                    <TitledPane animated="false" styleClass="category-expandable" text="Kött och fisk">
+                                    <TitledPane fx:id="meatAndFishCategory" animated="false" onMouseClicked="#handleMeatAndFishSelectionAction" styleClass="category-expandable" text="Kött och fisk">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="200.0">
                                              <children>
-                                                <Button layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Fisk" />
-                                                <Button layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Kött" />
+                                                <Button fx:id="fishCategory" layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Fisk" />
+                                                <Button fx:id="meatCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Kött" />
                                              </children>
                                           </AnchorPane>
                                        </content>
                                     </TitledPane>
-                                    <TitledPane animated="false" styleClass="category-expandable" text="Skafferi">
+                                    <TitledPane fx:id="pantryCategory" animated="false" onMouseClicked="#handlePantrySelectionAction" styleClass="category-expandable" text="Skafferi">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="145.0" prefWidth="200.0">
                                              <children>
-                                                <Button layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Bakning" />
-                                                <Button layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Kryddor" />
-                                                <Button layoutX="20.0" layoutY="58.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Linser, bönor och ärtor" />
-                                                <Button layoutX="20.0" layoutY="87.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Pasta" />
-                                                <Button layoutX="20.0" layoutY="116.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Potatis och ris" />
+                                                <Button fx:id="bakeCategory" layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Bakning" />
+                                                <Button fx:id="seasoningCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Kryddor" />
+                                                <Button fx:id="beansCategory" layoutX="20.0" layoutY="58.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Linser, bönor och ärtor" />
+                                                <Button fx:id="pastaCategory" layoutX="20.0" layoutY="87.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Pasta" />
+                                                <Button fx:id="potatoAndRiceCategory" layoutX="20.0" layoutY="116.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Potatis och ris" />
                                              </children>
                                           </AnchorPane>
                                        </content>
                                     </TitledPane>
-                                    <TitledPane animated="false" layoutX="10.0" layoutY="135.0" styleClass="category-expandable" text="Sötsaker och snacks">
+                                    <TitledPane fx:id="snacksCategory" animated="false" layoutX="10.0" layoutY="135.0" onMouseClicked="#handleSnacksSelectionAction" styleClass="category-expandable" text="Sötsaker och snacks">
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="200.0">
                                              <children>
-                                                <Button layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Nötter och frön" />
-                                                <Button layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Sötsaker" />
+                                                <Button fx:id="nutsCategory" layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Nötter och frön" />
+                                                <Button fx:id="sweetsCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Sötsaker" />
                                              </children>
                                           </AnchorPane>
                                        </content>
