@@ -7,14 +7,16 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import se.chalmers.cse.dat216.project.*;
 
-import javax.swing.*;
-import java.awt.event.MouseEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,14 +31,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Welcome Pane
     @FXML
     protected AnchorPane welcomePane; // Loot - I must use 'protected' for it to work?
-
     @FXML
     protected Button acceptHelpButton;
-
     @FXML
     protected Button denyHelpButton;
 
     // Shopping Pane
+    @FXML
+    protected Button homeButton;
     @FXML
     private AnchorPane shopPane;
     @FXML
@@ -49,6 +51,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private FlowPane productsFlowPane;
     @FXML
     private ScrollPane productsScrollPane;
+    @FXML
+    protected Button cartButton;
+    @FXML
+    protected ImageView cartButtonImage;
 
     // Account Pane
     @FXML
@@ -69,15 +75,33 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private Label purchasesLabel;
 
     //Category Pane
-    @FXML private TitledPane favoritesCategory;
-    @FXML private TitledPane breadCategory;
-    @FXML private TitledPane drinksCategory;
-    @FXML private TitledPane greensCategory;
-    @FXML private TitledPane meatAndFishCategory;
-    @FXML private TitledPane pantryCategory;
-    @FXML private TitledPane snacksCategory;
+    @FXML
+    private TitledPane favoritesCategory;
+    @FXML
+    private TitledPane breadCategory;
+    @FXML
+    private TitledPane drinksCategory;
+    @FXML
+    private TitledPane greensCategory;
+    @FXML
+    private TitledPane meatAndFishCategory;
+    @FXML
+    private TitledPane pantryCategory;
+    @FXML
+    private TitledPane snacksCategory;
     // Other variables
     private final Model model = Model.getInstance();
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        model.getShoppingCart().addShoppingCartListener(this);
+
+        updateProductList(model.getProducts());
+        updateBottomPanel();
+
+        setupAccountPane();
+        maskTopButtons();
+    }
 
     // Welcome pane actions
     @FXML
@@ -95,6 +119,29 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     // Shop pane actions
+    private void maskTopButtons() {
+        maskHomeButton();
+        cartButton.setClip(createRectMask(8, 4, 103, 69)); // Magic values fits the button's hitbox to image
+    }
+
+    private void maskHomeButton() {
+        Circle circle = new Circle();
+        double x = 124; //homeButton.getWidth(); Returns '0' for some reason
+        double y = 112; //homeButton.getWidth(); Returns '0' for some reason
+        circle.setCenterX(x / 2);
+        circle.setCenterY(y / 2);
+        circle.setRadius(32.5); //Magic number to fit mask to image (Hitbox is fit to image)
+
+        Shape mask = circle;
+        homeButton.setClip(mask);
+    }
+
+    private Shape createRectMask(double x, double y, double w, double h) {
+        Rectangle rect = new Rectangle(x, y, w, h);
+        Shape mask = rect;
+        return mask;
+    }
+
     @FXML
     private void handleShowAccountAction(ActionEvent event) {
         openAccountView();
@@ -122,6 +169,16 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
+    @FXML
+    protected void handleShoppingCartHoverEnter() {
+        cartButtonImage.setImage(new Image("images/shoppingCartDark.png"));
+    }
+
+    @FXML
+    protected void handleShoppingCartHoverExit() {
+        cartButtonImage.setImage(new Image("images/shoppingCart.png"));
+    }
+
     // Account pane actions
     @FXML
     private void handleDoneAction(ActionEvent event) {
@@ -129,25 +186,38 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     // Category pane actions
-    @FXML private void handleFavoriteSelectionAction(){
+    @FXML
+    private void handleFavoriteSelectionAction() {
         handleCategorySelection("favoritesCategory");
     }
-    @FXML private void handleBreadSelectionAction(){
+
+    @FXML
+    private void handleBreadSelectionAction() {
         handleCategorySelection("breadCategory");
     }
-    @FXML private void handleDrinksSelectionAction(){
+
+    @FXML
+    private void handleDrinksSelectionAction() {
         handleCategorySelection("drinksCategory");
     }
-    @FXML private void handleGreensSelectionAction(){
+
+    @FXML
+    private void handleGreensSelectionAction() {
         handleCategorySelection("greensCategory");
     }
-    @FXML private void handleMeatAndFishSelectionAction(){
+
+    @FXML
+    private void handleMeatAndFishSelectionAction() {
         handleCategorySelection("meatAndFishCategory");
     }
-    @FXML private void handlePantrySelectionAction(){
+
+    @FXML
+    private void handlePantrySelectionAction() {
         handleCategorySelection("pantryCategory");
     }
-    @FXML private void handleSnacksSelectionAction(){
+
+    @FXML
+    private void handleSnacksSelectionAction() {
         handleCategorySelection("snacksCategory");
     }
     @FXML private void handleColdDrinksSelectionAction(){
@@ -200,7 +270,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     /**
-     *
      * See which category was pressed and update the product pane based on that
      */
     private void handleCategorySelection(String id){
@@ -299,7 +368,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 System.out.println("showing all products");
                 updateProductList(model.getProducts());
         }
-        if(category.equals("favoritesCategory")){
+        if (category.equals("favoritesCategory")) {
             updateProductList(model.getFavoriteProducts());
         }else if(pc != null){
             updateProductList(model.getCategoryProducts(pc));
@@ -307,16 +376,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
             updateProductList(combinedProductList);
         }
         productsScrollPane.setVvalue(0); //scroll to top
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        model.getShoppingCart().addShoppingCartListener(this);
-
-        updateProductList(model.getProducts());
-        updateBottomPanel();
-
-        setupAccountPane();
     }
 
     // Navigation
@@ -338,10 +397,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateProductCounts();
     }
 
-   private void updateProductCounts(){
+    private void updateProductCounts() {
         //todo lägg till antal i varje ProductPanel som uppdateras här, kanske inte går att lösas
-       // utan får göra updateProductList istället
-   }
+        // utan får göra updateProductList istället
+    }
 
     private void updateProductList(List<Product> products) {
         productsFlowPane.getChildren().clear();
