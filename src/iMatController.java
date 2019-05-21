@@ -17,6 +17,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import se.chalmers.cse.dat216.project.*;
 
 import javax.swing.*;
@@ -42,6 +45,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     protected Button denyHelpButton;
 
     // Shopping Pane
+    @FXML
+    protected Button homeButton;
     @FXML
     private AnchorPane shopPane;
     @FXML
@@ -93,6 +98,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Other variables
     private final Model model = Model.getInstance();
 
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        model.getShoppingCart().addShoppingCartListener(this);
+
+        updateProductList(model.getProducts());
+        updateBottomPanel();
+
+        setupAccountPane();
+        maskTopButtons();
+    }
+
     // Welcome pane actions
     @FXML
     protected void handleAcceptHelpAction(ActionEvent event) {
@@ -109,6 +125,29 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     // Shop pane actions
+    private void maskTopButtons() {
+        maskHomeButton();
+        cartButton.setClip(createRectMask(8, 4, 103, 69)); // Magic values fits the button's hitbox to image
+    }
+
+    private void maskHomeButton() {
+        Circle circle = new Circle();
+        double x = 124; //homeButton.getWidth(); Returns '0' for some reason
+        double y = 112; //homeButton.getWidth(); Returns '0' for some reason
+        circle.setCenterX(x / 2);
+        circle.setCenterY(y / 2);
+        circle.setRadius(32.5); //Magic number to fit mask to image (Hitbox is fit to image)
+
+        Shape mask = circle;
+        homeButton.setClip(mask);
+    }
+
+    private Shape createRectMask(double x, double y, double w, double h) {
+        Rectangle rect = new Rectangle(x, y, w, h);
+        Shape mask = rect;
+        return mask;
+    }
+
     @FXML
     private void handleShowAccountAction(ActionEvent event) {
         openAccountView();
@@ -137,13 +176,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
-    protected void handleShoppingCartHoverEnter(ActionEvent event) {
-        cartButtonImage.setImage(new Image("@images/shoppingCartDark.png"));
+    protected void handleShoppingCartHoverEnter() {
+        cartButtonImage.setImage(new Image("images/shoppingCartDark.png"));
     }
 
     @FXML
-    protected void handleShoppingCartHoverExit(ActionEvent event) {
-        cartButtonImage.setImage(new Image("@images/shoppingCartDark.png"));
+    protected void handleShoppingCartHoverExit() {
+        cartButtonImage.setImage(new Image("images/shoppingCart.png"));
     }
 
     // Account pane actions
@@ -228,16 +267,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         } else {
             updateProductList(model.getCategoryProducts(pc));
         }
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        model.getShoppingCart().addShoppingCartListener(this);
-
-        updateProductList(model.getProducts());
-        updateBottomPanel();
-
-        setupAccountPane();
     }
 
     // Navigation

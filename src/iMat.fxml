@@ -107,14 +107,14 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="cartButton" layoutX="871.0" layoutY="20.0" mnemonicParsing="false" onMouseEntered="#handleShoppingCartHoverEnter" onMouseExited="#handleShoppingCartHoverExit" prefHeight="50.0" prefWidth="100.0" style="-fx-background-color: transparent;">
+                        <Button fx:id="cartButton" layoutX="867.0" layoutY="15.0" mnemonicParsing="false" onMouseEntered="#handleShoppingCartHoverEnter" onMouseExited="#handleShoppingCartHoverExit" prefHeight="78.0" prefWidth="112.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <ImageView fx:id="cartButtonImage" fitHeight="70.0" fitWidth="103.0" pickOnBounds="true">
                                  <image>
                                     <Image url="@images/shoppingCart.png" />
                                  </image>
                                  <viewport>
-                                    <Rectangle2D height="120.0" minX="30.0" minY="50.0" width="150.0" />
+                                    <Rectangle2D />
                                  </viewport>
                               </ImageView>
                            </graphic></Button>
