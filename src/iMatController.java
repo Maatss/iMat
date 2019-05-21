@@ -44,6 +44,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML private AnchorPane cartPopupPane;
     @FXML private Button cartCloseButton;
     @FXML private Button cartButton;
+    @FXML private Label cartTotalPriceLabel;
+    @FXML private FlowPane cartProductsFlowPane;
 
     // Checkout pane ONE
     @FXML private AnchorPane checkoutPane;
@@ -338,6 +340,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     public void openCartView(){
+        updateCartViewProducts();
         cartPane.toFront();
     }
 
@@ -369,6 +372,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void shoppingCartChanged(CartEvent evt) {
         updateBottomPanel();
         updateProductCounts();
+        updateTotalPrice();
     }
 
    private void updateProductCounts(){
@@ -384,12 +388,29 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
+    private void updateCartViewProducts(){
+        ShoppingCart shoppingCart = model.getShoppingCart();
+        cartProductsFlowPane.getChildren().clear();
+
+        for (ShoppingItem si : shoppingCart.getItems()) {
+            //TODO fix this somehow
+//            cartProductsFlowPane.getChildren().add(new PricePanel(si));
+        }
+    }
+
     private void updateBottomPanel() {
         ShoppingCart shoppingCart = model.getShoppingCart();
 
         itemsLabel.setText("Antal varor: " + shoppingCart.getItems().size());
         costLabel.setText("Kostnad: " + String.format("%.2f", shoppingCart.getTotal()));
 
+    }
+
+    private void updateTotalPrice(){
+        ShoppingCart shoppingCart = model.getShoppingCart();
+
+        costLabel.setText("Kostnad: " + String.format("%.2f", shoppingCart.getTotal()));
+        cartTotalPriceLabel.setText("Totalt: " + String.format("%.2f", shoppingCart.getTotal()));
     }
 
     private void updateAccountPanel() {
