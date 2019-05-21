@@ -27,56 +27,39 @@ import java.util.ResourceBundle;
 public class iMatController implements Initializable, ShoppingCartListener {
 
     // Welcome Pane
-    @FXML
-    protected AnchorPane welcomePane; // Loot - I must use 'protected' for it to work?
-
-    @FXML
-    protected Button acceptHelpButton;
-
-    @FXML
-    protected Button denyHelpButton;
+    @FXML protected AnchorPane welcomePane; // Loot - I must use 'protected' for it to work?
+    @FXML protected Button acceptHelpButton;
+    @FXML protected Button denyHelpButton;
 
     // Shopping Pane
-    @FXML
-    private AnchorPane shopPane;
-    @FXML
-    private TextField searchField;
-    @FXML
-    private Label itemsLabel;
-    @FXML
-    private Label costLabel;
-    @FXML
-    private FlowPane productsFlowPane;
-    @FXML
-    private ScrollPane productsScrollPane;
+    @FXML private AnchorPane shopPane;
+    @FXML private TextField searchField;
+    @FXML private Label itemsLabel;
+    @FXML private Label costLabel;
+    @FXML private FlowPane productsFlowPane;
+    @FXML private ScrollPane productsScrollPane;
 
     // Cart pane
-    @FXML
-    private AnchorPane cartPane;
-    @FXML
-    private AnchorPane cartPopupPane;
-    @FXML
-    private Button cartCloseButton;
-    @FXML
-    private Button cartButton;
+    @FXML private AnchorPane cartPane;
+    @FXML private AnchorPane cartPopupPane;
+    @FXML private Button cartCloseButton;
+    @FXML private Button cartButton;
+
+    // Checkout pane ONE
+    @FXML private AnchorPane checkoutPane;
+
+    // Checkout pane TWO
+    @FXML private AnchorPane checkoutTwoPane;
 
     // Account Pane
-    @FXML
-    private AnchorPane accountPane;
-    @FXML
-    ComboBox cardTypeCombo;
-    @FXML
-    private TextField numberTextField;
-    @FXML
-    private TextField nameTextField;
-    @FXML
-    private ComboBox monthCombo;
-    @FXML
-    private ComboBox yearCombo;
-    @FXML
-    private TextField cvcField;
-    @FXML
-    private Label purchasesLabel;
+    @FXML private AnchorPane accountPane;
+    @FXML private ComboBox cardTypeCombo;
+    @FXML private TextField numberTextField;
+    @FXML private TextField nameTextField;
+    @FXML private ComboBox monthCombo;
+    @FXML private ComboBox yearCombo;
+    @FXML private TextField cvcField;
+    @FXML private Label purchasesLabel;
 
     //Category Pane
     @FXML private TitledPane favoritesCategory;
@@ -88,6 +71,16 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML private TitledPane snacksCategory;
     // Other variables
     private final Model model = Model.getInstance();
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        model.getShoppingCart().addShoppingCartListener(this);
+
+        updateProductList(model.getProducts());
+        updateBottomPanel();
+
+        setupAccountPane();
+    }
 
     // Welcome pane actions
     @FXML
@@ -103,8 +96,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
         welcomePane.toBack();
         shopPane.toFront();
     }
-
     // Shop pane actions
+
     @FXML
     private void handleShowAccountAction(ActionEvent event) {
         openAccountView();
@@ -115,11 +108,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         List<Product> matches = model.findProducts(searchField.getText());
         updateProductList(matches);
         System.out.println("# matching products: " + matches.size());
-    }
-
-    @FXML
-    private void handleClearCartAction(ActionEvent event) {
-        model.clearShoppingCart();
     }
 
     @FXML
@@ -319,14 +307,22 @@ public class iMatController implements Initializable, ShoppingCartListener {
         productsScrollPane.setVvalue(0); //scroll to top
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        model.getShoppingCart().addShoppingCartListener(this);
+    // Cart Pane actions
+    @FXML
+    private void handleClearCartAction(ActionEvent event) {
+        model.clearShoppingCart();
+    }
 
-        updateProductList(model.getProducts());
-        updateBottomPanel();
+    // Checkout Pane actions
+    public void returnToCartViewFromCheckout(){
+        closeCheckoutView();
+        closeCheckoutViewTwo();
+        openCartView();
+    }
 
-        setupAccountPane();
+    public void returnToTimeSelectAction(){
+        closeCheckoutViewTwo();
+        openCheckoutView();
     }
 
     // Navigation
@@ -347,8 +343,25 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     public void closeCartView(){
         shopPane.toFront();
-//        cartPopupPane.toBack();
         cartPane.toBack();
+    }
+
+    public void openCheckoutView(){
+        closeCartView();
+        checkoutPane.toFront();
+    }
+
+    public void closeCheckoutView(){
+        checkoutPane.toBack();
+    }
+
+    public void openCheckoutViewTwo(){
+        checkoutPane.toBack();
+        checkoutTwoPane.toFront();
+    }
+
+    public void closeCheckoutViewTwo(){
+        checkoutTwoPane.toBack();
     }
 
     // Shop pane methods
