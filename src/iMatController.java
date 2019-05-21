@@ -50,6 +50,16 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private ScrollPane productsScrollPane;
 
+    // Cart pane
+    @FXML
+    private AnchorPane cartPane;
+    @FXML
+    private AnchorPane cartPopupPane;
+    @FXML
+    private Button cartCloseButton;
+    @FXML
+    private Button cartButton;
+
     // Account Pane
     @FXML
     private AnchorPane accountPane;
@@ -329,6 +339,16 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateCreditCard();
         shopPane.toFront();
         accountPane.toBack();
+    }
+
+    public void openCartView(){
+        cartPane.toFront();
+    }
+
+    public void closeCartView(){
+        shopPane.toFront();
+//        cartPopupPane.toBack();
+        cartPane.toBack();
     }
 
     // Shop pane methods
