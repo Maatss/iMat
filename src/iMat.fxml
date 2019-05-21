@@ -17,6 +17,31 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" stylesheets="@iMatCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
     <children>
+      <AnchorPane fx:id="welcomePane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFFFF;">
+         <children>
+            <Label layoutX="305.0" layoutY="94.0" prefHeight="158.0" prefWidth="405.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="53.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="330.0" layoutY="163.0" prefHeight="158.0" prefWidth="324.0" text="iMat" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="96.0" />
+               </font>
+            </Label>
+            <Button fx:id="acceptHelpButton" layoutX="352.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="282.0" text="Ja, ge mig en kort introduktion">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="denyHelpButton" layoutX="376.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="27.0" prefWidth="235.0" text="Nej, jag klarar mig själv!" textFill="#0000008f" />
+            <Label layoutX="290.0" layoutY="314.0" prefHeight="72.0" prefWidth="405.0" text="Vill du ha hjälp medan du handlar? (kort introduktion)" textAlignment="CENTER" textFill="#0000007e" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
       <StackPane fx:id="homeScreen" prefHeight="600.0" prefWidth="1000.0">
          <children>
             <AnchorPane fx:id="cartPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
@@ -112,8 +137,8 @@
                                     <content>
                                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="218.0">
                                              <children>
-                                                <Button fx:id="coldDrinksCategory" layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Kalla drycker" />
-                                                <Button fx:id="hotDrinksCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Varma drycker" />
+                                                <Button fx:id="coldDrinksCategory" layoutX="20.0" mnemonicParsing="false" onMouseClicked="#handleColdDrinksSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Kalla drycker" />
+                                                <Button fx:id="hotDrinksCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#handleHotDrinksSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Varma drycker" />
                                              </children>
                                           </AnchorPane>
                                     </content>
@@ -122,11 +147,11 @@
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="145.0" prefWidth="200.0">
                                              <children>
-                                                <Button fx:id="berriesCategory" layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Bär" />
-                                                <Button fx:id="fruitCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Frukter" />
-                                                <Button fx:id="vegetablesCategory" layoutX="20.0" layoutY="58.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Grönsaker" />
-                                                <Button fx:id="cabbageCategory" layoutX="20.0" layoutY="87.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Kål" />
-                                                <Button fx:id="rootsCategory" layoutX="20.0" layoutY="116.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Rotfrukter" />
+                                                <Button fx:id="berriesCategory" layoutX="20.0" mnemonicParsing="false" onMouseClicked="#handleBerriesSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Bär" />
+                                                <Button fx:id="fruitCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#handleFruitsSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Frukter" />
+                                                <Button fx:id="vegetablesCategory" layoutX="20.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#handleVegetablesSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Grönsaker" />
+                                                <Button fx:id="cabbageCategory" layoutX="20.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#handleCabbageSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Kål" />
+                                                <Button fx:id="rootsCategory" layoutX="20.0" layoutY="116.0" mnemonicParsing="false" onMouseClicked="#handleRootsSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Rotfrukter" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -135,8 +160,8 @@
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="200.0">
                                              <children>
-                                                <Button fx:id="fishCategory" layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Fisk" />
-                                                <Button fx:id="meatCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Kött" />
+                                                <Button fx:id="fishCategory" layoutX="20.0" mnemonicParsing="false" onMouseClicked="#handleFishSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Fisk" />
+                                                <Button fx:id="meatCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#handleMeatSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Kött" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -145,11 +170,11 @@
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="145.0" prefWidth="200.0">
                                              <children>
-                                                <Button fx:id="bakeCategory" layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Bakning" />
-                                                <Button fx:id="seasoningCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Kryddor" />
-                                                <Button fx:id="beansCategory" layoutX="20.0" layoutY="58.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Linser, bönor och ärtor" />
-                                                <Button fx:id="pastaCategory" layoutX="20.0" layoutY="87.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Pasta" />
-                                                <Button fx:id="potatoAndRiceCategory" layoutX="20.0" layoutY="116.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Potatis och ris" />
+                                                <Button fx:id="bakeCategory" layoutX="20.0" mnemonicParsing="false" onMouseClicked="#handleBakingSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Bakning" />
+                                                <Button fx:id="seasoningCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#handleSpicesSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Kryddor" />
+                                                <Button fx:id="beansCategory" layoutX="20.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#handlePodsSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Linser, bönor och ärtor" />
+                                                <Button fx:id="pastaCategory" layoutX="20.0" layoutY="87.0" mnemonicParsing="false" onMouseClicked="#handlePastaSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Pasta" />
+                                                <Button fx:id="potatoAndRiceCategory" layoutX="20.0" layoutY="116.0" mnemonicParsing="false" onMouseClicked="#handlePotatoAndRiceSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Potatis och ris" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -158,8 +183,8 @@
                                        <content>
                                           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="200.0">
                                              <children>
-                                                <Button fx:id="nutsCategory" layoutX="20.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Nötter och frön" />
-                                                <Button fx:id="sweetsCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" prefWidth="180.0" styleClass="category-expandable-child" text="Sötsaker" />
+                                                <Button fx:id="nutsCategory" layoutX="20.0" mnemonicParsing="false" onMouseClicked="#handleNutsAndSeedsSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Nötter och frön" />
+                                                <Button fx:id="sweetsCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#handleSweetsSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Sötsaker" />
                                              </children>
                                           </AnchorPane>
                                        </content>
@@ -170,7 +195,7 @@
                         </AnchorPane>
                       <AnchorPane fx:id="browsePane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="800.0">
                            <children>
-                              <ScrollPane hbarPolicy="NEVER" prefHeight="427.0" prefWidth="800.0" vbarPolicy="ALWAYS" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" prefHeight="427.0" prefWidth="800.0" vbarPolicy="ALWAYS" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <content>
                                     <FlowPane fx:id="productsFlowPane" prefHeight="459.0" prefWidth="800.0" style="-fx-background-color: #5e6d70;" vgap="4.0" />
                                  </content>
@@ -183,30 +208,5 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <AnchorPane fx:id="welcomePane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFFFF;">
-         <children>
-            <Label layoutX="305.0" layoutY="94.0" prefHeight="158.0" prefWidth="405.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font size="53.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="330.0" layoutY="163.0" prefHeight="158.0" prefWidth="324.0" text="iMat" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font size="96.0" />
-               </font>
-            </Label>
-            <Button fx:id="acceptHelpButton" layoutX="352.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="282.0" text="Ja, ge mig en kort introduktion">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="denyHelpButton" layoutX="376.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="27.0" prefWidth="235.0" text="Nej, jag klarar mig själv!" textFill="#0000008f" />
-            <Label layoutX="290.0" layoutY="314.0" prefHeight="72.0" prefWidth="405.0" text="Vill du ha hjälp medan du handlar? (kort introduktion)" textAlignment="CENTER" textFill="#0000007e" wrapText="true">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
     </children>
 </AnchorPane>
