@@ -8,11 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
@@ -20,6 +16,7 @@ import se.chalmers.cse.dat216.project.*;
 import javax.swing.*;
 import java.awt.event.MouseEvent;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -50,6 +47,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private Label costLabel;
     @FXML
     private FlowPane productsFlowPane;
+    @FXML
+    private ScrollPane productsScrollPane;
 
     // Account Pane
     @FXML
@@ -151,49 +150,165 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML private void handleSnacksSelectionAction(){
         handleCategorySelection("snacksCategory");
     }
+    @FXML private void handleColdDrinksSelectionAction(){
+        handleCategorySelection("coldDrinksCategory");
+    }
+    @FXML private void handleHotDrinksSelectionAction(){
+        handleCategorySelection("hotDrinksCategory");
+    }
+    @FXML private void handleBerriesSelectionAction(){
+        handleCategorySelection("berriesCategory");
+    }
+    @FXML private void handleFruitsSelectionAction(){
+        handleCategorySelection("fruitsCategory");
+    }
+    @FXML private void handleVegetablesSelectionAction(){
+        handleCategorySelection("vegetablesCategory");
+    }
+    @FXML private void handleCabbageSelectionAction(){
+        handleCategorySelection("cabbageCategory");
+    }
+    @FXML private void handleRootsSelectionAction(){
+        handleCategorySelection("rootsCategory");
+    }
+    @FXML private void handleFishSelectionAction(){
+        handleCategorySelection("fishCategory");
+    }
+    @FXML private void handleMeatSelectionAction(){
+        handleCategorySelection("meatCategory");
+    }
+    @FXML private void handleBakingSelectionAction(){
+        handleCategorySelection("bakingCategory");
+    }
+    @FXML private void handleSpicesSelectionAction(){
+        handleCategorySelection("spicesCategory");
+    }
+    @FXML private void handlePodsSelectionAction(){
+        handleCategorySelection("podsCategory");
+    }
+    @FXML private void handlePastaSelectionAction(){
+        handleCategorySelection("pastaCategory");
+    }
+    @FXML private void handlePotatoAndRiceSelectionAction(){
+        handleCategorySelection("potatoAndRiceCategory");
+    }
+    @FXML private void handleNutsAndSeedsSelectionAction(){
+        handleCategorySelection("nutsAndSeedsCategory");
+    }
+    @FXML private void handleSweetsSelectionAction(){
+        handleCategorySelection("sweetsCategory");
+    }
 
     /**
      *
      * See which category was pressed and update the product pane based on that
      */
-    //todo Lägg till subkategorier och så att den faktiskt ändrar de som visas
     private void handleCategorySelection(String id){
         String category = id;
-        ProductCategory pc = ProductCategory.BERRY;
+        ProductCategory pc = null;
+        List<Product> combinedProductList = new ArrayList<>();
         switch(id){
             case ("favoritesCategory"): //set favorites to show
-                System.out.println("favo");
                 category = "favoritesCategory";
                 break;
             case ("breadCategory"): //set bread to show
-                System.out.println("b");
                 pc = ProductCategory.BREAD;
                 break;
             case ("drinksCategory"): //set drinks to show
-                System.out.println("d");
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.COLD_DRINKS)); //fix this
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.HOT_DRINKS));
                 break;
             case ("greensCategory"): //set greens to show
-                System.out.println("g");
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.BERRY));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.FRUIT));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.CITRUS_FRUIT));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.EXOTIC_FRUIT));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.MELONS));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.VEGETABLE_FRUIT));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.CABBAGE));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.ROOT_VEGETABLE));
                 break;
             case ("meatAndFishCategory"): //set meatAndFish to show
-                System.out.println("maf");
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.FISH));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.MEAT));
                 break;
             case ("pantryCategory"): //set pantry to show
-                System.out.println("p");
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.FLOUR_SUGAR_SALT));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.HERB));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.POD));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.PASTA));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.POTATO_RICE));
                 break;
             case ("snacksCategory"): //set snacks to show
-                System.out.println("s");
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.NUTS_AND_SEEDS));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.SWEET));
+                break;
+            case ("coldDrinksCategory"):
+                pc = ProductCategory.COLD_DRINKS;
+                break;
+            case ("hotDrinksCategory"):
+                pc = ProductCategory.HOT_DRINKS;
+                break;
+            case ("berriesCategory"):
+                pc = ProductCategory.BERRY;
+                break;
+            case ("fruitsCategory"):
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.FRUIT));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.CITRUS_FRUIT));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.EXOTIC_FRUIT));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.MELONS));
+                break;
+            case ("vegetablesCategory"):
+                pc = ProductCategory.VEGETABLE_FRUIT;
+                break;
+            case ("cabbageCategory"):
+                pc = ProductCategory.CABBAGE;
+                break;
+            case ("rootsCategory"):
+                pc = ProductCategory.ROOT_VEGETABLE;
+                break;
+            case ("meatCategory"):
+                pc = ProductCategory.MEAT;
+                break;
+            case ("fishCategory"):
+                pc = ProductCategory.FISH;
+                break;
+            case ("bakingCategory"):
+                pc = ProductCategory.FLOUR_SUGAR_SALT;
+                break;
+            case ("spicesCategory"):
+                pc = ProductCategory.HERB;
+                break;
+            case ("podsCategory"):
+                pc = ProductCategory.POD;
+                break;
+            case ("pastaCategory"):
+                pc = ProductCategory.PASTA;
+                break;
+            case ("potatoAndRiceCategory"):
+                pc = ProductCategory.POTATO_RICE;
+                break;
+            case ("nutsAndSeedsCategory"):
+                pc = ProductCategory.NUTS_AND_SEEDS;
+                break;
+            case ("sweetsCategory"):
+                pc = ProductCategory.SWEET;
                 break;
             default:
                 System.out.println("no category matched :OOOOOOOO");
+                System.out.println("showing all products");
                 updateProductList(model.getProducts());
         }
         if(category.equals("favoritesCategory")){
             updateProductList(model.getFavoriteProducts());
-        }else{
+        }else if(pc != null){
             updateProductList(model.getCategoryProducts(pc));
+        }else{ //show multiple subcategories
+            updateProductList(combinedProductList);
         }
+        productsScrollPane.setVvalue(0); //scroll to top
     }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         model.getShoppingCart().addShoppingCartListener(this);
