@@ -82,8 +82,6 @@ public class ProductPanel extends AnchorPane {
         System.out.println("Add " + product.getName());
         model.addToShoppingCart(product);
         updateCountLabel();
-        updateRemoveButtonImageView();
-        updateTextFieldColor();
     }
 
 
@@ -92,8 +90,6 @@ public class ProductPanel extends AnchorPane {
         System.out.println("Remove " + product.getName());
         model.removeFromShoppingCart(product);
         updateCountLabel();
-        updateRemoveButtonImageView();
-        updateTextFieldColor();
     }
 
     @FXML
@@ -117,9 +113,11 @@ public class ProductPanel extends AnchorPane {
         favoriteItemImageView.setImage(getImage(iconPath));
     }
 
-    private void updateCountLabel() {
+    public void updateCountLabel() {
         int count = countCurrentItem();
         countTextField.setText(count + "");
+        updateRemoveButtonImageView();
+        updateTextFieldColor();
     }
 
     private int countCurrentItem() {

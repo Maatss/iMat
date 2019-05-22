@@ -28,7 +28,7 @@ public class PricePanel extends AnchorPane {
     private Product product;
 
 
-    public PricePanel(ShoppingItem shoppingItem) {
+    public PricePanel(Product productIn) {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("PricePanel.fxml"));
         fxmlLoader.setRoot(this);
@@ -40,7 +40,7 @@ public class PricePanel extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        this.product = shoppingItem.getProduct();
+        this.product = productIn;
         productNameLabel.setText(product.getName());
         productPriceLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
         updateCountLabel();
@@ -64,13 +64,11 @@ public class PricePanel extends AnchorPane {
         return new Image(getClass().getClassLoader().getResourceAsStream(path));
     }
 
-    //samma som den i ProductPanel
     private void updateCountLabel() {
         int count = countCurrentItem();
         productCountTextField.setText(count + "");
     }
 
-    //samma som den i ProductPanel
     private int countCurrentItem() {
         int count = 0;
         for (ShoppingItem shoppingItem : model.getShoppingCart().getItems()) {
