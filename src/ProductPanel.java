@@ -91,6 +91,7 @@ public class ProductPanel extends AnchorPane {
                             countTextField.selectAll();
                         });
                     } else {
+                        addProductsTextField(countTextField.getText());
                         updateCountLabel(true);
                     }
                 }
@@ -103,7 +104,6 @@ public class ProductPanel extends AnchorPane {
         model.addToShoppingCart(product);
         updateCountLabel(true);
     }
-
 
     @FXML
     private void handleRemoveAction() {
@@ -239,12 +239,16 @@ public class ProductPanel extends AnchorPane {
 
     @FXML
     private void addProductsTextField() {
-        if (isNumeric(countTextField.getText()) || countTextField.getText().length() == 0) {    //If valid case
+        addProductsTextField(countTextField.getText());
+    }
+
+    private void addProductsTextField(String inputText) {
+        if (isNumeric(inputText) || inputText.length() == 0) {    //If valid case
             int amount;
-            if (countTextField.getText().length() == 0) {
+            if (inputText.length() == 0) {
                 amount = 0;
             } else {
-                amount = Integer.parseInt(countTextField.getText());
+                amount = Integer.parseInt(inputText);
             }
 
             int oldAmount = countCurrentItem();                        // Get the old value
