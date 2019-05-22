@@ -19,9 +19,9 @@
             <Font size="16.0" />
          </font></Label>
       <Label fx:id="ecoLabel" layoutX="59.0" layoutY="184.0" text="Ekologisk" />
-      <ImageView fx:id="favoriteItemImageView" fitHeight="114.0" fitWidth="76.0" layoutX="-14.0" layoutY="-15.0" onMouseClicked="#handleFavoriteAction" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="-10.0" AnchorPane.topAnchor="-10.0">
+      <ImageView fx:id="favoriteItemImageView" fitHeight="52.0" fitWidth="51.0" layoutX="3.0" layoutY="-2.0" onMouseClicked="#handleFavoriteAction" onMouseEntered="#handleFavoriteHoverEnter" onMouseExited="#handleFavoriteHoverExit" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="3.0" AnchorPane.topAnchor="-2.0">
          <image>
-            <Image url="@images/favoriteEmpty.png" />
+            <Image url="@images/Favorite/favoriteEmpty.png" />
          </image>
       </ImageView>
       <ImageView fx:id="middleSectionImageView" fitHeight="47.0" fitWidth="109.0" layoutX="48.0" layoutY="244.0" pickOnBounds="true" preserveRatio="true">

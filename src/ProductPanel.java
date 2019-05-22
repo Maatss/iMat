@@ -13,7 +13,6 @@ import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 
-
 import java.io.IOException;
 
 /**
@@ -40,7 +39,8 @@ public class ProductPanel extends AnchorPane {
     ImageView middleSectionImageView;
     @FXML
     TextField countTextField;
-    @FXML Label stLabel;
+    @FXML
+    Label stLabel;
 
     private final Model model = Model.getInstance();
 
@@ -66,7 +66,7 @@ public class ProductPanel extends AnchorPane {
         nameLabel.setText(product.getName());
         prizeLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
         imageView.setImage(model.getImage(product, kImageWidth, kImageWidth * kImageRatio));
-        updateFavoriteItemImageView();
+        updateFavoriteItemImageView(false);
         middleSectionImageView.setImage(getImage("images/middleSectionNotAdded.png"));
         addButtonImageView.setImage(getImage("images/addButton.png"));
         updateRemoveButtonImageView();
@@ -99,7 +99,17 @@ public class ProductPanel extends AnchorPane {
     @FXML
     private void handleFavoriteAction() {
         model.toggleFavorite(product);
-        updateFavoriteItemImageView();
+        updateFavoriteItemImageView(false);
+    }
+
+    @FXML
+    protected void handleFavoriteHoverEnter() {
+        updateFavoriteItemImageView(true);
+    }
+
+    @FXML
+    protected void handleFavoriteHoverExit() {
+        updateFavoriteItemImageView(false);
     }
 
     /**
@@ -109,12 +119,20 @@ public class ProductPanel extends AnchorPane {
      */
 
 
-    private void updateFavoriteItemImageView() {
+    private void updateFavoriteItemImageView(boolean isHovered) {
         String iconPath;
         if (model.checkIfFavorite(product)) {
-            iconPath = "images/favoriteFilled.png";
+            if (isHovered) {
+                iconPath = "images/Favorite/FavoriteFilledRemove.png";
+            } else {
+                iconPath = "images/Favorite/FavoriteFilled.png";
+            }
         } else {
-            iconPath = "images/favoriteEmpty.png";
+            if (isHovered) {
+                iconPath = "images/Favorite/FavoriteEmptyAdd.png";
+            } else {
+                iconPath = "images/Favorite/FavoriteEmpty.png";
+            }
         }
         favoriteItemImageView.setImage(getImage(iconPath));
     }
@@ -221,8 +239,7 @@ public class ProductPanel extends AnchorPane {
                 updateCountLabel();
 
             }
-        }
-        else {                                                      // if the input is not numeric - sets the label to previous value
+        } else {                                                      // if the input is not numeric - sets the label to previous value
             updateCountLabel();
 
         }
