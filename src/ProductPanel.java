@@ -194,28 +194,28 @@ public class ProductPanel extends AnchorPane {
 
     @FXML
     private void hoveringAddButton() {
-        addButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("images/addButtonPliancy.png")));
+        addButtonImageView.setImage(getImage("images/addButtonPliancy.png"));
     }
 
     @FXML
     private void releasedAddButton() {
-        addButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("images/addButton.png")));
+        addButtonImageView.setImage(getImage("images/addButton.png"));
 
     }
 
     @FXML
     private void hoveringRemoveButton() {
         if (countCurrentItem() > 0) {
-            removeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("images/removeButtonPliancy.png")));
+            removeButtonImageView.setImage(getImage("images/removeButtonPliancy.png"));
         }
     }
 
     @FXML
     private void exitedRemoveButton() {
         if (countCurrentItem() > 0) {
-            removeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("images/removeButtonAvailable.png")));
+            removeButtonImageView.setImage(getImage("images/removeButtonAvailable.png"));
         } else {
-            removeButtonImageView.setImage(new Image(getClass().getClassLoader().getResourceAsStream("images/removeButtonNotAvailable.png")));
+            removeButtonImageView.setImage(getImage("images/removeButtonNotAvailable.png"));
         }
     }
 

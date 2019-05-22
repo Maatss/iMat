@@ -20,31 +20,6 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" stylesheets="@iMatCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
     <children>
-      <AnchorPane fx:id="welcomePane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFFFF;">
-         <children>
-            <Label layoutX="305.0" layoutY="94.0" prefHeight="158.0" prefWidth="405.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font size="53.0" />
-               </font>
-            </Label>
-            <Label alignment="CENTER" layoutX="330.0" layoutY="163.0" prefHeight="158.0" prefWidth="324.0" text="iMat" textAlignment="CENTER" wrapText="true">
-               <font>
-                  <Font size="96.0" />
-               </font>
-            </Label>
-            <Button fx:id="acceptHelpButton" layoutX="352.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="282.0" text="Ja, ge mig en kort introduktion">
-               <font>
-                  <Font name="System Bold" size="16.0" />
-               </font>
-            </Button>
-            <Button fx:id="denyHelpButton" layoutX="376.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="27.0" prefWidth="235.0" text="Nej, jag klarar mig själv!" textFill="#0000008f" />
-            <Label layoutX="290.0" layoutY="314.0" prefHeight="72.0" prefWidth="405.0" text="Vill du ha hjälp medan du handlar? (kort introduktion)" textAlignment="CENTER" textFill="#0000007e" wrapText="true">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
       <StackPane fx:id="homeScreen" prefHeight="600.0" prefWidth="1000.0">
          <children>
             <AnchorPane fx:id="checkoutTwoPane" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
@@ -78,7 +53,7 @@
                                     <Font size="22.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="checkoutFinishPurchaseButton" layoutX="289.0" layoutY="313.0" mnemonicParsing="false" onAction="#openCheckoutViewTwo" text="Slutför köp" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="360.0">
+                              <Button fx:id="checkoutFinishPurchaseButton" layoutX="289.0" layoutY="313.0" mnemonicParsing="false" onAction="#handleBuyItemsAction" text="Slutför köp" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="360.0">
                                  <font>
                                     <Font size="22.0" />
                                  </font>
@@ -136,31 +111,6 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="welcomePane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFFFF;">
-               <children>
-                  <Label layoutX="305.0" layoutY="94.0" prefHeight="158.0" prefWidth="405.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="53.0" />
-                     </font>
-                  </Label>
-                  <Label alignment="CENTER" layoutX="330.0" layoutY="163.0" prefHeight="158.0" prefWidth="324.0" text="iMat" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="96.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="acceptHelpButton" layoutX="352.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="282.0" text="Ja, ge mig en kort introduktion">
-                     <font>
-                        <Font name="System Bold" size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="denyHelpButton" layoutX="376.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="27.0" prefWidth="235.0" text="Nej, jag klarar mig själv!" textFill="#0000008f" />
-                  <Label layoutX="290.0" layoutY="314.0" prefHeight="72.0" prefWidth="405.0" text="Vill du ha hjälp medan du handlar? (kort introduktion)" textAlignment="CENTER" textFill="#0000007e" wrapText="true">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="accountPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
                <children>
                   <AnchorPane layoutX="150.0" layoutY="75.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
@@ -204,7 +154,7 @@
                         </AnchorPane>
                         <AnchorPane fx:id="cartContentPane" prefHeight="275.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
                            <children>
-                              <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <ScrollPane style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <content>
                                     <FlowPane fx:id="cartProductsFlowPane" prefHeight="274.0" prefWidth="685.0" />
                                  </content>
@@ -306,13 +256,13 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="previousPurchasesButton" layoutX="764.0" layoutY="35.0" mnemonicParsing="false" text="Tidigare köp" />
-                        <Label fx:id="itemsLabel" layoutX="740.0" layoutY="67.0" prefHeight="12.0" prefWidth="100.0" text="Antal varor: 3456" />
+                        <Label fx:id="itemsLabel" layoutX="739.0" layoutY="37.0" prefHeight="12.0" prefWidth="100.0" text="Antal varor: 3456" />
+                        <Label fx:id="costLabel" layoutX="739.0" layoutY="55.0" text="Kostnad: 3456.60" />
                      </children>
                   </AnchorPane>
-                  <SplitPane fx:id="middlePane" dividerPositions="0.29797979797979796" layoutY="105.0" prefHeight="428.0" prefWidth="1000.0" AnchorPane.topAnchor="102.0">
+                  <SplitPane fx:id="middlePane" dividerPositions="0.29797979797979796" layoutY="105.0" prefHeight="498.0" prefWidth="1000.0" AnchorPane.topAnchor="102.0">
                     <items>
-                      <AnchorPane fx:id="categoryPane" maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="426.0" prefWidth="200.0" styleClass="accordion_holder">
+                      <AnchorPane fx:id="categoryPane" maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="460.0" prefWidth="200.0" styleClass="accordion_holder">
                            <children>
                               <Accordion layoutX="-10.0" layoutY="144.0" styleClass="category-expandable" AnchorPane.leftAnchor="-10.0" AnchorPane.topAnchor="144.0">
                                 <panes>
@@ -382,7 +332,7 @@
                                           <Font size="18.0" />
                                        </font>
                                     </TitledPane>
-                                  <TitledPane animated="false" styleClass="earlier-purchases-category" text="Tidigare köp">
+                                  <TitledPane animated="false" onMouseClicked="#handlePrevOrdersAction" styleClass="earlier-purchases-category" text="Tidigare köp">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -408,12 +358,7 @@
                                     <Font size="22.0" />
                                  </font>
                               </Label>
-                              <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" layoutY="65.0" prefHeight="362.0" prefWidth="800.0" vbarPolicy="ALWAYS" AnchorPane.rightAnchor="0.0">
-                                 <content>
-                                    <FlowPane fx:id="productsFlowPane" prefHeight="425.0" prefWidth="800.0" style="-fx-background-color: #5e6d70;" vgap="4.0" />
-                                 </content>
-                              </ScrollPane>
-                              <AnchorPane fx:id="newAccountPane" layoutY="65.0" prefHeight="435.0" prefWidth="786.0" style="-fx-background-color: #FFFFFF;">
+                              <AnchorPane fx:id="newAccountPane" layoutY="69.0" prefHeight="435.0" prefWidth="786.0" style="-fx-background-color: #FFFFFF;">
                                  <children>
                                     <Label layoutX="21.0" layoutY="27.0" prefHeight="44.0" prefWidth="138.0" text="Mina uppgifter:">
                                        <font>
@@ -449,51 +394,67 @@
                                     </Button>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="previousOrdersPane" prefHeight="426.0" prefWidth="792.0" style="-fx-background-color: #EFEFEF;">
+                              <AnchorPane fx:id="previousOrdersPane" layoutY="69.0" prefHeight="435.0" prefWidth="792.0" style="-fx-background-color: #EFEFEF;">
                                  <children>
-                                    <Label layoutX="11.0" layoutY="14.0" text="Tidigare inköp">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="14.0" layoutY="80.0" text="Datum">
+                                    <Label layoutX="53.0" layoutY="14.0" text="Datum">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="195.0" layoutY="80.0" text="Artiklar">
+                                    <Label layoutX="528.0" layoutY="14.0" text="Pris">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="549.0" layoutY="80.0" text="Pris">
+                                    <Label layoutX="448.0" layoutY="14.0" text="Antal">
                                        <font>
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <Label layoutX="379.0" layoutY="80.0" text="Antal">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Label>
-                                    <FlowPane layoutX="14.0" layoutY="101.0" prefHeight="247.0" prefWidth="757.0" style="-fx-background-color: #DEDEDE;" />
-                                    <Button fx:id="navigationBackButton" layoutX="203.0" layoutY="23.0" mnemonicParsing="false" text="Tillbaka" />
+                                    <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="35.0" prefHeight="300.0" prefWidth="730.0" style="-fx-border-color: #FFFFFF; -fx-background-color: transparent;">
+                                      <content>
+                                         <FlowPane fx:id="prevOrdersFlowPane" hgap="4.0" prefHeight="298.0" prefWidth="730.0" style="-fx-background-color: #DEDEDE;" />
+                                      </content>
+                                    </ScrollPane>
                                  </children>
                               </AnchorPane>
+                              <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" layoutY="69.0" prefHeight="435.0" prefWidth="800.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.rightAnchor="0.0">
+                                 <content>
+                                    <FlowPane fx:id="productsFlowPane" prefHeight="425.0" prefWidth="800.0" style="-fx-background-color: #EFEFEF;" vgap="4.0" />
+                                 </content>
+                              </ScrollPane>
                            </children>
                         </AnchorPane>
                     </items>
                   </SplitPane>
-                  <AnchorPane fx:id="footerPane" layoutY="501.0" prefHeight="59.0" prefWidth="1000.0" style="-fx-background-color: #ff6600;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                     <children>
-                        <Button layoutX="14.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleClearCartAction" text="Töm" />
-                        <Button layoutX="663.0" layoutY="16.0" mnemonicParsing="false" onAction="#handleBuyItemsAction" text="Köp" />
-                        <Label fx:id="costLabel" layoutX="479.0" layoutY="21.0" text="Kostnad: 3456.60" />
-                     </children>
-                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
       </StackPane>
+      <AnchorPane fx:id="welcomePane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFFFF;">
+         <children>
+            <Label layoutX="305.0" layoutY="94.0" prefHeight="158.0" prefWidth="405.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="53.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="330.0" layoutY="163.0" prefHeight="158.0" prefWidth="324.0" text="iMat" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="96.0" />
+               </font>
+            </Label>
+            <Button fx:id="acceptHelpButton" layoutX="352.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="282.0" text="Ja, ge mig en kort introduktion">
+               <font>
+                  <Font name="System Bold" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="denyHelpButton" layoutX="376.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="27.0" prefWidth="235.0" text="Nej, jag klarar mig själv!" textFill="#0000008f" />
+            <Label layoutX="290.0" layoutY="314.0" prefHeight="72.0" prefWidth="405.0" text="Vill du ha hjälp medan du handlar? (kort introduktion)" textAlignment="CENTER" textFill="#0000007e" wrapText="true">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>
