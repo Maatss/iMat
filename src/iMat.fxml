@@ -136,6 +136,61 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
+<<<<<<< Updated upstream
+=======
+            <AnchorPane fx:id="welcomePane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFFFF;">
+               <children>
+                  <Label layoutX="305.0" layoutY="94.0" prefHeight="158.0" prefWidth="405.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="53.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER" layoutX="330.0" layoutY="163.0" prefHeight="158.0" prefWidth="324.0" text="iMat" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="96.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="acceptHelpButton" layoutX="352.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="282.0" text="Ja, ge mig en kort introduktion">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="denyHelpButton" layoutX="376.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="27.0" prefWidth="235.0" text="Nej, jag klarar mig själv!" textFill="#0000008f" />
+                  <Label layoutX="290.0" layoutY="314.0" prefHeight="72.0" prefWidth="405.0" text="Vill du ha hjälp medan du handlar? (kort introduktion)" textAlignment="CENTER" textFill="#0000007e" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="accountPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+               <children>
+                  <AnchorPane layoutX="150.0" layoutY="75.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
+                     <children>
+                        <Label layoutX="135.0" layoutY="56.0" text="Korttyp:" textAlignment="RIGHT" />
+                        <Label layoutX="105.0" layoutY="98.0" text="Kortnummer:" textAlignment="RIGHT" />
+                        <Label layoutX="36.0" layoutY="136.0" text="Kortinnehavarens namn:" textAlignment="RIGHT" />
+                        <Label layoutX="84.0" layoutY="173.0" text="Giltighetsdatum:" textAlignment="RIGHT" />
+                        <Label layoutX="154.0" layoutY="210.0" text="CVC:" textAlignment="RIGHT" />
+                        <ComboBox fx:id="cardTypeCombo" layoutX="193.0" layoutY="51.0" prefWidth="150.0" />
+                        <TextField fx:id="numberTextField" layoutX="193.0" layoutY="93.0" prefHeight="27.0" prefWidth="150.0" promptText="1234123412341234" />
+                        <TextField fx:id="nameTextField" layoutX="193.0" layoutY="131.0" prefHeight="27.0" prefWidth="235.0" promptText="Förnamn Efternamn" />
+                        <ComboBox fx:id="monthCombo" layoutX="193.0" layoutY="168.0" prefHeight="27.0" prefWidth="64.0" promptText="04" />
+                        <ComboBox fx:id="yearCombo" layoutX="279.0" layoutY="168.0" prefHeight="27.0" prefWidth="64.0" promptText="18" />
+                        <Label layoutX="266.0" layoutY="173.0" text="/" textAlignment="RIGHT" />
+                        <TextField fx:id="cvcField" layoutX="196.0" layoutY="205.0" prefHeight="27.0" prefWidth="43.0" promptText="123" />
+                        <Label fx:id="purchasesLabel" layoutX="14.0" layoutY="258.0" text="3747 tidigare inköp hos iMat" />
+                        <Button layoutX="388.0" layoutY="253.0" mnemonicParsing="false" onAction="#handleDoneAction" text="Klar" />
+                        <Label layoutX="14.0" layoutY="14.0" text="Kunduppgifter">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+>>>>>>> Stashed changes
             <AnchorPane fx:id="cartPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
                <children>
                   <AnchorPane fx:id="cartPopupPane" layoutX="150.0" layoutY="75.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
@@ -193,6 +248,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
+<<<<<<< Updated upstream
             <AnchorPane fx:id="accountPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
                <children>
                   <AnchorPane layoutX="150.0" layoutY="75.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
@@ -220,11 +276,13 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
+=======
+>>>>>>> Stashed changes
             <AnchorPane fx:id="shopPane" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #FFF000;">
                <children>
                   <AnchorPane fx:id="headerPane" prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: #ff6600;">
                      <children>
-                        <TextField fx:id="searchField" layoutX="150.0" layoutY="34.0" onAction="#handleSearchAction" prefHeight="35.0" prefWidth="480.0" promptText="Sök i vårt produktsortiment, klicka här!">
+                        <TextField fx:id="searchField" layoutX="150.0" layoutY="34.0" prefHeight="35.0" prefWidth="480.0" promptText="Sök vara">
                            <font>
                               <Font size="18.0" />
                            </font>
@@ -361,6 +419,7 @@
                                     <FlowPane fx:id="productsFlowPane" prefHeight="425.0" prefWidth="800.0" style="-fx-background-color: #5e6d70;" vgap="4.0" />
                                  </content>
                               </ScrollPane>
+<<<<<<< Updated upstream
                               <AnchorPane fx:id="newAccountPane" layoutY="65.0" prefHeight="435.0" prefWidth="786.0" style="-fx-background-color: #FFFFFF;">
                                  <children>
                                     <Label layoutX="21.0" layoutY="27.0" prefHeight="44.0" prefWidth="138.0" text="Mina uppgifter:">
@@ -395,6 +454,37 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
+=======
+                              <AnchorPane fx:id="previousOrdersPane" prefHeight="426.0" prefWidth="792.0" style="-fx-background-color: #EFEFEF;">
+                                 <children>
+                                    <Label layoutX="11.0" layoutY="14.0" text="Tidigare inköp">
+                                       <font>
+                                          <Font size="29.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="14.0" layoutY="80.0" text="Datum">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="195.0" layoutY="80.0" text="Artiklar">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="549.0" layoutY="80.0" text="Pris">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="379.0" layoutY="80.0" text="Antal">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <FlowPane layoutX="14.0" layoutY="101.0" prefHeight="247.0" prefWidth="757.0" style="-fx-background-color: #DEDEDE;" />
+                                    <Button fx:id="navigationBackButton" layoutX="203.0" layoutY="23.0" mnemonicParsing="false" text="Tillbaka" />
+>>>>>>> Stashed changes
                                  </children>
                               </AnchorPane>
                            </children>

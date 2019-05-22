@@ -13,7 +13,6 @@ import java.util.List;
 /**
  * Wrapper around the IMatDataHandler. The idea is that it might be useful to
  * add an extra layer that can provide special features
- *
  */
 public class Model {
 
@@ -90,7 +89,7 @@ public class Model {
         ShoppingCart shoppingCart = Model.getInstance().getShoppingCart();
 
         for (ShoppingItem cartItem : shoppingCart.getItems()) {
-            if(cartItem.getProduct().getProductId() == p.getProductId()) {
+            if (cartItem.getProduct().getProductId() == p.getProductId()) {
                 shoppingCart.removeItem(cartItem);
                 break;
             }
@@ -127,6 +126,10 @@ public class Model {
 
     public void placeOrder() {
         iMatDataHandler.placeOrder();
+    }
+
+    public List<Order> getOrders() {
+        return iMatDataHandler.getOrders();
     }
 
     public int getNumberOfOrders() {

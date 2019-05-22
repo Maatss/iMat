@@ -1,17 +1,13 @@
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.paint.Color;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
@@ -41,8 +37,6 @@ public class ProductPanel extends AnchorPane {
     ImageView middleSectionImageView;
     @FXML
     TextField countTextField;
-    @FXML
-    Label stLabel;
 
     private final Model model = Model.getInstance();
 
@@ -226,9 +220,8 @@ public class ProductPanel extends AnchorPane {
     }
 
     /**
-     *
      * Adds the amount of the product that is written in the text field
-     * */
+     */
 
     @FXML
     protected void handleOnKeyPressed(KeyEvent event) { // Catch cases where an empty textfield is entered
