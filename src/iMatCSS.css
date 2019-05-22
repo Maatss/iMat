@@ -25,3 +25,11 @@
 .favorite-category > .title > .arrow-button{
     visibility: hidden;
 }
+
+.earlier-purchases-category > .title > .arrow-button{
+    visibility: hidden;
+}
+
+.accordion_holder h5{
+    -fx-background-color: #234200 !important;
+}
