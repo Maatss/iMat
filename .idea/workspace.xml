@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="445c0166-ee2d-4a41-a5d8-1f5a7ade7787" name="Default Changelist" comment="Exempel finns nu på hur man kan få kategorier att ladda, man behöver dock lösa på något sätt för att lägga ihop de kategorier vi har valt att klumpa tillsammans">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXML.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FXMLController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductPanel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/PSD-files/favoriteIcon.psd" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/PSD-files/favoriteIcon.psd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/iMat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/iMatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMatController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -134,6 +131,8 @@
       <find>clearcart</find>
       <find>updatecount</find>
       <find>iMatCont</find>
+      <find>stLabel</find>
+      <find>searchField</find>
     </findStrings>
     <replaceStrings>
       <replace>Bread</replace>
@@ -218,6 +217,7 @@
         <option value="$PROJECT_DIR$/src/PricePanel.java" />
         <option value="$PROJECT_DIR$/src/iMatController.java" />
         <option value="$PROJECT_DIR$/src/ProductPanel.java" />
+        <option value="$PROJECT_DIR$/src/iMatController.java" />
       </list>
     </option>
   </component>
@@ -274,7 +274,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558532254198" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558533321902" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -341,7 +341,7 @@
       <workItem from="1558013710057" duration="6388000" />
       <workItem from="1558080325993" duration="8004000" />
       <workItem from="1558523041275" duration="713000" />
-      <workItem from="1558530288221" duration="2039000" />
+      <workItem from="1558530288221" duration="3031000" />
     </task>
     <task id="LOCAL-00001" summary="Lagt till lite grejer från iMatMini.&#10;&#10;Har lagt till kategorier">
       <created>1557999341367</created>
@@ -410,7 +410,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="45702000" />
+    <option name="totallyTimeSpent" value="46694000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -657,13 +657,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ProductPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="110" column="39" lean-forward="true" selection-start-line="110" selection-start-column="39" selection-end-line="110" selection-end-column="39" />
+        <state relative-caret-position="284">
+          <caret line="106" column="5" lean-forward="true" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#5699#5700#0" expanded="true" />
             <element signature="e#5786#5787#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iMatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="178" column="47" lean-forward="true" selection-start-line="178" selection-start-column="47" selection-end-line="178" selection-end-column="47" />
         </state>
       </provider>
     </entry>
