@@ -136,8 +136,6 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-<<<<<<< Updated upstream
-=======
             <AnchorPane fx:id="welcomePane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFFFF;">
                <children>
                   <Label layoutX="305.0" layoutY="94.0" prefHeight="158.0" prefWidth="405.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
@@ -190,7 +188,6 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
->>>>>>> Stashed changes
             <AnchorPane fx:id="cartPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
                <children>
                   <AnchorPane fx:id="cartPopupPane" layoutX="150.0" layoutY="75.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
@@ -248,7 +245,6 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-<<<<<<< Updated upstream
             <AnchorPane fx:id="accountPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
                <children>
                   <AnchorPane layoutX="150.0" layoutY="75.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
@@ -276,8 +272,6 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-=======
->>>>>>> Stashed changes
             <AnchorPane fx:id="shopPane" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #FFF000;">
                <children>
                   <AnchorPane fx:id="headerPane" prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: #ff6600;">
@@ -419,7 +413,6 @@
                                     <FlowPane fx:id="productsFlowPane" prefHeight="425.0" prefWidth="800.0" style="-fx-background-color: #5e6d70;" vgap="4.0" />
                                  </content>
                               </ScrollPane>
-<<<<<<< Updated upstream
                               <AnchorPane fx:id="newAccountPane" layoutY="65.0" prefHeight="435.0" prefWidth="786.0" style="-fx-background-color: #FFFFFF;">
                                  <children>
                                     <Label layoutX="21.0" layoutY="27.0" prefHeight="44.0" prefWidth="138.0" text="Mina uppgifter:">
@@ -454,7 +447,8 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Button>
-=======
+                                 </children>
+                              </AnchorPane>
                               <AnchorPane fx:id="previousOrdersPane" prefHeight="426.0" prefWidth="792.0" style="-fx-background-color: #EFEFEF;">
                                  <children>
                                     <Label layoutX="11.0" layoutY="14.0" text="Tidigare inköp">
@@ -484,7 +478,6 @@
                                     </Label>
                                     <FlowPane layoutX="14.0" layoutY="101.0" prefHeight="247.0" prefWidth="757.0" style="-fx-background-color: #DEDEDE;" />
                                     <Button fx:id="navigationBackButton" layoutX="203.0" layoutY="23.0" mnemonicParsing="false" text="Tillbaka" />
->>>>>>> Stashed changes
                                  </children>
                               </AnchorPane>
                            </children>
