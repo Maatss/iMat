@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,7 +25,6 @@ public class ProductPanel extends AnchorPane {
     ImageView imageView;
     @FXML
     ImageView favoriteItemImageView;
-
     @FXML
     Label nameLabel;
     @FXML
@@ -50,6 +50,7 @@ public class ProductPanel extends AnchorPane {
     private final static double kImageRatio = 0.75;
 
     private boolean favoriteIsHovered;
+    private int productCount;
 
     public ProductPanel(Product product) {
 
@@ -73,18 +74,32 @@ public class ProductPanel extends AnchorPane {
         middleSectionImageView.setImage(getImage("images/middleSectionNotAdded.png"));
         addButtonImageView.setImage(getImage("images/addButton.png"));
         updateRemoveButtonImageView();
-        updateCountLabel();
+        updateCountLabel(true);
         updateTextFieldColor();
         if (!product.isEcological()) {
             ecoLabel.setText("");
         }
+
+        countTextField.focusedProperty().addListener((listener, oldVal, newVal) ->
+                {
+                    if (newVal) {
+                        updateCountLabel(false);
+
+                        Platform.runLater(() -> {
+                            countTextField.selectAll();
+                        });
+                    } else {
+                        updateCountLabel(true);
+                    }
+                }
+        );
     }
 
     @FXML
     private void handleAddAction() {
         System.out.println("Add " + product.getName());
         model.addToShoppingCart(product);
-        updateCountLabel();
+        updateCountLabel(true);
         updateRemoveButtonImageView();
         updateTextFieldColor();
     }
@@ -94,7 +109,7 @@ public class ProductPanel extends AnchorPane {
     private void handleRemoveAction() {
         System.out.println("Remove " + product.getName());
         model.removeFromShoppingCart(product);
-        updateCountLabel();
+        updateCountLabel(true);
         updateRemoveButtonImageView();
         updateTextFieldColor();
     }
@@ -142,10 +157,13 @@ public class ProductPanel extends AnchorPane {
         favoriteItemImageView.setImage(getImage(iconPath));
     }
 
-    private void updateCountLabel() {
+    private void updateCountLabel(boolean appendPrefix) {
         int count = countCurrentItem();
-        countTextField.setText(count + "");
-
+        if (appendPrefix) {
+            countTextField.setText(count + " st");
+        } else {
+            countTextField.setText(count + "");
+        }
     }
 
     private int countCurrentItem() {
@@ -174,11 +192,9 @@ public class ProductPanel extends AnchorPane {
         String iconPath;
         if (countCurrentItem() > 0) {
             countTextField.setStyle("-fx-background-color: e64545; -fx-text-fill: white;");
-            stLabel.setStyle("-fx-text-fill: white;");
 
         } else {
             countTextField.setStyle("-fx-control-inner-background-color: white;");
-            stLabel.setStyle("-fx-text-fill: black;");
 
         }
 
@@ -234,22 +250,23 @@ public class ProductPanel extends AnchorPane {
                 for (int i = 0; i < difference; i++) {                 // if the new value is higher - adds the difference
                     model.addToShoppingCart(product);
                 }
-                updateCountLabel();
+                updateCountLabel(true);
 
             }
             if (difference < 0) {                                      // if the new value is lower - removes the difference
                 for (int i = 0; i > difference; i--) {
                     model.removeFromShoppingCart(product);
                 }
-                updateCountLabel();
+                updateCountLabel(true);
 
             }
         } else {                                                      // if the input is not numeric - sets the label to previous value
-            updateCountLabel();
+            updateCountLabel(true);
 
         }
         updateRemoveButtonImageView();
         updateTextFieldColor();
+        nameLabel.requestFocus();
     }
 
     /* Checks if a string is numeric*/

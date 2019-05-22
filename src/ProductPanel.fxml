@@ -44,10 +44,5 @@
             <Image url="@images/removeButtonAvailable.png" />
          </image>
       </ImageView>
-      <Label fx:id="stLabel" layoutX="118.0" layoutY="250.0" text="st">
-         <font>
-            <Font size="16.0" />
-         </font>
-      </Label>
    </children>
 </fx:root>
