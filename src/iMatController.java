@@ -449,8 +449,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         cartProductsFlowPane.getChildren().clear();
 
         for (ShoppingItem si : shoppingCart.getItems()) {
-            //TODO fix this somehow
-//            cartProductsFlowPane.getChildren().add(new PricePanel(si));
+            cartProductsFlowPane.getChildren().add(new PricePanel(si));
         }
     }
 

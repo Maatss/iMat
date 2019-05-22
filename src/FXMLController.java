@@ -21,7 +21,7 @@ public class FXMLController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        // TODO according to oloft? Do we need to do anything?
     }    
     
 }

@@ -107,8 +107,6 @@ public class ProductPanel extends AnchorPane {
      * Favorite = filled
      * Not a favorite = just edges
      */
-
-
     private void updateFavoriteItemImageView() {
         String iconPath;
         if (model.checkIfFavorite(product)) {
@@ -159,7 +157,6 @@ public class ProductPanel extends AnchorPane {
 
         }
 
-
     }
 
 
@@ -194,7 +191,10 @@ public class ProductPanel extends AnchorPane {
         }
     }
 
-    /* Adds the amount of the product that is written in the text field*/
+    /**
+     *
+     * Adds the amount of the product that is written in the text field
+     * */
 
     @FXML
     private void addProductsTextField() {

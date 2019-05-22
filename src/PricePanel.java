@@ -12,15 +12,17 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 import java.io.IOException;
 
 /**
- *
  * @author sthugo
  */
 public class PricePanel extends AnchorPane {
 
-//    @FXML ImageView favoriteItemImageView; //behövs denna?
-    @FXML Label nameLabel;
-    @FXML Label priceLabel;
-    @FXML TextField productCountTextField;
+    //    @FXML ImageView favoriteItemImageView; //behövs denna?
+    @FXML
+    Label productNameLabel;
+    @FXML
+    Label productPriceLabel;
+    @FXML
+    TextField productCountTextField;
 
     private final Model model = Model.getInstance();
     private Product product;
@@ -39,8 +41,8 @@ public class PricePanel extends AnchorPane {
         }
 
         this.product = shoppingItem.getProduct();
-        nameLabel.setText(product.getName());
-        priceLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
+        productNameLabel.setText(product.getName());
+        productPriceLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
     }
 
     @FXML
@@ -50,12 +52,12 @@ public class PricePanel extends AnchorPane {
     }
 
     @FXML
-    private void handleRemoveAction(ActionEvent event){
+    private void handleRemoveAction(ActionEvent event) {
         System.out.println("Remove " + product.getName());
         model.removeFromShoppingCart(product);
     }
 
-    private Image getImage(String path){
+    private Image getImage(String path) {
         return new Image(getClass().getClassLoader().getResourceAsStream(path));
     }
 }
