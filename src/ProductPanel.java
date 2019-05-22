@@ -120,7 +120,6 @@ public class ProductPanel extends AnchorPane {
     private void updateCountLabel() {
         int count = countCurrentItem();
         countTextField.setText(count + "");
-
     }
 
     private int countCurrentItem() {
@@ -131,7 +130,6 @@ public class ProductPanel extends AnchorPane {
             }
         }
         return count;
-
     }
 
     private void updateRemoveButtonImageView() {

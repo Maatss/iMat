@@ -43,21 +43,41 @@ public class PricePanel extends AnchorPane {
         this.product = shoppingItem.getProduct();
         productNameLabel.setText(product.getName());
         productPriceLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
+        updateCountLabel();
     }
 
     @FXML
-    private void handleAddAction(ActionEvent event) {
+    private void handleAddAction() { //TODO copy final version of method in ProductPanel when it's done there
         System.out.println("Add " + product.getName());
         model.addToShoppingCart(product);
+        updateCountLabel(); //todo update count in productpanels when closing shopping cart?
     }
 
     @FXML
-    private void handleRemoveAction(ActionEvent event) {
+    private void handleRemoveAction() {
         System.out.println("Remove " + product.getName());
         model.removeFromShoppingCart(product);
+        updateCountLabel();
     }
 
     private Image getImage(String path) {
         return new Image(getClass().getClassLoader().getResourceAsStream(path));
+    }
+
+    //samma som den i ProductPanel
+    private void updateCountLabel() {
+        int count = countCurrentItem();
+        productCountTextField.setText(count + "");
+    }
+
+    //samma som den i ProductPanel
+    private int countCurrentItem() {
+        int count = 0;
+        for (ShoppingItem shoppingItem : model.getShoppingCart().getItems()) {
+            if (shoppingItem.getProduct() == product) {
+                count++;
+            }
+        }
+        return count;
     }
 }

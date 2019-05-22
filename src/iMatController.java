@@ -94,6 +94,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         setupAccountPane();
         maskTopButtons();
+        updateTotalPrice();
     }
 
     // Welcome pane actions
@@ -369,6 +370,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private void handleClearCartAction(ActionEvent event) {
         model.clearShoppingCart();
+        cartProductsFlowPane.getChildren().clear();
+        //TODO update product counts
+        updateProductCounts();
     }
 
     // Checkout Pane actions
@@ -434,6 +438,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void updateProductCounts() {
         //todo lägg till antal i varje ProductPanel som uppdateras här, kanske inte går att lösas
         // utan får göra updateProductList istället
+
     }
 
     private void updateProductList(List<Product> products) {
