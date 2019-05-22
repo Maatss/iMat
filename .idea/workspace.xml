@@ -3,10 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="445c0166-ee2d-4a41-a5d8-1f5a7ade7787" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Projekt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Projekt.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/iMat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMat.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/iMatCSS.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMatCSS.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/iMatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMatController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,12 +42,14 @@
         <counts>
           <entry key="css" value="30" />
           <entry key="java" value="1263" />
+          <entry key="txt" value="72" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="30" />
           <entry key="JAVA" value="1263" />
+          <entry key="PLAIN_TEXT" value="72" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -461,7 +459,14 @@
       <option name="project" value="LOCAL" />
       <updated>1558087427981</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Your profile pane, added category labels.">
+      <created>1558535767782</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1558535767782</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -553,7 +558,8 @@
     <MESSAGE value="Rätt bild av stjärnan laddas vid start" />
     <MESSAGE value="La till fx:id på kategorier, start på hur man ska uppdatera listan med produkter när man byter kategori" />
     <MESSAGE value="Exempel finns nu på hur man kan få kategorier att ladda, man behöver dock lösa på något sätt för att lägga ihop de kategorier vi har valt att klumpa tillsammans" />
-    <option name="LAST_COMMIT_MESSAGE" value="Exempel finns nu på hur man kan få kategorier att ladda, man behöver dock lösa på något sätt för att lägga ihop de kategorier vi har valt att klumpa tillsammans" />
+    <MESSAGE value="Your profile pane, added category labels." />
+    <option name="LAST_COMMIT_MESSAGE" value="Your profile pane, added category labels." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/RecipeSearch.java" />
