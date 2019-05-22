@@ -29,6 +29,8 @@ import java.util.ResourceBundle;
  */
 public class iMatController implements Initializable, ShoppingCartListener {
 
+
+    private String headline;
     // Welcome Pane
     @FXML
     protected AnchorPane welcomePane; // Loot - I must use 'protected' for it to work?
@@ -56,6 +58,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
     protected Button cartButton;
     @FXML
     protected ImageView cartButtonImage;
+
+    @FXML
+    private Label categoryLabel;
+    @FXML
+    private Label noResultsLabel;
 
     // Cart pane
     @FXML
@@ -95,7 +102,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private Label purchasesLabel;
 
+    // Account Pane 2.0
+    @FXML
+    private AnchorPane newAccountPane;
+
     //Category Pane
+    @FXML
+    TitledPane myProfile;
     @FXML
     private TitledPane favoritesCategory;
     @FXML
@@ -116,6 +129,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         model.getShoppingCart().addShoppingCartListener(this);
+        categoryLabel.setText("Alla varor");
+        noResultsLabel.setText("");
 
         updateProductList(model.getProducts());
         updateBottomPanel();
@@ -165,21 +180,41 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
+    private void handleYourProfileAction() {
+        newAccountPane.toFront();
+        categoryLabel.setText("Min profil");
+    }
+
+    @FXML
     private void handleShowAccountAction(ActionEvent event) {
         openAccountView();
     }
 
     @FXML
     private void handleSearchAction(ActionEvent event) {
+
         String searchStr = searchField.getText();
         if (searchStr.length() > 0) {
             List<Product> matches = model.findProducts(searchField.getText());
             updateProductList(matches);
+
+            productsScrollPane.toFront();
+            categoryLabel.setText("Sökresultat");
+
+            if (matches.size() == 0) {
+                noResultsLabel.setText("Inget sökresultat för '" + searchField.getText() + "'");
+            }
+            else {
+                noResultsLabel.setText(matches.size() + " st sökresultat för '" + searchField.getText() + "'");
+            }
+
+            System.out.println("# matching products: " + matches.size());
             System.out.println("# matching products: " + matches.size());
         } else {
             searchField.setText("");
             cartTotalPriceLabel.requestFocus();
         }
+
     }
 
     @FXML
@@ -330,17 +365,23 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void handleCategorySelection(String id) {
         String category = id;
         ProductCategory pc = null;
+        noResultsLabel.setText("");
+        productsScrollPane.toFront();
+
         List<Product> combinedProductList = new ArrayList<>();
         switch (id) {
             case ("favoritesCategory"): //set favorites to show
                 category = "favoritesCategory";
+                headline = "Favoriter";
                 break;
             case ("breadCategory"): //set bread to show
                 pc = ProductCategory.BREAD;
+                headline = "Bröd";
                 break;
             case ("drinksCategory"): //set drinks to show
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.COLD_DRINKS)); //fix this
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.HOT_DRINKS));
+                headline = "Drycker";
                 break;
             case ("greensCategory"): //set greens to show
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.BERRY));
@@ -351,10 +392,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.VEGETABLE_FRUIT));
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.CABBAGE));
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.ROOT_VEGETABLE));
+                headline = "Frukt och grönt";
                 break;
             case ("meatAndFishCategory"): //set meatAndFish to show
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.FISH));
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.MEAT));
+                headline = "Kött och fisk";
                 break;
             case ("pantryCategory"): //set pantry to show
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.FLOUR_SUGAR_SALT));
@@ -362,61 +405,79 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.POD));
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.PASTA));
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.POTATO_RICE));
+                headline = "Skafferi";
                 break;
             case ("snacksCategory"): //set snacks to show
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.NUTS_AND_SEEDS));
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.SWEET));
+                headline = "Sötsaker och snacks";
                 break;
             case ("coldDrinksCategory"):
                 pc = ProductCategory.COLD_DRINKS;
+                headline = "Kalla drycker";
                 break;
             case ("hotDrinksCategory"):
                 pc = ProductCategory.HOT_DRINKS;
+                headline = "Varma drycker";
                 break;
             case ("berriesCategory"):
                 pc = ProductCategory.BERRY;
+                headline = "Bär";
                 break;
             case ("fruitsCategory"):
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.FRUIT));
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.CITRUS_FRUIT));
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.EXOTIC_FRUIT));
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.MELONS));
+                headline = "Frukter";
                 break;
             case ("vegetablesCategory"):
                 pc = ProductCategory.VEGETABLE_FRUIT;
+                headline = "Grönsaker";
                 break;
             case ("cabbageCategory"):
                 pc = ProductCategory.CABBAGE;
+                headline = "Kål";
                 break;
             case ("rootsCategory"):
                 pc = ProductCategory.ROOT_VEGETABLE;
+                headline = "Rotfrukter";
                 break;
             case ("meatCategory"):
                 pc = ProductCategory.MEAT;
+                headline = "Kött";
                 break;
             case ("fishCategory"):
                 pc = ProductCategory.FISH;
+                headline = "Fisk";
                 break;
             case ("bakingCategory"):
                 pc = ProductCategory.FLOUR_SUGAR_SALT;
+                headline = "Bakning";
                 break;
             case ("spicesCategory"):
                 pc = ProductCategory.HERB;
+                headline = "Kryddor";
                 break;
             case ("podsCategory"):
                 pc = ProductCategory.POD;
+                headline = "Linser, bönor och ärtor";
                 break;
             case ("pastaCategory"):
                 pc = ProductCategory.PASTA;
+                headline = "Pasta";
                 break;
             case ("potatoAndRiceCategory"):
                 pc = ProductCategory.POTATO_RICE;
+                headline = "Potatis och ris";
                 break;
             case ("nutsAndSeedsCategory"):
                 pc = ProductCategory.NUTS_AND_SEEDS;
+                headline = "Nötter och frön";
                 break;
             case ("sweetsCategory"):
                 pc = ProductCategory.SWEET;
+                headline = "Sötsaker";
                 break;
             default:
                 System.out.println("no category matched :OOOOOOOO");
@@ -431,6 +492,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
             updateProductList(combinedProductList);
         }
         productsScrollPane.setVvalue(0); //scroll to top
+        categoryLabel.setText(headline);
     }
 
     // Cart Pane actions
