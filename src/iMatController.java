@@ -220,63 +220,95 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void handleSnacksSelectionAction() {
         handleCategorySelection("snacksCategory");
     }
-    @FXML private void handleColdDrinksSelectionAction(){
+
+    @FXML
+    private void handleColdDrinksSelectionAction() {
         handleCategorySelection("coldDrinksCategory");
     }
-    @FXML private void handleHotDrinksSelectionAction(){
+
+    @FXML
+    private void handleHotDrinksSelectionAction() {
         handleCategorySelection("hotDrinksCategory");
     }
-    @FXML private void handleBerriesSelectionAction(){
+
+    @FXML
+    private void handleBerriesSelectionAction() {
         handleCategorySelection("berriesCategory");
     }
-    @FXML private void handleFruitsSelectionAction(){
+
+    @FXML
+    private void handleFruitsSelectionAction() {
         handleCategorySelection("fruitsCategory");
     }
-    @FXML private void handleVegetablesSelectionAction(){
+
+    @FXML
+    private void handleVegetablesSelectionAction() {
         handleCategorySelection("vegetablesCategory");
     }
-    @FXML private void handleCabbageSelectionAction(){
+
+    @FXML
+    private void handleCabbageSelectionAction() {
         handleCategorySelection("cabbageCategory");
     }
-    @FXML private void handleRootsSelectionAction(){
+
+    @FXML
+    private void handleRootsSelectionAction() {
         handleCategorySelection("rootsCategory");
     }
-    @FXML private void handleFishSelectionAction(){
+
+    @FXML
+    private void handleFishSelectionAction() {
         handleCategorySelection("fishCategory");
     }
-    @FXML private void handleMeatSelectionAction(){
+
+    @FXML
+    private void handleMeatSelectionAction() {
         handleCategorySelection("meatCategory");
     }
-    @FXML private void handleBakingSelectionAction(){
+
+    @FXML
+    private void handleBakingSelectionAction() {
         handleCategorySelection("bakingCategory");
     }
-    @FXML private void handleSpicesSelectionAction(){
+
+    @FXML
+    private void handleSpicesSelectionAction() {
         handleCategorySelection("spicesCategory");
     }
-    @FXML private void handlePodsSelectionAction(){
+
+    @FXML
+    private void handlePodsSelectionAction() {
         handleCategorySelection("podsCategory");
     }
-    @FXML private void handlePastaSelectionAction(){
+
+    @FXML
+    private void handlePastaSelectionAction() {
         handleCategorySelection("pastaCategory");
     }
-    @FXML private void handlePotatoAndRiceSelectionAction(){
+
+    @FXML
+    private void handlePotatoAndRiceSelectionAction() {
         handleCategorySelection("potatoAndRiceCategory");
     }
-    @FXML private void handleNutsAndSeedsSelectionAction(){
+
+    @FXML
+    private void handleNutsAndSeedsSelectionAction() {
         handleCategorySelection("nutsAndSeedsCategory");
     }
-    @FXML private void handleSweetsSelectionAction(){
+
+    @FXML
+    private void handleSweetsSelectionAction() {
         handleCategorySelection("sweetsCategory");
     }
 
     /**
      * See which category was pressed and update the product pane based on that
      */
-    private void handleCategorySelection(String id){
+    private void handleCategorySelection(String id) {
         String category = id;
         ProductCategory pc = null;
         List<Product> combinedProductList = new ArrayList<>();
-        switch(id){
+        switch (id) {
             case ("favoritesCategory"): //set favorites to show
                 category = "favoritesCategory";
                 break;
@@ -370,9 +402,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
         if (category.equals("favoritesCategory")) {
             updateProductList(model.getFavoriteProducts());
-        }else if(pc != null){
+        } else if (pc != null) {
             updateProductList(model.getCategoryProducts(pc));
-        }else{ //show multiple subcategories
+        } else { //show multiple subcategories
             updateProductList(combinedProductList);
         }
         productsScrollPane.setVvalue(0); //scroll to top
