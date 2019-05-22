@@ -210,8 +210,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
-    private void handleSearchAction(ActionEvent event) {
-
+    private void handleSearchAction() {
         String searchStr = searchField.getText();
         if (searchStr.length() > 0) {
             List<Product> matches = model.findProducts(searchField.getText());
@@ -229,7 +228,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
             searchField.setText("");
             cartTotalPriceLabel.requestFocus();
         }
-
     }
 
     @FXML
