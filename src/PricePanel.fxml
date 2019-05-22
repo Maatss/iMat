@@ -7,24 +7,32 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="50.0" maxWidth="800.0" prefHeight="35.0" prefWidth="685.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="50.0" maxWidth="675.0" prefHeight="35.0" prefWidth="685.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="productNameLabel" prefHeight="33.0" prefWidth="200.0" text="Gurka" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="1.0">
+      <Label fx:id="productNameLabel" prefHeight="33.0" prefWidth="200.0" text="Gurka" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="1.0">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="productCountTextField" layoutX="505.0" layoutY="6.0" prefHeight="25.0" prefWidth="53.0" />
-      <ImageView fx:id="addButtonImageView" fitHeight="28.0" fitWidth="28.0" layoutX="558.0" layoutY="4.0" onMouseClicked="#handleAddAction" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="productCountTextField" layoutX="350.0" layoutY="6.0" prefHeight="25.0" prefWidth="53.0" AnchorPane.topAnchor="5.0" />
+      <ImageView fx:id="addButtonImageView" fitHeight="28.0" fitWidth="28.0" layoutX="403.0" layoutY="5.0" onMouseClicked="#handleAddAction" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="4.0">
          <image>
             <Image url="@images/addButton.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="removeButtonImageView" fitHeight="28.0" fitWidth="28.0" layoutX="477.0" layoutY="5.0" onMouseClicked="#handleRemoveAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="removeButtonImageView" fitHeight="28.0" fitWidth="28.0" layoutX="322.0" layoutY="4.0" onMouseClicked="#handleRemoveAction" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="4.0">
          <image>
             <Image url="@images/removeButtonAvailable.png" />
          </image>
       </ImageView>
-      <Label fx:id="productPriceLabel" text="Label" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0" />
+      <Label fx:id="productPriceSumLabel" text="189 kr" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font></Label>
+      <Label fx:id="productPriceLabel" layoutX="510.0" layoutY="11.0" text="xxx kr/kg" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="11.0">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
    </children>
 </fx:root>

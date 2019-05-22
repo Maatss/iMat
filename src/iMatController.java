@@ -84,6 +84,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private AnchorPane checkoutTwoPane;
 
+    // Thanks for your purchase pane
+    @FXML
+    private AnchorPane successfulPurchasePane;
+
     // Account Pane
     @FXML
     private AnchorPane accountPane;
@@ -225,6 +229,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
         } else {
             costLabel.setText("Lägg till varor i varukorgen först");
         }
+        closeCheckoutViewTwo();
+        openSuccessfulPurchaseView();
     }
 
     @FXML
@@ -553,6 +559,28 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     public void closeCheckoutViewTwo() {
         checkoutTwoPane.toBack();
+    }
+
+    private void openSuccessfulPurchaseView(){
+        closeCheckoutViewTwo();
+        successfulPurchasePane.toFront();
+    }
+
+    public void closeSuccessfulPurchaseView(){
+        successfulPurchasePane.toBack();
+    }
+
+    public void closePurchaseOpenRecipe(){
+        closeSuccessfulPurchaseView();
+        openReceiptsView();
+    }
+
+    private void openReceiptsView(){
+        //todo / other branch
+    }
+
+    private void closeReceiptsView(){
+        //todo / other branch
     }
 
     // Shop pane methods
