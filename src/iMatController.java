@@ -30,43 +30,70 @@ import java.util.ResourceBundle;
 public class iMatController implements Initializable, ShoppingCartListener {
 
     // Welcome Pane
-    @FXML protected AnchorPane welcomePane; // Loot - I must use 'protected' for it to work?
-    @FXML protected Button acceptHelpButton;
-    @FXML protected Button denyHelpButton;
+    @FXML
+    protected AnchorPane welcomePane; // Loot - I must use 'protected' for it to work?
+    @FXML
+    protected Button acceptHelpButton;
+    @FXML
+    protected Button denyHelpButton;
 
     // Shopping Pane
-    @FXML protected Button homeButton;
-    @FXML private AnchorPane shopPane;
-    @FXML private TextField searchField;
-    @FXML private Label itemsLabel;
-    @FXML private Label costLabel;
-    @FXML private FlowPane productsFlowPane;
-    @FXML private ScrollPane productsScrollPane;
-    @FXML protected Button cartButton;
-    @FXML protected ImageView cartButtonImage;
+    @FXML
+    protected Button homeButton;
+    @FXML
+    private AnchorPane shopPane;
+    @FXML
+    private TextField searchField;
+    @FXML
+    private Label itemsLabel;
+    @FXML
+    private Label costLabel;
+    @FXML
+    private FlowPane productsFlowPane;
+    @FXML
+    private ScrollPane productsScrollPane;
+    @FXML
+    protected Button cartButton;
+    @FXML
+    protected ImageView cartButtonImage;
 
     // Cart pane
-    @FXML private AnchorPane cartPane;
-    @FXML private AnchorPane cartPopupPane;
-    @FXML private Button cartCloseButton;
-    @FXML private Label cartTotalPriceLabel;
-    @FXML private FlowPane cartProductsFlowPane;
+    @FXML
+    private AnchorPane cartPane;
+    @FXML
+    private AnchorPane cartPopupPane;
+    @FXML
+    private Button cartCloseButton;
+    @FXML
+    private Label cartTotalPriceLabel;
+    @FXML
+    private FlowPane cartProductsFlowPane;
 
     // Checkout pane ONE
-    @FXML private AnchorPane checkoutPane;
+    @FXML
+    private AnchorPane checkoutPane;
 
     // Checkout pane TWO
-    @FXML private AnchorPane checkoutTwoPane;
+    @FXML
+    private AnchorPane checkoutTwoPane;
 
     // Account Pane
-    @FXML private AnchorPane accountPane;
-    @FXML private ComboBox cardTypeCombo;
-    @FXML private TextField numberTextField;
-    @FXML private TextField nameTextField;
-    @FXML private ComboBox monthCombo;
-    @FXML private ComboBox yearCombo;
-    @FXML private TextField cvcField;
-    @FXML private Label purchasesLabel;
+    @FXML
+    private AnchorPane accountPane;
+    @FXML
+    private ComboBox cardTypeCombo;
+    @FXML
+    private TextField numberTextField;
+    @FXML
+    private TextField nameTextField;
+    @FXML
+    private ComboBox monthCombo;
+    @FXML
+    private ComboBox yearCombo;
+    @FXML
+    private TextField cvcField;
+    @FXML
+    private Label purchasesLabel;
 
     //Category Pane
     @FXML
@@ -112,6 +139,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         welcomePane.toBack();
         shopPane.toFront();
     }
+
     // Shop pane actions
     private void maskTopButtons() {
         maskHomeButton();
@@ -143,9 +171,15 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleSearchAction(ActionEvent event) {
-        List<Product> matches = model.findProducts(searchField.getText());
-        updateProductList(matches);
-        System.out.println("# matching products: " + matches.size());
+        String searchStr = searchField.getText();
+        if (searchStr.length() > 0) {
+            List<Product> matches = model.findProducts(searchField.getText());
+            updateProductList(matches);
+            System.out.println("# matching products: " + matches.size());
+        } else {
+            searchField.setText("");
+            cartTotalPriceLabel.requestFocus();
+        }
     }
 
     @FXML
@@ -200,69 +234,104 @@ public class iMatController implements Initializable, ShoppingCartListener {
         handleCategorySelection("meatAndFishCategory");
     }
 
-    @FXML private void handlePantrySelectionAction() {
+    @FXML
+    private void handlePantrySelectionAction() {
         handleCategorySelection("pantryCategory");
     }
-    @FXML private void handleSnacksSelectionAction() {
+
+    @FXML
+    private void handleSnacksSelectionAction() {
         handleCategorySelection("snacksCategory");
     }
-    @FXML private void handleColdDrinksSelectionAction(){
+
+    @FXML
+    private void handleColdDrinksSelectionAction() {
         handleCategorySelection("coldDrinksCategory");
     }
-    @FXML private void handleHotDrinksSelectionAction(){
+
+    @FXML
+    private void handleHotDrinksSelectionAction() {
         handleCategorySelection("hotDrinksCategory");
     }
-    @FXML private void handleBerriesSelectionAction(){
+
+    @FXML
+    private void handleBerriesSelectionAction() {
         handleCategorySelection("berriesCategory");
     }
-    @FXML private void handleFruitsSelectionAction(){
+
+    @FXML
+    private void handleFruitsSelectionAction() {
         handleCategorySelection("fruitsCategory");
     }
-    @FXML private void handleVegetablesSelectionAction(){
+
+    @FXML
+    private void handleVegetablesSelectionAction() {
         handleCategorySelection("vegetablesCategory");
     }
-    @FXML private void handleCabbageSelectionAction(){
+
+    @FXML
+    private void handleCabbageSelectionAction() {
         handleCategorySelection("cabbageCategory");
     }
-    @FXML private void handleRootsSelectionAction(){
+
+    @FXML
+    private void handleRootsSelectionAction() {
         handleCategorySelection("rootsCategory");
     }
-    @FXML private void handleFishSelectionAction(){
+
+    @FXML
+    private void handleFishSelectionAction() {
         handleCategorySelection("fishCategory");
     }
-    @FXML private void handleMeatSelectionAction(){
+
+    @FXML
+    private void handleMeatSelectionAction() {
         handleCategorySelection("meatCategory");
     }
-    @FXML private void handleBakingSelectionAction(){
+
+    @FXML
+    private void handleBakingSelectionAction() {
         handleCategorySelection("bakingCategory");
     }
-    @FXML private void handleSpicesSelectionAction(){
+
+    @FXML
+    private void handleSpicesSelectionAction() {
         handleCategorySelection("spicesCategory");
     }
-    @FXML private void handlePodsSelectionAction(){
+
+    @FXML
+    private void handlePodsSelectionAction() {
         handleCategorySelection("podsCategory");
     }
-    @FXML private void handlePastaSelectionAction(){
+
+    @FXML
+    private void handlePastaSelectionAction() {
         handleCategorySelection("pastaCategory");
     }
-    @FXML private void handlePotatoAndRiceSelectionAction(){
+
+    @FXML
+    private void handlePotatoAndRiceSelectionAction() {
         handleCategorySelection("potatoAndRiceCategory");
     }
-    @FXML private void handleNutsAndSeedsSelectionAction(){
+
+    @FXML
+    private void handleNutsAndSeedsSelectionAction() {
         handleCategorySelection("nutsAndSeedsCategory");
     }
-    @FXML private void handleSweetsSelectionAction(){
+
+    @FXML
+    private void handleSweetsSelectionAction() {
         handleCategorySelection("sweetsCategory");
     }
 
     /**
      * See which category was pressed and update the product pane based on that
      */
-    private void handleCategorySelection(String id){
+    private void handleCategorySelection(String id) {
         String category = id;
         ProductCategory pc = null;
         List<Product> combinedProductList = new ArrayList<>();
-        switch(id){
+        switch (id) {
             case ("favoritesCategory"): //set favorites to show
                 category = "favoritesCategory";
                 break;
@@ -356,9 +425,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
         if (category.equals("favoritesCategory")) {
             updateProductList(model.getFavoriteProducts());
-        }else if(pc != null){
+        } else if (pc != null) {
             updateProductList(model.getCategoryProducts(pc));
-        }else{ //show multiple subcategories
+        } else { //show multiple subcategories
             updateProductList(combinedProductList);
         }
         productsScrollPane.setVvalue(0); //scroll to top
@@ -373,13 +442,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     // Checkout Pane actions
-    public void returnToCartViewFromCheckout(){
+    public void returnToCartViewFromCheckout() {
         closeCheckoutView();
         closeCheckoutViewTwo();
         openCartView();
     }
 
-    public void returnToTimeSelectAction(){
+    public void returnToTimeSelectAction() {
         closeCheckoutViewTwo();
         openCheckoutView();
     }
@@ -396,31 +465,31 @@ public class iMatController implements Initializable, ShoppingCartListener {
         accountPane.toBack();
     }
 
-    public void openCartView(){
+    public void openCartView() {
         updateCartViewProducts();
         cartPane.toFront();
     }
 
-    public void closeCartView(){
+    public void closeCartView() {
         shopPane.toFront();
         cartPane.toBack();
     }
 
-    public void openCheckoutView(){
+    public void openCheckoutView() {
         closeCartView();
         checkoutPane.toFront();
     }
 
-    public void closeCheckoutView(){
+    public void closeCheckoutView() {
         checkoutPane.toBack();
     }
 
-    public void openCheckoutViewTwo(){
+    public void openCheckoutViewTwo() {
         checkoutPane.toBack();
         checkoutTwoPane.toFront();
     }
 
-    public void closeCheckoutViewTwo(){
+    public void closeCheckoutViewTwo() {
         checkoutTwoPane.toBack();
     }
 
@@ -450,16 +519,16 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
-    private void updateCartViewProducts(){
+    private void updateCartViewProducts() {
         List<Product> productList = new ArrayList<>();
         Product temp;
 
         cartProductsFlowPane.getChildren().clear();
         ShoppingCart shoppingCart = model.getShoppingCart();
-        
+
         for (ShoppingItem si : shoppingCart.getItems()) {
             temp = si.getProduct();
-            if(!productList.contains(si.getProduct())){
+            if (!productList.contains(si.getProduct())) {
                 cartProductsFlowPane.getChildren().add(new PricePanel(temp));
             }
             productList.add(si.getProduct());
@@ -474,7 +543,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     }
 
-    private void updateTotalPrice(){
+    private void updateTotalPrice() {
         ShoppingCart shoppingCart = model.getShoppingCart();
 
         costLabel.setText("Kostnad: " + String.format("%.2f", shoppingCart.getTotal()));
