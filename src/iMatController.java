@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -18,6 +19,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import se.chalmers.cse.dat216.project.*;
 
+import javax.jws.WebParam;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -109,6 +111,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Account Pane 2.0
     @FXML
     private AnchorPane newAccountPane;
+    @FXML
+    private FlowPane prevOrdersFlowPane;
+
+    // Previous orders Pane
+    @FXML
+    private AnchorPane previousOrdersPane;
 
     //Category Pane
     @FXML
@@ -195,24 +203,27 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
+    private void handlePrevOrdersAction() {
+        categoryLabel.setText("Tidigare inköp");
+        updatePrevOrdersList();
+        previousOrdersPane.toFront();
+    }
+
+    @FXML
     private void handleSearchAction(ActionEvent event) {
 
         String searchStr = searchField.getText();
         if (searchStr.length() > 0) {
             List<Product> matches = model.findProducts(searchField.getText());
             updateProductList(matches);
-
             productsScrollPane.toFront();
             categoryLabel.setText("Sökresultat");
 
             if (matches.size() == 0) {
                 noResultsLabel.setText("Inget sökresultat för '" + searchField.getText() + "'");
-            }
-            else {
+            } else {
                 noResultsLabel.setText(matches.size() + " st sökresultat för '" + searchField.getText() + "'");
             }
-
-            System.out.println("# matching products: " + matches.size());
             System.out.println("# matching products: " + matches.size());
         } else {
             searchField.setText("");
@@ -592,13 +603,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     private void updateProductCounts() {
-        List<Node> productList = productsFlowPane.getChildren();
-        ProductPanel current;
-        for (Node n :
-                productList) {
-            current = (ProductPanel) n;
-            current.updateCountLabel(true);
-        }
+        productsFlowPane.getChildren().forEach((productPanel) -> ((ProductPanel) productPanel).updateCountLabel(true));
     }
 
     private void updateProductList(List<Product> products) {
@@ -607,6 +612,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
         for (Product product : products) {
             productsFlowPane.getChildren().add(new ProductPanel(product));
         }
+    }
+
+    private void updatePrevOrdersList() {
+        prevOrdersFlowPane.getChildren().clear();
+
+        List<Order> orders = model.getOrders();
+        orders.forEach((order) -> prevOrdersFlowPane.getChildren().add(new PreviousOrderPanel(order, this)));
     }
 
     private void updateCartViewProducts() {
