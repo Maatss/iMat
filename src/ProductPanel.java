@@ -7,6 +7,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.paint.Color;
@@ -184,15 +186,11 @@ public class ProductPanel extends AnchorPane {
     }
 
     private void updateTextFieldColor() {
-        String iconPath;
         if (countCurrentItem() > 0) {
             countTextField.setStyle("-fx-background-color: e64545; -fx-text-fill: white;");
-
         } else {
             countTextField.setStyle("-fx-control-inner-background-color: white;");
-
         }
-
     }
 
 
@@ -233,40 +231,40 @@ public class ProductPanel extends AnchorPane {
      * */
 
     @FXML
+    protected void handleOnKeyPressed(KeyEvent event) { // Catch cases where an empty textfield is entered
+        if (event.getCode() == KeyCode.ENTER) {
+            addProductsTextField();
+        }
+    }
+
+    @FXML
     private void addProductsTextField() {
+        if (isNumeric(countTextField.getText()) || countTextField.getText().length() == 0) {    //If valid case
+            int amount;
+            if (countTextField.getText().length() == 0) {
+                amount = 0;
+            } else {
+                amount = Integer.parseInt(countTextField.getText());
+            }
 
-        if (isNumeric(countTextField.getText())) {            //checks if the string is numeric
-
-
-            int amount = Integer.parseInt(countTextField.getText());  // the value that is written in the text field
-            int oldAmount = countCurrentItem();                        // the old value
-
+            int oldAmount = countCurrentItem();                        // Get the old value
             int difference = amount - oldAmount;
 
             if (difference > 0) {
                 for (int i = 0; i < difference; i++) {                 // if the new value is higher - adds the difference
                     model.addToShoppingCart(product);
                 }
-                updateCountLabel(true);
-
-            }
-            if (difference < 0) {                                      // if the new value is lower - removes the difference
+            } else if (difference < 0) {                               // if the new value is lower - removes the difference
                 for (int i = 0; i > difference; i--) {
                     model.removeFromShoppingCart(product);
                 }
-                updateCountLabel(true);
-
             }
-        } else {                                                      // if the input is not numeric - sets the label to previous value
-            updateCountLabel(true);
-
         }
+        updateCountLabel(true);
         updateRemoveButtonImageView();
         updateTextFieldColor();
-        nameLabel.requestFocus();
+        nameLabel.requestFocus();                                       // Remove focus from textField, any node will do
     }
-
-    /* Checks if a string is numeric*/
 
     public static boolean isNumeric(String strNum) {
         try {
