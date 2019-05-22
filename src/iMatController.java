@@ -7,6 +7,7 @@
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -94,6 +95,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         setupAccountPane();
         maskTopButtons();
+        updateTotalPrice();
     }
 
     // Welcome pane actions
@@ -198,13 +200,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
         handleCategorySelection("meatAndFishCategory");
     }
 
-    @FXML
-    private void handlePantrySelectionAction() {
+    @FXML private void handlePantrySelectionAction() {
         handleCategorySelection("pantryCategory");
     }
-
-    @FXML
-    private void handleSnacksSelectionAction() {
+    @FXML private void handleSnacksSelectionAction() {
         handleCategorySelection("snacksCategory");
     }
     @FXML private void handleColdDrinksSelectionAction(){
@@ -369,6 +368,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private void handleClearCartAction(ActionEvent event) {
         model.clearShoppingCart();
+        cartProductsFlowPane.getChildren().clear();
+        updateProductCounts();
     }
 
     // Checkout Pane actions
@@ -432,8 +433,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     private void updateProductCounts() {
-        //todo lägg till antal i varje ProductPanel som uppdateras här, kanske inte går att lösas
-        // utan får göra updateProductList istället
+        List<Node> productList = productsFlowPane.getChildren();
+        ProductPanel current;
+        for (Node n :
+                productList) {
+            current = (ProductPanel) n;
+            current.updateCountLabel(true);
+        }
     }
 
     private void updateProductList(List<Product> products) {
@@ -445,12 +451,18 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     private void updateCartViewProducts(){
-        ShoppingCart shoppingCart = model.getShoppingCart();
-        cartProductsFlowPane.getChildren().clear();
+        List<Product> productList = new ArrayList<>();
+        Product temp;
 
+        cartProductsFlowPane.getChildren().clear();
+        ShoppingCart shoppingCart = model.getShoppingCart();
+        
         for (ShoppingItem si : shoppingCart.getItems()) {
-            //TODO fix this somehow
-//            cartProductsFlowPane.getChildren().add(new PricePanel(si));
+            temp = si.getProduct();
+            if(!productList.contains(si.getProduct())){
+                cartProductsFlowPane.getChildren().add(new PricePanel(temp));
+            }
+            productList.add(si.getProduct());
         }
     }
 

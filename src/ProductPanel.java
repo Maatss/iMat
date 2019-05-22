@@ -100,8 +100,6 @@ public class ProductPanel extends AnchorPane {
         System.out.println("Add " + product.getName());
         model.addToShoppingCart(product);
         updateCountLabel(true);
-        updateRemoveButtonImageView();
-        updateTextFieldColor();
     }
 
 
@@ -110,8 +108,6 @@ public class ProductPanel extends AnchorPane {
         System.out.println("Remove " + product.getName());
         model.removeFromShoppingCart(product);
         updateCountLabel(true);
-        updateRemoveButtonImageView();
-        updateTextFieldColor();
     }
 
     @FXML
@@ -137,8 +133,6 @@ public class ProductPanel extends AnchorPane {
      * Favorite = filled
      * Not a favorite = just edges
      */
-
-
     private void updateFavoriteItemImageView() {
         String iconPath;
         if (model.checkIfFavorite(product)) {
@@ -157,8 +151,10 @@ public class ProductPanel extends AnchorPane {
         favoriteItemImageView.setImage(getImage(iconPath));
     }
 
-    private void updateCountLabel(boolean appendPrefix) {
+    public void updateCountLabel(boolean appendPrefix) {
         int count = countCurrentItem();
+        updateTextFieldColor();
+        updateRemoveButtonImageView();
         if (appendPrefix) {
             countTextField.setText(count + " st");
         } else {
@@ -174,7 +170,6 @@ public class ProductPanel extends AnchorPane {
             }
         }
         return count;
-
     }
 
     private void updateRemoveButtonImageView() {
@@ -197,7 +192,6 @@ public class ProductPanel extends AnchorPane {
             countTextField.setStyle("-fx-control-inner-background-color: white;");
 
         }
-
 
     }
 
@@ -233,7 +227,10 @@ public class ProductPanel extends AnchorPane {
         }
     }
 
-    /* Adds the amount of the product that is written in the text field*/
+    /**
+     *
+     * Adds the amount of the product that is written in the text field
+     * */
 
     @FXML
     private void addProductsTextField() {
