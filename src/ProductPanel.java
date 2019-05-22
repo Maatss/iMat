@@ -49,6 +49,8 @@ public class ProductPanel extends AnchorPane {
     private final static double kImageWidth = 100.0;
     private final static double kImageRatio = 0.75;
 
+    private boolean favoriteIsHovered;
+
     public ProductPanel(Product product) {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("ProductPanel.fxml"));
@@ -63,10 +65,11 @@ public class ProductPanel extends AnchorPane {
 
         this.product = product;
 
+        favoriteIsHovered = false;
         nameLabel.setText(product.getName());
         prizeLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
         imageView.setImage(model.getImage(product, kImageWidth, kImageWidth * kImageRatio));
-        updateFavoriteItemImageView(false);
+        updateFavoriteItemImageView();
         middleSectionImageView.setImage(getImage("images/middleSectionNotAdded.png"));
         addButtonImageView.setImage(getImage("images/addButton.png"));
         updateRemoveButtonImageView();
@@ -99,17 +102,19 @@ public class ProductPanel extends AnchorPane {
     @FXML
     private void handleFavoriteAction() {
         model.toggleFavorite(product);
-        updateFavoriteItemImageView(false);
+        updateFavoriteItemImageView();
     }
 
     @FXML
-    protected void handleFavoriteHoverEnter() {
-        updateFavoriteItemImageView(true);
+    private void handleFavoriteHoverEnter() {
+        favoriteIsHovered = true;
+        updateFavoriteItemImageView();
     }
 
     @FXML
-    protected void handleFavoriteHoverExit() {
-        updateFavoriteItemImageView(false);
+    private void handleFavoriteHoverExit() {
+        favoriteIsHovered = false;
+        updateFavoriteItemImageView();
     }
 
     /**
@@ -119,16 +124,16 @@ public class ProductPanel extends AnchorPane {
      */
 
 
-    private void updateFavoriteItemImageView(boolean isHovered) {
+    private void updateFavoriteItemImageView() {
         String iconPath;
         if (model.checkIfFavorite(product)) {
-            if (isHovered) {
+            if (favoriteIsHovered) {
                 iconPath = "images/Favorite/FavoriteFilledRemove.png";
             } else {
                 iconPath = "images/Favorite/FavoriteFilled.png";
             }
         } else {
-            if (isHovered) {
+            if (favoriteIsHovered) {
                 iconPath = "images/Favorite/FavoriteEmptyAdd.png";
             } else {
                 iconPath = "images/Favorite/FavoriteEmpty.png";
