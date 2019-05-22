@@ -153,7 +153,31 @@
                         </AnchorPane>
                         <AnchorPane fx:id="cartContentPane" prefHeight="275.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
                            <children>
-                              <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="cartTitlesPane" prefHeight="30.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="20.0" layoutY="20.0" text="Produkt" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Antal" AnchorPane.rightAnchor="295.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="10.0" text="Totalt" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="409.0" layoutY="10.0" text="Styckpris" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
                                  <content>
                                     <FlowPane fx:id="cartProductsFlowPane" prefHeight="274.0" prefWidth="685.0" />
                                  </content>

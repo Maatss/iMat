@@ -1,10 +1,8 @@
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
@@ -23,9 +21,12 @@ public class PricePanel extends AnchorPane {
     Label productPriceLabel;
     @FXML
     TextField productCountTextField;
+    @FXML
+    Label productPriceSumLabel;
 
     private final Model model = Model.getInstance();
     private Product product;
+    private int count;
 
 
     public PricePanel(Product productIn) {
@@ -42,40 +43,47 @@ public class PricePanel extends AnchorPane {
 
         this.product = productIn;
         productNameLabel.setText(product.getName());
+        updateCountAndCountLabel();
         productPriceLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
-        updateCountLabel();
+        updatePriceSumLabel();
     }
 
     @FXML
     private void handleAddAction() { //TODO copy final version of method in ProductPanel when it's done there
         System.out.println("Add " + product.getName());
         model.addToShoppingCart(product);
-        updateCountLabel(); //todo update count in productpanels when closing shopping cart?
+        updateCountAndCountLabel(); //todo update count in productpanels when closing shopping cart?
+        updatePriceSumLabel();
     }
 
     @FXML
     private void handleRemoveAction() {
         System.out.println("Remove " + product.getName());
         model.removeFromShoppingCart(product);
-        updateCountLabel();
+        updateCountAndCountLabel();
+        updatePriceSumLabel();
     }
 
     private Image getImage(String path) {
         return new Image(getClass().getClassLoader().getResourceAsStream(path));
     }
 
-    private void updateCountLabel() {
-        int count = countCurrentItem();
+    private void updateCountAndCountLabel() {
+        countCurrentItem();
         productCountTextField.setText(count + "");
     }
 
-    private int countCurrentItem() {
+    private void updatePriceSumLabel(){
+        productPriceSumLabel.setText(String.format("%.2f", product.getPrice() * count) + " kr");
+    }
+
+    private void countCurrentItem() {
         int count = 0;
         for (ShoppingItem shoppingItem : model.getShoppingCart().getItems()) {
             if (shoppingItem.getProduct() == product) {
                 count++;
             }
         }
-        return count;
+        this.count = count;
     }
 }
