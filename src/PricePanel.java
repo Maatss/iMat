@@ -3,6 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
@@ -14,7 +15,6 @@ import java.io.IOException;
  */
 public class PricePanel extends AnchorPane {
 
-    //    @FXML ImageView favoriteItemImageView; //behövs denna?
     @FXML
     Label productNameLabel;
     @FXML
@@ -23,6 +23,10 @@ public class PricePanel extends AnchorPane {
     TextField productCountTextField;
     @FXML
     Label productPriceSumLabel;
+    @FXML
+    ImageView addButtonImageView;
+    @FXML
+    ImageView removeButtonImageView;
 
     private final Model model = Model.getInstance();
     private Product product;
@@ -64,6 +68,33 @@ public class PricePanel extends AnchorPane {
         updatePriceSumLabel();
     }
 
+    @FXML
+    private void hoveringAddButton() {
+        addButtonImageView.setImage(getImage("images/addButtonPliancy.png"));
+    }
+
+    @FXML
+    private void releasedAddButton() {
+        addButtonImageView.setImage(getImage("images/addButton.png"));
+
+    }
+
+    @FXML
+    private void hoveringRemoveButton() {
+        if (count > 0) {
+            removeButtonImageView.setImage(getImage("images/removeButtonPliancy.png"));
+        }
+    }
+
+    @FXML
+    private void exitedRemoveButton() {
+        if (count > 0) {
+            removeButtonImageView.setImage(getImage("images/removeButtonAvailable.png"));
+        } else {
+            removeButtonImageView.setImage(getImage("images/removeButtonNotAvailable.png"));
+        }
+    }
+
     private Image getImage(String path) {
         return new Image(getClass().getClassLoader().getResourceAsStream(path));
     }
@@ -72,6 +103,16 @@ public class PricePanel extends AnchorPane {
         countCurrentItem();
         productCountTextField.setText(count + "");
     }
+
+    private void updateCountLabel(){
+        //TODO do this, append "st" or "kg"
+    }
+
+    private void addProductsTextField() {
+//        addProductsTextField(countTextField.getText());
+        //TODO fix this aswell so you can write in textfield
+    }
+
 
     private void updatePriceSumLabel() {
         productPriceSumLabel.setText(String.format("%.2f", product.getPrice() * count) + " kr");
