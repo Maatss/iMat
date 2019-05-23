@@ -336,12 +336,13 @@
                               <Accordion layoutX="-10.0" layoutY="144.0" styleClass="category-expandable" AnchorPane.leftAnchor="-10.0" AnchorPane.topAnchor="144.0">
                                 <panes>
                                   <TitledPane fx:id="breadCategory" animated="false" onMouseClicked="#handleBreadSelectionAction" styleClass="category-static" text="Bröd" />
-                                  <TitledPane fx:id="drinksCategory" animated="false" onMouseClicked="#handleDrinksSelectionAction" styleClass="category-expandable" text="Drycker">
+                                  <TitledPane fx:id="fridgeCategory" animated="false" onMouseClicked="#handleFridgeSelectionAction" styleClass="category-expandable" text="Kylvaror">
                                     <content>
-                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="58.0" prefWidth="218.0">
+                                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="87.0" prefWidth="218.0">
                                              <children>
                                                 <Button fx:id="coldDrinksCategory" layoutX="20.0" mnemonicParsing="false" onMouseClicked="#handleColdDrinksSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Kalla drycker" />
-                                                <Button fx:id="hotDrinksCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#handleHotDrinksSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Varma drycker" />
+                                                <Button fx:id="dairyCategory" layoutX="20.0" layoutY="29.0" mnemonicParsing="false" onMouseClicked="#handleDairySelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Mejeri" />
+                                                <Button fx:id="hotDrinksCategory" layoutX="20.0" layoutY="58.0" mnemonicParsing="false" onMouseClicked="#handleHotDrinksSelectionAction" prefWidth="180.0" styleClass="category-expandable-child" text="Varma drycker" />
                                              </children>
                                           </AnchorPane>
                                     </content>
