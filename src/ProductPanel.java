@@ -20,23 +20,23 @@ import java.io.IOException;
 public class ProductPanel extends AnchorPane {
 
     @FXML
-    ImageView imageView;
+    protected ImageView imageView;
     @FXML
-    ImageView favoriteItemImageView;
+    protected ImageView favoriteItemImageView;
     @FXML
-    Label nameLabel;
+    protected Label nameLabel;
     @FXML
-    Label prizeLabel;
+    protected Label prizeLabel;
     @FXML
-    Label ecoLabel;
+    protected Label ecoLabel;
     @FXML
-    ImageView addButtonImageView;
+    protected ImageView addButtonImageView;
     @FXML
-    ImageView removeButtonImageView;
+    protected ImageView removeButtonImageView;
     @FXML
-    ImageView middleSectionImageView;
+    protected ImageView middleSectionImageView;
     @FXML
-    TextField countTextField;
+    protected  TextField countTextField;
 
     private final Model model = Model.getInstance();
 
