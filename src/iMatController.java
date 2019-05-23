@@ -21,6 +21,7 @@ import se.chalmers.cse.dat216.project.*;
 
 import javax.jws.WebParam;
 import java.net.URL;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -81,6 +82,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Checkout pane ONE
     @FXML
     private AnchorPane checkoutPane;
+    @FXML
+    private FlowPane timeSelectionPane;
 
     // Checkout pane TWO
     @FXML
@@ -555,6 +558,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void openCheckoutView() {
         closeCartView();
         checkoutPane.toFront();
+        updateCheckoutTimetable();
     }
 
     public void closeCheckoutView() {
@@ -610,6 +614,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
         for (Product product : products) {
             productsFlowPane.getChildren().add(new ProductPanel(product));
         }
+    }
+
+    private void updateCheckoutTimetable(){
+        timeSelectionPane.getChildren().clear();
+        Date d = new Date();
+        for(int i = 0; i<3; i++){ //TODO FIX SO IT'S POSSIBLE TO HAVE 4 PANELS
+            timeSelectionPane.getChildren().add(new TimeSelectionPanel(d));
+            //plus a day
+            d = new Date(d.getTime()+(24*60*60*1000));
+        }
+        timeSelectionPane.setPrefHeight(273);
     }
 
     private void updatePrevOrdersList() {
