@@ -260,6 +260,4 @@ public class ProductPanel extends AnchorPane {
         }
         return true;
     }
-
-
 }
