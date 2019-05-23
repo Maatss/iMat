@@ -101,11 +101,37 @@ public class PricePanel extends AnchorPane {
 
     private void updateCountAndCountLabel() {
         countCurrentItem();
-        productCountTextField.setText(count + "");
+        updateCountLabel(true);
+
     }
 
-    private void updateCountLabel(){
+    private void updateCountLabel(boolean appendPrefix){
+        updateTextFieldColor();
+        updateRemoveButtonImageView();
+        if (appendPrefix) {
+            productCountTextField.setText(count + " st");
+        } else {
+            productCountTextField.setText(count + "");
+        }
         //TODO do this, append "st" or "kg"
+    }
+
+    private void updateRemoveButtonImageView() {
+        String iconPath;
+        if (count == 0) {
+            iconPath = "images/removeButtonNotAvailable.png";
+        } else {
+            iconPath = "images/removeButtonAvailable.png";
+        }
+        removeButtonImageView.setImage(getImage(iconPath));
+    }
+
+    private void updateTextFieldColor() {
+        if (count > 0) {
+            productCountTextField.setStyle("-fx-background-color: e64545; -fx-text-fill: white;");
+        } else {
+            productCountTextField.setStyle("-fx-control-inner-background-color: white;");
+        }
     }
 
     private void addProductsTextField() {
