@@ -73,17 +73,11 @@ public class PricePanel extends AnchorPane {
         productCountTextField.setText(count + "");
     }
 
-    private void updatePriceSumLabel(){
+    private void updatePriceSumLabel() {
         productPriceSumLabel.setText(String.format("%.2f", product.getPrice() * count) + " kr");
     }
 
     private void countCurrentItem() {
-        int count = 0;
-        for (ShoppingItem shoppingItem : model.getShoppingCart().getItems()) {
-            if (shoppingItem.getProduct() == product) {
-                count++;
-            }
-        }
-        this.count = count;
+        this.count = model.getCountInShoppingCart(new ShoppingItem(product));
     }
 }

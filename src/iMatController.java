@@ -207,9 +207,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handlePrevOrdersAction() {
-        categoryLabel.setText("Tidigare inköp");
-        updatePrevOrdersList();
-        previousOrdersPane.toFront();
+        handleShowPrevOrdersPanel(true);
     }
 
     @FXML
@@ -234,7 +232,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
-    private void handleBuyItemsAction(ActionEvent event) {
+    private void handleBuyItemsAction() {
         if (!model.getShoppingCart().getItems().isEmpty()) {
             model.placeOrder();
             costLabel.setText("Köpet klart!");
@@ -574,25 +572,27 @@ public class iMatController implements Initializable, ShoppingCartListener {
         checkoutTwoPane.toBack();
     }
 
-    private void openSuccessfulPurchaseView(){
+    private void openSuccessfulPurchaseView() {
         closeCheckoutViewTwo();
         successfulPurchasePane.toFront();
     }
 
-    public void closeSuccessfulPurchaseView(){
+    public void closeSuccessfulPurchaseView() {
         successfulPurchasePane.toBack();
     }
 
-    public void closePurchaseOpenRecipe(){
+    public void closePurchaseOpenRecipe() {
         closeSuccessfulPurchaseView();
-        openReceiptsView();
+        handleShowPrevOrdersPanel(true);
     }
 
-    private void openReceiptsView(){
-        //todo / other branch
+    private void handleShowPrevOrdersPanel(boolean expandLatest) {
+        categoryLabel.setText("Tidigare inköp");
+        updatePrevOrdersList(expandLatest);
+        previousOrdersPane.toFront();
     }
 
-    private void closeReceiptsView(){
+    private void closeReceiptsView() {
         //todo / other branch
     }
 
@@ -627,11 +627,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
         timeSelectionPane.setPrefHeight(273);
     }
 
-    private void updatePrevOrdersList() {
+    private void updatePrevOrdersList(boolean expandLatest) {
         prevOrdersFlowPane.getChildren().clear();
 
         List<Order> orders = model.getOrders();
         orders.forEach((order) -> prevOrdersFlowPane.getChildren().add(new PreviousOrderPanel(order, this)));
+        if (expandLatest) {
+            ((PreviousOrderPanel) prevOrdersFlowPane.getChildren().get(0)).handlePanelExpand();
+        }
     }
 
     private void updateCartViewProducts() {
@@ -651,10 +654,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     private void updateBottomPanel() {
-        ShoppingCart shoppingCart = model.getShoppingCart();
-
-        itemsLabel.setText("Antal varor: " + shoppingCart.getItems().size());
-        costLabel.setText("Kostnad: " + String.format("%.2f", shoppingCart.getTotal()));
+        itemsLabel.setText("Antal varor: " + model.getCountInShoppingCart());
+        costLabel.setText("Kostnad: " + String.format("%.2f", model.getShoppingCart().getTotal()));
 
     }
 
