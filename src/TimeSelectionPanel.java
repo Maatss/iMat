@@ -52,4 +52,25 @@ public class TimeSelectionPanel extends AnchorPane {
                 return "Error 352";
         }
     }
+
+    @FXML private void handleTimeSelectOne(){
+        setModelDeliveryDate();
+        Model.setDeliveryTime("8-10");
+    }
+    @FXML private void handleTimeSelectTwo(){
+        setModelDeliveryDate();
+        Model.setDeliveryTime("10-12");
+    }
+    @FXML private void handleTimeSelectThree(){
+        setModelDeliveryDate();
+        Model.setDeliveryTime("12-14");
+    }
+    @FXML private void handleTimeSelectFour(){
+        setModelDeliveryDate();
+        Model.setDeliveryTime("14-16");
+    }
+
+    private void setModelDeliveryDate(){
+        Model.setDeliveryDate(dayOfWeekLabel.getText());
+    }
 }

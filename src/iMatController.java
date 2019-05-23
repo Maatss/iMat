@@ -619,7 +619,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void updateCheckoutTimetable(){
         timeSelectionPane.getChildren().clear();
         Date d = new Date();
-        for(int i = 0; i<3; i++){ //TODO FIX SO IT'S POSSIBLE TO HAVE 4 PANELS
+        for(int i = 0; i<4; i++){ //TODO FIX SO IT'S POSSIBLE TO HAVE 4 PANELS
             timeSelectionPane.getChildren().add(new TimeSelectionPanel(d));
             //plus a day
             d = new Date(d.getTime()+(24*60*60*1000));
