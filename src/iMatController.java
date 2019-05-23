@@ -31,8 +31,6 @@ import java.util.ResourceBundle;
  * @author oloft
  */
 public class iMatController implements Initializable, ShoppingCartListener {
-
-
     private String headline;
     // Welcome Pane
     @FXML
@@ -51,8 +49,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private TextField searchField;
     @FXML
     private Label itemsLabel;
-    @FXML
-    private Label costLabel;
     @FXML
     private FlowPane productsFlowPane;
     @FXML
@@ -148,7 +144,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         noResultsLabel.setText("");
 
         updateProductList(model.getProducts());
-        updateBottomPanel();
 
         setupAccountPane();
         maskTopButtons();
@@ -173,7 +168,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Shop pane actions
     private void maskTopButtons() {
         maskHomeButton();
-        cartButton.setClip(createRectMask(8, 4, 103, 69)); // Magic values fits the button's hitbox to image
+        cartButton.setClip(createRectMask(8, 4, 170, 90)); // Magic values fits the button's hitbox to image
     }
 
     private void maskHomeButton() {
@@ -235,9 +230,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void handleBuyItemsAction() {
         if (!model.getShoppingCart().getItems().isEmpty()) {
             model.placeOrder();
-            costLabel.setText("Köpet klart!");
+//            costLabel.setText("Köpet klart!");
+            //todo add error message
         } else {
-            costLabel.setText("Lägg till varor i varukorgen först");
+//            costLabel.setText("Lägg till varor i varukorgen först");
+            //todo add error message
         }
         closeCheckoutViewTwo();
         openSuccessfulPurchaseView();
@@ -620,7 +617,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Shop pane methods
     @Override
     public void shoppingCartChanged(CartEvent evt) {
-        updateBottomPanel();
         updateProductCounts();
         updateTotalPrice();
     }
@@ -673,17 +669,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
-    private void updateBottomPanel() {
-        itemsLabel.setText("Antal varor: " + model.getCountInShoppingCart());
-        costLabel.setText("Kostnad: " + String.format("%.2f", model.getShoppingCart().getTotal()));
-
-    }
-
     private void updateTotalPrice() {
-        ShoppingCart shoppingCart = model.getShoppingCart();
-
-        costLabel.setText("Kostnad: " + String.format("%.2f", shoppingCart.getTotal()));
-        cartTotalPriceLabel.setText("Totalt: " + String.format("%.2f", shoppingCart.getTotal()));
+        itemsLabel.setText(String.format("%d st\n%.2f kr", model.getCountInShoppingCart(), model.getShoppingCart().getTotal()));
+        cartTotalPriceLabel.setText("Totalt: " + String.format("%.2f", model.getShoppingCart().getTotal()));
     }
 
     private void updateAccountPanel() {
