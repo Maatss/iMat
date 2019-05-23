@@ -207,7 +207,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handlePrevOrdersAction() {
-        handleShowPrevOrdersPanel(true);
+        handleShowPrevOrdersPanel(false);
     }
 
     @FXML
