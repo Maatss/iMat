@@ -77,23 +77,60 @@ public class Model {
     }
 
     public void addToShoppingCart(Product p) { //todo some sort of feedback that the action succeeded/failed?
-        ShoppingCart shoppingCart = iMatDataHandler.getShoppingCart();
-
-        ShoppingItem item = new ShoppingItem(p);
-        Model.getInstance().getShoppingCart().addItem(item);
-
-        //shoppingCart.addProduct(p);
+        addToShoppingCart(p, 1);
     }
 
-    public void removeFromShoppingCart(Product p) { //todo some sort of feedback that the action succeeded/failed?
-        ShoppingCart shoppingCart = Model.getInstance().getShoppingCart();
-
-        for (ShoppingItem cartItem : shoppingCart.getItems()) {
+    public void addToShoppingCart(Product p, double amount) { //todo some sort of feedback that the action succeeded/failed?
+        boolean gotStacked = false;
+        for (ShoppingItem cartItem : getShoppingCart().getItems()) {
             if (cartItem.getProduct().getProductId() == p.getProductId()) {
-                shoppingCart.removeItem(cartItem);
+                cartItem.setAmount(cartItem.getAmount() + amount);
+                gotStacked = true;
+                getShoppingCart().fireShoppingCartChanged(cartItem, true); //Update change listeners
                 break;
             }
         }
+        if (!gotStacked) {
+            ShoppingItem newCartItem = new ShoppingItem(p);
+            newCartItem.setAmount(amount);
+            getShoppingCart().addItem(newCartItem);
+        }
+    }
+
+    public void removeFromShoppingCart(Product p, double amount) { //todo some sort of feedback that the action succeeded/failed?
+        for (ShoppingItem cartItem : getShoppingCart().getItems()) {
+            if (cartItem.getProduct().getProductId() == p.getProductId()) {
+                if (cartItem.getAmount() <= amount) {
+                    getShoppingCart().removeItem(cartItem);
+                } else {
+                    cartItem.setAmount(cartItem.getAmount() - amount);
+                    getShoppingCart().fireShoppingCartChanged(cartItem, true); //Update change listeners
+                }
+                break;
+            }
+        }
+    }
+
+    public void removeFromShoppingCart(Product p) { //todo some sort of feedback that the action succeeded/failed?
+        removeFromShoppingCart(p, 1);
+    }
+
+    public int getCountInShoppingCart(ShoppingItem item) {
+        int count = 0;
+        for (ShoppingItem cartItem : getShoppingCart().getItems()) {
+            if (cartItem.getProduct().getProductId() == item.getProduct().getProductId()) {
+                count += cartItem.getAmount();
+            }
+        }
+        return count;
+    }
+
+    public int getCountInShoppingCart() {
+        int count = 0;
+        for (ShoppingItem cartItem : getShoppingCart().getItems()) {
+            count += cartItem.getAmount();
+        }
+        return count;
     }
 
     public List<String> getCardTypes() {
@@ -126,6 +163,9 @@ public class Model {
 
     public void placeOrder() {
         iMatDataHandler.placeOrder();
+        Order newOrder = getOrders().get(getNumberOfOrders() - 1);
+        getOrders().remove(newOrder);
+        getOrders().add(0, newOrder);
     }
 
     public List<Order> getOrders() {

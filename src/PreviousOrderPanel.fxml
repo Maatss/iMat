@@ -27,12 +27,12 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="nmbArticlesLabel" focusTraversable="false" layoutX="434.0" layoutY="9.0" mouseTransparent="true" text="5 st">
+            <Label fx:id="nmbArticlesLabel" focusTraversable="false" layoutX="435.0" layoutY="9.0" mouseTransparent="true" text="5 st">
                <font>
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label fx:id="priceLabel" alignment="CENTER" focusTraversable="false" layoutX="496.0" layoutY="9.0" mouseTransparent="true" text="239,58 kr" textAlignment="CENTER">
+            <Label fx:id="priceLabel" alignment="CENTER" focusTraversable="false" layoutX="500.0" layoutY="9.0" mouseTransparent="true" text="239,58 kr" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
@@ -46,15 +46,6 @@
             <Separator focusTraversable="false" layoutX="8.0" layoutY="35.0" mouseTransparent="true" prefHeight="0.0" prefWidth="634.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="bottomContainerAnchorPane" layoutX="7.0" layoutY="36.0" prefHeight="115.0" prefWidth="642.0">
-         <children>
-            <Label layoutX="14.0" layoutY="5.0" text="Vitt bröd" />
-            <Label layoutX="14.0" layoutY="25.0" text="Soya bönor med sylt" />
-            <Label layoutX="429.0" layoutY="4.0" text="6 st" />
-            <Label layoutX="429.0" layoutY="24.0" text="32 st" />
-            <Label layoutX="496.0" layoutY="5.0" text="211,20 kr" />
-            <Label layoutX="496.0" layoutY="25.0" text="703,99 kr" />
-         </children>
-      </AnchorPane>
+      <AnchorPane fx:id="bottomContainerAnchorPane" layoutX="7.0" layoutY="36.0" prefHeight="115.0" prefWidth="642.0" />
    </children>
 </fx:root>

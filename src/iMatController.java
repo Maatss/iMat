@@ -231,7 +231,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
-    private void handleBuyItemsAction(ActionEvent event) {
+    private void handleBuyItemsAction() {
         if (!model.getShoppingCart().getItems().isEmpty()) {
             model.placeOrder();
             costLabel.setText("Köpet klart!");
@@ -581,11 +581,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     public void closePurchaseOpenRecipe(){
         closeSuccessfulPurchaseView();
-        openReceiptsView();
-    }
-
-    private void openReceiptsView(){
-        //todo / other branch
+        handlePrevOrdersAction();
     }
 
     private void closeReceiptsView(){
@@ -636,10 +632,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     private void updateBottomPanel() {
-        ShoppingCart shoppingCart = model.getShoppingCart();
-
-        itemsLabel.setText("Antal varor: " + shoppingCart.getItems().size());
-        costLabel.setText("Kostnad: " + String.format("%.2f", shoppingCart.getTotal()));
+        itemsLabel.setText("Antal varor: " + model.getCountInShoppingCart());
+        costLabel.setText("Kostnad: " + String.format("%.2f", model.getShoppingCart().getTotal()));
 
     }
 

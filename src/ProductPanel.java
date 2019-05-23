@@ -36,7 +36,7 @@ public class ProductPanel extends AnchorPane {
     @FXML
     protected ImageView middleSectionImageView;
     @FXML
-    protected  TextField countTextField;
+    protected TextField countTextField;
 
     private final Model model = Model.getInstance();
 
@@ -159,13 +159,7 @@ public class ProductPanel extends AnchorPane {
     }
 
     private int countCurrentItem() {
-        int count = 0;
-        for (ShoppingItem shoppingItem : model.getShoppingCart().getItems()) {
-            if (shoppingItem.getProduct() == product) {
-                count++;
-            }
-        }
-        return count;
+        return model.getCountInShoppingCart(new ShoppingItem(product));
     }
 
     private void updateRemoveButtonImageView() {
@@ -235,7 +229,7 @@ public class ProductPanel extends AnchorPane {
         addProductsTextField(countTextField.getText());
     }
 
-    private void addProductsTextField(String inputText) {
+    private void addProductsTextField(String inputText) { //Todo fix crash when double/float is entered
         if (isNumeric(inputText) || inputText.length() == 0) {    //If valid case
             int amount;
             if (inputText.length() == 0) {
@@ -245,16 +239,12 @@ public class ProductPanel extends AnchorPane {
             }
 
             int oldAmount = countCurrentItem();                        // Get the old value
-            int difference = amount - oldAmount;
+            int difference = oldAmount - amount;
 
             if (difference > 0) {
-                for (int i = 0; i < difference; i++) {                 // if the new value is higher - adds the difference
-                    model.addToShoppingCart(product);
-                }
+                model.removeFromShoppingCart(product, difference);
             } else if (difference < 0) {                               // if the new value is lower - removes the difference
-                for (int i = 0; i > difference; i--) {
-                    model.removeFromShoppingCart(product);
-                }
+                model.addToShoppingCart(product, difference*-1);
             }
         }
         updateCountLabel(true);

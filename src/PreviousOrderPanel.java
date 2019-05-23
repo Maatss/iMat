@@ -11,6 +11,7 @@ import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
 import se.chalmers.cse.dat216.project.Order;
+import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
@@ -62,9 +63,14 @@ public class PreviousOrderPanel extends AnchorPane {
         String date = formatter.format(order.getDate());
         day = capitalizeFirstLetter(day);
 
+        int count = 0;
+        for (ShoppingItem cartItem : order.getItems()) {
+            count += cartItem.getAmount();
+        }
+
         dayLabel.setText(day);
         dateLabel.setText(date);
-        nmbArticlesLabel.setText(order.getItems().size() + " st");
+        nmbArticlesLabel.setText(count + " st");
         double totalPrice = 0;
         for (ShoppingItem item : order.getItems()) {
             totalPrice += item.getTotal();
@@ -86,7 +92,7 @@ public class PreviousOrderPanel extends AnchorPane {
     @FXML
     private void handlePrevOrderAdd() {
         System.out.println("Add order nmb: " + order.getOrderNumber() + " | Date: " + order.getDate());
-        order.getItems().forEach((item) -> model.addToShoppingCart(item.getProduct()));
+        order.getItems().forEach((ShoppingItem item) -> model.addToShoppingCart(item.getProduct(), item.getAmount()));
         imatController.openCartView();
     }
 
@@ -121,13 +127,13 @@ public class PreviousOrderPanel extends AnchorPane {
                 double y = 5 + 20 * i;
                 String name = order.getItems().get(i).getProduct().getName();
                 String nmb = String.format("%.0f st", order.getItems().get(i).getAmount());
-                String price = String.format("%.2f", order.getItems().get(i).getTotal());
+                String price = String.format("%.2f kr", order.getItems().get(i).getTotal());
                 generateOrderItemElement(16, y, name);
                 generateOrderItemElement(435, y, nmb);
                 generateOrderItemElement(500, y, price);
             }
             bottomContainerAnchorPane.setPrefHeight(44 + 20 * order.getItems().size());
-            this.setPrefHeight(44 + 20 * order.getItems().size() + 10);
+            this.setPrefHeight(44 + 20 * order.getItems().size() + 3);
             isExpanded = true;
         }
     }
