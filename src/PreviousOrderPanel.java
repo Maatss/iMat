@@ -1,6 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -10,6 +11,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.paint.Color;
+import javafx.scene.text.TextAlignment;
 import se.chalmers.cse.dat216.project.Order;
 import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
@@ -129,8 +131,8 @@ public class PreviousOrderPanel extends AnchorPane {
                 String nmb = String.format("%.0f st", order.getItems().get(i).getAmount());
                 String price = String.format("%.2f kr", order.getItems().get(i).getTotal());
                 generateOrderItemElement(16, y, name);
-                generateOrderItemElement(435, y, nmb);
-                generateOrderItemElement(500, y, price);
+                generateOrderItemElement(1010, y, nmb);
+                generateOrderItemElement(1070, y, price);
             }
             bottomContainerAnchorPane.setPrefHeight(44 + 20 * order.getItems().size());
             this.setPrefHeight(44 + 20 * order.getItems().size() + 3);
@@ -139,11 +141,15 @@ public class PreviousOrderPanel extends AnchorPane {
     }
 
     private void generateOrderItemElement(double x, double y, String text) {
-        Label namelabel = new Label();
-        namelabel.setText(text);
-        namelabel.setLayoutX(x);
-        namelabel.setLayoutY(y);
-        bottomContainerAnchorPane.getChildren().add(namelabel);
+        Label label = new Label();
+        label.setText(text);
+        label.setLayoutX(x);
+        label.setLayoutY(y);
+        label.setAlignment(Pos.CENTER_RIGHT);
+//        label.setAlignment(Pos.CENTER_LEFT);
+        label.setTextAlignment(TextAlignment.RIGHT);
+//        label.setTextAlignment(TextAlignment.LEFT);
+        bottomContainerAnchorPane.getChildren().add(label);
     }
 
     private void setTopBarAnchorPaneColor(Color color) {
