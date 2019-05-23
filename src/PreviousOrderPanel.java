@@ -97,7 +97,7 @@ public class PreviousOrderPanel extends AnchorPane {
     }
 
     @FXML
-    private void handlePanelExpand() {
+    protected void handlePanelExpand() {
         setPaneExpandedHeight();
     }
 

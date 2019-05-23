@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="445c0166-ee2d-4a41-a5d8-1f5a7ade7787" name="Default Changelist" comment="Exempel finns nu på hur man kan få kategorier att ladda, man behöver dock lösa på något sätt för att lägga ihop de kategorier vi har valt att klumpa tillsammans">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PreviousOrderPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/PreviousOrderPanel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PreviousOrderPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PreviousOrderPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PricePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PricePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ProductPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ProductPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/iMatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMatController.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -25,9 +21,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/iMatController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="583" column="33" selection-start-line="583" selection-start-column="33" selection-end-line="583" selection-end-column="33" />
+            <state relative-caret-position="297">
+              <caret line="586" column="41" selection-start-line="586" selection-start-column="41" selection-end-line="586" selection-end-column="41" />
               <folding>
+                <element signature="e#5164#5165#0" expanded="true" />
+                <element signature="e#5204#5205#0" expanded="true" />
                 <element signature="e#6876#6877#0" expanded="true" />
                 <element signature="e#6910#6911#0" expanded="true" />
                 <element signature="e#7001#7002#0" expanded="true" />
@@ -50,11 +48,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PreviousOrderPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="174">
-              <caret line="94" column="118" lean-forward="true" selection-start-line="94" selection-start-column="118" selection-end-line="94" selection-end-column="118" />
+            <state relative-caret-position="361">
+              <caret line="129" column="92" lean-forward="true" selection-start-line="129" selection-start-column="92" selection-end-line="129" selection-end-column="92" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3234#3235#0" expanded="true" />
+                <element signature="e#3236#3237#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -265,11 +263,11 @@
         <option value="$PROJECT_DIR$/src/IMatDataHandlerFacade.java" />
         <option value="$PROJECT_DIR$/src/PricePanel.java" />
         <option value="$PROJECT_DIR$/src/ProductPanel.java" />
-        <option value="$PROJECT_DIR$/src/iMatController.java" />
-        <option value="$PROJECT_DIR$/src/iMatController.java" />
         <option value="$PROJECT_DIR$/src/ProductPanel.java" />
         <option value="$PROJECT_DIR$/src/Model.java" />
         <option value="$PROJECT_DIR$/src/PreviousOrderPanel.java" />
+        <option value="$PROJECT_DIR$/src/iMatController.java" />
+        <option value="$PROJECT_DIR$/src/iMatController.java" />
       </list>
     </option>
   </component>
@@ -313,7 +311,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558617656067" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558618637552" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -383,7 +381,7 @@
       <workItem from="1558530288221" duration="3031000" />
       <workItem from="1558534558502" duration="3583000" />
       <workItem from="1558600191878" duration="4607000" />
-      <workItem from="1558607486103" duration="9853000" />
+      <workItem from="1558607486103" duration="10824000" />
     </task>
     <task id="LOCAL-00001" summary="Lagt till lite grejer från iMatMini.&#10;&#10;Har lagt till kategorier">
       <created>1557999341367</created>
@@ -459,7 +457,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64737000" />
+    <option name="totallyTimeSpent" value="65708000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -727,19 +725,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iMatController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="583" column="33" selection-start-line="583" selection-start-column="33" selection-end-line="583" selection-end-column="33" />
-          <folding>
-            <element signature="e#6876#6877#0" expanded="true" />
-            <element signature="e#6910#6911#0" expanded="true" />
-            <element signature="e#7001#7002#0" expanded="true" />
-            <element signature="e#7061#7062#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ProductPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1263">
@@ -794,13 +779,28 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/iMatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="586" column="41" selection-start-line="586" selection-start-column="41" selection-end-line="586" selection-end-column="41" />
+          <folding>
+            <element signature="e#5164#5165#0" expanded="true" />
+            <element signature="e#5204#5205#0" expanded="true" />
+            <element signature="e#6876#6877#0" expanded="true" />
+            <element signature="e#6910#6911#0" expanded="true" />
+            <element signature="e#7001#7002#0" expanded="true" />
+            <element signature="e#7061#7062#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/PreviousOrderPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="174">
-          <caret line="94" column="118" lean-forward="true" selection-start-line="94" selection-start-column="118" selection-end-line="94" selection-end-column="118" />
+        <state relative-caret-position="361">
+          <caret line="129" column="92" lean-forward="true" selection-start-line="129" selection-start-column="92" selection-end-line="129" selection-end-column="92" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3234#3235#0" expanded="true" />
+            <element signature="e#3236#3237#0" expanded="true" />
           </folding>
         </state>
       </provider>

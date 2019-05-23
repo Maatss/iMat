@@ -12,7 +12,7 @@
    <children>
       <AnchorPane fx:id="topBarAnchorPane" onMouseEntered="#handleMouseHoverEnter" onMouseExited="#handleMouseHoverExit" onMouseReleased="#handlePanelExpand" prefHeight="38.0" prefWidth="650.0" style="-fx-background-color: #EFEFEF;">
          <children>
-            <ImageView fx:id="expandImageView" fitHeight="93.0" fitWidth="24.0" layoutX="7.0" layoutY="9.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="expandImageView" fitHeight="93.0" fitWidth="24.0" layoutX="7.0" layoutY="9.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                <image>
                   <Image url="@images/Dropdown%20arrow.png" />
                </image>
