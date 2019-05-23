@@ -19,34 +19,34 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="1000.0" stylesheets="@iMatCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
+<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1500.0" stylesheets="@iMatCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
     <children>
-      <AnchorPane fx:id="welcomePane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: #FFFFFFFF;">
+      <AnchorPane fx:id="welcomePane" prefHeight="850.0" prefWidth="1500.0" style="-fx-background-color: #FFFFFFFF;">
          <children>
-            <Label layoutX="305.0" layoutY="94.0" prefHeight="158.0" prefWidth="405.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
+            <Label layoutX="557.0" layoutY="141.0" prefHeight="158.0" prefWidth="405.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="53.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" layoutX="330.0" layoutY="163.0" prefHeight="158.0" prefWidth="324.0" text="iMat" textAlignment="CENTER" wrapText="true">
+            <Label alignment="CENTER" layoutX="582.0" layoutY="210.0" prefHeight="158.0" prefWidth="324.0" text="iMat" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="96.0" />
                </font>
             </Label>
-            <Button fx:id="acceptHelpButton" layoutX="352.0" layoutY="404.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="282.0" text="Ja, ge mig en kort introduktion">
+            <Button fx:id="acceptHelpButton" layoutX="604.0" layoutY="451.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="282.0" text="Ja, ge mig en kort introduktion">
                <font>
                   <Font name="System Bold" size="16.0" />
                </font>
             </Button>
-            <Button fx:id="denyHelpButton" layoutX="376.0" layoutY="502.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="27.0" prefWidth="235.0" text="Nej, jag klarar mig själv!" textFill="#0000008f" />
-            <Label layoutX="290.0" layoutY="314.0" prefHeight="72.0" prefWidth="405.0" text="Vill du ha hjälp medan du handlar? (kort introduktion)" textAlignment="CENTER" textFill="#0000007e" wrapText="true">
+            <Button fx:id="denyHelpButton" layoutX="628.0" layoutY="549.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="27.0" prefWidth="235.0" text="Nej, jag klarar mig själv!" textFill="#0000008f" />
+            <Label layoutX="542.0" layoutY="361.0" prefHeight="72.0" prefWidth="405.0" text="Vill du ha hjälp medan du handlar? (kort introduktion)" textAlignment="CENTER" textFill="#0000007e" wrapText="true">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <StackPane fx:id="homeScreen" prefHeight="600.0" prefWidth="1000.0">
+      <StackPane fx:id="homeScreen" prefHeight="850.0" prefWidth="1500.0">
          <children>
             <AnchorPane fx:id="successfulPurchasePane" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
                <children>
@@ -286,14 +286,14 @@
             </AnchorPane>
             <AnchorPane fx:id="shopPane" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #FFF000;">
                <children>
-                  <AnchorPane fx:id="headerPane" prefHeight="100.0" prefWidth="1000.0" style="-fx-background-color: #ff6600;">
+                  <AnchorPane fx:id="headerPane" prefHeight="100.0" prefWidth="1500.0" style="-fx-background-color: #ff6600;">
                      <children>
-                        <TextField fx:id="searchField" layoutX="150.0" layoutY="34.0" onAction="#handleSearchAction" prefHeight="35.0" prefWidth="480.0" promptText="Sök i vårt produktsortiment, klicka här!">
+                        <TextField fx:id="searchField" layoutX="150.0" layoutY="34.0" onAction="#handleSearchAction" prefHeight="35.0" prefWidth="900.0" promptText="Sök i vårt produktsortiment, klicka här!">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="searchButton" layoutX="630.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="35.0" prefWidth="64.0" text="Sök" />
+                        <Button fx:id="searchButton" layoutX="1051.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="35.0" prefWidth="64.0" text="Sök" />
                         <Button fx:id="homeButton" mnemonicParsing="false" onAction="#handleShowAccountAction" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: transparent;">
                            <font>
                               <Font size="18.0" />
@@ -306,7 +306,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Button fx:id="cartButton" layoutX="867.0" layoutY="15.0" mnemonicParsing="false" onAction="#openCartView" onMouseEntered="#handleShoppingCartHoverEnter" onMouseExited="#handleShoppingCartHoverExit" prefHeight="78.0" prefWidth="112.0" style="-fx-background-color: transparent;">
+                        <Button fx:id="cartButton" layoutX="1363.0" layoutY="20.0" mnemonicParsing="false" onAction="#openCartView" onMouseEntered="#handleShoppingCartHoverEnter" onMouseExited="#handleShoppingCartHoverExit" prefHeight="78.0" prefWidth="112.0" style="-fx-background-color: transparent;">
                            <graphic>
                               <ImageView fx:id="cartButtonImage" fitHeight="70.0" fitWidth="103.0" pickOnBounds="true">
                                  <image>
@@ -318,15 +318,34 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label fx:id="itemsLabel" layoutX="739.0" layoutY="37.0" prefHeight="12.0" prefWidth="100.0" text="Antal varor: 3456" />
-                        <Label fx:id="costLabel" layoutX="739.0" layoutY="55.0" text="Kostnad: 3456.60" />
+                        <Label fx:id="itemsLabel" layoutX="1235.0" layoutY="42.0" prefHeight="12.0" prefWidth="100.0" text="Antal varor: 3456" />
+                        <Label fx:id="costLabel" layoutX="1235.0" layoutY="60.0" text="Kostnad: 3456.60" />
                      </children>
                   </AnchorPane>
-                  <SplitPane fx:id="middlePane" dividerPositions="0.29797979797979796" layoutY="105.0" prefHeight="498.0" prefWidth="1000.0" AnchorPane.topAnchor="102.0">
+                  <SplitPane fx:id="middlePane" dividerPositions="0.29797979797979796" layoutY="105.0" prefHeight="748.0" prefWidth="1500.0" AnchorPane.topAnchor="102.0">
                     <items>
                       <AnchorPane fx:id="categoryPane" maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="460.0" prefWidth="200.0" styleClass="accordion_holder">
                            <children>
-                              <Accordion layoutX="-10.0" layoutY="144.0" styleClass="category-expandable" AnchorPane.leftAnchor="-10.0" AnchorPane.topAnchor="144.0">
+                              <Accordion layoutY="2.0" prefHeight="48.0" prefWidth="200.0">
+                                <panes>
+                                    <TitledPane animated="false" onMouseClicked="#handleYourProfileAction" styleClass="category-static" text="Min profil">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TitledPane>
+                                  <TitledPane animated="false" onMouseClicked="#handlePrevOrdersAction" styleClass="earlier-purchases-category" text="Tidigare köp">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TitledPane>
+                                  <TitledPane fx:id="favoritesCategory" animated="false" onMouseClicked="#handleFavoriteSelectionAction" styleClass="favorite-category" text="Favoriter">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </TitledPane>
+                                </panes>
+                              </Accordion>
+                              <Accordion layoutX="-10.0" layoutY="146.0" styleClass="category-expandable" AnchorPane.leftAnchor="-10.0" AnchorPane.topAnchor="146.0">
                                 <panes>
                                   <TitledPane fx:id="breadCategory" animated="false" onMouseClicked="#handleBreadSelectionAction" styleClass="category-static" text="Bröd" />
                                   <TitledPane fx:id="drinksCategory" animated="false" onMouseClicked="#handleDrinksSelectionAction" styleClass="category-expandable" text="Drycker">
@@ -387,30 +406,11 @@
                                     </TitledPane>
                                 </panes>
                               </Accordion>
-                              <Accordion prefHeight="48.0" prefWidth="200.0">
-                                <panes>
-                                    <TitledPane animated="false" onMouseClicked="#handleYourProfileAction" styleClass="category-static" text="Min profil">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </TitledPane>
-                                  <TitledPane animated="false" onMouseClicked="#handlePrevOrdersAction" styleClass="earlier-purchases-category" text="Tidigare köp">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </TitledPane>
-                                  <TitledPane fx:id="favoritesCategory" animated="false" onMouseClicked="#handleFavoriteSelectionAction" styleClass="favorite-category" text="Favoriter">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </TitledPane>
-                                </panes>
-                              </Accordion>
                            </children>
                         </AnchorPane>
-                      <AnchorPane fx:id="browsePane" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="800.0">
+                      <AnchorPane fx:id="browsePane" minHeight="0.0" minWidth="0.0" prefHeight="746.0" prefWidth="1280.0">
                            <children>
-                              <Label fx:id="categoryLabel" layoutX="7.0" layoutY="-10.0" prefHeight="85.0" prefWidth="637.0" text="Kategori">
+                              <Label fx:id="categoryLabel" layoutX="15.0" layoutY="-10.0" prefHeight="85.0" prefWidth="637.0" text="Kategori">
                                  <font>
                                     <Font size="58.0" />
                                  </font>
@@ -420,7 +420,7 @@
                                     <Font size="22.0" />
                                  </font>
                               </Label>
-                              <AnchorPane fx:id="newAccountPane" layoutY="69.0" prefHeight="435.0" prefWidth="786.0" style="-fx-background-color: #FFFFFF;">
+                              <AnchorPane fx:id="newAccountPane" layoutX="15.0" layoutY="69.0" prefHeight="660.0" prefWidth="1249.0" style="-fx-background-color: #FFFFFF;">
                                  <children>
                                     <Label layoutX="21.0" layoutY="27.0" prefHeight="44.0" prefWidth="138.0" text="Mina uppgifter:">
                                        <font>
@@ -459,7 +459,12 @@
                                     </Button>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="previousOrdersPane" layoutY="69.0" prefHeight="435.0" prefWidth="792.0" style="-fx-background-color: #EFEFEF;">
+                              <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" layoutX="15.0" layoutY="69.0" prefHeight="660.0" prefWidth="1293.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
+                                 <content>
+                                    <FlowPane fx:id="productsFlowPane" hgap="6.0" layoutX="15.0" prefHeight="660.0" prefWidth="1275.0" style="-fx-background-color: #EFEFEF;" vgap="6.0" />
+                                 </content>
+                              </ScrollPane>
+                              <AnchorPane fx:id="previousOrdersPane" prefHeight="660.0" prefWidth="1275.0" style="-fx-background-color: #EFEFEF;" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="69.0">
                                  <children>
                                     <Label layoutX="53.0" layoutY="14.0" text="Datum">
                                        <font>
@@ -476,18 +481,13 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
-                                    <ScrollPane hbarPolicy="NEVER" layoutX="14.0" layoutY="35.0" prefHeight="300.0" prefWidth="730.0" style="-fx-border-color: #FFFFFF; -fx-background-color: transparent;">
+                                    <ScrollPane hbarPolicy="NEVER" layoutY="35.0" prefHeight="300.0" prefWidth="730.0" style="-fx-border-color: #FFFFFF; -fx-background-color: transparent;" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
                                       <content>
-                                         <FlowPane fx:id="prevOrdersFlowPane" hgap="4.0" prefHeight="298.0" prefWidth="730.0" style="-fx-background-color: #DEDEDE;" />
+                                         <FlowPane fx:id="prevOrdersFlowPane" hgap="4.0" prefHeight="567.0" prefWidth="1250.0" style="-fx-background-color: #DEDEDE;" />
                                       </content>
                                     </ScrollPane>
                                  </children>
                               </AnchorPane>
-                              <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" layoutY="69.0" prefHeight="435.0" prefWidth="800.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.rightAnchor="0.0">
-                                 <content>
-                                    <FlowPane fx:id="productsFlowPane" prefHeight="425.0" prefWidth="800.0" style="-fx-background-color: #EFEFEF;" vgap="4.0" />
-                                 </content>
-                              </ScrollPane>
                            </children>
                         </AnchorPane>
                     </items>

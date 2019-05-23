@@ -31,8 +31,6 @@ import java.util.ResourceBundle;
  * @author oloft
  */
 public class iMatController implements Initializable, ShoppingCartListener {
-
-
     private String headline;
     // Welcome Pane
     @FXML
