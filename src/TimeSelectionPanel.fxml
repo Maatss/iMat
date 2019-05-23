@@ -6,10 +6,9 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<fx:root maxHeight="275.0" maxWidth="125.0" prefHeight="270.0" prefWidth="120.0" style="-fx-border-color: gray;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="275.0" maxWidth="125.0" prefHeight="270.0" prefWidth="120.0" style="-fx-border-color: gray; -fx-border-radius: 15;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Pane layoutX="22.0" layoutY="24.0" prefHeight="55.0" prefWidth="77.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <Pane layoutX="22.0" layoutY="24.0" prefHeight="55.0" prefWidth="77.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label fx:id="dayOfWeekLabel" alignment="CENTER" layoutY="10.0" prefWidth="120.0" text="Tisdag" textAlignment="CENTER">
                <font>
@@ -18,7 +17,7 @@
             </Label>
          </children>
       </Pane>
-      <Pane layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="120.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
+      <Pane layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="120.0" style="-fx-border-color: gray;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="55.0">
          <children>
             <Label fx:id="dateLabel" alignment="CENTER" layoutY="5.0" prefHeight="32.0" prefWidth="120.0" text="11 maj" textAlignment="CENTER">
                <font>
