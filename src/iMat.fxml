@@ -262,20 +262,20 @@
                         </AnchorPane>
                         <AnchorPane fx:id="checkoutContentPane" maxHeight="375.0" prefHeight="375.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
                            <children>
-                              <AnchorPane maxHeight="275.0" prefHeight="275.0" prefWidth="500.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+                              <AnchorPane maxHeight="275.0" prefHeight="275.0" prefWidth="600.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
                                  <children>
-                                    <FlowPane fx:id="timeSelectionPane" hgap="2.0" maxHeight="273.0" maxWidth="500.0" prefHeight="273.0" prefWidth="200.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <FlowPane fx:id="timeSelectionPane" hgap="2.0" layoutY="18.0" maxHeight="275.0" maxWidth="600.0" prefHeight="275.0" prefWidth="600.0" prefWrapLength="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <padding>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </padding>
                                     </FlowPane>
                                  </children></AnchorPane>
-                              <Button fx:id="checkoutEarlierTimesButton" layoutX="100.0" layoutY="6.0" mnemonicParsing="false" text="Tidigare" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="3.0">
+                              <Button fx:id="checkoutEarlierTimesButton" layoutX="100.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleShowEarlierTimes" text="Tidigare" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="3.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Button>
-                              <Button fx:id="checkoutLaterTimesButton" layoutX="527.0" layoutY="35.0" mnemonicParsing="false" text="Senare" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="3.0">
+                              <Button fx:id="checkoutLaterTimesButton" layoutX="527.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleShowLaterTimes" text="Senare" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="3.0">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -499,60 +499,6 @@
                         </AnchorPane>
                     </items>
                   </SplitPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="checkoutPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
-               <children>
-                  <AnchorPane fx:id="checkoutPopupPane" layoutX="150.0" layoutY="75.0" maxHeight="450.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
-                     <children>
-                        <AnchorPane fx:id="checkoutHeaderPane" prefHeight="75.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Button fx:id="returnToCartButton" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#returnToCartViewFromCheckout" prefHeight="65.0" prefWidth="100.0" style="-fx-content-display: top;" text="Varukorgen" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
-                                 <graphic>
-                                    <ImageView fitHeight="35.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@images/shoppingCart.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Label layoutX="241.0" layoutY="5.0" text="Leveranstid">
-                                 <font>
-                                    <Font name="System Bold" size="40.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="393.0" layoutY="53.0" text="Steg 1 av 2" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="checkoutContentPane" maxHeight="375.0" prefHeight="375.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
-                           <children>
-                              <AnchorPane maxHeight="275.0" prefHeight="275.0" prefWidth="600.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
-                                 <children>
-                                    <FlowPane fx:id="timeSelectionPane" hgap="2.0" layoutY="18.0" maxHeight="275.0" maxWidth="600.0" prefHeight="275.0" prefWidth="600.0" prefWrapLength="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                    </FlowPane>
-                                 </children></AnchorPane>
-                              <Button fx:id="checkoutEarlierTimesButton" layoutX="100.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleShowEarlierTimes" text="Tidigare" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="3.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="checkoutLaterTimesButton" layoutX="527.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleShowLaterTimes" text="Senare" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="3.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="checkoutMoveToStepTwoButton" layoutX="289.0" layoutY="313.0" mnemonicParsing="false" onAction="#openCheckoutViewTwo" text="Gå vidare" AnchorPane.bottomAnchor="1.0">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
