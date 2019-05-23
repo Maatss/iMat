@@ -14,7 +14,7 @@ public class TimeSelectionPanel extends AnchorPane {
     @FXML
     private Label dayOfWeekLabel;
 
-
+    Date deliveryDate;
 
     public TimeSelectionPanel(Date date){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TimeSelectionPanel.fxml"));
@@ -27,9 +27,8 @@ public class TimeSelectionPanel extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        dateLabel.setText(date.getDate() + "/" + date.getMonth());
-        dayOfWeekLabel.setText(convertDateToDay(date));
-
+        deliveryDate = date;
+        updateDateLabels();
     }
 
     private String convertDateToDay(Date date){
@@ -54,23 +53,40 @@ public class TimeSelectionPanel extends AnchorPane {
     }
 
     @FXML private void handleTimeSelectOne(){
-        setModelDeliveryDate();
+        updateModelDeliveryDate();
         Model.setDeliveryTime("8-10");
     }
     @FXML private void handleTimeSelectTwo(){
-        setModelDeliveryDate();
+        updateModelDeliveryDate();
         Model.setDeliveryTime("10-12");
     }
     @FXML private void handleTimeSelectThree(){
-        setModelDeliveryDate();
+        updateModelDeliveryDate();
         Model.setDeliveryTime("12-14");
     }
     @FXML private void handleTimeSelectFour(){
-        setModelDeliveryDate();
+        updateModelDeliveryDate();
         Model.setDeliveryTime("14-16");
     }
 
-    private void setModelDeliveryDate(){
+    private void updateModelDeliveryDate(){
         Model.setDeliveryDate(dayOfWeekLabel.getText());
+    }
+
+    private void updateDateLabels(){
+        dateLabel.setText(deliveryDate.getDate() + "/" + (deliveryDate.getMonth() + 1));
+        dayOfWeekLabel.setText(convertDateToDay(deliveryDate));
+    }
+
+    public void decrementDay(){
+        deliveryDate = new Date(deliveryDate.getTime()-(24*60*60*1000));
+        updateDateLabels();
+        updateModelDeliveryDate();
+    }
+
+    public void incrementDay(){
+        deliveryDate = new Date(deliveryDate.getTime()+(24*60*60*1000));
+        updateDateLabels();
+        updateModelDeliveryDate();
     }
 }
