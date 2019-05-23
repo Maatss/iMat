@@ -6,10 +6,7 @@ import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.TextAlignment;
 import se.chalmers.cse.dat216.project.Order;
@@ -130,9 +127,9 @@ public class PreviousOrderPanel extends AnchorPane {
                 String name = order.getItems().get(i).getProduct().getName();
                 String nmb = String.format("%.0f st", order.getItems().get(i).getAmount());
                 String price = String.format("%.2f kr", order.getItems().get(i).getTotal());
-                generateOrderItemElement(16, y, name);
-                generateOrderItemElement(1010, y, nmb);
-                generateOrderItemElement(1070, y, price);
+                generateOrderItemElement(16, y, name, false);
+                generateOrderItemElement(1010-40, y, nmb, true);
+                generateOrderItemElement(1070, y, price, true);
             }
             bottomContainerAnchorPane.setPrefHeight(44 + 20 * order.getItems().size());
             this.setPrefHeight(44 + 20 * order.getItems().size() + 3);
@@ -140,16 +137,21 @@ public class PreviousOrderPanel extends AnchorPane {
         }
     }
 
-    private void generateOrderItemElement(double x, double y, String text) {
+    private void generateOrderItemElement(double x, double y, String text, boolean doRightAlign) {
         Label label = new Label();
         label.setText(text);
-        label.setLayoutX(x);
-        label.setLayoutY(y);
-        label.setAlignment(Pos.CENTER_RIGHT);
-//        label.setAlignment(Pos.CENTER_LEFT);
-        label.setTextAlignment(TextAlignment.RIGHT);
-//        label.setTextAlignment(TextAlignment.LEFT);
-        bottomContainerAnchorPane.getChildren().add(label);
+
+        VBox vBox = new VBox();
+        if (doRightAlign) {
+            vBox.setPrefSize(60, 12);
+//            vBox.setLayoutX(x-120);
+//            x=x-120;
+            vBox.setAlignment(Pos.CENTER_RIGHT);
+        }
+        vBox.setLayoutX(x);
+        vBox.setLayoutY(y);
+        vBox.getChildren().add(label);
+        bottomContainerAnchorPane.getChildren().add(vBox);
     }
 
     private void setTopBarAnchorPaneColor(Color color) {

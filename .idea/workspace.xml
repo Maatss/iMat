@@ -3,10 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="445c0166-ee2d-4a41-a5d8-1f5a7ade7787" name="Default Changelist" comment="Exempel finns nu på hur man kan få kategorier att ladda, man behöver dock lösa på något sätt för att lägga ihop de kategorier vi har valt att klumpa tillsammans">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PreviousOrderPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/PreviousOrderPanel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/PreviousOrderPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PreviousOrderPanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/iMat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMat.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/iMatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/Dropdown arrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/Dropdown arrow.png" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,44 +15,74 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FUSProjectUsageTrigger">
+    <session id="-329142504">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.opened" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="java" value="932" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="932" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="1" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FavoritesManager">
     <favorites_list name="iMat" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/iMatController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-119">
-              <caret line="32" column="76" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
-              <folding>
-                <element signature="e#5237#5238#0" expanded="true" />
-                <element signature="e#5284#5285#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="280">
+              <caret line="236" column="36" selection-start-line="236" selection-start-column="36" selection-end-line="236" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/javafx/scene/control/Labeled.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="230">
+              <caret line="144" column="22" selection-start-line="144" selection-start-column="22" selection-end-line="144" selection-end-column="22" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PricePanel.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="646">
               <caret line="38" selection-start-line="38" selection-end-line="38" />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PreviousOrderPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="447">
-              <caret line="150" column="53" selection-start-line="150" selection-start-column="53" selection-end-line="150" selection-end-column="53" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3197#3198#0" expanded="true" />
-                <element signature="e#3236#3237#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="413">
+              <caret line="146" column="31" lean-forward="true" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -61,7 +91,7 @@
         <entry file="file://$PROJECT_DIR$/src/ProductPanel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3944">
-              <caret line="254" selection-start-line="254" selection-end-line="254" />
+              <caret line="246" selection-start-line="246" selection-end-line="246" />
             </state>
           </provider>
         </entry>
@@ -74,8 +104,6 @@
               <folding>
                 <element signature="e#1993#1994#0" expanded="true" />
                 <element signature="e#2080#2081#0" expanded="true" />
-                <element signature="e#2396#2397#0" expanded="true" />
-                <element signature="e#2480#2481#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -84,8 +112,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/TimeSelectionPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1156">
-              <caret line="76" selection-start-line="76" selection-end-line="76" />
+            <state relative-caret-position="566">
+              <caret line="92" selection-start-line="92" selection-end-line="92" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -95,12 +123,12 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/iMat.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="8381">
-              <caret line="494" selection-start-line="494" selection-end-line="494" />
+            <state relative-caret-position="247">
+              <caret line="431" selection-start-line="431" selection-end-line="431" />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -125,8 +153,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>favorites</find>
-      <find>Favorite</find>
       <find>add</find>
       <find>addaction</find>
       <find>price</find>
@@ -155,6 +181,8 @@
       <find>cont</find>
       <find>count</find>
       <find>closePurchaseOpenRecipe</find>
+      <find>setText</find>
+      <find>costLa</find>
     </findStrings>
     <replaceStrings>
       <replace>Bread</replace>
@@ -234,7 +262,6 @@
         <option value="$PROJECT_DIR$/src/iMatCSS.css" />
         <option value="$PROJECT_DIR$/src/FXMLController.java" />
         <option value="$PROJECT_DIR$/src/PreviousOrderPanel.fxml" />
-        <option value="$PROJECT_DIR$/src/iMat.fxml" />
         <option value="$PROJECT_DIR$/src/IMatDataHandlerFacade.java" />
         <option value="$PROJECT_DIR$/src/PricePanel.java" />
         <option value="$PROJECT_DIR$/src/ProductPanel.java" />
@@ -242,9 +269,10 @@
         <option value="$PROJECT_DIR$/src/Model.java" />
         <option value="$PROJECT_DIR$/src/TimeSelectionPanel.java" />
         <option value="$PROJECT_DIR$/src/Model.java" />
-        <option value="$PROJECT_DIR$/src/iMatController.java" />
-        <option value="$PROJECT_DIR$/src/iMatController.java" />
+        <option value="$PROJECT_DIR$/src/iMat.fxml" />
         <option value="$PROJECT_DIR$/src/PreviousOrderPanel.java" />
+        <option value="$PROJECT_DIR$/src/iMatController.java" />
+        <option value="$PROJECT_DIR$/src/iMatController.java" />
       </list>
     </option>
   </component>
@@ -260,7 +288,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -278,12 +305,13 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558622835548" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558644211978" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -452,7 +480,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.2881907" visible="true" weight="0.18763326" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.2881907" visible="true" weight="0.18976545" />
       <window_info id="Structure" order="1" sideWeight="0.71180934" side_tool="true" weight="0.18550107" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -461,8 +489,8 @@
       <window_info id="Favorites" order="6" sideWeight="0.5008881" side_tool="true" weight="0.27044535" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.52112675" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22426869" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.37919825" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22342733" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.37852496" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3285968" />
@@ -471,7 +499,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.3285968" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3285968" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3261105" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.3253796" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -512,20 +540,9 @@
         </entry>
       </map>
     </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list />
-          </value>
-        </entry>
-        <entry key="User">
-          <value>
-            <list />
-          </value>
-        </entry>
-      </map>
-    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Lagt till lite grejer från iMatMini.&#10;&#10;Har lagt till kategorier" />
@@ -617,10 +634,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
           <caret line="159" column="17" selection-start-line="159" selection-start-column="17" selection-end-line="159" selection-end-column="17" />
-          <folding>
-            <element signature="e#5052#5053#0" expanded="true" />
-            <element signature="e#5096#5097#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -666,7 +679,7 @@
     <entry file="file://$PROJECT_DIR$/src/ProductPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3944">
-          <caret line="254" selection-start-line="254" selection-end-line="254" />
+          <caret line="246" selection-start-line="246" selection-end-line="246" />
         </state>
       </provider>
     </entry>
@@ -677,27 +690,7 @@
           <folding>
             <element signature="e#1993#1994#0" expanded="true" />
             <element signature="e#2080#2081#0" expanded="true" />
-            <element signature="e#2396#2397#0" expanded="true" />
-            <element signature="e#2480#2481#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/TimeSelectionPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1156">
-          <caret line="76" selection-start-line="76" selection-end-line="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iMat.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8381">
-          <caret line="494" selection-start-line="494" selection-end-line="494" />
         </state>
       </provider>
     </entry>
@@ -708,26 +701,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iMatController.java">
+    <entry file="file://$PROJECT_DIR$/src/iMat.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-119">
-          <caret line="32" column="76" selection-start-line="32" selection-start-column="76" selection-end-line="32" selection-end-column="76" />
+        <state relative-caret-position="247">
+          <caret line="431" selection-start-line="431" selection-end-line="431" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/TimeSelectionPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="92" selection-start-line="92" selection-end-line="92" />
           <folding>
-            <element signature="e#5237#5238#0" expanded="true" />
-            <element signature="e#5284#5285#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/PreviousOrderPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="447">
-          <caret line="150" column="53" selection-start-line="150" selection-start-column="53" selection-end-line="150" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3197#3198#0" expanded="true" />
-            <element signature="e#3236#3237#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="413">
+          <caret line="146" column="31" lean-forward="true" selection-start-line="146" selection-start-column="31" selection-end-line="146" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/javafx/scene/control/Labeled.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="230">
+          <caret line="144" column="22" selection-start-line="144" selection-start-column="22" selection-end-line="144" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iMatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="236" column="36" selection-start-line="236" selection-start-column="36" selection-end-line="236" selection-end-column="36" />
         </state>
       </provider>
     </entry>
