@@ -190,6 +190,16 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
+    private void handleLogoAction() {
+        categoryLabel.setText("Alla varor");
+        noResultsLabel.setText("");
+        List<Product> matches = model.findProducts("");
+        updateProductList(matches);
+        shopPane.toFront();
+        productsScrollPane.toFront();
+    }
+
+    @FXML
     private void handleYourProfileAction() {
         newAccountPane.toFront();
         categoryLabel.setText("Min profil");
@@ -298,7 +308,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
-    private void handleDairySelectionAction(){
+    private void handleDairySelectionAction() {
         handleCategorySelection("dairyCategory");
     }
 
@@ -529,12 +539,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Checkout Pane actions
 
     @FXML
-    private void handleShowEarlierTimes(){
+    private void handleShowEarlierTimes() {
         timeSelectionPane.getChildren().forEach(timeSelectionPanel -> ((TimeSelectionPanel) timeSelectionPanel).decrementDay());
     }
 
     @FXML
-    private void handleShowLaterTimes(){
+    private void handleShowLaterTimes() {
         timeSelectionPane.getChildren().forEach(timeSelectionPanel -> ((TimeSelectionPanel) timeSelectionPanel).incrementDay());
     }
 
@@ -633,13 +643,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
-    private void updateCheckoutTimetable(){
+    private void updateCheckoutTimetable() {
         timeSelectionPane.getChildren().clear();
         Date d = new Date();
-        for(int i = 0; i<4; i++){
+        for (int i = 0; i < 4; i++) {
             timeSelectionPane.getChildren().add(new TimeSelectionPanel(d));
             //plus a day
-            d = new Date(d.getTime()+(24*60*60*1000));
+            d = new Date(d.getTime() + (24 * 60 * 60 * 1000));
         }
     }
 

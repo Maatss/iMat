@@ -301,7 +301,7 @@
                            </font>
                         </TextField>
                         <Button fx:id="searchButton" layoutX="1104.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="35.0" prefWidth="64.0" text="Sök" />
-                        <Button fx:id="homeButton" layoutX="35.0" mnemonicParsing="false" onAction="#handleShowAccountAction" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: transparent;">
+                        <Button fx:id="homeButton" layoutX="35.0" mnemonicParsing="false" onAction="#handleLogoAction" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: transparent;">
                            <font>
                               <Font size="18.0" />
                            </font>
