@@ -129,7 +129,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private TitledPane breadCategory;
     @FXML
-    private TitledPane drinksCategory;
+    private TitledPane fridgeCategory;
     @FXML
     private TitledPane greensCategory;
     @FXML
@@ -271,8 +271,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
-    private void handleDrinksSelectionAction() {
-        handleCategorySelection("drinksCategory");
+    private void handleFridgeSelectionAction() {
+        handleCategorySelection("fridgeCategory");
     }
 
     @FXML
@@ -298,6 +298,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private void handleColdDrinksSelectionAction() {
         handleCategorySelection("coldDrinksCategory");
+    }
+
+    @FXML
+    private void handleDairySelectionAction(){
+        handleCategorySelection("dairyCategory");
     }
 
     @FXML
@@ -394,10 +399,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 pc = ProductCategory.BREAD;
                 headline = "Bröd";
                 break;
-            case ("drinksCategory"): //set drinks to show
-                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.COLD_DRINKS)); //fix this
+            case ("fridgeCategory"): //set fridgestuff to show
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.COLD_DRINKS));
+                combinedProductList.addAll(model.getCategoryProducts(ProductCategory.DAIRIES));
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.HOT_DRINKS));
-                headline = "Drycker";
+                headline = "Kylvaror";
                 break;
             case ("greensCategory"): //set greens to show
                 combinedProductList.addAll(model.getCategoryProducts(ProductCategory.BERRY));
@@ -431,6 +437,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
             case ("coldDrinksCategory"):
                 pc = ProductCategory.COLD_DRINKS;
                 headline = "Kalla drycker";
+                break;
+            case ("dairyCategory"):
+                pc = ProductCategory.DAIRIES;
+                headline = "Mejeri";
                 break;
             case ("hotDrinksCategory"):
                 pc = ProductCategory.HOT_DRINKS;
@@ -630,7 +640,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void updateCheckoutTimetable(){
         timeSelectionPane.getChildren().clear();
         Date d = new Date();
-        for(int i = 0; i<4; i++){ //TODO FIX SO IT'S POSSIBLE TO HAVE 4 PANELS
+        for(int i = 0; i<4; i++){
             timeSelectionPane.getChildren().add(new TimeSelectionPanel(d));
             //plus a day
             d = new Date(d.getTime()+(24*60*60*1000));

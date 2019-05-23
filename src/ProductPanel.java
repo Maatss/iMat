@@ -170,7 +170,6 @@ public class ProductPanel extends AnchorPane {
             iconPath = "images/removeButtonAvailable.png";
         }
         removeButtonImageView.setImage(getImage(iconPath));
-
     }
 
     private void updateTextFieldColor() {
@@ -261,6 +260,4 @@ public class ProductPanel extends AnchorPane {
         }
         return true;
     }
-
-
 }
