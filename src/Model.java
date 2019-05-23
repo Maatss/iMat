@@ -23,7 +23,11 @@ public class Model {
     private final ArrayList<String> months = new ArrayList<String>(Arrays.asList("1", "2", "3", "4", "5", "6"));
     private final ArrayList<String> years = new ArrayList<String>(Arrays.asList("19", "20", "21", "22", "23", "24", "25"));
 
+    private static String deliveryTime;
+    private static String deliveryDate;
+
     private boolean doShowHelpWizard = false;
+
     private int helpWizardIndex = 0;
 
     /**
@@ -116,6 +120,22 @@ public class Model {
         return iMatDataHandler.getCustomer();
     }
 
+    public static void setDeliveryTime(String deliveryTime) {
+        Model.deliveryTime = deliveryTime;
+    }
+
+    public static String getDeliveryTime() {
+        return deliveryTime;
+    }
+
+    public static void setDeliveryDate(String deliveryDate) {
+        Model.deliveryDate = deliveryDate;
+    }
+
+    public static String getDeliveryDate() {
+        return deliveryDate;
+    }
+
     public ShoppingCart getShoppingCart() {
         return iMatDataHandler.getShoppingCart();
     }
@@ -144,7 +164,7 @@ public class Model {
         if (iMatDataHandler.isFavorite(p)) {
             iMatDataHandler.removeFavorite(p);
         } else {
-            iMatDataHandler.addFavorite(p);
+            iMatDataHandler.favorites().add(0, p);
         }
     }
 
