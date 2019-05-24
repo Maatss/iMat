@@ -63,9 +63,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private ScrollPane productsScrollPane;
     @FXML
-    protected Button cartButton;
-    @FXML
-    protected ImageView cartButtonImage;
+    protected AnchorPane cartAnchorPane;
 
     @FXML
     private Label categoryLabel;
@@ -235,7 +233,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateYourProfilePanel();
 
         setupAccountPane();
-        maskTopButtons();
         updateTotalPrice();
 
         searchField.focusedProperty().addListener((listener, oldVal, newVal) -> { //Select text when focused
@@ -263,29 +260,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     // Shop pane actions
-    private void maskTopButtons() {
-        maskHomeButton();
-        cartButton.setClip(createRectMask(8, 4, 170, 90)); // Magic values fits the button's hitbox to image
-    }
-
-    private void maskHomeButton() {
-        Circle circle = new Circle();
-        double x = 124; //homeButton.getWidth(); Returns '0' for some reason
-        double y = 112; //homeButton.getWidth(); Returns '0' for some reason
-        circle.setCenterX(x / 2);
-        circle.setCenterY(y / 2);
-        circle.setRadius(32.5); //Magic number to fit mask to image (Hitbox is fit to image)
-
-        Shape mask = circle;
-        homeButton.setClip(mask);
-    }
-
-    private Shape createRectMask(double x, double y, double w, double h) {
-        Rectangle rect = new Rectangle(x, y, w, h);
-        Shape mask = rect;
-        return mask;
-    }
-
     @FXML
     private void handleLogoAction() {
         categoryLabel.setText("Alla varor");
@@ -366,12 +340,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     protected void handleShoppingCartHoverEnter() {
-        cartButtonImage.setImage(new Image("images/shoppingCartDark.png"));
+        cartAnchorPane.setStyle("-fx-background-color: #b43133EE; -fx-background-radius: 7; -fx-border-color: #000000; -fx-border-width: 3; -fx-border-radius: 7;");
     }
 
     @FXML
     protected void handleShoppingCartHoverExit() {
-        cartButtonImage.setImage(new Image("images/shoppingCart.png"));
+        cartAnchorPane.setStyle("-fx-background-color: #e54545EE; -fx-background-radius: 7; -fx-border-color: #000000; -fx-border-width: 3; -fx-border-radius: 7;");
     }
 
     // Account pane actions
