@@ -51,7 +51,7 @@ public class PricePanel extends AnchorPane {
         this.product = productIn;
         productNameLabel.setText(product.getName());
         updateCountAndCountLabel();
-        productPriceLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
+        updateProductPriceLabel();
         updatePriceSumLabel();
 
 
@@ -154,6 +154,14 @@ public class PricePanel extends AnchorPane {
             iconPath = "images/removeButtonAvailable.png";
         }
         removeButtonImageView.setImage(getImage(iconPath));
+    }
+
+    private void updateProductPriceLabel(){
+        if(product.getUnitSuffix().equals("förp")){
+            productPriceLabel.setText(String.format("%.2f", product.getPrice()) + " st");
+        } else {
+            productPriceLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
+        }
     }
 
     private void updateTextFieldColor() {

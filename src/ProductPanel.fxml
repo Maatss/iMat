@@ -14,7 +14,7 @@
             <Image url="@../../../../../../.dat215/imat/images/product_12.jpg" />
          </image></ImageView>
       <Label fx:id="nameLabel" alignment="CENTER" layoutX="6.0" layoutY="160.0" prefHeight="63.0" prefWidth="192.0" styleClass="text-large" text="Väldigt lång produkttext" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="4.0" AnchorPane.rightAnchor="4.0" />
-      <Label fx:id="prizeLabel" alignment="CENTER" layoutX="21.0" layoutY="215.0" text="437,50 per förpackning" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Label fx:id="priceLabel" alignment="CENTER" layoutX="21.0" layoutY="215.0" text="437,50 per förpackning" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <font>
             <Font size="16.0" />
          </font></Label>
