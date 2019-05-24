@@ -33,3 +33,12 @@
 .accordion_holder h5{
     -fx-background-color: #234200 !important;
 }
+
+.grid {
+    -fx-background-color: white;
+    -fx-background-radius: 5.0;
+    -fx-background-insets: 0.0 10.0 0.0 5.0;
+    -fx-padding: 10;
+    -fx-hgap: 10;
+    -fx-vgap: 10;
+}
