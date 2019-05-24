@@ -4,32 +4,21 @@
  * and open the template in the editor.
  */
 
-import com.sun.javafx.scene.control.skin.ComboBoxListViewSkin;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.animation.*;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import javafx.geometry.NodeOrientation;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
-import javafx.scene.transform.Translate;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.*;
 
-import javax.jws.WebParam;
-import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -124,7 +113,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // Account Pane 2.0
     @FXML
-    private AnchorPane profilePane;
+    private AnchorPane newAccountPane;
     @FXML
     private TextField firstNameTextField;
     @FXML
@@ -282,7 +271,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void handleYourProfileAction() {
 
 
-        profilePane.toFront();
+        newAccountPane.toFront();
         categoryLabel.setText("Min profil");
         noResultsLabel.setText("");
         updateYourProfilePanel();
