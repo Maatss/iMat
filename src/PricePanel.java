@@ -158,7 +158,7 @@ public class PricePanel extends AnchorPane {
 
     private void updateProductPriceLabel(){
         if(product.getUnitSuffix().equals("förp")){
-            productPriceLabel.setText(String.format("%.2f", product.getPrice()) + " st");
+            productPriceLabel.setText(String.format("%.2f", product.getPrice()) + " kr/st");
         } else {
             productPriceLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
         }
