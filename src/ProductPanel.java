@@ -75,6 +75,7 @@ public class ProductPanel extends AnchorPane {
         updateTextFieldColor();
         if (!product.isEcological()) {
             ecoLabel.setText("");
+            ecoLabel.setStyle("-fx-background-color:  white;");
         }
 
         countTextField.focusedProperty().addListener((listener, oldVal, newVal) ->
@@ -200,7 +201,6 @@ public class ProductPanel extends AnchorPane {
     private void updateTextFieldColor() {
         if (countCurrentItem() > 0) {
             if (countTxtfldIsHovered) {
-//                countTextField.setStyle("-fx-background-color: e33535; -fx-text-fill: white;");
                 countTextField.setStyle("-fx-background-color: b43133; -fx-text-fill: white;");
             } else {
                 countTextField.setStyle("-fx-background-color: e64545; -fx-text-fill: white;");
