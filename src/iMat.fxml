@@ -325,7 +325,7 @@
                               </ImageView>
                            </graphic>
                         </Button>
-                        <Label fx:id="itemsLabel" alignment="CENTER_RIGHT" layoutX="1380.0" layoutY="13.0" prefHeight="54.0" prefWidth="96.0" text="344 st 34560,60 kr" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
+                        <Label fx:id="itemsLabel" alignment="CENTER_RIGHT" layoutX="1380.0" layoutY="13.0" mouseTransparent="true" prefHeight="54.0" prefWidth="96.0" text="344 st 34560,60 kr" textAlignment="RIGHT" textFill="WHITE" wrapText="true">
                            <font>
                               <Font size="18.0" />
                            </font></Label>
