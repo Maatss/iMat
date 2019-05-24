@@ -4,22 +4,32 @@
  * and open the template in the editor.
  */
 
+import com.sun.javafx.scene.control.skin.ComboBoxListViewSkin;
 import com.sun.org.apache.xpath.internal.operations.Mod;
+import javafx.animation.*;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
+import javafx.geometry.NodeOrientation;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import javafx.scene.transform.Translate;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.*;
 
 import javax.jws.WebParam;
+import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +41,12 @@ import java.util.ResourceBundle;
  */
 public class iMatController implements Initializable, ShoppingCartListener {
 
-
+    private boolean cardInfoIsShown;
     private String headline;
+    private boolean isCardPayment;
+    private boolean isInvoicePayment;
+
+
     // Welcome Pane
     @FXML
     protected AnchorPane welcomePane; // Loot - I must use 'protected' for it to work?
@@ -110,7 +124,72 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // Account Pane 2.0
     @FXML
-    private AnchorPane newAccountPane;
+    private AnchorPane profilePane;
+    @FXML
+    private TextField firstNameTextField;
+    @FXML
+    private TextField lastNameTextField;
+    @FXML
+    private TextField addressTextField;
+    @FXML
+    private TextField postCodeTextField;
+    @FXML
+    private TextField postAddressTextField;
+    @FXML
+    private TextField phoneNumberTextField;
+    @FXML
+    private Button saveButton;
+    @FXML
+    private Label savedLabel;
+    @FXML
+    private RadioButton cardRadioButton;
+    @FXML
+    private RadioButton invoiceRadioButton;
+    @FXML
+    private GridPane profileGridPane;
+    @FXML
+    private ComboBox cardOptionComboBox;
+
+    @FXML
+    private Label cardOptionLabel;
+    @FXML
+    private Label cardNumberLabel;
+    @FXML
+    private Label cardNameLabel;
+    @FXML
+    private Label cardDateLabel;
+    @FXML
+    private Label cardCvcLabel;
+
+    @FXML
+    private Label firstNameMissingLabel;
+    @FXML
+    private Label lastNameMissingLabel;
+    @FXML
+    private Label addressMissingLabel;
+    @FXML
+    private Label postCodeMissingLabel;
+    @FXML
+    private Label postAddressMissingLabel;
+    @FXML
+    private Label phoneMissingLabel;
+    @FXML
+    private Label choosePaymentLabel;
+    @FXML
+    private Label cardNumberMissingLabel;
+    @FXML
+    private Label cardNameMissingLabel;
+    @FXML
+    private Label CVCmissingLabel;
+
+    private ComboBox cardComboBox = new ComboBox();
+    private TextField cardNameTF = new TextField();
+    private TextField cardNumberTF = new TextField();
+    private ComboBox cardMonthCombo = new ComboBox();
+    private ComboBox cardYearCombo = new ComboBox();
+    private TextField cvcTF = new TextField();
+
+
     @FXML
     private FlowPane prevOrdersFlowPane;
 
@@ -143,13 +222,21 @@ public class iMatController implements Initializable, ShoppingCartListener {
         model.getShoppingCart().addShoppingCartListener(this);
         categoryLabel.setText("Alla varor");
         noResultsLabel.setText("");
+        savedLabel.setText("");
+
+        profileLabelsHideVisibility();
+        setCardInfoIsShown(false);
+        fillProfileComboBoxes();
+
 
         updateProductList(model.getProducts());
         updateBottomPanel();
+        updateYourProfilePanel();
 
         setupAccountPane();
         maskTopButtons();
         updateTotalPrice();
+
     }
 
     // Welcome pane actions
@@ -193,8 +280,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleYourProfileAction() {
-        newAccountPane.toFront();
+
+
+        profilePane.toFront();
         categoryLabel.setText("Min profil");
+        noResultsLabel.setText("");
+        updateYourProfilePanel();
+
+
     }
 
     @FXML
@@ -207,6 +300,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         categoryLabel.setText("Tidigare inköp");
         updatePrevOrdersList();
         previousOrdersPane.toFront();
+        noResultsLabel.setText("");
     }
 
     @FXML
@@ -570,25 +664,25 @@ public class iMatController implements Initializable, ShoppingCartListener {
         checkoutTwoPane.toBack();
     }
 
-    private void openSuccessfulPurchaseView(){
+    private void openSuccessfulPurchaseView() {
         closeCheckoutViewTwo();
         successfulPurchasePane.toFront();
     }
 
-    public void closeSuccessfulPurchaseView(){
+    public void closeSuccessfulPurchaseView() {
         successfulPurchasePane.toBack();
     }
 
-    public void closePurchaseOpenRecipe(){
+    public void closePurchaseOpenRecipe() {
         closeSuccessfulPurchaseView();
         openReceiptsView();
     }
 
-    private void openReceiptsView(){
+    private void openReceiptsView() {
         //todo / other branch
     }
 
-    private void closeReceiptsView(){
+    private void closeReceiptsView() {
         //todo / other branch
     }
 
@@ -665,6 +759,73 @@ public class iMatController implements Initializable, ShoppingCartListener {
         purchasesLabel.setText(model.getNumberOfOrders() + " tidigare inköp hos iMat");
     }
 
+    private void updateCard() {
+
+        CreditCard card = model.getCreditCard();
+
+        card.setCardNumber(cardNumberTF.getText());
+        card.setHoldersName(cardNameTF.getText());
+
+        String selectedValue = (String) cardComboBox.getSelectionModel().getSelectedItem();
+        card.setCardType(selectedValue);
+
+        selectedValue = (String) cardMonthCombo.getSelectionModel().getSelectedItem();
+        card.setValidMonth(Integer.parseInt(selectedValue));
+
+        selectedValue = (String) cardYearCombo.getSelectionModel().getSelectedItem();
+        card.setValidYear(Integer.parseInt(selectedValue));
+
+        card.setVerificationCode(Integer.parseInt(cvcTF.getText()));
+
+    }
+
+    private void updateYourProfilePanel() {
+        Customer customer = model.getCustomer();
+
+        firstNameTextField.setText(customer.getFirstName());
+        lastNameTextField.setText(customer.getLastName());
+        addressTextField.setText(customer.getAddress());
+        postCodeTextField.setText(customer.getPostCode());
+        postAddressTextField.setText(customer.getPostAddress());
+        phoneNumberTextField.setText(customer.getPhoneNumber());
+
+        CreditCard card = model.getCreditCard();
+
+        cardNumberTF.setText(card.getCardNumber());
+        cardNameTF.setText(card.getHoldersName());
+
+        cardComboBox.getSelectionModel().select(card.getCardType());
+        cardMonthCombo.getSelectionModel().select("" + card.getValidMonth());
+        cardYearCombo.getSelectionModel().select("" + card.getValidYear());
+
+        cvcTF.setText("" + card.getVerificationCode());
+    }
+
+    private void updateCustomer() {
+        Customer customer = model.getCustomer();
+
+        customer.setFirstName(firstNameTextField.getText());
+        customer.setLastName(lastNameTextField.getText());
+        customer.setAddress(addressTextField.getText());
+        customer.setPostCode(postCodeTextField.getText());
+        customer.setPostAddress(postAddressTextField.getText());
+        customer.setPhoneNumber(phoneNumberTextField.getText());
+    }
+
+    @FXML
+    private void handleSaveAction(ActionEvent event) {
+        if (allFieldsFilled()) {
+            updateCustomer();
+            if (isCardPayment) {
+                updateCard();
+            }
+            savedLabel.setText("Sparat!");
+            fadeTransition(savedLabel);
+            hideAllProfileErrorMessages();
+        }
+    }
+
+
     private void updateCreditCard() {
         CreditCard card = model.getCreditCard();
 
@@ -681,6 +842,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         card.setValidYear(Integer.parseInt(selectedValue));
 
         card.setVerificationCode(Integer.parseInt(cvcField.getText()));
+
     }
 
     private void setupAccountPane() {
@@ -690,4 +852,304 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         yearCombo.getItems().addAll(model.getYears());
     }
+
+
+    private void fadeTransition(Node node) {
+
+        TranslateTransition transition = new TranslateTransition();
+
+        transition.setOnFinished((e) -> {
+            FadeTransition fadeOut = new FadeTransition(Duration.seconds(3), node);
+            fadeOut.setFromValue(1.0);
+            fadeOut.setToValue(0.0);
+            fadeOut.play();
+        });
+        transition.play();
+
+    }
+
+    @FXML
+    public void handleCardOption() {
+        profileGridPane.setVisible(true);
+        showCardInformation();
+        setInvoicePayment(false);
+        setCardPayment(true);
+        choosePaymentLabel.setVisible(false);
+        cardRadioButton.setStyle("");
+        invoiceRadioButton.setStyle("");
+
+        if (!cardInfoIsShown) {
+
+            profileGridPane.add(cardComboBox, 0, 0);
+            profileGridPane.add(cardNumberTF, 0, 1);
+            profileGridPane.add(cardNameTF, 0, 2);
+            profileGridPane.add(cardMonthCombo, 0, 3);
+            profileGridPane.add(cardYearCombo, 1, 3);
+            profileGridPane.add(cvcTF, 0, 4);
+
+            setCardInfoIsShown(true);
+
+
+        }
+    }
+
+    @FXML
+    public void handleInvoiceOption() {
+        profileGridPane.setVisible(false);
+        hideCardInformation();
+        removeCardErrorStyle();
+        setCardPayment(false);
+        setInvoicePayment(true);
+        choosePaymentLabel.setVisible(false);
+        cardRadioButton.setStyle("");
+        invoiceRadioButton.setStyle("");
+
+    }
+
+
+    private void profileLabelsHideVisibility() {
+        cardOptionLabel.setVisible(false);
+        cardNumberLabel.setVisible(false);
+        cardNameLabel.setVisible(false);
+        cardDateLabel.setVisible(false);
+        cardCvcLabel.setVisible(false);
+        firstNameMissingLabel.setVisible(false);
+        lastNameMissingLabel.setVisible(false);
+        addressMissingLabel.setVisible(false);
+        postCodeMissingLabel.setVisible(false);
+        postAddressMissingLabel.setVisible(false);
+        phoneMissingLabel.setVisible(false);
+        choosePaymentLabel.setVisible(false);
+        cardNumberMissingLabel.setVisible(false);
+        cardNameMissingLabel.setVisible(false);
+        CVCmissingLabel.setVisible(false);
+
+    }
+
+    private void showCardInformation() {
+        cardOptionLabel.setVisible(true);
+        cardNumberLabel.setVisible(true);
+        cardNameLabel.setVisible(true);
+        cardDateLabel.setVisible(true);
+        cardCvcLabel.setVisible(true);
+    }
+
+    private void hideCardInformation() {
+        cardOptionLabel.setVisible(false);
+        cardNumberLabel.setVisible(false);
+        cardNameLabel.setVisible(false);
+        cardDateLabel.setVisible(false);
+        cardCvcLabel.setVisible(false);
+        cardNumberMissingLabel.setVisible(false);
+        cardNameMissingLabel.setVisible(false);
+        CVCmissingLabel.setVisible(false);
+    }
+
+
+    private void setCardInfoIsShown(boolean set) {
+        this.cardInfoIsShown = set;
+    }
+
+
+
+    private void fillProfileComboBoxes() {
+        cardComboBox.getItems().addAll("Visa", "Mastercard", "American Express");
+        cardYearCombo.getItems().addAll("19", "20", "21", "22", "23", "24", "25");
+        cardMonthCombo.getItems().addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
+    }
+
+    private boolean allFieldsFilled() {
+        if (firstNameTFisfilled() && lastNameTFisfilled() && addressTFisFilled() && postCodeTFisFilled() &&
+                postAddressTFisFilled() && phoneTFisFilled() && (isCardPayment || isInvoicePayment)) {
+            if (isCardPayment) {
+                if (allCardFieldsAreFilled()) {
+                    return true;
+                }
+                else {
+                    checkMissingFields();
+                }
+
+            } else {
+                return true;
+            }
+
+        } else {
+            checkMissingFields();
+        }
+        return false;
+    }
+
+    private boolean firstNameTFisfilled() {
+        return firstNameTextField.getText().length() > 0;
+    }
+
+    private boolean allCardFieldsAreFilled() {
+        return (cardNameIsFilled() && cardNumberTFisFilled() && CVCisFilled());
+    }
+
+    private boolean lastNameTFisfilled() {
+        return lastNameTextField.getText().length() > 0;
+
+    }
+
+    private boolean addressTFisFilled() {
+        return addressTextField.getText().length() > 0;
+    }
+
+    private boolean postCodeTFisFilled() {
+        return postCodeTextField.getText().length() > 0;
+    }
+
+    private boolean postAddressTFisFilled() {
+        return postAddressTextField.getText().length() > 0;
+    }
+
+    private boolean phoneTFisFilled() {
+        return phoneNumberTextField.getText().length() > 0;
+    }
+
+    private boolean cardNumberTFisFilled() {
+        return cardNumberTF.getText().length() > 0;
+    }
+
+    private boolean cardNameIsFilled() {
+        return cardNameTF.getText().length() > 0;
+    }
+
+    private boolean CVCisFilled() {
+        return cvcTF.getText().length() > 0;
+    }
+
+
+    private void checkMissingFields() {
+        checkCustomerFields();
+
+        if (isCardPayment) {
+            checkCardFields();
+        }
+    }
+
+    private void checkCustomerFields() {
+        if (!firstNameTFisfilled()) {
+            firstNameMissingLabel.setVisible(true);
+            firstNameTextField.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+        } else {
+            firstNameMissingLabel.setVisible(false);
+            firstNameTextField.setStyle("");
+        }
+        if (!lastNameTFisfilled()) {
+            lastNameMissingLabel.setVisible(true);
+            lastNameTextField.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+        } else {
+            lastNameMissingLabel.setVisible(false);
+            lastNameTextField.setStyle("");
+        }
+        if (!addressTFisFilled()) {
+            addressMissingLabel.setVisible(true);
+            addressTextField.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+        } else {
+            addressMissingLabel.setVisible(false);
+            addressTextField.setStyle("");
+        }
+        if (!postCodeTFisFilled()) {
+            postCodeMissingLabel.setVisible(true);
+            postCodeTextField.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+        } else {
+            postCodeMissingLabel.setVisible(false);
+            postCodeTextField.setStyle("");
+        }
+
+        if (!postAddressTFisFilled()) {
+            postAddressMissingLabel.setVisible(true);
+            postAddressTextField.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+        } else {
+            postAddressMissingLabel.setVisible(false);
+            postAddressTextField.setStyle("");
+        }
+        if (!phoneTFisFilled()) {
+            phoneMissingLabel.setVisible(true);
+            phoneNumberTextField.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+        } else {
+            phoneMissingLabel.setVisible(false);
+            phoneNumberTextField.setStyle("");
+        }
+        if (!(isCardPayment || isInvoicePayment)) {
+            choosePaymentLabel.setVisible(true);
+            cardRadioButton.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+            invoiceRadioButton.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+        } else {
+            choosePaymentLabel.setVisible(false);
+            cardRadioButton.setStyle("");
+            invoiceRadioButton.setStyle("");
+        }
+    }
+
+    private void checkCardFields() {
+        if (!cardNameIsFilled()) {
+            cardNameMissingLabel.setVisible(true);
+            cardNameTF.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+        } else {
+            cardNameMissingLabel.setVisible(false);
+            cardNameTF.setStyle("");
+        }
+        if (!cardNumberTFisFilled()) {
+            cardNumberMissingLabel.setVisible(true);
+            cardNumberTF.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+        } else {
+            cardNumberMissingLabel.setVisible(false);
+            cardNumberTF.setStyle("");
+        }
+        if (!CVCisFilled()) {
+            CVCmissingLabel.setVisible(true);
+            cvcTF.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+        } else {
+            CVCmissingLabel.setVisible(false);
+            cvcTF.setStyle("");
+        }
+
+    }
+
+    private void hideAllProfileErrorMessages() {
+        firstNameMissingLabel.setVisible(false);
+        lastNameMissingLabel.setVisible(false);
+        addressMissingLabel.setVisible(false);
+        postCodeMissingLabel.setVisible(false);
+        postAddressMissingLabel.setVisible(false);
+        phoneMissingLabel.setVisible(false);
+        choosePaymentLabel.setVisible(false);
+        cardNumberMissingLabel.setVisible(false);
+        cardNameMissingLabel.setVisible(false);
+        CVCmissingLabel.setVisible(false);
+        removeErrorStyle();
+    }
+
+    public void setCardPayment(boolean cardPayment) {
+        isCardPayment = cardPayment;
+    }
+
+    public void setInvoicePayment(boolean invoicePayment) {
+        isInvoicePayment = invoicePayment;
+    }
+
+    private void removeErrorStyle() {
+        cardRadioButton.setStyle("");
+        invoiceRadioButton.setStyle("");
+        phoneNumberTextField.setStyle("");
+        postAddressTextField.setStyle("");
+        postCodeTextField.setStyle("");
+        addressTextField.setStyle("");
+        firstNameTextField.setStyle("");
+        lastNameTextField.setStyle("");
+        removeCardErrorStyle();
+    }
+
+    private void removeCardErrorStyle() {
+
+        cvcTF.setStyle("");
+        cardNumberTF.setStyle("");
+        cardNameTF.setStyle("");
+    }
+
+
+
 }
