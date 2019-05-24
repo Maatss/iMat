@@ -76,6 +76,93 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="cartPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+               <children>
+                  <AnchorPane fx:id="cartPopupPane" layoutX="400.0" layoutY="150.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
+                     <children>
+                        <AnchorPane fx:id="cartHeaderPane" prefHeight="75.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Button fx:id="cartCloseButton" layoutX="601.0" layoutY="22.0" mnemonicParsing="false" onAction="#closeCartView" text="Stäng" />
+                              <Label layoutX="270.0" layoutY="5.0" text="Varukorg">
+                                 <font>
+                                    <Font name="System Bold" size="40.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="cartContentPane" prefHeight="275.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
+                           <children>
+                              <AnchorPane fx:id="cartTitlesPane" prefHeight="30.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Label layoutX="20.0" layoutY="20.0" text="Produkt" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label text="Antal" AnchorPane.rightAnchor="295.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="10.0" layoutY="10.0" text="Totalt" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="409.0" layoutY="10.0" text="Styckpris" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <FlowPane focusTraversable="true" maxWidth="685.0" orientation="VERTICAL" prefHeight="274.0" prefWidth="685.0" prefWrapLength="0.0" />
+                              <ScrollPane style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
+                                 <content>
+                                    <VBox fx:id="cartProductsVBox" />
+                                 </content>
+                              </ScrollPane>
+                              <Label fx:id="cartIsEmptyLabel" alignment="CENTER" layoutX="63.0" layoutY="112.0" prefHeight="84.0" prefWidth="573.0" text="Varukorgen är tom. Lägg till en vara för att kunna gå till kassan. Se 'Hjälp' för mer information." textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <SplitPane fx:id="cartFooterPane" dividerPositions="0.77" prefHeight="100.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                          <items>
+                            <AnchorPane minHeight="100.0" minWidth="560.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <Label fx:id="cartTotalPriceLabel" prefHeight="100.0" prefWidth="546.0" text="Totalt: 99kr" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="50.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="20.0" top="3.0" />
+                                       </padding>
+                                    </Label>
+                                    <Button fx:id="cartEmptyCartButton" layoutX="445.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleClearCartAction" prefHeight="79.0" prefWidth="100.0" text="Töm varukorgen" textAlignment="CENTER" wrapText="true" AnchorPane.rightAnchor="20.0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="130.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <Button fx:id="cartGoToCheckoutButton" mnemonicParsing="false" onAction="#openCheckoutView" prefHeight="100.0" prefWidth="132.0" text="Gå till kassan" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="28.0" />
+                                       </font>
+                                    </Button>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
             <AnchorPane fx:id="successfulPurchasePane" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
                <children>
                   <AnchorPane fx:id="successfulPurchasePopupPane" layoutX="400.0" layoutY="150.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
@@ -98,6 +185,56 @@
                                  </font>
                               </Button>
                               <Button layoutX="289.0" layoutY="313.0" mnemonicParsing="false" onAction="#closePurchaseOpenRecipe" text="Gå till dina kvitton" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="360.0">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="checkoutPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+               <children>
+                  <AnchorPane fx:id="checkoutPopupPane" layoutX="400.0" layoutY="150.0" maxHeight="450.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
+                     <children>
+                        <AnchorPane fx:id="checkoutHeaderPane" prefHeight="75.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <ImageView fx:id="returnToCartImageView" fitHeight="63.0" fitWidth="99.0" onMouseEntered="#handleReturnToCartHoverEnter" onMouseExited="#handleReturnToCartHoverExit" onMouseReleased="#returnToCartViewFromCheckout" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/shoppingCartBack.png" />
+                                 </image>
+                              </ImageView>
+                              <Label layoutX="241.0" layoutY="5.0" text="Leveranstid">
+                                 <font>
+                                    <Font name="System Bold" size="40.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="393.0" layoutY="53.0" text="Steg 1 av 2" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="checkoutContentPane" maxHeight="375.0" prefHeight="375.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+                           <children>
+                              <AnchorPane maxHeight="275.0" prefHeight="275.0" prefWidth="600.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
+                                 <children>
+                                    <FlowPane fx:id="timeSelectionPane" hgap="2.0" layoutY="18.0" maxHeight="275.0" maxWidth="600.0" prefHeight="275.0" prefWidth="600.0" prefWrapLength="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
+                                    </FlowPane>
+                                 </children></AnchorPane>
+                              <Button fx:id="checkoutEarlierTimesButton" layoutX="100.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleShowEarlierTimes" text="Tidigare" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="3.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="checkoutLaterTimesButton" layoutX="527.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleShowLaterTimes" text="Senare" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="3.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="checkoutMoveToStepTwoButton" layoutX="289.0" layoutY="313.0" mnemonicParsing="false" onAction="#openCheckoutViewTwo" text="Gå vidare" AnchorPane.bottomAnchor="1.0">
                                  <font>
                                     <Font size="22.0" />
                                  </font>
@@ -157,76 +294,22 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="checkoutPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
-               <children>
-                  <AnchorPane fx:id="checkoutPopupPane" layoutX="400.0" layoutY="150.0" maxHeight="450.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
-                     <children>
-                        <AnchorPane fx:id="checkoutHeaderPane" prefHeight="75.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Button fx:id="returnToCartButton" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#returnToCartViewFromCheckout" prefHeight="65.0" prefWidth="100.0" style="-fx-content-display: top;" text="Varukorgen" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
-                                 <graphic>
-                                    <ImageView fitHeight="35.0" fitWidth="89.0" pickOnBounds="true" preserveRatio="true">
-                                       <image>
-                                          <Image url="@images/shoppingCart.png" />
-                                       </image>
-                                    </ImageView>
-                                 </graphic>
-                              </Button>
-                              <Label layoutX="241.0" layoutY="5.0" text="Leveranstid">
-                                 <font>
-                                    <Font name="System Bold" size="40.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="393.0" layoutY="53.0" text="Steg 1 av 2" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="checkoutContentPane" maxHeight="375.0" prefHeight="375.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
-                           <children>
-                              <AnchorPane maxHeight="275.0" prefHeight="275.0" prefWidth="600.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="50.0">
-                                 <children>
-                                    <FlowPane fx:id="timeSelectionPane" hgap="2.0" layoutY="18.0" maxHeight="275.0" maxWidth="600.0" prefHeight="275.0" prefWidth="600.0" prefWrapLength="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                    </FlowPane>
-                                 </children></AnchorPane>
-                              <Button fx:id="checkoutEarlierTimesButton" layoutX="100.0" layoutY="6.0" mnemonicParsing="false" onAction="#handleShowEarlierTimes" text="Tidigare" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="3.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="checkoutLaterTimesButton" layoutX="527.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleShowLaterTimes" text="Senare" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="3.0">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Button>
-                              <Button fx:id="checkoutMoveToStepTwoButton" layoutX="289.0" layoutY="313.0" mnemonicParsing="false" onAction="#openCheckoutViewTwo" text="Gå vidare" AnchorPane.bottomAnchor="1.0">
-                                 <font>
-                                    <Font size="22.0" />
-                                 </font>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="shopPane" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #FFF000;">
                <children>
                   <AnchorPane fx:id="headerPane" prefHeight="100.0" prefWidth="1500.0" style="-fx-background-color: #ff6600;">
                      <children>
-                        <TextField fx:id="searchField" layoutX="203.0" layoutY="34.0" onAction="#handleSearchAction" prefHeight="35.0" prefWidth="900.0" promptText="Sök i vårt produktsortiment, klicka här!">
+                        <TextField fx:id="searchField" layoutX="203.0" layoutY="34.0" onAction="#handleSearchAction" prefHeight="35.0" prefWidth="900.0" promptText="Sök i vårt produktsortiment, klicka här!" style="-fx-background-radius: 15;">
                            <font>
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="searchButton" layoutX="1104.0" layoutY="35.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="35.0" prefWidth="64.0" text="Sök" />
-                        <Button fx:id="homeButton" layoutX="35.0" mnemonicParsing="false" onAction="#handleLogoAction" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: transparent;">
+                        <Button fx:id="searchButton" layoutX="1002.0" layoutY="34.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="39.0" prefWidth="101.0" style="-fx-background-radius: 15;" text="Sök" />
+                        <Button fx:id="homeButton" layoutX="35.0" mnemonicParsing="false" onAction="#handleLogoAction" onMouseEntered="#handleLogoHoverEnter" onMouseExited="#handleLogoHoverExit" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: transparent;">
                            <font>
                               <Font size="18.0" />
                            </font>
                            <graphic>
-                              <ImageView fx:id="homelogoImageView" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="homelogoImageView" fitHeight="100.0" fitWidth="100.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@images/iMatLogo.png" />
                                  </image>
@@ -422,93 +505,6 @@
                         </AnchorPane>
                     </items>
                   </SplitPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="cartPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
-               <children>
-                  <AnchorPane fx:id="cartPopupPane" layoutX="400.0" layoutY="150.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;">
-                     <children>
-                        <AnchorPane fx:id="cartHeaderPane" prefHeight="75.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Button fx:id="cartCloseButton" layoutX="601.0" layoutY="22.0" mnemonicParsing="false" onAction="#closeCartView" text="Stäng" />
-                              <Label layoutX="270.0" layoutY="5.0" text="Varukorg">
-                                 <font>
-                                    <Font name="System Bold" size="40.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="cartContentPane" prefHeight="275.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="75.0">
-                           <children>
-                              <AnchorPane fx:id="cartTitlesPane" prefHeight="30.0" prefWidth="700.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label layoutX="20.0" layoutY="20.0" text="Produkt" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font name="System Bold" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label text="Antal" AnchorPane.rightAnchor="295.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font name="System Bold" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="10.0" layoutY="10.0" text="Totalt" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font name="System Bold" size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label layoutX="409.0" layoutY="10.0" text="Styckpris" AnchorPane.rightAnchor="135.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font name="System Bold" size="24.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
-                              <FlowPane focusTraversable="true" maxWidth="685.0" orientation="VERTICAL" prefHeight="274.0" prefWidth="685.0" prefWrapLength="0.0" />
-                              <ScrollPane style="-fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="30.0">
-                                 <content>
-                                    <VBox fx:id="cartProductsVBox" />
-                                 </content>
-                              </ScrollPane>
-                              <Label fx:id="cartIsEmptyLabel" alignment="CENTER" layoutX="63.0" layoutY="112.0" prefHeight="84.0" prefWidth="573.0" text="Varukorgen är tom. Lägg till en vara för att kunna gå till kassan. Se 'Hjälp' för mer information." textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                        <SplitPane fx:id="cartFooterPane" dividerPositions="0.77" prefHeight="100.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-                          <items>
-                            <AnchorPane minHeight="100.0" minWidth="560.0" prefHeight="160.0" prefWidth="100.0">
-                                 <children>
-                                    <Label fx:id="cartTotalPriceLabel" prefHeight="100.0" prefWidth="546.0" text="Totalt: 99kr" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font name="System Bold" size="50.0" />
-                                       </font>
-                                       <padding>
-                                          <Insets left="20.0" top="3.0" />
-                                       </padding>
-                                    </Label>
-                                    <Button fx:id="cartEmptyCartButton" layoutX="445.0" layoutY="11.0" mnemonicParsing="false" onAction="#handleClearCartAction" prefHeight="79.0" prefWidth="100.0" text="Töm varukorgen" textAlignment="CENTER" wrapText="true" AnchorPane.rightAnchor="20.0">
-                                       <font>
-                                          <Font size="15.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="130.0" prefHeight="160.0" prefWidth="100.0">
-                                 <children>
-                                    <Button fx:id="cartGoToCheckoutButton" mnemonicParsing="false" onAction="#openCheckoutView" prefHeight="100.0" prefWidth="132.0" text="Gå till kassan" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <font>
-                                          <Font name="System Bold" size="28.0" />
-                                       </font>
-                                    </Button>
-                                 </children>
-                              </AnchorPane>
-                          </items>
-                        </SplitPane>
-                     </children>
-                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>

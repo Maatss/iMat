@@ -46,7 +46,6 @@ public class ProductPanel extends AnchorPane {
     private final static double kImageRatio = 0.75;
 
     private boolean favoriteIsHovered;
-    private int productCount;
 
     public ProductPanel(Product product) {
 
@@ -243,7 +242,7 @@ public class ProductPanel extends AnchorPane {
             if (difference > 0) {
                 model.removeFromShoppingCart(product, difference);
             } else if (difference < 0) {                               // if the new value is lower - removes the difference
-                model.addToShoppingCart(product, difference*-1);
+                model.addToShoppingCart(product, difference * -1);
             }
         }
         updateCountLabel(true);

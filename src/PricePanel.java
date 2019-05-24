@@ -1,3 +1,4 @@
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
@@ -52,6 +53,21 @@ public class PricePanel extends AnchorPane {
         updateCountAndCountLabel();
         productPriceLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
         updatePriceSumLabel();
+
+        productCountTextField.focusedProperty().addListener((listener, oldVal, newVal) ->
+                {
+                    if (newVal) {
+                        updateCountLabel(false);
+
+                        Platform.runLater(() -> {
+                            productCountTextField.selectAll();
+                        });
+                    } else {
+                        addProductsTextField(productCountTextField.getText());
+                        updateCountLabel(true);
+                    }
+                }
+        );
     }
 
     @FXML
@@ -114,7 +130,7 @@ public class PricePanel extends AnchorPane {
 
     }
 
-    private void updateCountLabel(boolean appendPrefix){
+    private void updateCountLabel(boolean appendPrefix) {
         updateTextFieldColor();
         updateRemoveButtonImageView();
         if (appendPrefix) {
@@ -143,8 +159,12 @@ public class PricePanel extends AnchorPane {
         }
     }
 
-    public void addProductsTextField() {
-        String inputText = productCountTextField.getText();
+    @FXML
+    private void addProductsTextField() {
+        addProductsTextField(productCountTextField.getText());
+    }
+
+    public void addProductsTextField(String inputText) {
         if (isNumeric(inputText) || inputText.length() == 0) {    //If valid case
             int amount;
             if (inputText.length() == 0) {

@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -84,6 +86,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private AnchorPane checkoutPane;
     @FXML
     private FlowPane timeSelectionPane;
+    @FXML
+    private ImageView returnToCartImageView;
 
     // Checkout pane TWO
     @FXML
@@ -152,6 +156,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
         setupAccountPane();
         maskTopButtons();
         updateTotalPrice();
+
+        searchField.focusedProperty().addListener((listener, oldVal, newVal) -> { //Select text when focused
+            if (newVal) {
+                Platform.runLater(() -> {
+                    searchField.selectAll();
+                });
+            }
+        });
     }
 
     // Welcome pane actions
@@ -204,6 +216,16 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
+    private void handleLogoHoverEnter() {
+        homeButton.setCursor(Cursor.HAND);
+    }
+
+    @FXML
+    private void handleLogoHoverExit() {
+        homeButton.setCursor(Cursor.DEFAULT);
+    }
+
+    @FXML
     private void handleYourProfileAction() {
         newAccountPane.toFront();
         categoryLabel.setText("Min profil");
@@ -234,6 +256,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 noResultsLabel.setText(matches.size() + " st sökresultat för '" + searchField.getText() + "'");
             }
             System.out.println("# matching products: " + matches.size());
+            cartTotalPriceLabel.requestFocus();
         } else {
             searchField.setText("");
             cartTotalPriceLabel.requestFocus();
@@ -639,6 +662,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
         categoryLabel.setText("Tidigare inköp");
         updatePrevOrdersList(expandLatest);
         previousOrdersPane.toFront();
+    }
+
+    @FXML
+    private void handleReturnToCartHoverEnter() {
+        returnToCartImageView.setImage(new Image("images/shoppingCartBackDark.png"));
+    }
+
+    @FXML
+    private void handleReturnToCartHoverExit() {
+
+        returnToCartImageView.setImage(new Image("images/shoppingCartBack.png"));
     }
 
     private void closeReceiptsView() {
