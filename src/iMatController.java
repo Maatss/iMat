@@ -4,22 +4,20 @@
  * and open the template in the editor.
  */
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import se.chalmers.cse.dat216.project.*;
 
-import javax.jws.WebParam;
 import java.net.URL;
 import java.util.Date;
 import java.util.ArrayList;
@@ -73,7 +71,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private Label cartTotalPriceLabel;
     @FXML
-    private FlowPane cartProductsFlowPane;
+    private VBox cartProductsVBox;
+    @FXML
+    private Button cartGoToCheckoutButton;
+    @FXML
+    private Button cartEmptyCartButton;
+    @FXML
+    private Label cartIsEmptyLabel;
 
     // Checkout pane ONE
     @FXML
@@ -532,7 +536,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private void handleClearCartAction(ActionEvent event) {
         model.clearShoppingCart();
-        cartProductsFlowPane.getChildren().clear();
+        cartProductsVBox.getChildren().clear();
         updateProductCounts();
     }
 
@@ -574,6 +578,23 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void openCartView() {
         updateCartViewProducts();
         cartPane.toFront();
+        updateCartCheckoutButton(true);
+    }
+
+    public void updateCartCheckoutButton(boolean allowEmptyLabel) {
+        if (model.getCountInShoppingCart() > 0) {
+            cartGoToCheckoutButton.setDisable(false);
+            cartEmptyCartButton.setDisable(false);
+            if (allowEmptyLabel) {
+                cartIsEmptyLabel.toBack();
+            }
+        } else {
+            cartGoToCheckoutButton.setDisable(true);
+            cartEmptyCartButton.setDisable(true);
+            if (allowEmptyLabel) {
+                cartIsEmptyLabel.toFront();
+            }
+        }
     }
 
     public void closeCartView() {
@@ -629,6 +650,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void shoppingCartChanged(CartEvent evt) {
         updateProductCounts();
         updateTotalPrice();
+        updateCartCheckoutButton(false);
     }
 
     private void updateProductCounts() {
@@ -667,13 +689,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
         List<Product> productList = new ArrayList<>();
         Product temp;
 
-        cartProductsFlowPane.getChildren().clear();
+        cartProductsVBox.getChildren().clear();
         ShoppingCart shoppingCart = model.getShoppingCart();
 
         for (ShoppingItem si : shoppingCart.getItems()) {
             temp = si.getProduct();
             if (!productList.contains(si.getProduct())) {
-                cartProductsFlowPane.getChildren().add(new PricePanel(temp));
+                cartProductsVBox.getChildren().add(new PricePanel(temp));
             }
             productList.add(si.getProduct());
         }
