@@ -151,8 +151,12 @@ public class ProductPanel extends AnchorPane {
         int count = countCurrentItem();
         updateTextFieldColor();
         updateRemoveButtonImageView();
+        String unitSuffix = product.getUnitSuffix();
+        if(unitSuffix.equals("förp")){
+            unitSuffix = "st";
+        }
         if (appendPrefix) {
-            countTextField.setText(count + " st");
+            countTextField.setText(count + " " + unitSuffix);
         } else {
             countTextField.setText(count + "");
         }

@@ -135,12 +135,15 @@ public class PricePanel extends AnchorPane {
     private void updateCountLabel(boolean appendPrefix){
         updateTextFieldColor();
         updateRemoveButtonImageView();
+        String unitSuffix = product.getUnitSuffix();
+        if(unitSuffix.equals("förp")){
+            unitSuffix = "st";
+        }
         if (appendPrefix) {
-            productCountTextField.setText(count + " st");
+            productCountTextField.setText(count + " " + unitSuffix);
         } else {
             productCountTextField.setText(count + "");
         }
-        //TODO do this, append "st" or "kg"
     }
 
     private void updateRemoveButtonImageView() {
