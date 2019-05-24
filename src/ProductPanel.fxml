@@ -29,7 +29,7 @@
             <Image url="@images/middleSectionNotAdded.png" />
          </image>
       </ImageView>
-      <TextField fx:id="countTextField" alignment="CENTER" layoutX="48.0" layoutY="244.0" onAction="#addProductsTextField" onKeyPressed="#handleOnKeyPressed" prefHeight="7.0" prefWidth="109.0" text="0">
+      <TextField fx:id="countTextField" alignment="CENTER" layoutX="48.0" layoutY="244.0" onAction="#addProductsTextField" onKeyPressed="#handleOnKeyPressed" onMouseEntered="#handleProdTxtFldHoverEnter" onMouseExited="#handleProdTxtFldHoverExit" prefHeight="7.0" prefWidth="109.0" text="0">
          <font>
             <Font size="16.0" />
          </font>
