@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -103,6 +104,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Thanks for your purchase pane
     @FXML
     private AnchorPane successfulPurchasePane;
+    @FXML
+    private Label summaryAddressLabel;
+    @FXML
+    private Label summaryDateLabel;
+    @FXML
+    private Label summaryTimeLabel;
 
     // Account Pane
     @FXML
@@ -706,6 +713,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     private void openSuccessfulPurchaseView() {
+        updateSuccessfulPurchaseView();
         closeCheckoutViewTwo();
         successfulPurchasePane.toFront();
     }
@@ -882,6 +890,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
+
+    private void updateSuccessfulPurchaseView(){
+        summaryAddressLabel.setText("Adress: " + model.getCustomer().getAddress());
+        summaryDateLabel.setText("Dag: " + model.getDeliveryDate());
+        summaryTimeLabel.setText("Tid: " + model.getDeliveryTime());
+    }
 
     private void updateCreditCard() {
         CreditCard card = model.getCreditCard();
