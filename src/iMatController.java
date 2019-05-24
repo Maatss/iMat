@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Cursor;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -732,7 +733,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleReturnToCartHoverExit() {
-
         returnToCartImageView.setImage(new Image("images/shoppingCartBack.png"));
     }
 
@@ -912,7 +912,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
 
     private void fadeTransition(Node node) {
-
         TranslateTransition transition = new TranslateTransition();
 
         transition.setOnFinished((e) -> {
@@ -1008,7 +1007,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
 
-
     private void fillProfileComboBoxes() {
         cardComboBox.getItems().addAll("Visa", "Mastercard", "American Express");
         cardYearCombo.getItems().addAll("19", "20", "21", "22", "23", "24", "25");
@@ -1021,8 +1019,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
             if (isCardPayment) {
                 if (allCardFieldsAreFilled()) {
                     return true;
-                }
-                else {
+                } else {
                     checkMissingFields();
                 }
 
@@ -1206,7 +1203,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         cardNumberTF.setStyle("");
         cardNameTF.setStyle("");
     }
-
 
 
 }

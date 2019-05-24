@@ -310,7 +310,7 @@
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="searchButton" layoutX="939.0" layoutY="33.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="43.0" prefWidth="165.0" style="-fx-background-radius: 7; -fx-background-color: #DDDDDD; -fx-background-color: #e54545; -fx-border-width: 3; -fx-border-color: #10101070; -fx-border-radius: 7;" text="Sök" textFill="WHITE">
+                        <Button fx:id="searchButton" layoutX="939.0" layoutY="33.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="43.0" prefWidth="165.0" style="-fx-background-radius: 14; -fx-background-color: #e54545; -fx-border-width: 3; -fx-border-color: #101010A0; -fx-border-radius: 7;" text="Sök" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font></Button>
@@ -347,28 +347,28 @@
                   </AnchorPane>
                   <SplitPane fx:id="middlePane" dividerPositions="0.29797979797979796" layoutY="105.0" prefHeight="748.0" prefWidth="1500.0" AnchorPane.topAnchor="102.0">
                     <items>
-                      <AnchorPane fx:id="categoryPane" maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="697.0" prefWidth="200.0" styleClass="accordion_holder">
+                      <AnchorPane fx:id="categoryPane" maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="697.0" prefWidth="200.0" style="-fx-background-color: #D83434E0;" styleClass="accordion_holder">
                            <children>
-                              <Accordion layoutY="60.0" prefHeight="48.0" prefWidth="200.0">
+                              <Accordion layoutY="51.0" prefHeight="48.0" prefWidth="200.0">
                                 <panes>
                                     <TitledPane animated="false" onMouseClicked="#handleYourProfileAction" styleClass="category-static" text="Min profil">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </TitledPane>
-                                  <TitledPane animated="false" onMouseClicked="#handlePrevOrdersAction" styleClass="earlier-purchases-category" text="Tidigare köp">
+                                  <TitledPane animated="false" onMouseClicked="#handlePrevOrdersAction" styleClass="category-static" text="Tidigare köp">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </TitledPane>
-                                  <TitledPane fx:id="favoritesCategory" animated="false" onMouseClicked="#handleFavoriteSelectionAction" styleClass="favorite-category" text="Favoriter">
+                                  <TitledPane fx:id="favoritesCategory" animated="false" onMouseClicked="#handleFavoriteSelectionAction" styleClass="category-static" text="Favoriter">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </TitledPane>
                                 </panes>
                               </Accordion>
-                              <Accordion layoutX="-10.0" layoutY="250.0" styleClass="category-expandable" AnchorPane.leftAnchor="-10.0" AnchorPane.topAnchor="220.0">
+                              <Accordion layoutX="-10.0" layoutY="250.0" styleClass="category-expandable" AnchorPane.leftAnchor="-10.0" AnchorPane.topAnchor="180.0">
                                 <panes>
                                   <TitledPane fx:id="breadCategory" animated="false" onMouseClicked="#handleBreadSelectionAction" styleClass="category-static" text="Bröd" />
                                   <TitledPane fx:id="fridgeCategory" animated="false" onMouseClicked="#handleFridgeSelectionAction" styleClass="category-expandable" text="Kylvaror">
@@ -590,9 +590,9 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <ImageView fitHeight="158.0" fitWidth="176.0" layoutX="15.0" layoutY="-2.0" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="158.0" fitWidth="176.0" layoutX="23.0" layoutY="-4.0" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/iMatLogo2.png" />
+            <Image url="@images/iMatLogo4.png" />
          </image>
       </ImageView>
     </children>
