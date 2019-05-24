@@ -14,13 +14,13 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <TextField fx:id="productCountTextField" layoutX="350.0" layoutY="6.0" onAction="#addProductsTextField" onKeyPressed="#handleOnKeyPressed" prefHeight="25.0" prefWidth="53.0" text="0" AnchorPane.topAnchor="5.0" />
+      <TextField fx:id="productCountTextField" alignment="CENTER" layoutX="330.0" layoutY="6.0" onAction="#addProductsTextField" onKeyPressed="#handleOnKeyPressed" prefHeight="25.0" prefWidth="73.0" text="0" AnchorPane.topAnchor="5.0" />
       <ImageView fx:id="addButtonImageView" fitHeight="28.0" fitWidth="28.0" layoutX="403.0" layoutY="5.0" onMouseClicked="#handleAddAction" onMouseEntered="#hoveringAddButton" onMouseExited="#releasedAddButton" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="4.0">
          <image>
             <Image url="@images/addButton.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="removeButtonImageView" fitHeight="28.0" fitWidth="28.0" layoutX="322.0" layoutY="4.0" onMouseClicked="#handleRemoveAction" onMouseEntered="#hoveringRemoveButton" onMouseExited="#exitedRemoveButton" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="4.0">
+      <ImageView fx:id="removeButtonImageView" fitHeight="28.0" fitWidth="28.0" layoutX="302.0" layoutY="4.0" onMouseClicked="#handleRemoveAction" onMouseEntered="#hoveringRemoveButton" onMouseExited="#exitedRemoveButton" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="4.0">
          <image>
             <Image url="@images/removeButtonAvailable.png" />
          </image>

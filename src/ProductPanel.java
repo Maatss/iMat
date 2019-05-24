@@ -26,7 +26,7 @@ public class ProductPanel extends AnchorPane {
     @FXML
     protected Label nameLabel;
     @FXML
-    protected Label prizeLabel;
+    protected Label priceLabel;
     @FXML
     protected Label ecoLabel;
     @FXML
@@ -63,7 +63,7 @@ public class ProductPanel extends AnchorPane {
 
         favoriteIsHovered = false;
         nameLabel.setText(product.getName());
-        prizeLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
+        updatePriceLabel();
         imageView.setImage(model.getImage(product, kImageWidth, kImageWidth * kImageRatio));
         updateFavoriteItemImageView();
         middleSectionImageView.setImage(getImage("images/middleSectionNotAdded.png"));
@@ -150,10 +150,22 @@ public class ProductPanel extends AnchorPane {
         int count = countCurrentItem();
         updateTextFieldColor();
         updateRemoveButtonImageView();
+        String unitSuffix = product.getUnitSuffix();
+        if(unitSuffix.equals("förp")){
+            unitSuffix = "st";
+        }
         if (appendPrefix) {
-            countTextField.setText(count + " st");
+            countTextField.setText(count + " " + unitSuffix);
         } else {
             countTextField.setText(count + "");
+        }
+    }
+
+    private void updatePriceLabel(){
+        if(product.getUnitSuffix().equals("förp")){
+            priceLabel.setText(String.format("%.2f", product.getPrice()) + " kr/st");
+        } else {
+            priceLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
         }
     }
 
@@ -214,7 +226,6 @@ public class ProductPanel extends AnchorPane {
     /**
      * Adds the amount of the product that is written in the text field
      */
-
     @FXML
     protected void handleOnKeyPressed(KeyEvent event) { // Catch cases where an empty textfield is entered
         if (event.getCode() == KeyCode.ENTER) {
