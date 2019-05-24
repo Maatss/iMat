@@ -46,6 +46,7 @@ public class ProductPanel extends AnchorPane {
     private final static double kImageRatio = 0.75;
 
     private boolean favoriteIsHovered;
+    private boolean countTxtfldIsHovered;
 
     public ProductPanel(Product product) {
 
@@ -62,6 +63,7 @@ public class ProductPanel extends AnchorPane {
         this.product = product;
 
         favoriteIsHovered = false;
+        countTxtfldIsHovered = false;
         nameLabel.setText(product.getName());
         updatePriceLabel();
         imageView.setImage(model.getImage(product, kImageWidth, kImageWidth * kImageRatio));
@@ -103,6 +105,18 @@ public class ProductPanel extends AnchorPane {
         System.out.println("Remove " + product.getName());
         model.removeFromShoppingCart(product);
         updateCountLabel(true);
+    }
+
+    @FXML
+    private void handleProdTxtFldHoverEnter() {
+        countTxtfldIsHovered = true;
+        updateTextFieldColor();
+    }
+
+    @FXML
+    private void handleProdTxtFldHoverExit() {
+        countTxtfldIsHovered = false;
+        updateTextFieldColor();
     }
 
     @FXML
@@ -151,7 +165,7 @@ public class ProductPanel extends AnchorPane {
         updateTextFieldColor();
         updateRemoveButtonImageView();
         String unitSuffix = product.getUnitSuffix();
-        if(unitSuffix.equals("förp")){
+        if (unitSuffix.equals("förp")) {
             unitSuffix = "st";
         }
         if (appendPrefix) {
@@ -161,8 +175,8 @@ public class ProductPanel extends AnchorPane {
         }
     }
 
-    private void updatePriceLabel(){
-        if(product.getUnitSuffix().equals("förp")){
+    private void updatePriceLabel() {
+        if (product.getUnitSuffix().equals("förp")) {
             priceLabel.setText(String.format("%.2f", product.getPrice()) + " kr/st");
         } else {
             priceLabel.setText(String.format("%.2f", product.getPrice()) + " " + product.getUnit());
@@ -185,9 +199,18 @@ public class ProductPanel extends AnchorPane {
 
     private void updateTextFieldColor() {
         if (countCurrentItem() > 0) {
-            countTextField.setStyle("-fx-background-color: e64545; -fx-text-fill: white;");
+            if (countTxtfldIsHovered) {
+//                countTextField.setStyle("-fx-background-color: e33535; -fx-text-fill: white;");
+                countTextField.setStyle("-fx-background-color: b43133; -fx-text-fill: white;");
+            } else {
+                countTextField.setStyle("-fx-background-color: e64545; -fx-text-fill: white;");
+            }
         } else {
-            countTextField.setStyle("-fx-control-inner-background-color: white;");
+            if (countTxtfldIsHovered) {
+                countTextField.setStyle("-fx-background-color: cccccc;");
+            } else {
+                countTextField.setStyle("-fx-control-inner-background-color: white;");
+            }
         }
     }
 
