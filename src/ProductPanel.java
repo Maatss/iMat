@@ -215,7 +215,6 @@ public class ProductPanel extends AnchorPane {
     /**
      * Adds the amount of the product that is written in the text field
      */
-
     @FXML
     protected void handleOnKeyPressed(KeyEvent event) { // Catch cases where an empty textfield is entered
         if (event.getCode() == KeyCode.ENTER) {
