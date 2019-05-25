@@ -437,7 +437,7 @@
                                  </font>
                               </Label>
                               <Separator layoutX="25.0" layoutY="230.0" prefWidth="150.0" />
-                              <VBox fx:id="userCategoriesVBox" layoutY="51.0" prefHeight="123.0" prefWidth="200.0" AnchorPane.bottomAnchor="572.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0" />
+                              <VBox fx:id="userCategoriesVBox" layoutY="51.0" prefHeight="123.0" prefWidth="200.0" spacing="5.0" AnchorPane.bottomAnchor="560.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0" />
                               <VBox fx:id="categoryVBox" layoutY="180.0" prefHeight="247.0" prefWidth="200.0" spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="240.0" />
                            </children>
                         </AnchorPane>
@@ -449,7 +449,7 @@
                                  </font>
                               </Label>
                               <Separator layoutX="448.0" layoutY="57.0" prefWidth="400.0" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="444.0" />
-                              <Label fx:id="noResultsLabel" layoutX="313.0" layoutY="4.0" prefHeight="61.0" prefWidth="310.0" text="'x' antal sökresultat osv" wrapText="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                              <Label fx:id="noResultsLabel" layoutX="15.0" layoutY="35.0" prefHeight="29.0" prefWidth="375.0" text="Inget sökresultat för 'Snickers'" wrapText="true" AnchorPane.leftAnchor="15.0" AnchorPane.topAnchor="35.0">
                                  <font>
                                     <Font size="16.0" />
                                  </font>
@@ -587,11 +587,25 @@
                                     </ScrollPane>
                                  </children>
                               </AnchorPane>
-                              <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" layoutX="15.0" layoutY="69.0" prefHeight="660.0" prefWidth="1293.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0">
-                                 <content>
-                                    <FlowPane fx:id="productsFlowPane" hgap="6.0" layoutX="15.0" prefHeight="660.0" prefWidth="1275.0" style="-fx-background-color: #EFEFEF;" vgap="6.0" />
-                                 </content>
-                              </ScrollPane>
+                              <AnchorPane fx:id="productsAnchorPane" layoutX="15.0" layoutY="69.0">
+                                 <children>
+                                    <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1293.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
+                                       <content>
+                                          <FlowPane fx:id="productsFlowPane" hgap="6.0" layoutX="15.0" prefHeight="660.0" prefWidth="1275.0" style="-fx-background-color: #EFEFEF;" vgap="6.0" />
+                                       </content>
+                                    </ScrollPane>
+                                    <Label fx:id="productsNoResultsTopLabel" alignment="CENTER" layoutX="450.0" layoutY="250.0" prefHeight="61.0" prefWidth="367.0" text="Inga sökträffar." textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="productsNoResultsBottomLabel" alignment="CENTER" layoutX="378.0" layoutY="275.0" prefHeight="61.0" prefWidth="514.0" text="Kanske hittar du det du söker i någon av våra kategorier." textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                     </items>
@@ -600,10 +614,29 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <ImageView fx:id="homeImageView" fitHeight="158.0" fitWidth="176.0" layoutX="23.0" layoutY="-4.0" onMouseEntered="#handleLogoHoverEnter" onMouseExited="#handleLogoHoverExit" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/iMatLogo4.png" />
-         </image>
-      </ImageView>
+      <AnchorPane fx:id="homeButtonAnchorPane" layoutX="25.5" layoutY="5.0">
+         <children>
+            <ImageView fx:id="homeImageView" fitHeight="160.0" fitWidth="160.0" layoutX="-6.0" layoutY="-10.0" onMouseEntered="#handleLogoHoverEnter" onMouseExited="#handleLogoHoverExit" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/iMatLogo4.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="-6.0" layoutY="-10.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/iMatLogo4.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="37.0" layoutY="105.0" mouseTransparent="true" text="Startsida" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Regular" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="49.0" layoutY="9.0" mouseTransparent="true" text="Gå till" textFill="WHITE">
+               <font>
+                  <Font name="Lucida Bright Regular" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

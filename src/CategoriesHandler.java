@@ -106,12 +106,7 @@ public class CategoriesHandler {
     private void handleMainCategoryOnAction(CategoryPanel mainCategoryPanel) {
         boolean wasExpanded = mainCategoryPanel.getExpanded();
         boolean wasSelected = mainCategoryPanel.getSelected();
-        categoryPanels.forEach(panel -> panel.setExpanded(false)); //Collapse all panels, guarantees only one expanded panel at a time
-        categoryPanels.forEach(panel -> panel.setSelected(false)); //Deselect all other panels, only one selection at a time
-        subCategoryButtons.forEach(button -> {                     //Deselect all other buttons, only one selection at a time
-            button.setSelected(false);
-            updateSubCategoryButtonPlicany(button);
-        });
+        clearCategorySelection(true);       //Clear any selection and collapse any category
         if (wasSelected) {
             mainCategoryPanel.setExpanded(!wasExpanded);
         } else {
@@ -146,11 +141,7 @@ public class CategoriesHandler {
 
     private void handleSubCategoryOnAction(PliantButton subCategoryButton) {
         boolean wasSelected = subCategoryButton.isSelected();
-        subCategoryButtons.forEach(button -> {                      //Remove selection from any other subCategory
-            button.setSelected(false);
-            updateSubCategoryButtonPlicany(button);
-        });
-        categoryPanels.forEach(panel -> panel.setSelected(false));  //Remove selection from any category
+        clearCategorySelection(false); //Clear all selections from any category
         subCategoryButton.setSelected(!wasSelected);
         updateSubCategoryButtonPlicany(subCategoryButton);
         imatController.handleCategorySelection(subCategoryButton.getCategoryId());
@@ -180,6 +171,20 @@ public class CategoriesHandler {
         }
     }
 
-    public void update() {
+    public void clearCategorySelection(boolean doClearExpansion) {
+        subCategoryButtons.forEach(button -> {               //Remove selection from all other subCategory
+            button.setSelected(false);
+            updateSubCategoryButtonPlicany(button);
+        });
+        if (doClearExpansion) {
+            categoryPanels.forEach(panel -> {                    //Remove selection from all category
+                panel.setSelected(false);
+                panel.setExpanded(false);
+            });
+        } else {
+            categoryPanels.forEach(panel -> {                    //Remove selection from all category
+                panel.setSelected(false);
+            });
+        }
     }
 }

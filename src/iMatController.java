@@ -52,6 +52,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // Shopping Pane
     @FXML
+    protected AnchorPane homeButtonAnchorPane;
+    @FXML
     protected ImageView homeImageView;
     @FXML
     private AnchorPane shopPane;
@@ -59,6 +61,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private TextField searchField;
     @FXML
     private Label itemsLabel;
+    @FXML
+    private AnchorPane productsAnchorPane;
     @FXML
     private FlowPane productsFlowPane;
     @FXML
@@ -69,6 +73,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private Label categoryLabel;
     @FXML
     private Label noResultsLabel;
+    @FXML
+    private Label productsNoResultsTopLabel;
+    @FXML
+    private Label productsNoResultsBottomLabel;
     @FXML
     private Button searchButton;
 
@@ -231,16 +239,18 @@ public class iMatController implements Initializable, ShoppingCartListener {
         categoryLabel.setText("Alla varor");
         noResultsLabel.setText("");
         savedLabel.setText("");
+        productsNoResultsTopLabel.setText("");
+        productsNoResultsBottomLabel.setText("");
         categoriesHandler = CategoriesHandler.getInstance(this, userCategoriesVBox, categoryVBox);
 
         profileLabelsHideVisibility();
         setCardInfoIsShown(false);
         fillProfileComboBoxes();
 
-
         updateProductList(model.getProducts());
         updateYourProfilePanel();
 
+        maskHomeButton();
         setupAccountPane();
         updateTotalPrice();
 
@@ -258,25 +268,34 @@ public class iMatController implements Initializable, ShoppingCartListener {
     protected void handleAcceptHelpAction(ActionEvent event) {
         model.setDoShowHelpWizard(true);
         welcomePane.toBack();
-        shopPane.toFront();
+        showProductsPane();
     }
 
     @FXML
     protected void handleDenyHelpAction(ActionEvent event) {
         model.setDoShowHelpWizard(false);
         welcomePane.toBack();
-        shopPane.toFront();
+        showProductsPane();
     }
 
     // Shop pane actions
+    private void maskHomeButton() {
+        Circle circle = new Circle();
+        circle.setCenterX(73.3);
+        circle.setCenterY(70);
+        circle.setRadius(70);
+        Shape mask = circle;
+        homeImageView.setClip(mask);
+    }
+
     @FXML
     private void handleLogoAction() {
         categoryLabel.setText("Alla varor");
         noResultsLabel.setText("");
         List<Product> matches = model.findProducts("");
         updateProductList(matches);
-        shopPane.toFront();
-        productsScrollPane.toFront();
+        showProductsPane();
+        categoriesHandler.clearCategorySelection(true);
     }
 
     @FXML
@@ -300,7 +319,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         if (searchStr.length() > 0) {
             List<Product> matches = model.findProducts(searchField.getText());
             updateProductList(matches);
-            productsScrollPane.toFront();
+            showProductsPane();
             categoryLabel.setText("Sökresultat");
 
             if (matches.size() == 0) {
@@ -314,6 +333,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
             searchField.setText("");
             cartTotalPriceLabel.requestFocus();
         }
+        categoriesHandler.clearCategorySelection(true);
     }
 
     @FXML
@@ -326,6 +346,20 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void handleSearchButtonHoverExit() {
         searchButton.setStyle("-fx-background-color:  #e54545; -fx-background-radius: 14; -fx-border-color:  #101010A0; -fx-border-radius: 7; -fx-border-width: 3;");
         searchButton.setCursor(Cursor.DEFAULT);
+    }
+
+    private void showProductsPane() {
+        shopPane.toFront();
+        productsAnchorPane.toFront();
+        if (productsFlowPane.getChildren().size() > 0) {
+            productsNoResultsTopLabel.setText("");
+            productsNoResultsBottomLabel.setText("");
+        } else {
+            productsNoResultsTopLabel.setText("Inga sökträffar.");
+            productsNoResultsBottomLabel.setText("Kanske hittar du det du söker i någon av våra kategorier.");
+        }
+//        productsNoResultsTopLabel.toFront();
+//        productsNoResultsBottomLabel.toFront();
     }
 
     @FXML
@@ -488,7 +522,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         String category = id;
         ProductCategory pc = null;
         noResultsLabel.setText("");
-        productsScrollPane.toFront();
 
         List<Product> combinedProductList = new ArrayList<>();
         switch (id) {
@@ -619,6 +652,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 System.out.println("showing all products");
                 updateProductList(model.getProducts());
         }
+
+        showProductsPane(); //Basically resets resultscreen
+
         if (category.equals("profileCategory")) {
             newAccountPane.toFront();
             updateYourProfilePanel();
@@ -674,7 +710,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     public void closeAccountView() {
         updateCreditCard();
-        shopPane.toFront();
+        showProductsPane();
         accountPane.toBack();
     }
 
@@ -701,7 +737,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     public void closeCartView() {
-        shopPane.toFront();
+        showProductsPane();
         cartPane.toBack();
     }
 
@@ -756,10 +792,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     private void closeReceiptsView() {
         //todo / other branch
-    }
-
-    private void updateCategoryVBoxes() {
-        categoriesHandler.update();
     }
 
     // Shop pane methods
