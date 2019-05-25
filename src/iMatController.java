@@ -100,7 +100,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private Button cartGoToCheckoutButton;
     @FXML
-    private Button cartEmptyCartButton;
+    private AnchorPane cartEmptyCartPane;
     @FXML
     private Label cartIsEmptyLabel;
 
@@ -115,6 +115,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Checkout pane TWO
     @FXML
     private AnchorPane checkoutTwoPane;
+
+    // Checkout pane THREE
+    @FXML
+    private AnchorPane checkoutThreePane;
 
     // Thanks for your purchase pane
     @FXML
@@ -364,14 +368,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void handleBuyItemsAction() {
         if (!model.getShoppingCart().getItems().isEmpty()) {
             model.placeOrder();
-//            costLabel.setText("Köpet klart!");
-            //todo add error message
-        } else {
-//            costLabel.setText("Lägg till varor i varukorgen först");
-            //todo add error message
         }
-        closeCheckoutViewTwo();
-        openSuccessfulPurchaseView();
+        checkoutThreePane.toBack();
+        successfulPurchasePane.toFront();
     }
 
     @FXML
@@ -672,10 +671,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // Cart Pane actions
     @FXML
-    private void handleClearCartAction(ActionEvent event) {
-        model.clearShoppingCart();
-        cartProductsVBox.getChildren().clear();
-        updateProductCounts();
+    private void handleClearCartAction() {
+        if (model.getCountInShoppingCart() > 0) {
+            model.clearShoppingCart();
+            cartProductsVBox.getChildren().clear();
+            updateProductCounts();
+        }
     }
 
     // Checkout Pane actions
@@ -690,11 +691,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
         timeSelectionPane.getChildren().forEach(timeSelectionPanel -> ((TimeSelectionPanel) timeSelectionPanel).incrementDay());
     }
 
-    public void returnToCartViewFromCheckout() {
+    /*public void returnToCartViewFromCheckout() {
         closeCheckoutView();
         closeCheckoutViewTwo();
         openCartView();
-    }
+    }*/
 
     public void returnToTimeSelectAction() {
         closeCheckoutViewTwo();
@@ -719,35 +720,36 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateCartCheckoutButton(true);
     }
 
+    @FXML
+    private void closeCartView() {
+        cartPane.toBack();
+    }
+
     public void updateCartCheckoutButton(boolean allowEmptyLabel) {
         if (model.getCountInShoppingCart() > 0) {
             cartGoToCheckoutButton.setDisable(false);
-            cartEmptyCartButton.setDisable(false);
+            cartEmptyCartPane.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
             if (allowEmptyLabel) {
                 cartIsEmptyLabel.toBack();
             }
         } else {
             cartGoToCheckoutButton.setDisable(true);
-            cartEmptyCartButton.setDisable(true);
+            cartEmptyCartPane.setStyle("-fx-background-color: #BEBEBE; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
             if (allowEmptyLabel) {
                 cartIsEmptyLabel.toFront();
             }
         }
     }
 
-    public void closeCartView() {
-//        showProductsPane();
-        cartPane.toBack();
-    }
-
     public void openCheckoutView() {
-        closeCartView();
+        cartPane.toBack();
         checkoutPane.toFront();
         updateCheckoutTimetable();
     }
 
     public void closeCheckoutView() {
         checkoutPane.toBack();
+        cartPane.toFront();
     }
 
     public void openCheckoutViewTwo() {
@@ -757,11 +759,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     public void closeCheckoutViewTwo() {
         checkoutTwoPane.toBack();
+        checkoutPane.toFront();
     }
 
-    private void openSuccessfulPurchaseView() {
-        closeCheckoutViewTwo();
-        successfulPurchasePane.toFront();
+    public void openCheckoutViewThree() {
+        checkoutTwoPane.toBack();
+        checkoutThreePane.toFront();
+    }
+
+    public void closeCheckoutViewThree() {
+        checkoutThreePane.toBack();
+        checkoutTwoPane.toFront();
     }
 
     public void closeSuccessfulPurchaseView() {
