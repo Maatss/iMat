@@ -358,8 +358,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
             productsNoResultsTopLabel.setVisible(true);
             productsNoResultsBottomLabel.setVisible(true);
         }
-//        productsNoResultsTopLabel.toFront();
-//        productsNoResultsBottomLabel.toFront();
     }
 
     @FXML
