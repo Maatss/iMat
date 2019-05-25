@@ -454,7 +454,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <AnchorPane fx:id="newAccountPane" layoutY="69.0" prefHeight="435.0" prefWidth="786.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
+                              <AnchorPane fx:id="newAccountPane" layoutY="69.0" prefHeight="435.0" prefWidth="786.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="69.0">
                                  <children>
                                     <Label layoutX="21.0" layoutY="27.0" prefHeight="44.0" prefWidth="138.0" text="Mina uppgifter:">
                                        <font>
@@ -582,16 +582,16 @@
                                     </Label>
                                     <ScrollPane hbarPolicy="NEVER" layoutY="35.0" prefHeight="300.0" prefWidth="730.0" style="-fx-border-color: #FFFFFF; -fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
                                       <content>
-                                         <FlowPane fx:id="prevOrdersFlowPane" hgap="4.0" prefHeight="620.0" prefWidth="1250.0" style="-fx-background-color: #DEDEDE;" />
+                                         <FlowPane fx:id="prevOrdersFlowPane" hgap="4.0" prefHeight="620.0" prefWidth="1225.0" style="-fx-background-color: #DEDEDE;" />
                                       </content>
                                     </ScrollPane>
                                  </children>
                               </AnchorPane>
                               <AnchorPane fx:id="productsAnchorPane" layoutX="15.0" layoutY="69.0">
                                  <children>
-                                    <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1270.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
+                                    <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1250.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
                                        <content>
-                                          <FlowPane fx:id="productsFlowPane" hgap="6.0" layoutX="15.0" prefHeight="660.0" prefWidth="1275.0" style="-fx-background-color: #EFEFEF;" vgap="6.0" />
+                                          <FlowPane fx:id="productsFlowPane" hgap="6.0" layoutX="15.0" prefHeight="660.0" prefWidth="1230.0" style="-fx-background-color: #EFEFEF;" vgap="6.0" />
                                        </content>
                                     </ScrollPane>
                                     <Label fx:id="productsNoResultsTopLabel" alignment="CENTER" layoutX="450.0" layoutY="250.0" prefHeight="61.0" prefWidth="367.0" text="Inga sökträffar." textAlignment="CENTER" wrapText="true">

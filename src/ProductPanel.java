@@ -130,12 +130,14 @@ public class ProductPanel extends AnchorPane {
     @FXML
     private void handleFavoriteHoverEnter() {
         favoriteIsHovered = true;
+        setCursor(Cursor.HAND);
         updateFavoriteItemImageView();
     }
 
     @FXML
     private void handleFavoriteHoverExit() {
         favoriteIsHovered = false;
+        setCursor(Cursor.DEFAULT);
         updateFavoriteItemImageView();
     }
 

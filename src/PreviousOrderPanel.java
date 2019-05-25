@@ -1,21 +1,19 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.text.TextAlignment;
 import se.chalmers.cse.dat216.project.Order;
-import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 import java.text.Format;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PreviousOrderPanel extends AnchorPane {
     @FXML
@@ -32,8 +30,12 @@ public class PreviousOrderPanel extends AnchorPane {
     protected Label nmbArticlesLabel;
     @FXML
     protected Label priceLabel;
+    //    @FXML
+////    protected AnchorPane bottomContainerAnchorPane;
     @FXML
-    protected AnchorPane bottomContainerAnchorPane;
+    protected VBox bottomContainerVBox;
+
+    private static final double TOP_BAR_HEIGHT = 58;
 
     private static final Model model = Model.getInstance();
     private static iMatController imatController;
@@ -54,7 +56,7 @@ public class PreviousOrderPanel extends AnchorPane {
         this.order = order;
         this.imatController = imatController;
         isExpanded = false;
-        this.setPrefHeight(35);
+        this.setPrefHeight(TOP_BAR_HEIGHT);
 
         Format formatter = new SimpleDateFormat("EEEE");
         String day = formatter.format(order.getDate());
@@ -102,62 +104,83 @@ public class PreviousOrderPanel extends AnchorPane {
 
     @FXML
     private void handleMouseHoverEnter() {
-        setTopBarAnchorPaneColor(Color.rgb(200, 200, 200));
+        topBarAnchorPane.setStyle("-fx-background-color: #DEDEDE;");
         setCursor(Cursor.HAND);
     }
 
     @FXML
     private void handleMouseHoverExit() {
-        setTopBarAnchorPaneColor(Color.rgb(230, 230, 230));
+        topBarAnchorPane.setStyle("-fx-background-color: white;");
         setCursor(Cursor.DEFAULT);
     }
 
     private void setPaneExpandedHeight() {
         if (isExpanded) {
             expandImageView.setRotate(90);
-            this.setPrefHeight(35);
-            bottomContainerAnchorPane.setPrefHeight(35);
-            bottomContainerAnchorPane.getChildren().clear();
+            this.setPrefHeight(TOP_BAR_HEIGHT);
+            bottomContainerVBox.getChildren().clear();
+            bottomContainerVBox.setPrefHeight(TOP_BAR_HEIGHT);
             isExpanded = false;
         } else {
             expandImageView.setRotate(0);
-            bottomContainerAnchorPane.getChildren().clear();
+            bottomContainerVBox.getChildren().clear();
             for (int i = 0; i < order.getItems().size(); i++) {
-                double y = 5 + 20 * i;
+//                double y = 5 + 20 * i;
                 String name = order.getItems().get(i).getProduct().getName();
                 String nmb = String.format("%.0f st", order.getItems().get(i).getAmount());
                 String price = String.format("%.2f kr", order.getItems().get(i).getTotal());
-                generateOrderItemElement(16, y, name, false);
-                generateOrderItemElement(1010-40, y, nmb, true);
-                generateOrderItemElement(1070, y, price, true);
+
+                List<VBox> elementLabelVBoxes = new ArrayList<>();
+                elementLabelVBoxes.add(generateOrderItemLabel(20, 0, name, false));
+                elementLabelVBoxes.add(generateOrderItemLabel(930 - 70, 0, nmb, true));
+                elementLabelVBoxes.add(generateOrderItemLabel(1035 - 40, 0, price, true));
+
+                bottomContainerVBox.getChildren().add(generateOrderItemElement(elementLabelVBoxes, i));
             }
-            bottomContainerAnchorPane.setPrefHeight(44 + 20 * order.getItems().size());
-            this.setPrefHeight(44 + 20 * order.getItems().size() + 3);
+            this.setPrefHeight(TOP_BAR_HEIGHT + 8 + 29 * order.getItems().size());
             isExpanded = true;
         }
     }
 
-    private void generateOrderItemElement(double x, double y, String text, boolean doRightAlign) {
+    private VBox generateOrderItemLabel(double x, double y, String text, boolean doRightAlign) {
         Label label = new Label();
         label.setText(text);
+        label.setStyle("-fx-font: 18 System;");
 
         VBox vBox = new VBox();
         if (doRightAlign) {
-            vBox.setPrefSize(60, 12);
-//            vBox.setLayoutX(x-120);
-//            x=x-120;
+            vBox.setPrefSize(100, 12);
             vBox.setAlignment(Pos.CENTER_RIGHT);
         }
         vBox.setLayoutX(x);
         vBox.setLayoutY(y);
         vBox.getChildren().add(label);
-        bottomContainerAnchorPane.getChildren().add(vBox);
+        return vBox;
     }
 
-    private void setTopBarAnchorPaneColor(Color color) {
-        BackgroundFill backgroundFill = new BackgroundFill(color,
-                CornerRadii.EMPTY, Insets.EMPTY);
-        Background background = new Background(backgroundFill);
-        topBarAnchorPane.setBackground(background);
+    private AnchorPane generateOrderItemElement(List<VBox> vBoxes, int i) {
+        AnchorPane elementPane = new AnchorPane();
+        if ((i % 2) == 0) {
+            elementPane.setStyle("-fx-background-color: white;");
+            elementPane.setOnMouseEntered(pane -> handleElementHoverEnter(elementPane, "-fx-background-color: #DEDEDE;"));
+            elementPane.setOnMouseExited(pane -> handleElementHoverExit(elementPane, "-fx-background-color: white;"));
+        } else {
+            elementPane.setStyle("-fx-background-color: #EEEEEE;");
+            elementPane.setOnMouseEntered(pane -> handleElementHoverEnter(elementPane, "-fx-background-color: #DEDEDE;"));
+            elementPane.setOnMouseExited(pane -> handleElementHoverExit(elementPane, "-fx-background-color: #EEEEEE;"));
+        }
+        elementPane.setLayoutX(0);
+        elementPane.setPrefWidth(1210);
+        elementPane.setPrefHeight(20);
+        elementPane.getChildren().addAll(vBoxes);
+        return elementPane;
+    }
+
+    private void handleElementHoverEnter(AnchorPane pane, String style) {
+        pane.setStyle(style);
+    }
+
+    private void handleElementHoverExit(AnchorPane pane, String style) {
+        pane.setStyle(style);
     }
 }
