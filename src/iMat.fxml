@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.TitledPane?>
@@ -310,7 +311,7 @@
                               <Font size="18.0" />
                            </font>
                         </TextField>
-                        <Button fx:id="searchButton" layoutX="939.0" layoutY="33.0" mnemonicParsing="false" onAction="#handleSearchAction" prefHeight="43.0" prefWidth="165.0" style="-fx-background-radius: 14; -fx-background-color: #e54545; -fx-border-width: 3; -fx-border-color: #101010A0; -fx-border-radius: 7;" text="Sök" textFill="WHITE">
+                        <Button fx:id="searchButton" layoutX="939.0" layoutY="33.0" mnemonicParsing="false" onAction="#handleSearchAction" onMouseEntered="#handleSearchButtonHoverEnter" onMouseExited="#handleSearchButtonHoverExit" prefHeight="43.0" prefWidth="165.0" style="-fx-background-radius: 14; -fx-background-color: #e54545; -fx-border-width: 3; -fx-border-color: #101010A0; -fx-border-radius: 7;" text="Sök" textFill="WHITE">
                            <font>
                               <Font size="18.0" />
                            </font></Button>
@@ -347,16 +348,16 @@
                   </AnchorPane>
                   <SplitPane fx:id="middlePane" dividerPositions="0.29797979797979796" layoutY="105.0" prefHeight="748.0" prefWidth="1500.0" AnchorPane.topAnchor="102.0">
                     <items>
-                      <AnchorPane fx:id="categoryPane" maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="697.0" prefWidth="200.0" style="-fx-background-color: #D83434E0;" styleClass="accordion_holder">
+                      <AnchorPane fx:id="categoryPane" maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="697.0" prefWidth="200.0" style="-fx-background-color: #D83434E0; -fx-background-color: #FEFEFE;" styleClass="accordion_holder">
                            <children>
-                              <Accordion layoutY="51.0" prefHeight="48.0" prefWidth="200.0">
+                              <Accordion layoutY="51.0" prefHeight="48.0" prefWidth="200.0" visible="false">
                                 <panes>
-                                    <TitledPane animated="false" onMouseClicked="#handleYourProfileAction" styleClass="category-static" text="Min profil">
+                                    <TitledPane animated="false" styleClass="category-static" text="Min profil">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </TitledPane>
-                                  <TitledPane animated="false" onMouseClicked="#handlePrevOrdersAction" styleClass="category-static" text="Tidigare köp">
+                                  <TitledPane animated="false" styleClass="category-static" text="Tidigare köp">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
@@ -368,7 +369,7 @@
                                     </TitledPane>
                                 </panes>
                               </Accordion>
-                              <Accordion layoutX="-10.0" layoutY="250.0" styleClass="category-expandable" AnchorPane.leftAnchor="-10.0" AnchorPane.topAnchor="180.0">
+                              <Accordion layoutX="-10.0" layoutY="250.0" prefHeight="48.0" prefWidth="200.0" styleClass="category-expandable" visible="false" AnchorPane.leftAnchor="-10.0" AnchorPane.topAnchor="180.0">
                                 <panes>
                                   <TitledPane fx:id="breadCategory" animated="false" onMouseClicked="#handleBreadSelectionAction" styleClass="category-static" text="Bröd" />
                                   <TitledPane fx:id="fridgeCategory" animated="false" onMouseClicked="#handleFridgeSelectionAction" styleClass="category-expandable" text="Kylvaror">
@@ -430,15 +431,24 @@
                                     </TitledPane>
                                 </panes>
                               </Accordion>
+                              <Label alignment="TOP_CENTER" layoutX="1.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0" text="Kategorier" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <Separator layoutX="25.0" layoutY="230.0" prefWidth="150.0" />
+                              <VBox fx:id="userCategoriesVBox" layoutY="51.0" prefHeight="123.0" prefWidth="200.0" AnchorPane.bottomAnchor="572.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="51.0" />
+                              <VBox fx:id="categoryVBox" layoutY="180.0" prefHeight="247.0" prefWidth="200.0" spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="240.0" />
                            </children>
                         </AnchorPane>
                       <AnchorPane fx:id="browsePane" minHeight="0.0" minWidth="0.0" prefHeight="746.0" prefWidth="1280.0">
                            <children>
                               <Label fx:id="categoryLabel" alignment="CENTER" layoutX="7.0" layoutY="-10.0" maxHeight="61.0" prefHeight="61.0" prefWidth="792.0" text="Kategori" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
-                                    <Font size="41.0" />
+                                    <Font name="System Bold" size="41.0" />
                                  </font>
                               </Label>
+                              <Separator layoutX="448.0" layoutY="57.0" prefWidth="400.0" AnchorPane.leftAnchor="448.0" AnchorPane.rightAnchor="444.0" />
                               <Label fx:id="noResultsLabel" layoutX="313.0" layoutY="4.0" prefHeight="61.0" prefWidth="310.0" text="'x' antal sökresultat osv" wrapText="true" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                                  <font>
                                     <Font size="16.0" />
@@ -590,7 +600,7 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <ImageView fitHeight="158.0" fitWidth="176.0" layoutX="23.0" layoutY="-4.0" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="homeImageView" fitHeight="158.0" fitWidth="176.0" layoutX="23.0" layoutY="-4.0" onMouseEntered="#handleLogoHoverEnter" onMouseExited="#handleLogoHoverExit" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/iMatLogo4.png" />
          </image>

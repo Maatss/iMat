@@ -52,7 +52,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // Shopping Pane
     @FXML
-    protected Button homeButton;
+    protected ImageView homeImageView;
     @FXML
     private AnchorPane shopPane;
     @FXML
@@ -65,11 +65,18 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private ScrollPane productsScrollPane;
     @FXML
     protected AnchorPane cartAnchorPane;
-
     @FXML
     private Label categoryLabel;
     @FXML
     private Label noResultsLabel;
+    @FXML
+    private Button searchButton;
+
+    @FXML
+    protected VBox userCategoriesVBox;
+    @FXML
+    protected VBox categoryVBox;
+    private CategoriesHandler categoriesHandler;
 
     // Cart pane
     @FXML
@@ -224,6 +231,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         categoryLabel.setText("Alla varor");
         noResultsLabel.setText("");
         savedLabel.setText("");
+        categoriesHandler = CategoriesHandler.getInstance(this, userCategoriesVBox, categoryVBox);
 
         profileLabelsHideVisibility();
         setCardInfoIsShown(false);
@@ -273,34 +281,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleLogoHoverEnter() {
-        homeButton.setCursor(Cursor.HAND);
+        homeImageView.setCursor(Cursor.HAND);
     }
 
     @FXML
     private void handleLogoHoverExit() {
-        homeButton.setCursor(Cursor.DEFAULT);
-    }
-
-    @FXML
-    private void handleYourProfileAction() {
-
-
-        newAccountPane.toFront();
-        categoryLabel.setText("Min profil");
-        noResultsLabel.setText("");
-        updateYourProfilePanel();
-
-
+        homeImageView.setCursor(Cursor.DEFAULT);
     }
 
     @FXML
     private void handleShowAccountAction(ActionEvent event) {
         openAccountView();
-    }
-
-    @FXML
-    private void handlePrevOrdersAction() {
-        handleShowPrevOrdersPanel(false);
     }
 
     @FXML
@@ -326,6 +317,18 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
+    private void handleSearchButtonHoverEnter() {
+        searchButton.setStyle("-fx-background-color:  #D43434; -fx-background-radius: 14; -fx-border-color:  #101010A0; -fx-border-radius: 7; -fx-border-width: 3;");
+        searchButton.setCursor(Cursor.HAND);
+    }
+
+    @FXML
+    private void handleSearchButtonHoverExit() {
+        searchButton.setStyle("-fx-background-color:  #e54545; -fx-background-radius: 14; -fx-border-color:  #101010A0; -fx-border-radius: 7; -fx-border-width: 3;");
+        searchButton.setCursor(Cursor.DEFAULT);
+    }
+
+    @FXML
     private void handleBuyItemsAction() {
         if (!model.getShoppingCart().getItems().isEmpty()) {
             model.placeOrder();
@@ -341,11 +344,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     protected void handleShoppingCartHoverEnter() {
+        cartAnchorPane.setCursor(Cursor.HAND);
         cartAnchorPane.setStyle("-fx-background-color: #b43133EE; -fx-background-radius: 7; -fx-border-color: #000000; -fx-border-width: 3; -fx-border-radius: 7;");
     }
 
     @FXML
     protected void handleShoppingCartHoverExit() {
+        cartAnchorPane.setCursor(Cursor.DEFAULT);
         cartAnchorPane.setStyle("-fx-background-color: #e54545EE; -fx-background-radius: 7; -fx-border-color: #000000; -fx-border-width: 3; -fx-border-radius: 7;");
     }
 
@@ -479,7 +484,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     /**
      * See which category was pressed and update the product pane based on that
      */
-    private void handleCategorySelection(String id) {
+    protected void handleCategorySelection(String id) {
         String category = id;
         ProductCategory pc = null;
         noResultsLabel.setText("");
@@ -487,6 +492,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         List<Product> combinedProductList = new ArrayList<>();
         switch (id) {
+            case ("profileCategory"): //set profile to show
+                category = "profileCategory";
+                headline = "Min profil";
+                break;
+            case ("prevOrderCategory"): //set previous orders to show
+                category = "prevOrderCategory";
+                headline = "Tidigare inköp";
+                break;
             case ("favoritesCategory"): //set favorites to show
                 category = "favoritesCategory";
                 headline = "Favoriter";
@@ -606,7 +619,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 System.out.println("showing all products");
                 updateProductList(model.getProducts());
         }
-        if (category.equals("favoritesCategory")) {
+        if (category.equals("profileCategory")) {
+            newAccountPane.toFront();
+            updateYourProfilePanel();
+        } else if (category.equals("prevOrderCategory")) {
+            handleShowPrevOrdersPanel(false);
+        } else if (category.equals("favoritesCategory")) {
             updateProductList(model.getFavoriteProducts());
         } else if (pc != null) {
             updateProductList(model.getCategoryProducts(pc));
@@ -738,6 +756,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     private void closeReceiptsView() {
         //todo / other branch
+    }
+
+    private void updateCategoryVBoxes() {
+        categoriesHandler.update();
     }
 
     // Shop pane methods
