@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="445c0166-ee2d-4a41-a5d8-1f5a7ade7787" name="Default Changelist" comment="Exempel finns nu på hur man kan få kategorier att ladda, man behöver dock lösa på något sätt för att lägga ihop de kategorier vi har valt att klumpa tillsammans">
-      <change beforePath="$PROJECT_DIR$/src/TimeSelectionPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/TimeSelectionPanel.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/iMat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMat.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/iMatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/PSD-files/Dropdown arrow.psd" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/PSD-files/Dropdown arrow.psd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/favoriteEmpty.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/images/favoriteFilled.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PreviousOrderPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PreviousOrderPanel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,13 +26,13 @@
         <counts>
           <entry key="css" value="453" />
           <entry key="fxml" value="13" />
-          <entry key="java" value="9296" />
+          <entry key="java" value="9358" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="CSS" value="453" />
-          <entry key="JAVA" value="9296" />
+          <entry key="JAVA" value="9358" />
           <entry key="XML" value="13" />
         </counts>
       </usages-collector>
@@ -66,11 +62,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/iMatController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="374" lean-forward="true" selection-start-line="374" selection-end-line="374" />
+            <state relative-caret-position="238">
+              <caret line="839" column="87" selection-start-line="839" selection-start-column="87" selection-end-line="839" selection-end-column="87" />
               <folding>
                 <element signature="e#22908#22909#0" expanded="true" />
                 <element signature="e#22941#22942#0" expanded="true" />
@@ -105,16 +101,18 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/PreviousOrderPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="166" column="16" selection-start-line="166" selection-start-column="16" selection-end-line="166" selection-end-column="16" />
+            <state relative-caret-position="170">
+              <caret line="112" column="25" lean-forward="true" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
               <folding>
-                <element signature="e#6461#6462#0" expanded="true" />
-                <element signature="e#6480#6481#0" expanded="true" />
-                <element signature="e#6571#6572#0" expanded="true" />
-                <element signature="e#6607#6608#0" expanded="true" />
+                <element signature="e#3134#3135#0" expanded="true" />
+                <element signature="e#3173#3174#0" expanded="true" />
+                <element signature="e#6635#6636#0" expanded="true" />
+                <element signature="e#6671#6672#0" expanded="true" />
+                <element signature="e#6745#6746#0" expanded="true" />
+                <element signature="e#6781#6782#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -332,11 +330,11 @@
         <option value="$PROJECT_DIR$/src/CategoryPanel.java" />
         <option value="$PROJECT_DIR$/src/PliantButton.java" />
         <option value="$PROJECT_DIR$/src/CategoriesHandler.java" />
+        <option value="$PROJECT_DIR$/src/ProductPanel.java" />
+        <option value="$PROJECT_DIR$/src/ProductPanel.java" />
+        <option value="$PROJECT_DIR$/src/iMatController.java" />
+        <option value="$PROJECT_DIR$/src/iMatController.java" />
         <option value="$PROJECT_DIR$/src/PreviousOrderPanel.java" />
-        <option value="$PROJECT_DIR$/src/ProductPanel.java" />
-        <option value="$PROJECT_DIR$/src/ProductPanel.java" />
-        <option value="$PROJECT_DIR$/src/iMatController.java" />
-        <option value="$PROJECT_DIR$/src/iMatController.java" />
       </list>
     </option>
   </component>
@@ -375,7 +373,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558802856848" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558804943267" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -804,19 +802,6 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/PreviousOrderPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="166" column="16" selection-start-line="166" selection-start-column="16" selection-end-line="166" selection-end-column="16" />
-          <folding>
-            <element signature="e#6461#6462#0" expanded="true" />
-            <element signature="e#6480#6481#0" expanded="true" />
-            <element signature="e#6571#6572#0" expanded="true" />
-            <element signature="e#6607#6608#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/ProductPanel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="142">
@@ -832,8 +817,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/iMatController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="374" lean-forward="true" selection-start-line="374" selection-end-line="374" />
+        <state relative-caret-position="238">
+          <caret line="839" column="87" selection-start-line="839" selection-start-column="87" selection-end-line="839" selection-end-column="87" />
           <folding>
             <element signature="e#22908#22909#0" expanded="true" />
             <element signature="e#22941#22942#0" expanded="true" />
@@ -863,6 +848,21 @@
             <element signature="e#39786#39787#0" expanded="true" />
             <element signature="e#39847#39848#0" expanded="true" />
             <element signature="e#39896#39897#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PreviousOrderPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="112" column="25" lean-forward="true" selection-start-line="112" selection-start-column="25" selection-end-line="112" selection-end-column="25" />
+          <folding>
+            <element signature="e#3134#3135#0" expanded="true" />
+            <element signature="e#3173#3174#0" expanded="true" />
+            <element signature="e#6635#6636#0" expanded="true" />
+            <element signature="e#6671#6672#0" expanded="true" />
+            <element signature="e#6745#6746#0" expanded="true" />
+            <element signature="e#6781#6782#0" expanded="true" />
           </folding>
         </state>
       </provider>

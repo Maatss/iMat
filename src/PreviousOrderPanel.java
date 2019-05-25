@@ -110,7 +110,11 @@ public class PreviousOrderPanel extends AnchorPane {
 
     @FXML
     private void handleMouseHoverExit() {
-        topBarAnchorPane.setStyle("-fx-background-color: white;");
+        if (isExpanded) {
+            topBarAnchorPane.setStyle("-fx-background-color: #CECECE;");
+        } else {
+            topBarAnchorPane.setStyle("-fx-background-color: white;");
+        }
         setCursor(Cursor.DEFAULT);
     }
 
@@ -118,11 +122,13 @@ public class PreviousOrderPanel extends AnchorPane {
         if (isExpanded) {
             expandImageView.setRotate(90);
             this.setPrefHeight(TOP_BAR_HEIGHT);
+            topBarAnchorPane.setStyle("-fx-background-color: white;");
             bottomContainerVBox.getChildren().clear();
             bottomContainerVBox.setPrefHeight(TOP_BAR_HEIGHT);
             isExpanded = false;
         } else {
             expandImageView.setRotate(0);
+            topBarAnchorPane.setStyle("-fx-background-color: #CECECE;");
             bottomContainerVBox.getChildren().clear();
             for (int i = 0; i < order.getItems().size(); i++) {
 //                double y = 5 + 20 * i;
