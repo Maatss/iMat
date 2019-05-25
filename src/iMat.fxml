@@ -589,7 +589,7 @@
                               </AnchorPane>
                               <AnchorPane fx:id="productsAnchorPane" layoutX="15.0" layoutY="69.0">
                                  <children>
-                                    <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1293.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
+                                    <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1270.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
                                        <content>
                                           <FlowPane fx:id="productsFlowPane" hgap="6.0" layoutX="15.0" prefHeight="660.0" prefWidth="1275.0" style="-fx-background-color: #EFEFEF;" vgap="6.0" />
                                        </content>

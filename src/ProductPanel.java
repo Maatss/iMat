@@ -1,6 +1,7 @@
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -222,11 +223,13 @@ public class ProductPanel extends AnchorPane {
     @FXML
     private void hoveringAddButton() {
         addButtonImageView.setImage(getImage("images/addButtonPliancy.png"));
+        setCursor(Cursor.HAND);
     }
 
     @FXML
-    private void releasedAddButton() {
+    private void exitedAddButton() {
         addButtonImageView.setImage(getImage("images/addButton.png"));
+        setCursor(Cursor.DEFAULT);
 
     }
 
@@ -234,6 +237,7 @@ public class ProductPanel extends AnchorPane {
     private void hoveringRemoveButton() {
         if (countCurrentItem() > 0) {
             removeButtonImageView.setImage(getImage("images/removeButtonPliancy.png"));
+            setCursor(Cursor.HAND);
         }
     }
 
@@ -244,6 +248,7 @@ public class ProductPanel extends AnchorPane {
         } else {
             removeButtonImageView.setImage(getImage("images/removeButtonNotAvailable.png"));
         }
+        setCursor(Cursor.DEFAULT);
     }
 
     /**

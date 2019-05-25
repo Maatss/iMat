@@ -239,8 +239,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
         categoryLabel.setText("Alla varor");
         noResultsLabel.setText("");
         savedLabel.setText("");
-        productsNoResultsTopLabel.setText("");
-        productsNoResultsBottomLabel.setText("");
+        productsNoResultsTopLabel.setVisible(false);
+        productsNoResultsBottomLabel.setVisible(false);
         categoriesHandler = CategoriesHandler.getInstance(this, userCategoriesVBox, categoryVBox);
 
         profileLabelsHideVisibility();
@@ -352,11 +352,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
         shopPane.toFront();
         productsAnchorPane.toFront();
         if (productsFlowPane.getChildren().size() > 0) {
-            productsNoResultsTopLabel.setText("");
-            productsNoResultsBottomLabel.setText("");
+            productsNoResultsTopLabel.setVisible(false);
+            productsNoResultsBottomLabel.setVisible(false);
         } else {
-            productsNoResultsTopLabel.setText("Inga sökträffar.");
-            productsNoResultsBottomLabel.setText("Kanske hittar du det du söker i någon av våra kategorier.");
+            productsNoResultsTopLabel.setVisible(true);
+            productsNoResultsBottomLabel.setVisible(true);
         }
 //        productsNoResultsTopLabel.toFront();
 //        productsNoResultsBottomLabel.toFront();
@@ -653,8 +653,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 updateProductList(model.getProducts());
         }
 
-        showProductsPane(); //Basically resets resultscreen
-
         if (category.equals("profileCategory")) {
             newAccountPane.toFront();
             updateYourProfilePanel();
@@ -662,10 +660,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
             handleShowPrevOrdersPanel(false);
         } else if (category.equals("favoritesCategory")) {
             updateProductList(model.getFavoriteProducts());
+            showProductsPane(); //Basically resets resultscreen
         } else if (pc != null) {
             updateProductList(model.getCategoryProducts(pc));
+            showProductsPane(); //Basically resets resultscreen
         } else { //show multiple subcategories
             updateProductList(combinedProductList);
+            showProductsPane(); //Basically resets resultscreen
         }
         productsScrollPane.setVvalue(0); //scroll to top
         categoryLabel.setText(headline);
@@ -737,7 +738,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     public void closeCartView() {
-        showProductsPane();
+//        showProductsPane();
         cartPane.toBack();
     }
 
