@@ -355,7 +355,7 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="shopPane" prefHeight="600.0" prefWidth="720.0" style="-fx-background-color: #FFF000;">
+            <AnchorPane fx:id="shopPane" prefHeight="850.0" prefWidth="1500.0" style="-fx-background-color: #FFF000;">
                <children>
                   <AnchorPane fx:id="headerPane" prefHeight="100.0" prefWidth="1500.0" style="-fx-background-color: #ff6600;">
                      <children>
@@ -431,7 +431,7 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <AnchorPane fx:id="previousOrdersPane" prefHeight="660.0" prefWidth="1275.0" style="-fx-background-color: #EFEFEF;" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="69.0">
+                              <AnchorPane fx:id="previousOrdersPane" prefHeight="660.0" prefWidth="1275.0" style="-fx-background-color: #EFEFEF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
                                  <children>
                                     <Label layoutX="72.0" layoutY="12.0" text="Datum">
                                        <font>
@@ -455,9 +455,9 @@
                                     </ScrollPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="productsAnchorPane" layoutX="15.0" layoutY="69.0">
+                              <AnchorPane fx:id="productsAnchorPane" layoutX="15.0" layoutY="69.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
                                  <children>
-                                    <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1250.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS">
+                                    <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1250.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <content>
                                           <FlowPane fx:id="productsFlowPane" hgap="6.0" layoutX="15.0" prefHeight="660.0" prefWidth="1230.0" style="-fx-background-color: #EFEFEF;" vgap="6.0" />
                                        </content>
@@ -474,7 +474,7 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="newAccountPane" layoutY="69.0" prefHeight="435.0" prefWidth="786.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="69.0">
+                              <AnchorPane fx:id="newAccountPane" layoutY="69.0" prefHeight="435.0" prefWidth="786.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
                                  <children>
                                     <Label layoutX="50.0" layoutY="20.0" prefHeight="44.0" prefWidth="138.0" text="Mina uppgifter:">
                                        <font>
