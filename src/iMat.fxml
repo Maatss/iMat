@@ -23,6 +23,44 @@
 
 <AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1500.0" stylesheets="@iMatCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
     <children>
+      <AnchorPane fx:id="welcomePane" prefHeight="850.0" prefWidth="1500.0" style="-fx-background-color: #101010DE;">
+         <children>
+            <AnchorPane layoutX="300.0" layoutY="141.0" prefHeight="559.0" prefWidth="947.0" style="-fx-background-color: #FEFEFEDE; -fx-background-color: white; -fx-background-radius: 35;">
+               <children>
+                  <Label layoutX="256.0" layoutY="29.0" prefHeight="112.0" prefWidth="453.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="66.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="homeImageView1" fitHeight="206.0" fitWidth="249.0" layoutX="370.0" layoutY="118.0" onMouseEntered="#handleLogoHoverEnter" onMouseExited="#handleLogoHoverExit" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/iMatLogo4.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="acceptHelpButton" layoutX="484.0" layoutY="461.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="328.0" style="-fx-background-color: #E54545; -fx-background-radius: 5; -fx-border-color: #404040; -fx-border-radius: 5; -fx-border-width: 2;" text="Ja, ge mig en kort introduktion" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="denyHelpButton" layoutX="192.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="49.0" prefWidth="254.0" style="-fx-background-color: #E54545; -fx-border-radius: 5; -fx-border-color: #404040; -fx-border-radius: 5; -fx-border-width: 2;" text="Nej, jag klarar mig själv!" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Button>
+                  <Label layoutX="134.0" layoutY="371.0" prefHeight="72.0" prefWidth="675.0" text="Det verkar som att det är första gången som du använder vår tjänst, vill du ha hjälp medan du handlar?" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="372.0" layoutY="334.0" prefHeight="44.0" prefWidth="202.0" text="(kort introduktion)" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
       <StackPane fx:id="homeScreen" prefHeight="850.0" prefWidth="1500.0">
          <children>
             <AnchorPane fx:id="accountPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
@@ -421,115 +459,6 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
-                              <AnchorPane fx:id="newAccountPane" layoutY="69.0" prefHeight="435.0" prefWidth="786.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="69.0">
-                                 <children>
-                                    <Label layoutX="21.0" layoutY="27.0" prefHeight="44.0" prefWidth="138.0" text="Mina uppgifter:">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <TextField fx:id="firstNameTextField" layoutX="21.0" layoutY="71.0" prefHeight="40.0" prefWidth="200.0" promptText="Förnamn" />
-                                    <TextField fx:id="lastNameTextField" layoutX="221.0" layoutY="71.0" prefHeight="40.0" prefWidth="200.0" promptText="Efternamn" />
-                                    <TextField fx:id="addressTextField" layoutX="21.0" layoutY="111.0" prefHeight="40.0" prefWidth="400.0" promptText="Adress" />
-                                    <TextField fx:id="postCodeTextField" layoutX="21.0" layoutY="151.0" prefHeight="40.0" prefWidth="200.0" promptText="Postnummer" />
-                                    <TextField fx:id="postAddressTextField" layoutX="221.0" layoutY="151.0" prefHeight="40.0" prefWidth="200.0" promptText="Ort" />
-                                    <TextField fx:id="phoneNumberTextField" layoutX="221.0" layoutY="191.0" prefHeight="40.0" prefWidth="200.0" promptText="Telefonnummer" />
-                                    <Label layoutX="26.0" layoutY="247.0" prefHeight="44.0" prefWidth="128.0" text="Betalsätt:">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <RadioButton fx:id="cardRadioButton" layoutX="26.0" layoutY="291.0" mnemonicParsing="false" onAction="#handleCardOption" prefHeight="25.0" prefWidth="150.0" text="Kort">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <toggleGroup>
-                                          <ToggleGroup fx:id="paymentMethod" />
-                                       </toggleGroup>
-                                    </RadioButton>
-                                    <RadioButton fx:id="invoiceRadioButton" layoutX="26.0" layoutY="327.0" mnemonicParsing="false" onAction="#handleInvoiceOption" text="Faktura" toggleGroup="$paymentMethod">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </RadioButton>
-                                    <Button fx:id="saveButton" layoutX="628.0" layoutY="367.0" mnemonicParsing="false" onAction="#handleSaveAction" prefHeight="39.0" prefWidth="64.0" text="Spara">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                    </Button>
-                                    <Label fx:id="savedLabel" layoutX="713.0" layoutY="378.0" text="Label">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <GridPane fx:id="profileGridPane" layoutX="258.0" layoutY="239.0" styleClass="grid">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="130.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="71.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                    </GridPane>
-                                    <Label fx:id="cardOptionLabel" layoutX="207.0" layoutY="252.0" prefHeight="25.0" prefWidth="47.0" text="Korttyp:" />
-                                    <Label fx:id="cardNumberLabel" layoutX="179.0" layoutY="296.0" text="Kortnummer:" />
-                                    <Label fx:id="cardDateLabel" layoutX="163.0" layoutY="369.0" text="Giltighetsdatum:" />
-                                    <Label fx:id="cardCvcLabel" layoutX="218.0" layoutY="405.0" text="CVC:" />
-                                    <Label fx:id="cardNameLabel" layoutX="214.0" layoutY="339.0" text="Namn:" />
-                                    <Label fx:id="firstNameMissingLabel" layoutX="454.0" layoutY="63.0" text="* Förnamn saknas!">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="lastNameMissingLabel" layoutX="454.0" layoutY="90.0" text="* Efternamn saknas!">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="addressMissingLabel" layoutX="454.0" layoutY="124.0" text="*Adress saknas!">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="postCodeMissingLabel" layoutX="454.0" layoutY="151.0" text="*Postnummer saknas!">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="postAddressMissingLabel" layoutX="454.0" layoutY="178.0" text="*Ort saknas!">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="phoneMissingLabel" layoutX="454.0" layoutY="214.0" text="*Telefonnummer saknas!">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="choosePaymentLabel" layoutX="107.0" layoutY="308.0" text="*Välj betalsätt!">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="cardNameMissingLabel" layoutX="475.0" layoutY="339.0" text="*Namn saknas!">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="cardNumberMissingLabel" layoutX="489.0" layoutY="303.0" text="*Kortnummer saknas!">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="CVCmissingLabel" layoutX="474.0" layoutY="378.0" text="*CVC Saknas!">
-                                       <font>
-                                          <Font size="18.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
                               <AnchorPane fx:id="previousOrdersPane" prefHeight="660.0" prefWidth="1275.0" style="-fx-background-color: #EFEFEF;" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="28.0" AnchorPane.topAnchor="69.0">
                                  <children>
                                     <Label layoutX="72.0" layoutY="12.0" text="Datum">
@@ -573,6 +502,161 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
+                              <AnchorPane fx:id="newAccountPane" layoutY="69.0" prefHeight="435.0" prefWidth="786.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="35.0" AnchorPane.topAnchor="69.0">
+                                 <children>
+                                    <Label layoutX="50.0" layoutY="20.0" prefHeight="44.0" prefWidth="138.0" text="Mina uppgifter:">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="firstNameTextField" layoutX="500.0" layoutY="60.0" prefHeight="40.0" prefWidth="300.0" promptText="Karl" />
+                                    <TextField fx:id="lastNameTextField" layoutX="500.0" layoutY="110.0" prefHeight="40.0" prefWidth="300.0" promptText="Karlsson" />
+                                    <TextField fx:id="addressTextField" layoutX="500.0" layoutY="160.0" prefHeight="40.0" prefWidth="300.0" promptText="Smörgatan 32" />
+                                    <TextField fx:id="postCodeTextField" layoutX="500.0" layoutY="210.0" prefHeight="40.0" prefWidth="300.0" promptText="413 20" />
+                                    <TextField fx:id="postAddressTextField" layoutX="500.0" layoutY="260.0" prefHeight="40.0" prefWidth="300.0" promptText="Mölndal" />
+                                    <TextField fx:id="phoneNumberTextField" layoutX="500.0" layoutY="310.0" prefHeight="40.0" prefWidth="300.0" promptText="0943 234212" />
+                                    <Label layoutX="50.0" layoutY="405.0" prefHeight="44.0" prefWidth="128.0" text="Betalsätt:">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <RadioButton fx:id="cardRadioButton" layoutX="150.0" layoutY="485.0" mnemonicParsing="false" onAction="#handleCardOption" prefHeight="25.0" prefWidth="80.0" text="Kort">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <toggleGroup>
+                                          <ToggleGroup fx:id="paymentMethod" />
+                                       </toggleGroup>
+                                    </RadioButton>
+                                    <RadioButton fx:id="invoiceRadioButton" layoutX="150.0" layoutY="525.0" mnemonicParsing="false" onAction="#handleInvoiceOption" prefWidth="80.0" text="Faktura" toggleGroup="$paymentMethod">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </RadioButton>
+                                    <Button fx:id="saveButton" layoutX="1001.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleSaveAction" prefHeight="55.0" prefWidth="98.0" text="Spara">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Button>
+                                    <Label fx:id="savedLabel" layoutX="1120.0" layoutY="573.0" prefHeight="67.0" prefWidth="111.0" text="Label">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <GridPane fx:id="profileGridPane" layoutX="500.0" layoutY="438.0" prefWidth="170.0" styleClass="grid">
+                                      <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="75.93902587890625" />
+                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="64.06097412109375" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints maxHeight="28.32318115234375" minHeight="10.0" prefHeight="28.32318115234375" vgrow="SOMETIMES" />
+                                        <RowConstraints maxHeight="45.0914306640625" minHeight="10.0" prefHeight="31.67681884765625" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                    </GridPane>
+                                    <Label fx:id="cardOptionLabel" alignment="CENTER_RIGHT" layoutX="260.0" layoutY="450.0" prefHeight="27.0" prefWidth="220.0" text="Korttyp:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <Label fx:id="cardNumberLabel" alignment="CENTER_RIGHT" layoutX="260.0" layoutY="490.0" prefWidth="220.0" text="Kortnummer:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <Label fx:id="cardDateLabel" alignment="CENTER_RIGHT" layoutX="260.0" layoutY="575.0" prefWidth="220.0" text="Giltighetsdatum (MM/ÅÅ):">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <Label fx:id="cardCvcLabel" alignment="CENTER_RIGHT" layoutX="260.0" layoutY="611.0" prefWidth="220.0" text="CVC:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <Label fx:id="cardNameLabel" alignment="CENTER_RIGHT" layoutX="260.0" layoutY="530.0" prefWidth="220.0" text="Namn:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <Label fx:id="firstNameMissingLabel" layoutX="870.0" layoutY="60.0" text="* Förnamn saknas!">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="lastNameMissingLabel" layoutX="870.0" layoutY="110.0" text="* Efternamn saknas!">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="addressMissingLabel" layoutX="870.0" layoutY="160.0" text="*Adress saknas!">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="postCodeMissingLabel" layoutX="870.0" layoutY="210.0" text="*Postnummer saknas!">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="postAddressMissingLabel" layoutX="870.0" layoutY="260.0" text="*Ort saknas!">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="phoneMissingLabel" layoutX="870.0" layoutY="310.0" text="*Telefonnummer saknas!">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="choosePaymentLabel" layoutX="91.0" layoutY="609.0" text="*Välj betalsätt!">
+                                       <font>
+                                          <Font size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="cardNameMissingLabel" layoutX="870.0" layoutY="530.0" text="*Namn saknas!">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="cardNumberMissingLabel" layoutX="870.0" layoutY="490.0" text="*Kortnummer saknas!">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="CVCmissingLabel" layoutX="870.0" layoutY="611.0" text="*CVC Saknas!">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Separator layoutX="140.0" layoutY="381.0" prefHeight="2.0" prefWidth="927.0" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="260.0" layoutY="70.0" prefWidth="220.0" text="Förnamn:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER_RIGHT" layoutX="260.0" layoutY="120.0" prefWidth="220.0" text="Efternamn:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER_RIGHT" layoutX="260.0" layoutY="170.0" prefWidth="220.0" text="Adress:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER_RIGHT" layoutX="260.0" layoutY="220.0" prefWidth="220.0" text="Postnummer:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER_RIGHT" layoutX="260.0" layoutY="270.0" prefWidth="220.0" text="Ort:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label alignment="CENTER_RIGHT" layoutX="260.0" layoutY="320.0" prefWidth="220.0" text="Telefonnummer:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                     </items>
@@ -603,44 +687,6 @@
                   <Font name="Lucida Bright Regular" size="16.0" />
                </font>
             </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="welcomePane" prefHeight="850.0" prefWidth="1500.0" style="-fx-background-color: #101010DE;">
-         <children>
-            <AnchorPane layoutX="300.0" layoutY="141.0" prefHeight="559.0" prefWidth="947.0" style="-fx-background-color: #FEFEFEDE; -fx-background-color: white; -fx-background-radius: 35;">
-               <children>
-                  <Label layoutX="256.0" layoutY="29.0" prefHeight="112.0" prefWidth="453.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="66.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="homeImageView1" fitHeight="206.0" fitWidth="249.0" layoutX="370.0" layoutY="118.0" onMouseEntered="#handleLogoHoverEnter" onMouseExited="#handleLogoHoverExit" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/iMatLogo4.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="acceptHelpButton" layoutX="484.0" layoutY="461.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="328.0" style="-fx-background-color: #E54545; -fx-background-radius: 5; -fx-border-color: #404040; -fx-border-radius: 5; -fx-border-width: 2;" text="Ja, ge mig en kort introduktion" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="19.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="denyHelpButton" layoutX="192.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="49.0" prefWidth="254.0" style="-fx-background-color: #E54545; -fx-border-radius: 5; -fx-border-color: #404040; -fx-border-radius: 5; -fx-border-width: 2;" text="Nej, jag klarar mig själv!" textFill="WHITE">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </Button>
-                  <Label layoutX="134.0" layoutY="371.0" prefHeight="72.0" prefWidth="675.0" text="Det verkar som att det är första gången som du använder vår tjänst, vill du ha hjälp medan du handlar?" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="372.0" layoutY="334.0" prefHeight="44.0" prefWidth="202.0" text="(kort introduktion)" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
          </children>
       </AnchorPane>
     </children>
