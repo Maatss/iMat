@@ -2,6 +2,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -19,6 +20,8 @@ public class CategoryPanel extends AnchorPane {
     private ImageView categoryExpandImageView;
     @FXML
     private VBox categoryChildVBox;
+    @FXML
+    private ImageView categoryImageView;
 
     private String name;
     private String id;
@@ -65,6 +68,31 @@ public class CategoryPanel extends AnchorPane {
         categoryChildVBox.setVisible(false);
         categoryPanelNameLabel.setText(name);
         this.setPrefHeight(40);
+
+        checkIfTopCategory();
+    }
+
+    private void checkIfTopCategory(){
+        switch(id){
+            case("profileCategory"):
+                categoryPanelNameLabel.setLayoutX(categoryPanelNameLabel.getLayoutX() + 45);
+                categoryImageView.setImage(getImage("images/profile.png"));
+                break;
+            case("prevOrderCategory"):
+                categoryPanelNameLabel.setLayoutX(categoryPanelNameLabel.getLayoutX() + 45);
+                categoryImageView.setImage(getImage("images/receiptIcon.png"));
+                break;
+            case("favoritesCategory"):
+                categoryPanelNameLabel.setLayoutX(categoryPanelNameLabel.getLayoutX() + 45);
+                categoryImageView.setImage(getImage("images/Favorite/FavoriteFilled.png"));
+                break;
+            default:
+                break;
+        }
+    }
+
+    private Image getImage(String path) {
+        return new Image(getClass().getClassLoader().getResourceAsStream(path));
     }
 
     private void updateCategoryHeight() {

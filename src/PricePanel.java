@@ -64,7 +64,8 @@ public class PricePanel extends AnchorPane {
                         });
                     } else {
                         addProductsTextField(productCountTextField.getText());
-                        updateCountLabel(true);
+                        updateCountAndCountLabel();
+                        updatePriceSumLabel();
                     }
                 }
         );

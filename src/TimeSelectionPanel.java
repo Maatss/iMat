@@ -15,8 +15,9 @@ public class TimeSelectionPanel extends AnchorPane {
     private Label dayOfWeekLabel;
 
     Date deliveryDate;
+    private iMatController controller;
 
-    public TimeSelectionPanel(Date date){
+    public TimeSelectionPanel(Date date, iMatController controller){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TimeSelectionPanel.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -28,6 +29,7 @@ public class TimeSelectionPanel extends AnchorPane {
         }
 
         deliveryDate = date;
+        this.controller = controller;
         updateDateLabels();
     }
 
@@ -48,29 +50,37 @@ public class TimeSelectionPanel extends AnchorPane {
             case (6):
                 return "Lördag";
             default:
-                return "Error 352";
+                return "Error when converting Date to String";
         }
     }
 
     @FXML private void handleTimeSelectOne(){
         updateModelDeliveryDate();
         Model.setDeliveryTime("8-10");
+        updateCheckoutTimeButton();
     }
     @FXML private void handleTimeSelectTwo(){
         updateModelDeliveryDate();
         Model.setDeliveryTime("10-12");
+        updateCheckoutTimeButton();
     }
     @FXML private void handleTimeSelectThree(){
         updateModelDeliveryDate();
         Model.setDeliveryTime("12-14");
+        updateCheckoutTimeButton();
     }
     @FXML private void handleTimeSelectFour(){
         updateModelDeliveryDate();
         Model.setDeliveryTime("14-16");
+        updateCheckoutTimeButton();
     }
 
     private void updateModelDeliveryDate(){
         Model.setDeliveryDate(dayOfWeekLabel.getText());
+    }
+
+    private void updateCheckoutTimeButton(){
+        controller.updateCheckoutTimeButton();
     }
 
     private void updateDateLabels(){

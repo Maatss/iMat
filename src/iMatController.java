@@ -111,10 +111,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private FlowPane timeSelectionPane;
     @FXML
     private ImageView returnToCartImageView;
+    @FXML
+    private Button checkoutMoveToStepTwoButton;
 
     // Checkout pane TWO
     @FXML
     private AnchorPane checkoutTwoPane;
+    @FXML
+    private Button checkoutMoveToStepThreeButton;
 
     // Checkout pane THREE
     @FXML
@@ -236,6 +240,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private TitledPane snacksCategory;
     // Other variables
     private final Model model = Model.getInstance();
+    private List<ProductPanel> allProductPanels = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -246,12 +251,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
         productsNoResultsTopLabel.setVisible(false);
         productsNoResultsBottomLabel.setVisible(false);
         categoriesHandler = CategoriesHandler.getInstance(this, userCategoriesVBox, categoryVBox);
+        loadAllProductPanels();
 
         profileLabelsHideVisibility();
         setCardInfoIsShown(false);
         fillProfileComboBoxes();
 
-        updateProductList(model.getProducts());
+        showAllProducts();
         updateYourProfilePanel();
 
         maskHomeButton();
@@ -294,11 +300,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleLogoAction() {
-        categoryLabel.setText("Alla varor");
-        noResultsLabel.setText("");
-        List<Product> matches = model.findProducts("");
-        updateProductList(matches);
-        showProductsPane();
+        showAllProducts();
         categoriesHandler.clearCategorySelection(true);
     }
 
@@ -361,6 +363,25 @@ public class iMatController implements Initializable, ShoppingCartListener {
         } else {
             productsNoResultsTopLabel.setVisible(true);
             productsNoResultsBottomLabel.setVisible(true);
+        }
+    }
+
+    private void showAllProducts() {
+        categoryLabel.setText("Alla varor");
+        noResultsLabel.setText("");
+
+        productsFlowPane.getChildren().clear();
+
+        for (ProductPanel panel : allProductPanels) {
+            productsFlowPane.getChildren().add(panel);
+        }
+
+        showProductsPane();
+    }
+
+    private void loadAllProductPanels() {
+        for (Product product : model.getProducts()) {
+            allProductPanels.add(new ProductPanel(product));
         }
     }
 
@@ -647,7 +668,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
             default:
                 System.out.println("no category matched :OOOOOOOO");
                 System.out.println("showing all products");
-                updateProductList(model.getProducts());
+                showAllProducts();
         }
 
         if (category.equals("profileCategory")) {
@@ -741,10 +762,26 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
+    public void updateCheckoutTimeButton(){
+        if (Model.getDeliveryTime() == null || Model.getDeliveryTime().isEmpty()) {
+            checkoutMoveToStepTwoButton.setDisable(true);
+            checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
+            //TODO view label that says user needs to select a time first
+        } else {
+            checkoutMoveToStepTwoButton.setDisable(false);
+            checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
+        }
+    }
+
+    private void updateCheckoutViewTwoButton(){
+
+    }
+
     public void openCheckoutView() {
+        updateCheckoutTimeButton();
+        updateCheckoutTimetable();
         cartPane.toBack();
         checkoutPane.toFront();
-        updateCheckoutTimetable();
     }
 
     public void closeCheckoutView() {
@@ -755,6 +792,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void openCheckoutViewTwo() {
         checkoutPane.toBack();
         checkoutTwoPane.toFront();
+        updateCheckoutViewTwoButton();
     }
 
     public void closeCheckoutViewTwo() {
@@ -817,7 +855,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
         productsFlowPane.getChildren().clear();
 
         for (Product product : products) {
-            productsFlowPane.getChildren().add(new ProductPanel(product));
+            ProductPanel temp = findProductPanel(product);
+            productsFlowPane.getChildren().add(temp);
         }
     }
 
@@ -825,7 +864,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         timeSelectionPane.getChildren().clear();
         Date d = new Date();
         for (int i = 0; i < 4; i++) {
-            timeSelectionPane.getChildren().add(new TimeSelectionPanel(d));
+            timeSelectionPane.getChildren().add(new TimeSelectionPanel(d, this));
             //plus a day
             d = new Date(d.getTime() + (24 * 60 * 60 * 1000));
         }
@@ -961,6 +1000,18 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         card.setVerificationCode(Integer.parseInt(cvcField.getText()));
 
+    }
+
+    private ProductPanel findProductPanel(Product product){
+        ProductPanel temp = allProductPanels.get(0);
+
+        for(ProductPanel panel: allProductPanels){
+            if(panel.getProduct() == product){
+                return panel;
+            }
+        }
+        System.out.println("ERROR: Can not find matching ProductPanel to Product");
+        return temp;
     }
 
     private void setupAccountPane() {
