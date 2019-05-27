@@ -204,6 +204,11 @@
                                     <Font name="System Bold" size="22.0" />
                                  </font>
                               </Button>
+                              <Label fx:id="checkoutTimeNotSelectedLabel" prefHeight="54.0" prefWidth="153.0" text="Du måste välja en tid för att gå vidare." wrapText="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="450.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                      </children>

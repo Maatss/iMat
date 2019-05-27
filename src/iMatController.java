@@ -113,6 +113,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private ImageView returnToCartImageView;
     @FXML
     private Button checkoutMoveToStepTwoButton;
+    @FXML
+    private Label checkoutTimeNotSelectedLabel;
 
     // Checkout pane TWO
     @FXML
@@ -766,10 +768,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
         if (Model.getDeliveryTime() == null || Model.getDeliveryTime().isEmpty()) {
             checkoutMoveToStepTwoButton.setDisable(true);
             checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
+            checkoutTimeNotSelectedLabel.setVisible(true);
             //TODO view label that says user needs to select a time first
         } else {
             checkoutMoveToStepTwoButton.setDisable(false);
             checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
+            checkoutTimeNotSelectedLabel.setVisible(false);
         }
     }
 
