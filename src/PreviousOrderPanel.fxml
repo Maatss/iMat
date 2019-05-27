@@ -6,46 +6,47 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="1250.0" style="-fx-background-color: #ffffff;" styleClass="product-list-item" stylesheets="@productPanel.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="1225.0" style="-fx-background-color: #ffffff;" styleClass="product-list-item" stylesheets="@productPanel.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <AnchorPane fx:id="topBarAnchorPane" onMouseEntered="#handleMouseHoverEnter" onMouseExited="#handleMouseHoverExit" onMouseReleased="#handlePanelExpand" prefHeight="38.0" prefWidth="1250.0" style="-fx-background-color: #EFEFEF;" AnchorPane.leftAnchor="-2.0">
+      <AnchorPane fx:id="topBarAnchorPane" onMouseEntered="#handleMouseHoverEnter" onMouseExited="#handleMouseHoverExit" onMouseReleased="#handlePanelExpand" prefHeight="58.0" prefWidth="1225.0" style="-fx-background-color: white;" AnchorPane.leftAnchor="-2.0">
          <children>
-            <ImageView fx:id="expandImageView" fitHeight="93.0" fitWidth="24.0" layoutX="7.0" layoutY="9.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+            <ImageView fx:id="expandImageView" fitHeight="100.0" fitWidth="30.0" layoutX="7.0" layoutY="14.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                <image>
                   <Image url="@images/Dropdown%20arrow.png" />
                </image>
             </ImageView>
-            <Label fx:id="dayLabel" focusTraversable="false" layoutX="47.0" layoutY="10.0" mouseTransparent="true" text="Torsdag">
+            <Label fx:id="dayLabel" focusTraversable="false" layoutX="56.0" layoutY="15.0" mouseTransparent="true" prefHeight="30.0" prefWidth="91.0" text="Torsdag">
                <font>
-                  <Font size="15.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="dateLabel" focusTraversable="false" layoutX="126.0" layoutY="11.0" mouseTransparent="true" text="23-maj-2018 kl: 21:30">
+            <Label fx:id="dateLabel" focusTraversable="false" layoutX="177.0" layoutY="16.0" mouseTransparent="true" text="23-maj-2018 kl: 21:30">
                <font>
-                  <Font size="15.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="nmbArticlesLabel" focusTraversable="false" layoutX="1010.0" layoutY="9.0" mouseTransparent="true" text="5 st">
+            <Label fx:id="nmbArticlesLabel" alignment="CENTER_RIGHT" focusTraversable="false" layoutX="885.0" layoutY="14.0" mouseTransparent="true" prefHeight="30.0" prefWidth="84.0" text="500 st">
                <font>
-                  <Font size="15.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="priceLabel" alignment="CENTER_RIGHT" focusTraversable="false" layoutX="1070.0" layoutY="9.0" mouseTransparent="true" prefHeight="21.0" prefWidth="78.0" text="239,58 kr" textAlignment="CENTER">
+            <Label fx:id="priceLabel" alignment="CENTER_RIGHT" focusTraversable="false" layoutX="995.0" layoutY="14.0" mouseTransparent="true" prefHeight="30.0" prefWidth="111.0" text="23900,58 kr" textAlignment="CENTER">
                <font>
-                  <Font size="15.0" />
+                  <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="addToCartButton" layoutX="1175.0" layoutY="7.0" mnemonicParsing="false" onAction="#handlePrevOrderAdd" text="Lägg till" />
-            <Separator focusTraversable="false" layoutX="35.0" layoutY="9.0" mouseTransparent="true" orientation="VERTICAL" prefHeight="21.0" prefWidth="2.0" />
-            <Separator focusTraversable="false" layoutX="110.0" layoutY="10.0" mouseTransparent="true" orientation="VERTICAL" prefHeight="21.0" prefWidth="2.0" />
-            <Separator focusTraversable="false" layoutX="974.0" layoutY="8.0" mouseTransparent="true" orientation="VERTICAL" prefHeight="21.0" prefWidth="2.0" />
-            <Separator focusTraversable="false" layoutX="1059.0" layoutY="8.0" mouseTransparent="true" orientation="VERTICAL" prefHeight="21.0" prefWidth="2.0" />
-            <Separator focusTraversable="false" layoutX="1159.0" layoutY="9.0" mouseTransparent="true" orientation="VERTICAL" prefHeight="21.0" prefWidth="2.0" />
-            <Separator focusTraversable="false" layoutX="8.0" layoutY="35.0" mouseTransparent="true" prefHeight="0.0" prefWidth="634.0" />
+            <Button fx:id="addToCartButton" layoutX="1125.0" layoutY="14.0" mnemonicParsing="false" onAction="#handlePrevOrderAdd" prefHeight="30.0" prefWidth="84.0" style="-fx-background-color: #e54545; -fx-background-radius: 10; -fx-border-color: #404040; -fx-border-width: 2; -fx-border-radius: 7;" text="Lägg till" textFill="WHITE" />
+            <Separator focusTraversable="false" layoutX="41.0" layoutY="13.0" mouseTransparent="true" orientation="VERTICAL" prefHeight="30.0" prefWidth="2.0" />
+            <Separator focusTraversable="false" layoutX="157.0" layoutY="14.0" mouseTransparent="true" orientation="VERTICAL" prefHeight="30.0" prefWidth="2.0" />
+            <Separator focusTraversable="false" layoutX="881.0" layoutY="12.0" mouseTransparent="true" orientation="VERTICAL" prefHeight="30.0" prefWidth="2.0" />
+            <Separator focusTraversable="false" layoutX="983.0" layoutY="12.0" mouseTransparent="true" orientation="VERTICAL" prefHeight="30.0" prefWidth="2.0" />
+            <Separator focusTraversable="false" layoutX="1110.0" layoutY="15.0" mouseTransparent="true" orientation="VERTICAL" prefHeight="30.0" prefWidth="2.0" />
+            <Separator focusTraversable="false" layoutX="8.0" layoutY="51.0" mouseTransparent="true" prefHeight="0.0" prefWidth="1205.0" />
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="bottomContainerAnchorPane" layoutX="7.0" layoutY="36.0" prefHeight="115.0" prefWidth="642.0" />
+      <VBox fx:id="bottomContainerVBox" layoutX="5.0" layoutY="56.0" prefHeight="140.0" prefWidth="1210.0" spacing="2.0" />
    </children>
 </fx:root>

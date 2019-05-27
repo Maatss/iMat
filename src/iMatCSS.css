@@ -14,12 +14,66 @@
     -fx-font-size: 18px;
 }
 
+.category-expandable > .title{
+    -fx-background-color: #F0F0F0;
+    -fx-background-radius: 0;
+    -fx-border-color: #AEAEAE70;
+    -fx-border-width: 1;
+    -fx-border-radius: 2;
+}
+
 .category-expandable-child{
     -fx-font-size: 13px;
+    -fx-background-color: #F0F0F0;
+    -fx-background-radius: 0;
+    -fx-border-color: #AEAEAE70;
+    -fx-border-width: 1;
+    -fx-border-radius: 2;
+}
+
+.category-expandable:focused > .title{
+    -fx-background-color: #D0D0D0;
+    -fx-background-color: #E0E0E0;
+    -fx-border-color: #e54545;
+    -fx-border-width: 2;
+}
+
+.category-expandable > .title:hover{
+    -fx-background-color: D0D0D0;
+}
+
+.category-expandable-child:hover{
+    -fx-background-color: D0D0D0;
+}
+
+.category-expandable-child:focused{
+    -fx-background-color: #E0E0E0;
+    -fx-border-color: #e54545;
+    -fx-border-width: 2;
 }
 
 .category-static > .title > .arrow-button{
     visibility: hidden;
+}
+
+.category-static > .title{
+    -fx-background-color: #e54545;
+    -fx-background-color: #F0F0F0;
+    -fx-background-radius: 0;
+    -fx-border-color: #AEAEAE70;
+    -fx-border-width: 1;
+    -fx-border-radius: 2;
+}
+
+.category-static:focused > .title{
+    -fx-background-color: #D0D0D0;
+    -fx-background-color: #E0E0E0;
+    -fx-border-color: #e54545;
+    -fx-border-width: 2;
+}
+
+.category-static > .title:hover{
+    -fx-background-color: D0D0D0;
 }
 
 .favorite-category > .title > .arrow-button{
