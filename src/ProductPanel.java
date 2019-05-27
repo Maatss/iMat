@@ -300,4 +300,8 @@ public class ProductPanel extends AnchorPane {
         }
         return true;
     }
+
+    public Product getProduct() {
+        return product;
+    }
 }

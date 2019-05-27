@@ -834,7 +834,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
         productsFlowPane.getChildren().clear();
 
         for (Product product : products) {
-            productsFlowPane.getChildren().add(new ProductPanel(product));
+            ProductPanel temp = findProductPanel(product);
+            productsFlowPane.getChildren().add(temp);
         }
     }
 
@@ -978,6 +979,18 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         card.setVerificationCode(Integer.parseInt(cvcField.getText()));
 
+    }
+
+    private ProductPanel findProductPanel(Product product){
+        ProductPanel temp = allProductPanels.get(0);
+
+        for(ProductPanel panel: allProductPanels){
+            if(panel.getProduct() == product){
+                return panel;
+            }
+        }
+        System.out.println("ERROR: Can not find matching ProductPanel to Product");
+        return temp;
     }
 
     private void setupAccountPane() {
