@@ -1048,9 +1048,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         if (!cardInfoIsShown) {
 
-            profileGridPane.add(cardComboBox, 0, 0);
-            profileGridPane.add(cardNumberTF, 0, 1);
-            profileGridPane.add(cardNameTF, 0, 2);
+            profileGridPane.add(cardComboBox,0,0,2,1);
+            profileGridPane.add(cardNumberTF, 0, 1,2,1);
+            profileGridPane.add(cardNameTF, 0, 2,2,1);
             profileGridPane.add(cardMonthCombo, 0, 3);
             profileGridPane.add(cardYearCombo, 1, 3);
             profileGridPane.add(cvcTF, 0, 4);
@@ -1198,28 +1198,28 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void checkCustomerFields() {
         if (!firstNameTFisfilled()) {
             firstNameMissingLabel.setVisible(true);
-            firstNameTextField.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+            firstNameTextField.setStyle("-fx-border-color: E64545; -fx-border-width: 3");
         } else {
             firstNameMissingLabel.setVisible(false);
             firstNameTextField.setStyle("");
         }
         if (!lastNameTFisfilled()) {
             lastNameMissingLabel.setVisible(true);
-            lastNameTextField.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+            lastNameTextField.setStyle("-fx-border-color: E64545; -fx-border-width: 3");
         } else {
             lastNameMissingLabel.setVisible(false);
             lastNameTextField.setStyle("");
         }
         if (!addressTFisFilled()) {
             addressMissingLabel.setVisible(true);
-            addressTextField.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+            addressTextField.setStyle("-fx-border-color: E64545; -fx-border-width: 3");
         } else {
             addressMissingLabel.setVisible(false);
             addressTextField.setStyle("");
         }
         if (!postCodeTFisFilled()) {
             postCodeMissingLabel.setVisible(true);
-            postCodeTextField.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+            postCodeTextField.setStyle("-fx-border-color: E64545; -fx-border-width: 3");
         } else {
             postCodeMissingLabel.setVisible(false);
             postCodeTextField.setStyle("");
@@ -1227,22 +1227,22 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         if (!postAddressTFisFilled()) {
             postAddressMissingLabel.setVisible(true);
-            postAddressTextField.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+            postAddressTextField.setStyle("-fx-border-color: E64545; -fx-border-width: 3");
         } else {
             postAddressMissingLabel.setVisible(false);
             postAddressTextField.setStyle("");
         }
         if (!phoneTFisFilled()) {
             phoneMissingLabel.setVisible(true);
-            phoneNumberTextField.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+            phoneNumberTextField.setStyle("-fx-border-color: E64545; -fx-border-width: 3");
         } else {
             phoneMissingLabel.setVisible(false);
             phoneNumberTextField.setStyle("");
         }
         if (!(isCardPayment || isInvoicePayment)) {
             choosePaymentLabel.setVisible(true);
-            cardRadioButton.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
-            invoiceRadioButton.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+            cardRadioButton.setStyle("-fx-border-color: E64545; -fx-border-width: 3");
+            invoiceRadioButton.setStyle("-fx-border-color: E64545; -fx-border-width: 3");
         } else {
             choosePaymentLabel.setVisible(false);
             cardRadioButton.setStyle("");
@@ -1253,21 +1253,21 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void checkCardFields() {
         if (!cardNameIsFilled()) {
             cardNameMissingLabel.setVisible(true);
-            cardNameTF.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+            cardNameTF.setStyle("-fx-border-color: E64545; -fx-border-width: 3");
         } else {
             cardNameMissingLabel.setVisible(false);
             cardNameTF.setStyle("");
         }
         if (!cardNumberTFisFilled()) {
             cardNumberMissingLabel.setVisible(true);
-            cardNumberTF.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+            cardNumberTF.setStyle("-fx-border-color: E64545; -fx-border-width: 3");
         } else {
             cardNumberMissingLabel.setVisible(false);
             cardNumberTF.setStyle("");
         }
         if (!CVCisFilled()) {
             CVCmissingLabel.setVisible(true);
-            cvcTF.setStyle("-fx-border-color: FF0000; -fx-border-width: 4");
+            cvcTF.setStyle("-fx-border-color: E64545; -fx-border-width: 3");
         } else {
             CVCmissingLabel.setVisible(false);
             cvcTF.setStyle("");
