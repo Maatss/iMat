@@ -24,6 +24,7 @@ public class Model {
     private final ArrayList<String> years = new ArrayList<String>(Arrays.asList("19", "20", "21", "22", "23", "24", "25"));
 
     private static String deliveryTime;
+    private static String deliveryDateDay;
     private static String deliveryDate;
 
     private boolean doShowHelpWizard = false;
@@ -165,12 +166,20 @@ public class Model {
         return deliveryTime;
     }
 
-    public static void setDeliveryDate(String deliveryDate) {
-        Model.deliveryDate = deliveryDate;
+    public static void setDeliveryDateDay(String deliveryDateDay) {
+        Model.deliveryDateDay = deliveryDateDay;
+    }
+
+    public static String getDeliveryDateDay() {
+        return deliveryDateDay;
     }
 
     public static String getDeliveryDate() {
         return deliveryDate;
+    }
+
+    public static void setDeliveryDate(String deliveryDate) {
+        Model.deliveryDate = deliveryDate;
     }
 
     public ShoppingCart getShoppingCart() {

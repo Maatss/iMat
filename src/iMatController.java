@@ -19,7 +19,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.*;
@@ -113,6 +112,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private ImageView returnToCartImageView;
     @FXML
     private Button checkoutMoveToStepTwoButton;
+    @FXML
+    private Label checkoutTimeNotSelectedLabel;
+    @FXML
+    private Label checkoutSelectedTimeLabel;
+    public Button selectedTimeButton;
 
     // Checkout pane TWO
     @FXML
@@ -766,11 +770,19 @@ public class iMatController implements Initializable, ShoppingCartListener {
         if (Model.getDeliveryTime() == null || Model.getDeliveryTime().isEmpty()) {
             checkoutMoveToStepTwoButton.setDisable(true);
             checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
+            checkoutTimeNotSelectedLabel.setVisible(true);
             //TODO view label that says user needs to select a time first
         } else {
             checkoutMoveToStepTwoButton.setDisable(false);
             checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
+            checkoutTimeNotSelectedLabel.setVisible(false);
+            updateCheckoutSelectedTimeLabel();
+            checkoutSelectedTimeLabel.setVisible(true);
         }
+    }
+
+    public void updateCheckoutSelectedTimeLabel(){
+        checkoutSelectedTimeLabel.setText("Vald tid:\n" + Model.getDeliveryDate() + " " + Model.getDeliveryTime());
     }
 
     private void updateCheckoutViewTwoButton(){
@@ -1081,6 +1093,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
         cardRadioButton.setStyle("");
         invoiceRadioButton.setStyle("");
 
+    }
+
+    public void clearSelectedTimeAndSaveNew(Button button){
+        selectedTimeButton.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color");
+        selectedTimeButton = button;
     }
 
 
