@@ -883,16 +883,25 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void updateCartViewProducts() {
         List<Product> productList = new ArrayList<>();
         Product temp;
+        PricePanel tempPanel;
+        int i = 1;
 
         cartProductsVBox.getChildren().clear();
         ShoppingCart shoppingCart = model.getShoppingCart();
 
         for (ShoppingItem si : shoppingCart.getItems()) {
             temp = si.getProduct();
-            if (!productList.contains(si.getProduct())) {
-                cartProductsVBox.getChildren().add(new PricePanel(temp));
+            if (!productList.contains(temp)) {
+                tempPanel = new PricePanel(temp);
+                cartProductsVBox.getChildren().add(tempPanel);
+                if ((i % 2) == 0) {
+                    tempPanel.setStyle("-fx-background-color: #EEEEEE;");
+                } else {
+                    tempPanel.setStyle("-fx-background-color: white;");
+                }
             }
-            productList.add(si.getProduct());
+            productList.add(temp);
+            i++;
         }
     }
 
