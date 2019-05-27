@@ -236,6 +236,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private TitledPane snacksCategory;
     // Other variables
     private final Model model = Model.getInstance();
+    private List<ProductPanel> allProductPanels = new ArrayList<>();
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -246,12 +247,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
         productsNoResultsTopLabel.setVisible(false);
         productsNoResultsBottomLabel.setVisible(false);
         categoriesHandler = CategoriesHandler.getInstance(this, userCategoriesVBox, categoryVBox);
+        loadAllProductPanels();
 
         profileLabelsHideVisibility();
         setCardInfoIsShown(false);
         fillProfileComboBoxes();
 
-        updateProductList(model.getProducts());
+        showAllProducts();
         updateYourProfilePanel();
 
         maskHomeButton();
@@ -294,11 +296,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleLogoAction() {
-        categoryLabel.setText("Alla varor");
-        noResultsLabel.setText("");
-        List<Product> matches = model.findProducts("");
-        updateProductList(matches);
-        showProductsPane();
+        showAllProducts();
         categoriesHandler.clearCategorySelection(true);
     }
 
@@ -361,6 +359,25 @@ public class iMatController implements Initializable, ShoppingCartListener {
         } else {
             productsNoResultsTopLabel.setVisible(true);
             productsNoResultsBottomLabel.setVisible(true);
+        }
+    }
+
+    private void showAllProducts() {
+        categoryLabel.setText("Alla varor");
+        noResultsLabel.setText("");
+
+        productsFlowPane.getChildren().clear();
+
+        for (ProductPanel panel : allProductPanels) {
+            productsFlowPane.getChildren().add(panel);
+        }
+
+        showProductsPane();
+    }
+
+    private void loadAllProductPanels() {
+        for (Product product : model.getProducts()) {
+            allProductPanels.add(new ProductPanel(product));
         }
     }
 
@@ -647,7 +664,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
             default:
                 System.out.println("no category matched :OOOOOOOO");
                 System.out.println("showing all products");
-                updateProductList(model.getProducts());
+                showAllProducts();
         }
 
         if (category.equals("profileCategory")) {
