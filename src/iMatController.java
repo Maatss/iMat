@@ -111,10 +111,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private FlowPane timeSelectionPane;
     @FXML
     private ImageView returnToCartImageView;
+    @FXML
+    private Button checkoutMoveToStepTwoButton;
 
     // Checkout pane TWO
     @FXML
     private AnchorPane checkoutTwoPane;
+    @FXML
+    private Button checkoutMoveToStepThreeButton;
 
     // Checkout pane THREE
     @FXML
@@ -758,10 +762,26 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
+    public void updateCheckoutTimeButton(){
+        if (Model.getDeliveryTime() == null || Model.getDeliveryTime().isEmpty()) {
+            checkoutMoveToStepTwoButton.setDisable(true);
+            checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
+            //TODO view label that says user needs to select a time first
+        } else {
+            checkoutMoveToStepTwoButton.setDisable(false);
+            checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
+        }
+    }
+
+    private void updateCheckoutViewTwoButton(){
+
+    }
+
     public void openCheckoutView() {
+        updateCheckoutTimeButton();
+        updateCheckoutTimetable();
         cartPane.toBack();
         checkoutPane.toFront();
-        updateCheckoutTimetable();
     }
 
     public void closeCheckoutView() {
@@ -772,6 +792,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void openCheckoutViewTwo() {
         checkoutPane.toBack();
         checkoutTwoPane.toFront();
+        updateCheckoutViewTwoButton();
     }
 
     public void closeCheckoutViewTwo() {
@@ -843,7 +864,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         timeSelectionPane.getChildren().clear();
         Date d = new Date();
         for (int i = 0; i < 4; i++) {
-            timeSelectionPane.getChildren().add(new TimeSelectionPanel(d));
+            timeSelectionPane.getChildren().add(new TimeSelectionPanel(d, this));
             //plus a day
             d = new Date(d.getTime() + (24 * 60 * 60 * 1000));
         }
