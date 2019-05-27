@@ -21,6 +21,7 @@
                         <Image url="@images/Dropdown%20arrow.png" />
                     </image>
                 </ImageView>
+            <ImageView fx:id="categoryImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
             </children>
         </AnchorPane>
         <VBox fx:id="categoryChildVBox" alignment="TOP_RIGHT" prefHeight="157.0" prefWidth="200.0" spacing="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />
