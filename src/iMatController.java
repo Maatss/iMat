@@ -116,6 +116,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private Label checkoutTimeNotSelectedLabel;
     @FXML
     private Label checkoutSelectedTimeLabel;
+    public Button selectedTimeButton;
 
     // Checkout pane TWO
     @FXML
@@ -1092,6 +1093,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
         cardRadioButton.setStyle("");
         invoiceRadioButton.setStyle("");
 
+    }
+
+    public void clearSelectedTimeAndSaveNew(Button button){
+        selectedTimeButton.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color");
+        selectedTimeButton = button;
     }
 
 

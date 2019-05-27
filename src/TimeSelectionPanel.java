@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 
@@ -10,12 +11,20 @@ public class TimeSelectionPanel extends AnchorPane {
 
     @FXML
     private Label dateLabel;
-
     @FXML
     private Label dayOfWeekLabel;
+    @FXML
+    private Button timeSelectOne;
+    @FXML
+    private Button timeSelectTwo;
+    @FXML
+    private Button timeSelectThree;
+    @FXML
+    private Button timeSelectFour;
 
     Date deliveryDate;
     private iMatController controller;
+    private String selectedStyle = "-fx-background-color: #09CDDA";
 
     public TimeSelectionPanel(Date date, iMatController controller){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TimeSelectionPanel.fxml"));
@@ -31,6 +40,9 @@ public class TimeSelectionPanel extends AnchorPane {
         deliveryDate = date;
         this.controller = controller;
         updateDateLabels();
+
+        //Just to avoid NPE first time
+        controller.selectedTimeButton = timeSelectFour;
     }
 
     private String convertDateToDay(Date date){
@@ -58,21 +70,29 @@ public class TimeSelectionPanel extends AnchorPane {
         updateModelDeliveryDate();
         Model.setDeliveryTime("8-10");
         updateCheckoutTimeButton();
+        controller.clearSelectedTimeAndSaveNew(timeSelectOne);
+        timeSelectOne.setStyle(selectedStyle);
     }
     @FXML private void handleTimeSelectTwo(){
         updateModelDeliveryDate();
         Model.setDeliveryTime("10-12");
         updateCheckoutTimeButton();
+        controller.clearSelectedTimeAndSaveNew(timeSelectTwo);
+        timeSelectTwo.setStyle(selectedStyle);
     }
     @FXML private void handleTimeSelectThree(){
         updateModelDeliveryDate();
         Model.setDeliveryTime("12-14");
         updateCheckoutTimeButton();
+        controller.clearSelectedTimeAndSaveNew(timeSelectThree);
+        timeSelectThree.setStyle(selectedStyle);
     }
     @FXML private void handleTimeSelectFour(){
         updateModelDeliveryDate();
         Model.setDeliveryTime("14-16");
         updateCheckoutTimeButton();
+        controller.clearSelectedTimeAndSaveNew(timeSelectFour);
+        timeSelectFour.setStyle(selectedStyle);
     }
 
     private void updateModelDeliveryDate(){
