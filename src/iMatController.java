@@ -19,7 +19,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.*;
@@ -115,6 +114,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private Button checkoutMoveToStepTwoButton;
     @FXML
     private Label checkoutTimeNotSelectedLabel;
+    @FXML
+    private Label checkoutSelectedTimeLabel;
 
     // Checkout pane TWO
     @FXML
@@ -774,7 +775,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
             checkoutMoveToStepTwoButton.setDisable(false);
             checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
             checkoutTimeNotSelectedLabel.setVisible(false);
+            updateCheckoutSelectedTimeLabel();
+            checkoutSelectedTimeLabel.setVisible(true);
         }
+    }
+
+    public void updateCheckoutSelectedTimeLabel(){
+        checkoutSelectedTimeLabel.setText("Vald tid:\n" + Model.getDeliveryDate() + " " + Model.getDeliveryTime());
     }
 
     private void updateCheckoutViewTwoButton(){

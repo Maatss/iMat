@@ -76,7 +76,8 @@ public class TimeSelectionPanel extends AnchorPane {
     }
 
     private void updateModelDeliveryDate(){
-        Model.setDeliveryDate(dayOfWeekLabel.getText());
+        Model.setDeliveryDateDay(dayOfWeekLabel.getText());
+        Model.setDeliveryDate(dateLabel.getText());
     }
 
     private void updateCheckoutTimeButton(){

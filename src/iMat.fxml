@@ -209,6 +209,11 @@
                                     <Font size="16.0" />
                                  </font>
                               </Label>
+                              <Label fx:id="checkoutSelectedTimeLabel" prefHeight="54.0" prefWidth="153.0" text="Vald tid:&#10;28/5 8-10" visible="false" wrapText="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="450.0">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                      </children>
