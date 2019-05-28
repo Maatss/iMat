@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1500.0" stylesheets="@iMatCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
-    <children>
+   <children>
       <StackPane fx:id="homeScreen" prefHeight="850.0" prefWidth="1500.0">
          <children>
             <AnchorPane fx:id="accountPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
@@ -109,8 +109,8 @@
                            </children>
                         </AnchorPane>
                         <SplitPane fx:id="cartFooterPane" dividerPositions="0.77" prefHeight="100.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
-                          <items>
-                            <AnchorPane minHeight="100.0" minWidth="560.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #DEDEDE;">
+                           <items>
+                              <AnchorPane minHeight="100.0" minWidth="560.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #DEDEDE;">
                                  <children>
                                     <Label fx:id="cartTotalPriceLabel" layoutX="68.0" layoutY="-1.0" prefHeight="100.0" prefWidth="438.0" text="Totalt: 99kr" wrapText="true" AnchorPane.leftAnchor="68.0" AnchorPane.topAnchor="-1.0">
                                        <font>
@@ -131,16 +131,16 @@
                                     </AnchorPane>
                                  </children>
                               </AnchorPane>
-                            <AnchorPane minHeight="0.0" minWidth="130.0" prefHeight="160.0" prefWidth="100.0">
+                              <AnchorPane minHeight="0.0" minWidth="130.0" prefHeight="160.0" prefWidth="100.0">
                                  <children>
-                                    <Button fx:id="cartGoToCheckoutButton" mnemonicParsing="false" onAction="#openCheckoutView" prefHeight="100.0" prefWidth="132.0" style="-fx-background-color: #1BBA1D; -fx-background-radius: 5; -fx-border-color: #404040; -fx-border-radius: 5; -fx-border-width: 3;" text="Gå till kassan" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <Button fx:id="cartGoToCheckoutButton" mnemonicParsing="false" onAction="#openCheckoutView" prefHeight="100.0" prefWidth="132.0" style="-fx-background-color: #F79204; -fx-background-radius: 5; -fx-border-color: #404040; -fx-border-radius: 5; -fx-border-width: 3;" text="Gå till kassan" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <font>
                                           <Font name="System Bold" size="26.0" />
                                        </font>
                                     </Button>
                                  </children>
                               </AnchorPane>
-                          </items>
+                           </items>
                         </SplitPane>
                      </children>
                   </AnchorPane>
@@ -295,7 +295,7 @@
                                     <Font size="17.0" />
                                  </font>
                               </Label>
-                              <Button fx:id="checkoutCompletePurchaseButton" layoutX="270.0" layoutY="316.0" maxWidth="154.0" minWidth="128.0" mnemonicParsing="false" onAction="#handleBuyItemsAction" prefHeight="52.0" prefWidth="154.0" style="-fx-background-color: #1BBA1D; -fx-background-radius: 5; -fx-border-color: #404040; -fx-border-radius: 5; -fx-border-width: 2;" text="Slutför köp" textFill="WHITE" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0">
+                              <Button fx:id="checkoutCompletePurchaseButton" layoutX="270.0" layoutY="316.0" maxWidth="154.0" minWidth="128.0" mnemonicParsing="false" onAction="#handleBuyItemsAction" prefHeight="52.0" prefWidth="154.0" style="-fx-background-color: #F79204; -fx-background-radius: 5; -fx-border-color: #404040; -fx-border-radius: 5; -fx-border-width: 2;" text="Slutför köp" textFill="WHITE" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0">
                                  <font>
                                     <Font name="System Bold" size="22.0" />
                                  </font>
@@ -405,8 +405,8 @@
                      </children>
                   </AnchorPane>
                   <SplitPane fx:id="middlePane" dividerPositions="0.29797979797979796" layoutY="105.0" prefHeight="748.0" prefWidth="1500.0" AnchorPane.topAnchor="102.0">
-                    <items>
-                      <AnchorPane fx:id="categoryPane" maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="697.0" prefWidth="200.0" style="-fx-background-color: #D83434E0; -fx-background-color: #FEFEFE;" styleClass="accordion_holder">
+                     <items>
+                        <AnchorPane fx:id="categoryPane" maxWidth="200.0" minHeight="0.0" minWidth="200.0" prefHeight="697.0" prefWidth="200.0" style="-fx-background-color: #D83434E0; -fx-background-color: #FEFEFE;" styleClass="accordion_holder">
                            <children>
                               <Label alignment="TOP_CENTER" layoutX="1.0" layoutY="200.0" prefHeight="30.0" prefWidth="200.0" text="Kategorier" textAlignment="CENTER">
                                  <font>
@@ -418,7 +418,7 @@
                               <VBox fx:id="categoryVBox" layoutY="180.0" prefHeight="247.0" prefWidth="200.0" spacing="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="240.0" />
                            </children>
                         </AnchorPane>
-                      <AnchorPane fx:id="browsePane" minHeight="0.0" minWidth="0.0" prefHeight="746.0" prefWidth="1280.0">
+                        <AnchorPane fx:id="browsePane" minHeight="0.0" minWidth="0.0" prefHeight="746.0" prefWidth="1280.0">
                            <children>
                               <Label fx:id="categoryLabel" alignment="CENTER" layoutX="7.0" layoutY="-10.0" maxHeight="61.0" prefHeight="61.0" prefWidth="792.0" text="Kategori" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <font>
@@ -449,9 +449,9 @@
                                        </font>
                                     </Label>
                                     <ScrollPane hbarPolicy="NEVER" layoutY="35.0" prefHeight="300.0" prefWidth="730.0" style="-fx-border-color: #FFFFFF; -fx-background-color: transparent;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="35.0">
-                                      <content>
-                                         <FlowPane fx:id="prevOrdersFlowPane" hgap="4.0" prefHeight="620.0" prefWidth="1225.0" style="-fx-background-color: #DEDEDE;" />
-                                      </content>
+                                       <content>
+                                          <FlowPane fx:id="prevOrdersFlowPane" hgap="4.0" prefHeight="620.0" prefWidth="1225.0" style="-fx-background-color: #DEDEDE;" />
+                                       </content>
                                     </ScrollPane>
                                  </children>
                               </AnchorPane>
@@ -516,15 +516,15 @@
                                        </font>
                                     </Label>
                                     <GridPane fx:id="profileGridPane" layoutX="500.0" layoutY="438.0" prefWidth="170.0" styleClass="grid">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="75.93902587890625" />
-                                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="64.06097412109375" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints maxHeight="28.32318115234375" minHeight="10.0" prefHeight="28.32318115234375" vgrow="SOMETIMES" />
-                                        <RowConstraints maxHeight="45.0914306640625" minHeight="10.0" prefHeight="31.67681884765625" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="157.0" minWidth="10.0" prefWidth="75.93902587890625" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="108.0" minWidth="10.0" prefWidth="64.06097412109375" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints maxHeight="28.32318115234375" minHeight="10.0" prefHeight="28.32318115234375" vgrow="SOMETIMES" />
+                                          <RowConstraints maxHeight="45.0914306640625" minHeight="10.0" prefHeight="31.67681884765625" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
                                     </GridPane>
                                     <Label fx:id="cardOptionLabel" alignment="CENTER_RIGHT" layoutX="260.0" layoutY="450.0" prefHeight="27.0" prefWidth="220.0" text="Korttyp:">
                                        <font>
@@ -631,7 +631,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                    </items>
+                     </items>
                   </SplitPane>
                </children>
             </AnchorPane>
@@ -699,5 +699,5 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-    </children>
+   </children>
 </AnchorPane>
