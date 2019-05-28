@@ -41,6 +41,7 @@ public class CategoriesHandler {
         categoryVBox.toFront();
     }
 
+
     private void setupVBoxes() {
         List<PliantButton> tempButtons;
 
@@ -161,13 +162,13 @@ public class CategoriesHandler {
 
     private void updateSubCategoryButtonPlicany(PliantButton subCategoryButton) {
         if (subCategoryButton.isHovered() && subCategoryButton.isSelected()) {
-            subCategoryButton.setStyle("-fx-background-color: #D0D0D0; -fx-border-color: #e54545; -fx-border-radius: 2; -fx-border-width: 1;");
+            subCategoryButton.setStyle("-fx-background-color: #D0D0D0; -fx-border-color: #e54545; -fx-border-radius: 2; -fx-border-width: 1; -fx-font-size: 14px;");
         } else if (subCategoryButton.isHovered()) {
-            subCategoryButton.setStyle("-fx-background-color: #D0D0D0; -fx-border-color: #AEAEAE; -fx-border-radius: 2; -fx-border-width: 1;");
+            subCategoryButton.setStyle("-fx-background-color: #D0D0D0; -fx-border-color: #AEAEAE; -fx-border-radius: 2; -fx-border-width: 1; -fx-font-size: 14px;");
         } else if (subCategoryButton.isSelected()) {
-            subCategoryButton.setStyle("-fx-background-color: #E0E0E0; -fx-border-color: #e54545;  -fx-border-radius: 2; -fx-border-width: 1;");
+            subCategoryButton.setStyle("-fx-background-color: #E0E0E0; -fx-border-color: #e54545;  -fx-border-radius: 2; -fx-border-width: 1; -fx-font-size: 14px;");
         } else {
-            subCategoryButton.setStyle("-fx-background-color: white; -fx-border-color: #AEAEAE; -fx-border-radius: 2; -fx-border-width: 1;");
+            subCategoryButton.setStyle("-fx-background-color: white; -fx-border-color: #AEAEAE; -fx-border-radius: 2; -fx-border-width: 1; -fx-font-size: 14px;");
         }
     }
 
@@ -187,4 +188,5 @@ public class CategoriesHandler {
             });
         }
     }
+
 }

@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="445c0166-ee2d-4a41-a5d8-1f5a7ade7787" name="Default Changelist" comment="Exempel finns nu på hur man kan få kategorier att ladda, man behöver dock lösa på något sätt för att lägga ihop de kategorier vi har valt att klumpa tillsammans">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/iMat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMat.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/iMatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CategoriesHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CategoriesHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CategoryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CategoryPanel.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -60,17 +60,35 @@
     <session id="484471952">
       <usages-collector id="statistics.vcs.git.usages">
         <counts>
-          <entry key="git.branch.create.new" value="1" />
+          <entry key="git.branch.create.new" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="45" />
+          <entry key="java" value="254" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="45" />
+          <entry key="JAVA" value="254" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.11" value="1" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="java" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="JAVA" value="2" />
         </counts>
       </usages-collector>
     </session>
@@ -81,18 +99,6 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/ProductPanel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/PricePanel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state>
@@ -101,11 +107,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/iMatController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="1001" column="53" selection-start-line="1001" selection-start-column="53" selection-end-line="1001" selection-end-column="53" />
+            <state relative-caret-position="-829">
+              <caret line="1012" column="9" selection-start-line="1012" selection-start-column="9" selection-end-line="1012" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7789#7790#0" expanded="true" />
@@ -114,84 +120,39 @@
                 <element signature="e#7948#7949#0" expanded="true" />
                 <element signature="e#8021#8022#0" expanded="true" />
                 <element signature="e#8054#8055#0" expanded="true" />
-                <element signature="e#11030#11031#0" expanded="true" />
-                <element signature="e#11064#11065#0" expanded="true" />
-                <element signature="e#11155#11156#0" expanded="true" />
-                <element signature="e#11215#11216#0" expanded="true" />
+                <element signature="e#11217#11218#0" expanded="true" />
                 <element signature="e#11274#11275#0" expanded="true" />
-                <element signature="e#11330#11331#0" expanded="true" />
-                <element signature="e#11390#11391#0" expanded="true" />
-                <element signature="e#11447#11448#0" expanded="true" />
-                <element signature="e#11507#11508#0" expanded="true" />
-                <element signature="e#11564#11565#0" expanded="true" />
-                <element signature="e#11629#11630#0" expanded="true" />
-                <element signature="e#11691#11692#0" expanded="true" />
-                <element signature="e#11751#11752#0" expanded="true" />
-                <element signature="e#11808#11809#0" expanded="true" />
-                <element signature="e#11868#11869#0" expanded="true" />
-                <element signature="e#11925#11926#0" expanded="true" />
-                <element signature="e#11989#11990#0" expanded="true" />
-                <element signature="e#12050#12051#0" expanded="true" />
-                <element signature="e#12109#12110#0" expanded="true" />
-                <element signature="e#12165#12166#0" expanded="true" />
-                <element signature="e#12228#12229#0" expanded="true" />
-                <element signature="e#12288#12289#0" expanded="true" />
-                <element signature="e#12349#12350#0" expanded="true" />
-                <element signature="e#12407#12408#0" expanded="true" />
-                <element signature="e#12467#12468#0" expanded="true" />
-                <element signature="e#12524#12525#0" expanded="true" />
-                <element signature="e#12588#12589#0" expanded="true" />
-                <element signature="e#12649#12650#0" expanded="true" />
+                <element signature="e#12654#12655#0" expanded="true" />
                 <element signature="e#12710#12711#0" expanded="true" />
                 <element signature="e#12768#12769#0" expanded="true" />
-                <element signature="e#12827#12828#0" expanded="true" />
-                <element signature="e#12883#12884#0" expanded="true" />
-                <element signature="e#12941#12942#0" expanded="true" />
+                <element signature="e#12823#12824#0" expanded="true" />
                 <element signature="e#12996#12997#0" expanded="true" />
-                <element signature="e#13054#13055#0" expanded="true" />
-                <element signature="e#13109#13110#0" expanded="true" />
-                <element signature="e#13169#13170#0" expanded="true" />
-                <element signature="e#13226#13227#0" expanded="true" />
-                <element signature="e#13286#13287#0" expanded="true" />
-                <element signature="e#13343#13344#0" expanded="true" />
-                <element signature="e#13401#13402#0" expanded="true" />
-                <element signature="e#13456#13457#0" expanded="true" />
-                <element signature="e#13515#13516#0" expanded="true" />
-                <element signature="e#13571#13572#0" expanded="true" />
-                <element signature="e#13638#13639#0" expanded="true" />
-                <element signature="e#13702#13703#0" expanded="true" />
-                <element signature="e#13768#13769#0" expanded="true" />
-                <element signature="e#13831#13832#0" expanded="true" />
-                <element signature="e#13891#13892#0" expanded="true" />
-                <element signature="e#13948#13949#0" expanded="true" />
-                <element signature="e#22874#22875#0" expanded="true" />
-                <element signature="e#22907#22908#0" expanded="true" />
-                <element signature="e#24452#24453#0" expanded="true" />
-                <element signature="e#24499#24500#0" expanded="true" />
-                <element signature="e#34195#34196#0" expanded="true" />
-                <element signature="e#34237#34238#0" expanded="true" />
-                <element signature="e#35218#35219#0" expanded="true" />
-                <element signature="e#35282#35283#0" expanded="true" />
-                <element signature="e#35330#35331#0" expanded="true" />
-                <element signature="e#35416#35417#0" expanded="true" />
-                <element signature="e#35567#35568#0" expanded="true" />
-                <element signature="e#35629#35630#0" expanded="true" />
-                <element signature="e#35673#35674#0" expanded="true" />
-                <element signature="e#35736#35737#0" expanded="true" />
-                <element signature="e#35783#35784#0" expanded="true" />
-                <element signature="e#35849#35850#0" expanded="true" />
-                <element signature="e#35890#35891#0" expanded="true" />
-                <element signature="e#35956#35957#0" expanded="true" />
-                <element signature="e#36002#36003#0" expanded="true" />
-                <element signature="e#36060#36061#0" expanded="true" />
-                <element signature="e#36102#36103#0" expanded="true" />
-                <element signature="e#36158#36159#0" expanded="true" />
-                <element signature="e#36195#36196#0" expanded="true" />
-                <element signature="e#36246#36247#0" expanded="true" />
-                <element signature="e#40197#40198#0" expanded="true" />
-                <element signature="e#40240#40241#0" expanded="true" />
-                <element signature="e#40301#40302#0" expanded="true" />
-                <element signature="e#40350#40351#0" expanded="true" />
+                <element signature="e#13053#13054#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CategoriesHandler.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="170" column="156" selection-start-line="170" selection-start-column="156" selection-end-line="170" selection-end-column="156" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#CategoriesHandler#0;class#CategoriesHandler#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/CategoryPanel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="261">
+              <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -218,7 +179,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Model.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="969">
+            <state relative-caret-position="935">
               <caret line="74" column="17" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -251,8 +212,8 @@
         <entry file="file://$PROJECT_DIR$/src/iMat.fxml">
           <provider editor-type-id="JavaFX-Scene-Builder" />
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7820">
-              <caret line="460" column="117" selection-start-line="460" selection-start-column="117" selection-end-line="460" selection-end-column="117" />
+            <state relative-caret-position="7412">
+              <caret line="436" column="117" selection-start-line="436" selection-start-column="117" selection-end-line="436" selection-end-column="117" />
             </state>
           </provider>
         </entry>
@@ -388,14 +349,14 @@
         <option value="$PROJECT_DIR$/src/categoryElement.fxml" />
         <option value="$PROJECT_DIR$/src/categoryPanel.fxml" />
         <option value="$PROJECT_DIR$/src/CategoriesCSS.css" />
-        <option value="$PROJECT_DIR$/src/CategoryPanel.java" />
         <option value="$PROJECT_DIR$/src/PliantButton.java" />
-        <option value="$PROJECT_DIR$/src/CategoriesHandler.java" />
         <option value="$PROJECT_DIR$/src/ProductPanel.java" />
         <option value="$PROJECT_DIR$/src/ProductPanel.java" />
         <option value="$PROJECT_DIR$/src/PreviousOrderPanel.java" />
         <option value="$PROJECT_DIR$/src/iMatController.java" />
         <option value="$PROJECT_DIR$/src/iMatController.java" />
+        <option value="$PROJECT_DIR$/src/CategoriesHandler.java" />
+        <option value="$PROJECT_DIR$/src/CategoryPanel.java" />
       </list>
     </option>
   </component>
@@ -412,6 +373,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -446,7 +408,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -475,138 +436,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\hugos\Documents\School\DAT216\Projekt\lib" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/PreviousOrderPanel.fxml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/PreviousOrderPanel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ProductPanel.fxml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/ProductPanel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/TimeSelectionPanel.fxml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/iMat.fxml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/iMatCSS.css</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/iMatController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/images/PSD-files/Dropdown arrow.psd</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CategoriesHandler.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/CategoryPanel.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/PliantButton.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/categoryPanel.fxml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/images/DoubleArrow.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/images/PSD-files/garbagecanIcon.psd</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/images/PSD-files/iMatLogo2.psd</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/images/PSD-files/shoppingStepIcon.psd</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/images/garbagecanIcon.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/images/iMatLogo3.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/images/iMatLogo4.png</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/images/favoriteEmpty.png</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/images/favoriteFilled.png</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -753,8 +582,8 @@
     <frame x="-6" y="-6" width="1513" height="973" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77675843" visible="true" weight="0.19381443" />
-      <window_info id="Structure" order="1" sideWeight="0.2232416" side_tool="true" visible="true" weight="0.19381443" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7737003" visible="true" weight="0.19931272" />
+      <window_info id="Structure" order="1" sideWeight="0.22629969" side_tool="true" visible="true" weight="0.19931272" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -762,7 +591,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5008881" side_tool="true" weight="0.27044535" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.5195228" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22327791" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22327791" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.37852496" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -872,14 +701,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ProductPanel.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/IMatDataHandlerFacade.java" />
     <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/ShoppingCart.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -892,17 +713,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
           <caret line="159" column="17" selection-start-line="159" selection-start-column="17" selection-end-line="159" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Model.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="969">
-          <caret line="74" column="17" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-            <element signature="e#5959#6174#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -922,13 +732,6 @@
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_191/javafx-src.zip!/javafx/scene/control/Labeled.java" />
-    <entry file="file://$PROJECT_DIR$/src/PricePanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/TimeSelectionPanel.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
@@ -938,44 +741,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/CategoriesCSS.css" />
-    <entry file="file://$PROJECT_DIR$/src/iMat.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/categoryPanel.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="70" selection-start-line="11" selection-start-column="70" selection-end-line="11" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iMatCSS.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
-          <caret line="89" selection-start-line="89" selection-end-line="89" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iMat.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="7820">
-          <caret line="460" column="117" selection-start-line="460" selection-start-column="117" selection-end-line="460" selection-end-column="117" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CategoriesHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="115" column="38" selection-start-line="115" selection-start-column="38" selection-end-line="115" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#CategoriesHandler#0;class#CategoriesHandler#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -990,125 +760,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/CategoryPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="106" column="16" selection-start-line="106" selection-start-column="16" selection-end-line="106" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/PreviousOrderPanel.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/ProductPanel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/iMatController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="1001" column="53" selection-start-line="1001" selection-start-column="53" selection-end-line="1001" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7789#7790#0" expanded="true" />
-            <element signature="e#7841#7842#0" expanded="true" />
-            <element signature="e#7893#7894#0" expanded="true" />
-            <element signature="e#7948#7949#0" expanded="true" />
-            <element signature="e#8021#8022#0" expanded="true" />
-            <element signature="e#8054#8055#0" expanded="true" />
-            <element signature="e#11030#11031#0" expanded="true" />
-            <element signature="e#11064#11065#0" expanded="true" />
-            <element signature="e#11155#11156#0" expanded="true" />
-            <element signature="e#11215#11216#0" expanded="true" />
-            <element signature="e#11274#11275#0" expanded="true" />
-            <element signature="e#11330#11331#0" expanded="true" />
-            <element signature="e#11390#11391#0" expanded="true" />
-            <element signature="e#11447#11448#0" expanded="true" />
-            <element signature="e#11507#11508#0" expanded="true" />
-            <element signature="e#11564#11565#0" expanded="true" />
-            <element signature="e#11629#11630#0" expanded="true" />
-            <element signature="e#11691#11692#0" expanded="true" />
-            <element signature="e#11751#11752#0" expanded="true" />
-            <element signature="e#11808#11809#0" expanded="true" />
-            <element signature="e#11868#11869#0" expanded="true" />
-            <element signature="e#11925#11926#0" expanded="true" />
-            <element signature="e#11989#11990#0" expanded="true" />
-            <element signature="e#12050#12051#0" expanded="true" />
-            <element signature="e#12109#12110#0" expanded="true" />
-            <element signature="e#12165#12166#0" expanded="true" />
-            <element signature="e#12228#12229#0" expanded="true" />
-            <element signature="e#12288#12289#0" expanded="true" />
-            <element signature="e#12349#12350#0" expanded="true" />
-            <element signature="e#12407#12408#0" expanded="true" />
-            <element signature="e#12467#12468#0" expanded="true" />
-            <element signature="e#12524#12525#0" expanded="true" />
-            <element signature="e#12588#12589#0" expanded="true" />
-            <element signature="e#12649#12650#0" expanded="true" />
-            <element signature="e#12710#12711#0" expanded="true" />
-            <element signature="e#12768#12769#0" expanded="true" />
-            <element signature="e#12827#12828#0" expanded="true" />
-            <element signature="e#12883#12884#0" expanded="true" />
-            <element signature="e#12941#12942#0" expanded="true" />
-            <element signature="e#12996#12997#0" expanded="true" />
-            <element signature="e#13054#13055#0" expanded="true" />
-            <element signature="e#13109#13110#0" expanded="true" />
-            <element signature="e#13169#13170#0" expanded="true" />
-            <element signature="e#13226#13227#0" expanded="true" />
-            <element signature="e#13286#13287#0" expanded="true" />
-            <element signature="e#13343#13344#0" expanded="true" />
-            <element signature="e#13401#13402#0" expanded="true" />
-            <element signature="e#13456#13457#0" expanded="true" />
-            <element signature="e#13515#13516#0" expanded="true" />
-            <element signature="e#13571#13572#0" expanded="true" />
-            <element signature="e#13638#13639#0" expanded="true" />
-            <element signature="e#13702#13703#0" expanded="true" />
-            <element signature="e#13768#13769#0" expanded="true" />
-            <element signature="e#13831#13832#0" expanded="true" />
-            <element signature="e#13891#13892#0" expanded="true" />
-            <element signature="e#13948#13949#0" expanded="true" />
-            <element signature="e#22874#22875#0" expanded="true" />
-            <element signature="e#22907#22908#0" expanded="true" />
-            <element signature="e#24452#24453#0" expanded="true" />
-            <element signature="e#24499#24500#0" expanded="true" />
-            <element signature="e#34195#34196#0" expanded="true" />
-            <element signature="e#34237#34238#0" expanded="true" />
-            <element signature="e#35218#35219#0" expanded="true" />
-            <element signature="e#35282#35283#0" expanded="true" />
-            <element signature="e#35330#35331#0" expanded="true" />
-            <element signature="e#35416#35417#0" expanded="true" />
-            <element signature="e#35567#35568#0" expanded="true" />
-            <element signature="e#35629#35630#0" expanded="true" />
-            <element signature="e#35673#35674#0" expanded="true" />
-            <element signature="e#35736#35737#0" expanded="true" />
-            <element signature="e#35783#35784#0" expanded="true" />
-            <element signature="e#35849#35850#0" expanded="true" />
-            <element signature="e#35890#35891#0" expanded="true" />
-            <element signature="e#35956#35957#0" expanded="true" />
-            <element signature="e#36002#36003#0" expanded="true" />
-            <element signature="e#36060#36061#0" expanded="true" />
-            <element signature="e#36102#36103#0" expanded="true" />
-            <element signature="e#36158#36159#0" expanded="true" />
-            <element signature="e#36195#36196#0" expanded="true" />
-            <element signature="e#36246#36247#0" expanded="true" />
-            <element signature="e#40197#40198#0" expanded="true" />
-            <element signature="e#40240#40241#0" expanded="true" />
-            <element signature="e#40301#40302#0" expanded="true" />
-            <element signature="e#40350#40351#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1123,6 +779,116 @@
             <element signature="e#6671#6672#0" expanded="true" />
             <element signature="e#6745#6746#0" expanded="true" />
             <element signature="e#6781#6782#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ProductPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/PricePanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="27" selection-end-line="13" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/projectbackend.jar!/se/chalmers/cse/dat216/project/Customer.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iMatCSS.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1513">
+          <caret line="89" selection-start-line="89" selection-end-line="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Model.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="74" column="17" selection-start-line="74" selection-start-column="17" selection-end-line="74" selection-end-column="17" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#5959#6174#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ProductPanel.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="29" selection-start-line="15" selection-start-column="29" selection-end-line="15" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iMat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="18" column="30" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iMat.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7412">
+          <caret line="436" column="117" selection-start-line="436" selection-start-column="117" selection-end-line="436" selection-end-column="117" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iMatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-829">
+          <caret line="1012" column="9" selection-start-line="1012" selection-start-column="9" selection-end-line="1012" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7789#7790#0" expanded="true" />
+            <element signature="e#7841#7842#0" expanded="true" />
+            <element signature="e#7893#7894#0" expanded="true" />
+            <element signature="e#7948#7949#0" expanded="true" />
+            <element signature="e#8021#8022#0" expanded="true" />
+            <element signature="e#8054#8055#0" expanded="true" />
+            <element signature="e#11217#11218#0" expanded="true" />
+            <element signature="e#11274#11275#0" expanded="true" />
+            <element signature="e#12654#12655#0" expanded="true" />
+            <element signature="e#12710#12711#0" expanded="true" />
+            <element signature="e#12768#12769#0" expanded="true" />
+            <element signature="e#12823#12824#0" expanded="true" />
+            <element signature="e#12996#12997#0" expanded="true" />
+            <element signature="e#13053#13054#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CategoriesHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="170" column="156" selection-start-line="170" selection-start-column="156" selection-end-line="170" selection-end-column="156" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#CategoriesHandler#0;class#CategoriesHandler#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CategoryPanel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="261">
+          <caret line="76" column="34" selection-start-line="76" selection-start-column="34" selection-end-line="76" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

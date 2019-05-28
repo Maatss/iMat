@@ -96,7 +96,7 @@ public class CategoryPanel extends AnchorPane {
     }
 
     private void updateCategoryHeight() {
-        this.setPrefHeight(45 + 30 * subCategoryButtons.size() + 5);
+        this.setPrefHeight(45 + 36 * subCategoryButtons.size() + 5);
     }
 
     private void updateExpandState() {
