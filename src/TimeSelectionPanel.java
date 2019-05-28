@@ -24,7 +24,7 @@ public class TimeSelectionPanel extends AnchorPane {
 
     Date deliveryDate;
     private iMatController controller;
-    private String selectedStyle = "-fx-background-color: #09CDDA";
+    private String selectedStyle = "-fx-text-fill: white; -fx-background-color:  #e54545; -fx-background-radius: 8; -fx-border-color:  #101010; -fx-border-radius: 5; -fx-border-width: 1;";
 
     public TimeSelectionPanel(Date date, iMatController controller){
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TimeSelectionPanel.fxml"));
