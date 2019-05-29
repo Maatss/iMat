@@ -247,11 +247,21 @@
                            <children>
                               <AnchorPane fx:id="clientDataPane" prefHeight="300.0" prefWidth="500.0" style="-fx-border-color: black;" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0">
                                  <children>
-                                    <Label layoutX="104.0" layoutY="19.0" prefHeight="226.0" prefWidth="296.0" text="Lägg in användaruppgifter och sånt här från &quot;Min profil&quot; när Lide har pushat" textAlignment="CENTER" wrapText="true">
-                                       <font>
-                                          <Font size="29.0" />
-                                       </font>
-                                    </Label>
+                                    <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="20.0" prefWidth="140.0" text="Förnamn:" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="60.0" prefWidth="140.0" text="Efternamn:" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="100.0" prefWidth="140.0" text="Adress:" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="140.0" prefWidth="140.0" text="Postnummer:" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="180.0" prefWidth="140.0" text="Ort:" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="220.0" prefWidth="140.0" text="Telefonnummer:" />
+                                    <TextField layoutX="206.0" layoutY="15.0" promptText="Karl" />
+                                    <TextField layoutX="206.0" layoutY="55.0" promptText="Karlsson" />
+                                    <TextField layoutX="206.0" layoutY="95.0" promptText="Smörgatan 32" />
+                                    <TextField layoutX="206.0" layoutY="135.0" promptText="413 20" />
+                                    <TextField layoutX="206.0" layoutY="175.0" promptText="Mölndal" />
+                                    <TextField layoutX="206.0" layoutY="215.0" promptText="0700 123456" />
+                                    <RadioButton layoutX="206.0" layoutY="260.0" mnemonicParsing="false" text="Kort" />
+                                    <RadioButton layoutX="268.0" layoutY="260.0" mnemonicParsing="false" text="Faktura" />
+                                    <Label alignment="CENTER_RIGHT" layoutX="60.0" layoutY="260.0" prefWidth="140.0" text="Betalsätt:" />
                                  </children></AnchorPane>
                               <Button fx:id="checkoutMoveToStepThreeButton" maxWidth="154.0" minWidth="128.0" mnemonicParsing="false" onAction="#openCheckoutViewThree" prefHeight="52.0" prefWidth="154.0" style="-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color: #404040; -fx-border-radius: 5; -fx-border-width: 2;" text="Nästa steg" textFill="WHITE" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0">
                                  <font>
