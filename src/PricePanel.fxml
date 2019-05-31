@@ -7,29 +7,29 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root maxHeight="50.0" maxWidth="675.0" prefHeight="35.0" prefWidth="685.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxHeight="50.0" maxWidth="900.0" prefHeight="44.0" prefWidth="875.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label fx:id="productNameLabel" prefHeight="33.0" prefWidth="200.0" text="Gurka" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="1.0">
+      <Label fx:id="productNameLabel" prefHeight="33.0" prefWidth="200.0" text="Gurka" AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="4.0">
          <font>
-            <Font size="22.0" />
+            <Font size="23.0" />
          </font>
       </Label>
-      <TextField fx:id="productCountTextField" alignment="CENTER" layoutX="330.0" layoutY="6.0" onAction="#addProductsTextField" onKeyPressed="#handleOnKeyPressed" prefHeight="25.0" prefWidth="73.0" text="0" AnchorPane.topAnchor="5.0" />
-      <ImageView fx:id="addButtonImageView" fitHeight="28.0" fitWidth="28.0" layoutX="403.0" layoutY="5.0" onMouseClicked="#handleAddAction" onMouseEntered="#hoveringAddButton" onMouseExited="#releasedAddButton" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="4.0">
+      <TextField fx:id="productCountTextField" alignment="CENTER" layoutX="330.0" layoutY="6.0" onAction="#addProductsTextField" onKeyPressed="#handleOnKeyPressed" prefHeight="25.0" prefWidth="73.0" text="0" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="272.0" AnchorPane.topAnchor="6.0" />
+      <ImageView fx:id="addButtonImageView" fitHeight="28.0" fitWidth="28.0" layoutX="403.0" layoutY="5.0" onMouseClicked="#handleAddAction" onMouseEntered="#hoveringAddButton" onMouseExited="#releasedAddButton" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="244.0" AnchorPane.topAnchor="8.0">
          <image>
             <Image url="@images/addButton.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="removeButtonImageView" fitHeight="28.0" fitWidth="28.0" layoutX="302.0" layoutY="4.0" onMouseClicked="#handleRemoveAction" onMouseEntered="#hoveringRemoveButton" onMouseExited="#exitedRemoveButton" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="4.0">
+      <ImageView fx:id="removeButtonImageView" fitHeight="28.0" fitWidth="28.0" layoutX="502.0" layoutY="8.0" onMouseClicked="#handleRemoveAction" onMouseEntered="#hoveringRemoveButton" onMouseExited="#exitedRemoveButton" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="345.0" AnchorPane.topAnchor="8.0">
          <image>
             <Image url="@images/removeButtonAvailable.png" />
          </image>
       </ImageView>
-      <Label fx:id="productPriceSumLabel" text="189 kr" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
+      <Label fx:id="productPriceSumLabel" text="189 kr" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="5.0">
          <font>
             <Font name="System Bold" size="18.0" />
          </font></Label>
-      <Label fx:id="productPriceLabel" layoutX="510.0" layoutY="11.0" text="xxx kr/kg" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="11.0">
+      <Label fx:id="productPriceLabel" layoutX="510.0" layoutY="11.0" text="xxx kr/kg" AnchorPane.bottomAnchor="6.0" AnchorPane.rightAnchor="120.0" AnchorPane.topAnchor="6.0">
          <font>
             <Font size="15.0" />
          </font>

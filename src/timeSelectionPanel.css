@@ -1,0 +1,11 @@
+.not-selected-button{
+    -fx-font-size: 18px;
+}
+
+.weekday-text{
+    -fx-font-size: 32px;
+}
+
+.date-text{
+    -fx-font-size: 25px;
+}
