@@ -96,3 +96,11 @@
     -fx-hgap: 10;
     -fx-vgap: 10;
 }
+
+.popup-go-back-button{
+    -fx-background-color: #FEFEFE;
+    -fx-border-color: #404040;
+    -fx-border-width: 2;
+    -fx-background-radius: 2;
+    -fx-background-insets: 0;
+}
