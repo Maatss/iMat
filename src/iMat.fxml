@@ -180,11 +180,7 @@
                            <children>
                               <AnchorPane maxHeight="275.0" prefHeight="275.0" prefWidth="600.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="25.0">
                                  <children>
-                                    <FlowPane fx:id="timeSelectionPane" hgap="2.0" layoutY="18.0" maxHeight="275.0" maxWidth="600.0" prefHeight="275.0" prefWidth="600.0" prefWrapLength="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <padding>
-                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                       </padding>
-                                    </FlowPane>
+                                    <FlowPane fx:id="timeSelectionPane" hgap="3.0" layoutY="18.0" maxHeight="275.0" maxWidth="600.0" prefHeight="275.0" prefWidth="600.0" prefWrapLength="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                               <Button fx:id="checkoutEarlierTimesButton" alignment="TOP_CENTER" layoutX="2.0" layoutY="121.0" mnemonicParsing="false" onAction="#handleShowEarlierTimes" prefHeight="72.0" prefWidth="93.0" style="-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color: #404040; -fx-border-radius: 5; -fx-border-width: 2;" text="Tidigare" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="120.0">
