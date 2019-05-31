@@ -7,6 +7,7 @@ import se.chalmers.cse.dat216.project.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -192,13 +193,13 @@ public class Model {
 
     public void placeOrder() {
         iMatDataHandler.placeOrder();
-        Order newOrder = getOrders().get(getNumberOfOrders() - 1);
-        getOrders().remove(newOrder);
-        getOrders().add(0, newOrder);
     }
 
     public List<Order> getOrders() {
-        return iMatDataHandler.getOrders();
+        List<Order> temp = new ArrayList<>();
+        temp.addAll(iMatDataHandler.getOrders());
+        Collections.reverse(temp);
+        return temp;
     }
 
     public int getNumberOfOrders() {
