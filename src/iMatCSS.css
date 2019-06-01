@@ -104,3 +104,14 @@
     -fx-background-radius: 2;
     -fx-background-insets: 0;
 }
+
+.red-button-clickable{
+    -fx-background-color: #e54545;
+    -fx-border-color: #404040;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}

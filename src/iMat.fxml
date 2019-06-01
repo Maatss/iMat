@@ -107,6 +107,16 @@
                                     <Font size="20.0" />
                                  </font>
                               </Label>
+                              <Button fx:id="undoClearCartButton" mnemonicParsing="false" onMouseReleased="#handleUndoClearCartAction" styleClass="red-button-clickable" text="Ångra töm &#10;varukorgen" visible="false" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="758.0">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Button>
+                              <Label fx:id="undoClearHelpTextLabel" text="Du tömde din varukorg.&#10;Klicka på knappen för att få tillbaka varorna." visible="false" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="150.0">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
                            </children>
                         </AnchorPane>
                         <SplitPane fx:id="cartFooterPane" dividerPositions="0.85" prefHeight="100.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">

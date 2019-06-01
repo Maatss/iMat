@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import javafx.animation.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -30,15 +24,13 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 
-/**
- * @author oloft
- */
 public class iMatController implements Initializable, ShoppingCartListener {
 
     private boolean cardInfoIsShown;
     private String headline;
     private boolean isCardPayment;
     private boolean isInvoicePayment;
+
 
 
     // Welcome Pane
@@ -102,6 +94,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private AnchorPane cartEmptyCartPane;
     @FXML
     private Label cartIsEmptyLabel;
+    @FXML
+    private Button undoClearCartButton;
+    @FXML
+    private Label undoClearHelpTextLabel;
+    private List<ShoppingItem> clearedCart = new ArrayList<>();
 
     // Checkout pane ONE
     @FXML
@@ -697,11 +694,26 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Cart Pane actions
     @FXML
     private void handleClearCartAction() {
+        clearedCart.clear();
         if (model.getCountInShoppingCart() > 0) {
+            clearedCart.addAll(model.getShoppingCart().getItems());
+            undoClearCartButton.setVisible(true);
+            undoClearHelpTextLabel.setVisible(true);
             model.clearShoppingCart();
             cartProductsVBox.getChildren().clear();
             updateProductCounts();
         }
+    }
+
+    @FXML
+    private void handleUndoClearCartAction(){
+        undoClearCartButton.setVisible(false);
+        undoClearHelpTextLabel.setVisible(false);
+        for(ShoppingItem si : clearedCart){
+            model.getShoppingCart().addItem(si);
+        }
+        closeCartView();
+        openCartView();
     }
 
     // Checkout Pane actions
