@@ -95,7 +95,7 @@ public class CategoriesHandler {
         } else {
             categoryPanel = new CategoryPanel(name, id);
         }
-        
+
         categoryPanel.setText(name);
         categoryPanel.getCategoryHeaderAnchorPane().setOnMouseReleased((eventHandler) -> handleMainCategoryOnAction(categoryPanel));
         categoryPanel.getCategoryHeaderAnchorPane().setOnMouseEntered((eventHandler) -> handleMainCategoryOnHoverEnter(categoryPanel));

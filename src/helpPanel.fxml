@@ -18,17 +18,17 @@
       </ImageView>
       <AnchorPane fx:id="helpDialogAnchorPane" layoutX="240.0" layoutY="260.0" prefHeight="199.0" prefWidth="581.0" style="-fx-background-color: #FEFEFE; -fx-background-radius: 15; -fx-border-color: #404040; -fx-border-width: 6; -fx-border-radius: 5;">
          <children>
-            <Label fx:id="helpTitleLabel" alignment="CENTER" layoutX="184.0" layoutY="24.0" prefHeight="31.0" prefWidth="234.0" text="Hjälpsteg 5 / 10">
+            <Label fx:id="helpTitleLabel" alignment="CENTER" layoutX="184.0" layoutY="18.0" prefHeight="31.0" prefWidth="234.0" text="Hjälpsteg 5 / 10">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label fx:id="helpTextLabel" alignment="TOP_LEFT" layoutX="103.0" layoutY="66.0" prefHeight="59.0" prefWidth="391.0" text="Genom att klicka på loggan kan du alltid gå till startsidan, oavsett var du är i programmet." wrapText="true">
+            <Label fx:id="helpTextLabel" alignment="TOP_CENTER" layoutX="19.0" layoutY="60.0" maxHeight="85.0" maxWidth="545.0" minHeight="85.0" minWidth="545.0" prefHeight="85.0" prefWidth="545.0" text="Genom att klicka på loggan kan du alltid gå till startsidan, oavsett var du är i programmet." textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Separator layoutX="201.0" layoutY="57.0" prefWidth="200.0" />
+            <Separator layoutX="201.0" layoutY="51.0" prefWidth="200.0" />
             <Button fx:id="helpPrevButton" layoutX="289.0" layoutY="147.0" mnemonicParsing="false" onAction="#prevHelp" prefHeight="41.0" prefWidth="158.0" stylesheets="@iMatCSS.css" text="Föregående steg">
                <font>
                   <Font size="16.0" />
