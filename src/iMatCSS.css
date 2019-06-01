@@ -96,3 +96,21 @@
     -fx-hgap: 10;
     -fx-vgap: 10;
 }
+
+.button {
+    -fx-background-color: #E54545;
+    -fx-background-radius: 5;
+    -fx-border-color: #404040;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #D43434;
+    -fx-background-radius: 5;
+    -fx-border-color: #404040;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-text-fill: white;
+}

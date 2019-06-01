@@ -49,6 +49,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     protected Button denyHelpButton;
 
+    // Help pane
+    @FXML
+    private AnchorPane helpBaseAnchorPane;
+
     // Shopping Pane
     @FXML
     protected AnchorPane homeButtonAnchorPane;
@@ -244,6 +248,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private TitledPane snacksCategory;
     // Other variables
     private final Model model = Model.getInstance();
+//    private HelpHandler helpHandler = HelpHandler.getInstance();
     private List<ProductPanel> allProductPanels = new ArrayList<>();
 
     @Override
@@ -283,6 +288,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
         model.setDoShowHelpWizard(true);
         welcomePane.toBack();
         showProductsPane();
+//        helpBaseAnchorPane.toFront();
+//        helpHandler.showHelp(0);
+
     }
 
     @FXML
@@ -290,6 +298,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         model.setDoShowHelpWizard(false);
         welcomePane.toBack();
         showProductsPane();
+//        helpHandler.hideHelp();
     }
 
     // Shop pane actions
@@ -766,7 +775,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
-    public void updateCheckoutTimeButton(){
+    public void updateCheckoutTimeButton() {
         if (Model.getDeliveryTime() == null || Model.getDeliveryTime().isEmpty()) {
             checkoutMoveToStepTwoButton.setDisable(true);
             checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
@@ -781,11 +790,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
-    public void updateCheckoutSelectedTimeLabel(){
+    public void updateCheckoutSelectedTimeLabel() {
         checkoutSelectedTimeLabel.setText("Vald tid:\n" + Model.getDeliveryDate() + " " + Model.getDeliveryTime());
     }
 
-    private void updateCheckoutViewTwoButton(){
+    private void updateCheckoutViewTwoButton() {
 
     }
 
@@ -1023,11 +1032,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     }
 
-    private ProductPanel findProductPanel(Product product){
+    private ProductPanel findProductPanel(Product product) {
         ProductPanel temp = allProductPanels.get(0);
 
-        for(ProductPanel panel: allProductPanels){
-            if(panel.getProduct() == product){
+        for (ProductPanel panel : allProductPanels) {
+            if (panel.getProduct() == product) {
                 return panel;
             }
         }
@@ -1069,9 +1078,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         if (!cardInfoIsShown) {
 
-            profileGridPane.add(cardComboBox,0,0,2,1);
-            profileGridPane.add(cardNumberTF, 0, 1,2,1);
-            profileGridPane.add(cardNameTF, 0, 2,2,1);
+            profileGridPane.add(cardComboBox, 0, 0, 2, 1);
+            profileGridPane.add(cardNumberTF, 0, 1, 2, 1);
+            profileGridPane.add(cardNameTF, 0, 2, 2, 1);
             profileGridPane.add(cardMonthCombo, 0, 3);
             profileGridPane.add(cardYearCombo, 1, 3);
             profileGridPane.add(cvcTF, 0, 4);
@@ -1095,7 +1104,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     }
 
-    public void clearSelectedTimeAndSaveNew(Button button){
+    public void clearSelectedTimeAndSaveNew(Button button) {
         selectedTimeButton.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color");
         selectedTimeButton = button;
     }
