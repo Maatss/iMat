@@ -58,7 +58,7 @@
                      <children>
                         <AnchorPane fx:id="cartHeaderPane" prefHeight="75.0" prefWidth="700.0" style="-fx-background-color: #e23636;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button fx:id="cartCloseButton" alignment="CENTER" layoutX="12.0" layoutY="16.0" mnemonicParsing="false" onAction="#closeCartView" prefHeight="45.0" prefWidth="97.0" styleClass="popup-go-back-button" text="Tillbaka" textAlignment="CENTER" wrapText="true">
+                              <Button fx:id="cartCloseButton" alignment="CENTER" layoutX="12.0" layoutY="16.0" mnemonicParsing="false" onAction="#closeCartView" prefHeight="45.0" prefWidth="97.0" styleClass="popup-go-back-button" stylesheets="@iMatCSS.css" text="Tillbaka" textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -168,7 +168,7 @@
                      <children>
                         <AnchorPane fx:id="checkoutHeaderPane" prefHeight="75.0" prefWidth="700.0" style="-fx-background-color: #e23636;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <Button fx:id="returnToCartButton" alignment="CENTER" layoutX="12.0" layoutY="16.0" mnemonicParsing="false" onAction="#closeCheckoutView" prefHeight="45.0" prefWidth="97.0" styleClass="popup-go-back-button" text="Tillbaka" textAlignment="CENTER" wrapText="true">
+                              <Button fx:id="returnToCartButton" alignment="CENTER" layoutX="12.0" layoutY="16.0" mnemonicParsing="false" onAction="#closeCheckoutView" prefHeight="45.0" prefWidth="97.0" styleClass="popup-go-back-button" stylesheets="@iMatCSS.css" text="Tillbaka" textAlignment="CENTER" wrapText="true">
                                  <font>
                                     <Font size="18.0" />
                                  </font>

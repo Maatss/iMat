@@ -120,7 +120,7 @@ public class PreviousOrderPanel extends AnchorPane {
 
     private void setPaneExpandedHeight() {
         if (isExpanded) {
-            expandImageView.setRotate(90);
+            expandImageView.setRotate(270);
             this.setPrefHeight(TOP_BAR_HEIGHT);
             topBarAnchorPane.setStyle("-fx-background-color: white;");
             bottomContainerVBox.getChildren().clear();

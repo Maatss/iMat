@@ -95,11 +95,11 @@ public class CategoriesHandler {
         } else {
             categoryPanel = new CategoryPanel(name, id);
         }
-
+        
         categoryPanel.setText(name);
-        categoryPanel.setOnMouseReleased((eventHandler) -> handleMainCategoryOnAction(categoryPanel));
-        categoryPanel.setOnMouseEntered((eventHandler) -> handleMainCategoryOnHoverEnter(categoryPanel));
-        categoryPanel.setOnMouseExited((eventHandler) -> handleMainCategoryOnHoverExit(categoryPanel));
+        categoryPanel.getCategoryHeaderAnchorPane().setOnMouseReleased((eventHandler) -> handleMainCategoryOnAction(categoryPanel));
+        categoryPanel.getCategoryHeaderAnchorPane().setOnMouseEntered((eventHandler) -> handleMainCategoryOnHoverEnter(categoryPanel));
+        categoryPanel.getCategoryHeaderAnchorPane().setOnMouseExited((eventHandler) -> handleMainCategoryOnHoverExit(categoryPanel));
         categoryPanels.add(categoryPanel);
         return categoryPanel;
     }
@@ -131,7 +131,7 @@ public class CategoriesHandler {
         PliantButton button = new PliantButton(id);
         button.setText(name);
         button.setPrefWidth(180);
-        button.setStyle("-fx-background-color: white; -fx-border-radius: 2; -fx-border-color: AEAEAE; -fx-border-width: 1;");
+        button.setStyle("-fx-background-color: white; -fx-border-radius: 2; -fx-border-color: AEAEAE; -fx-border-width: 1; -fx-text-fill: black;");
 //        button.setVisible(false);
         button.setOnAction((eventHandler) -> handleSubCategoryOnAction(button));
         button.setOnMouseEntered((eventHandler) -> handleSubCategoryOnHoverEnter(button));
@@ -162,13 +162,13 @@ public class CategoriesHandler {
 
     private void updateSubCategoryButtonPlicany(PliantButton subCategoryButton) {
         if (subCategoryButton.isHovered() && subCategoryButton.isSelected()) {
-            subCategoryButton.setStyle("-fx-background-color: #D0D0D0; -fx-border-color: #e54545; -fx-border-radius: 2; -fx-border-width: 1; -fx-font-size: 14px;");
+            subCategoryButton.setStyle("-fx-background-color: #D0D0D0; -fx-border-color: #e54545; -fx-border-radius: 2; -fx-border-width: 1; -fx-font-size: 14px; -fx-text-fill: black;");
         } else if (subCategoryButton.isHovered()) {
-            subCategoryButton.setStyle("-fx-background-color: #D0D0D0; -fx-border-color: #AEAEAE; -fx-border-radius: 2; -fx-border-width: 1; -fx-font-size: 14px;");
+            subCategoryButton.setStyle("-fx-background-color: #D0D0D0; -fx-border-color: #AEAEAE; -fx-border-radius: 2; -fx-border-width: 1; -fx-font-size: 14px; -fx-text-fill: black;");
         } else if (subCategoryButton.isSelected()) {
-            subCategoryButton.setStyle("-fx-background-color: #E0E0E0; -fx-border-color: #e54545;  -fx-border-radius: 2; -fx-border-width: 1; -fx-font-size: 14px;");
+            subCategoryButton.setStyle("-fx-background-color: #E0E0E0; -fx-border-color: #e54545;  -fx-border-radius: 2; -fx-border-width: 1; -fx-font-size: 14px; -fx-text-fill: black;");
         } else {
-            subCategoryButton.setStyle("-fx-background-color: white; -fx-border-color: #AEAEAE; -fx-border-radius: 2; -fx-border-width: 1; -fx-font-size: 14px;");
+            subCategoryButton.setStyle("-fx-background-color: white; -fx-border-color: #AEAEAE; -fx-border-radius: 2; -fx-border-width: 1; -fx-font-size: 14px; -fx-text-fill: black;");
         }
     }
 

@@ -84,7 +84,7 @@
     visibility: hidden;
 }
 
-.accordion_holder h5{
+.accordion_holder h5 {
     -fx-background-color: #234200 !important;
 }
 
@@ -97,21 +97,49 @@
     -fx-vgap: 10;
 }
 
-.popup-go-back-button{
-    -fx-background-color: #FEFEFE;
-    -fx-border-color: #404040;
-    -fx-border-width: 2;
-    -fx-background-radius: 2;
-    -fx-background-insets: 0;
-}
-
-.red-button-clickable{
+.button-no-hover {
     -fx-background-color: #e54545;
+    -fx-background-radius: 5;
     -fx-border-color: #404040;
     -fx-border-width: 2;
     -fx-border-radius: 5;
-    -fx-background-radius: 5;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-font-size: 18px;
+}
+
+.button {
+    -fx-background-color: #E54545;
+    -fx-background-radius: 5;
+    -fx-border-color: #404040;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #D43434;
+    -fx-background-radius: 5;
+    -fx-border-color: #404040;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-text-fill: white;
+}
+
+.popup-go-back-button {
+    -fx-background-color: #FEFEFE;
+    -fx-background-radius: 7;
+    -fx-border-color: #404040;
+    -fx-border-width: 2;
+    -fx-background-insets: 0;
+    -fx-text-fill: black;
+}
+
+.popup-go-back-button:hover {
+    -fx-background-color: #AEAEAE;
+    -fx-background-radius: 7;
+    -fx-border-color: #404040;
+    -fx-border-width: 2;
+    -fx-background-insets: 0;
+    -fx-text-fill: black;
 }

@@ -9,19 +9,19 @@
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #ffffff;" styleClass="product-list-item" stylesheets="@productPanel.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <AnchorPane fx:id="categoryHeaderAnchorPane" mouseTransparent="true" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: #AEAEAE;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <AnchorPane fx:id="categoryHeaderAnchorPane" prefHeight="40.0" prefWidth="200.0" style="-fx-background-color: white; -fx-border-color: #AEAEAE;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
-                <Label fx:id="categoryPanelNameLabel" layoutX="10.0" layoutY="8.0" mouseTransparent="true" text="Sötsaker och snacks">
+                <Label fx:id="categoryPanelNameLabel" layoutX="10.0" layoutY="8.0" text="Sötsaker och snacks">
                     <font>
                         <Font size="17.0" />
                     </font>
                 </Label>
-                <ImageView fx:id="categoryExpandImageView" fitHeight="40.0" fitWidth="40.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="270.0" AnchorPane.rightAnchor="0.0">
+                <ImageView fx:id="categoryExpandImageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" rotate="270.0" AnchorPane.rightAnchor="0.0">
                     <image>
                         <Image url="@images/Dropdown%20arrow.png" />
                     </image>
                 </ImageView>
-            <ImageView fx:id="categoryImageView" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
+            <ImageView fx:id="categoryImageView" fitHeight="30.0" fitWidth="30.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0" />
             </children>
         </AnchorPane>
         <VBox fx:id="categoryChildVBox" alignment="TOP_RIGHT" prefHeight="157.0" prefWidth="200.0" spacing="4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="45.0" />

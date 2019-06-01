@@ -43,17 +43,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     // Welcome Pane
     @FXML
-    protected AnchorPane welcomePane; // Loot - I must use 'protected' for it to work?
+    private AnchorPane welcomePane;
     @FXML
-    protected Button acceptHelpButton;
+    private Button acceptHelpButton;
     @FXML
-    protected Button denyHelpButton;
+    private Button denyHelpButton;
 
     // Shopping Pane
     @FXML
-    protected AnchorPane homeButtonAnchorPane;
+    private AnchorPane homeButtonAnchorPane;
     @FXML
-    protected ImageView homeImageView;
+    private ImageView homeImageView;
     @FXML
     private AnchorPane shopPane;
     @FXML
@@ -80,9 +80,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private Button searchButton;
 
     @FXML
-    protected VBox userCategoriesVBox;
+    private VBox userCategoriesVBox;
     @FXML
-    protected VBox categoryVBox;
+    private VBox categoryVBox;
     private CategoriesHandler categoriesHandler;
 
     // Cart pane
@@ -579,7 +579,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 break;
             case ("prevOrderCategory"): //set previous orders to show
                 category = "prevOrderCategory";
-                headline = "Tidigare inköp";
+                headline = "Tidigare köp";
                 break;
             case ("favoritesCategory"): //set favorites to show
                 category = "favoritesCategory";
@@ -735,10 +735,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
-    private void handleUndoClearCartAction(){
+    private void handleUndoClearCartAction() {
         undoClearCartButton.setVisible(false);
         undoClearHelpTextLabel.setVisible(false);
-        for(ShoppingItem si : clearedCart){
+        for (ShoppingItem si : clearedCart) {
             model.getShoppingCart().addItem(si);
         }
         closeCartView();
@@ -761,32 +761,32 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateSelectedTimeButton();
     }
 
-    private void updateSelectedTimeButton(){
+    private void updateSelectedTimeButton() {
         TimeSelectionPanel temp;
         Button timeButton = null;
         Date deliveryDate = Model.getDeliveryDate();
-        if(deliveryDate != null){
-            for(Node n : timeSelectionPane.getChildren()){
+        if (deliveryDate != null) {
+            for (Node n : timeSelectionPane.getChildren()) {
                 temp = (TimeSelectionPanel) n;
-                 if(temp.getDeliveryDate().getMonth() == deliveryDate.getMonth() &&
-                        temp.getDeliveryDate().getDate() == deliveryDate.getDate()){
-                    switch(model.getDeliveryTime()){
-                        case("8-10"):
+                if (temp.getDeliveryDate().getMonth() == deliveryDate.getMonth() &&
+                        temp.getDeliveryDate().getDate() == deliveryDate.getDate()) {
+                    switch (model.getDeliveryTime()) {
+                        case ("8-10"):
                             timeButton = temp.getTimeSelectOne();
                             break;
-                        case("10-12"):
+                        case ("10-12"):
                             timeButton = temp.getTimeSelectTwo();
                             break;
-                        case("12-14"):
+                        case ("12-14"):
                             timeButton = temp.getTimeSelectThree();
                             break;
-                        case("14-16"):
+                        case ("14-16"):
                             timeButton = temp.getTimeSelectFour();
                             break;
                         default:
                             System.out.println("Error: Date not matched to any time.");
                     }
-                    if(timeButton != null){
+                    if (timeButton != null) {
                         selectedTimeButton = timeButton;
                         selectedTimeButton.setStyle("-fx-text-fill: white; -fx-background-color:  #e54545; -fx-background-radius: 8; -fx-border-color:  #101010; -fx-border-radius: 5; -fx-border-width: 1;");
                     }
@@ -854,7 +854,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
-    public void updateCheckoutSelectedTimeLabel(){
+    public void updateCheckoutSelectedTimeLabel() {
         checkoutSelectedTimeLabel.setText("Vald tid:\n" + Model.getDeliveryDateDDM() + " " + Model.getDeliveryTime());
     }
 
@@ -906,7 +906,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     private void handleShowPrevOrdersPanel(boolean expandLatest) {
-        categoryLabel.setText("Tidigare inköp");
+        categoryLabel.setText("Tidigare köp");
         updatePrevOrdersList(expandLatest);
         previousOrdersPane.toFront();
     }
@@ -1169,12 +1169,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     }
 
-    public void clearSelectedTimeAndSaveNew(Button button){
+    public void clearSelectedTimeAndSaveNew(Button button) {
         clearSelectedTimeButtonStyle();
         selectedTimeButton = button;
     }
 
-    public void clearSelectedTimeButtonStyle(){
+    public void clearSelectedTimeButtonStyle() {
         selectedTimeButton.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color");
     }
 

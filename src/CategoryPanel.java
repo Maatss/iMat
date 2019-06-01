@@ -170,4 +170,8 @@ public class CategoryPanel extends AnchorPane {
     public String getCategoryId() {
         return id;
     }
+
+    public AnchorPane getCategoryHeaderAnchorPane() {
+        return categoryHeaderAnchorPane;
+    }
 }
