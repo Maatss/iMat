@@ -48,6 +48,7 @@ public class ProductPanel extends AnchorPane {
 
     private boolean favoriteIsHovered;
     private boolean countTxtfldIsHovered;
+    private boolean removeBtnIsHovered;
 
     public ProductPanel(Product product) {
 
@@ -65,6 +66,7 @@ public class ProductPanel extends AnchorPane {
 
         favoriteIsHovered = false;
         countTxtfldIsHovered = false;
+        removeBtnIsHovered = false;
         nameLabel.setText(product.getName());
         updatePriceLabel();
         imageView.setImage(model.getImage(product, kImageWidth, kImageWidth * kImageRatio));
@@ -195,8 +197,18 @@ public class ProductPanel extends AnchorPane {
         String iconPath;
         if (countCurrentItem() == 0) {
             iconPath = "images/removeButtonNotAvailable.png";
+            if (removeBtnIsHovered) {
+                removeBtnIsHovered = false;
+                setCursor(Cursor.DEFAULT);
+            }
         } else {
-            iconPath = "images/removeButtonAvailable.png";
+            if (removeBtnIsHovered) {
+                iconPath = "images/removeButtonPliancy.png";
+                setCursor(Cursor.HAND);
+            } else {
+                iconPath = "images/removeButtonAvailable.png";
+                setCursor(Cursor.DEFAULT);
+            }
         }
         removeButtonImageView.setImage(getImage(iconPath));
     }
@@ -238,19 +250,17 @@ public class ProductPanel extends AnchorPane {
     @FXML
     private void hoveringRemoveButton() {
         if (countCurrentItem() > 0) {
-            removeButtonImageView.setImage(getImage("images/removeButtonPliancy.png"));
-            setCursor(Cursor.HAND);
+            removeBtnIsHovered = true;
+            updateRemoveButtonImageView();
+//            removeButtonImageView.setImage(getImage("images/removeButtonPliancy.png"));
+//            setCursor(Cursor.HAND);
         }
     }
 
     @FXML
     private void exitedRemoveButton() {
-        if (countCurrentItem() > 0) {
-            removeButtonImageView.setImage(getImage("images/removeButtonAvailable.png"));
-        } else {
-            removeButtonImageView.setImage(getImage("images/removeButtonNotAvailable.png"));
-        }
-        setCursor(Cursor.DEFAULT);
+        removeBtnIsHovered = false;
+        updateRemoveButtonImageView();
     }
 
     /**

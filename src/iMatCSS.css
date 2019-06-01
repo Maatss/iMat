@@ -143,3 +143,21 @@
     -fx-background-insets: 0;
     -fx-text-fill: black;
 }
+
+.button-orange {
+    -fx-background-color: #F79204;
+    -fx-background-radius: 5;
+    -fx-border-color: #404040;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-text-fill: white;
+}
+
+.button-orange:hover {
+    -fx-background-color: #D570E2;
+    -fx-background-radius: 5;
+    -fx-border-color: #404040;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-text-fill: white;
+}

@@ -314,6 +314,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     public void handleLogoAction() {
         showAllProducts();
+        cartTotalPriceLabel.requestFocus(); // Simply to switch focus
         categoriesHandler.clearCategorySelection(true);
     }
 
@@ -329,6 +330,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleShowAccountAction(ActionEvent event) {
+        cartTotalPriceLabel.requestFocus(); // Simply to switch focus
         openAccountView();
     }
 
@@ -347,11 +349,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 noResultsLabel.setText(matches.size() + " st sökresultat för '" + searchField.getText() + "'");
             }
             System.out.println("# matching products: " + matches.size());
-            cartTotalPriceLabel.requestFocus();
         } else {
             searchField.setText("");
-            cartTotalPriceLabel.requestFocus();
         }
+        cartTotalPriceLabel.requestFocus(); // Simply to switch focus
         categoriesHandler.clearCategorySelection(true);
     }
 
@@ -369,6 +370,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleHelpStartAction() {
+        cartTotalPriceLabel.requestFocus(); // Simply to switch focus
         helpHandler.show(0);
     }
 
@@ -443,126 +445,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     // Category pane actions
-    @FXML
-    private void handleFavoriteSelectionAction() {
-        handleCategorySelection("favoritesCategory");
-    }
-
-    @FXML
-    private void handleBreadSelectionAction() {
-        handleCategorySelection("breadCategory");
-    }
-
-    @FXML
-    private void handleFridgeSelectionAction() {
-        handleCategorySelection("fridgeCategory");
-    }
-
-    @FXML
-    private void handleGreensSelectionAction() {
-        handleCategorySelection("greensCategory");
-    }
-
-    @FXML
-    private void handleMeatAndFishSelectionAction() {
-        handleCategorySelection("meatAndFishCategory");
-    }
-
-    @FXML
-    private void handlePantrySelectionAction() {
-        handleCategorySelection("pantryCategory");
-    }
-
-    @FXML
-    private void handleSnacksSelectionAction() {
-        handleCategorySelection("snacksCategory");
-    }
-
-    @FXML
-    private void handleColdDrinksSelectionAction() {
-        handleCategorySelection("coldDrinksCategory");
-    }
-
-    @FXML
-    private void handleDairySelectionAction() {
-        handleCategorySelection("dairyCategory");
-    }
-
-    @FXML
-    private void handleHotDrinksSelectionAction() {
-        handleCategorySelection("hotDrinksCategory");
-    }
-
-    @FXML
-    private void handleBerriesSelectionAction() {
-        handleCategorySelection("berriesCategory");
-    }
-
-    @FXML
-    private void handleFruitsSelectionAction() {
-        handleCategorySelection("fruitsCategory");
-    }
-
-    @FXML
-    private void handleVegetablesSelectionAction() {
-        handleCategorySelection("vegetablesCategory");
-    }
-
-    @FXML
-    private void handleCabbageSelectionAction() {
-        handleCategorySelection("cabbageCategory");
-    }
-
-    @FXML
-    private void handleRootsSelectionAction() {
-        handleCategorySelection("rootsCategory");
-    }
-
-    @FXML
-    private void handleFishSelectionAction() {
-        handleCategorySelection("fishCategory");
-    }
-
-    @FXML
-    private void handleMeatSelectionAction() {
-        handleCategorySelection("meatCategory");
-    }
-
-    @FXML
-    private void handleBakingSelectionAction() {
-        handleCategorySelection("bakingCategory");
-    }
-
-    @FXML
-    private void handleSpicesSelectionAction() {
-        handleCategorySelection("spicesCategory");
-    }
-
-    @FXML
-    private void handlePodsSelectionAction() {
-        handleCategorySelection("podsCategory");
-    }
-
-    @FXML
-    private void handlePastaSelectionAction() {
-        handleCategorySelection("pastaCategory");
-    }
-
-    @FXML
-    private void handlePotatoAndRiceSelectionAction() {
-        handleCategorySelection("potatoAndRiceCategory");
-    }
-
-    @FXML
-    private void handleNutsAndSeedsSelectionAction() {
-        handleCategorySelection("nutsAndSeedsCategory");
-    }
-
-    @FXML
-    private void handleSweetsSelectionAction() {
-        handleCategorySelection("sweetsCategory");
-    }
-
     /**
      * See which category was pressed and update the product pane based on that
      */
@@ -570,6 +452,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         String category = id;
         ProductCategory pc = null;
         noResultsLabel.setText("");
+        cartTotalPriceLabel.requestFocus(); // Simply to switch focus
 
         List<Product> combinedProductList = new ArrayList<>();
         switch (id) {
@@ -795,11 +678,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
-    public void returnToTimeSelectAction() {
-        closeCheckoutViewTwo();
-        openCheckoutView();
-    }
-
     // Navigation
     public void openAccountView() {
         updateAccountPanel();
@@ -814,6 +692,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     public void openCartView() {
         updateCartViewProducts();
+        cartTotalPriceLabel.requestFocus(); // Simply to switch focus
         cartPane.toFront();
         updateCartCheckoutButton(true);
     }
@@ -902,6 +781,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     public void closePurchaseOpenRecipe() {
         closeSuccessfulPurchaseView();
+        categoriesHandler.clearCategorySelection(true);
         handleShowPrevOrdersPanel(true);
     }
 

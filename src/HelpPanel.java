@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -37,11 +38,13 @@ public class HelpPanel extends AnchorPane {
     private String[] helpArray;
 
     private Shape shadowRegion;
+    private boolean nextButtonIsHovered;
 
     public HelpPanel(iMatController imatController) {
         this.imatController = imatController;
-        this.helpIndex = 0;
-        this.helpArray = new String[]{
+        nextButtonIsHovered = false;
+        helpIndex = 0;
+        helpArray = new String[]{
                 "Här kan du söka bland olika kategorier.",
                 "Här kan du söka fritt via ett sökord.",
                 "Här kan du ange och ändra personuppgifter samt betalningsmetod.",
@@ -189,15 +192,9 @@ public class HelpPanel extends AnchorPane {
     private void updateButtons() {
         if (helpIndex + 1 >= helpArray.length) {
             helpQuitButton.setDisable(true);
-            helpNextButton.setOnAction((actionEvent) -> hideHelp());
-//            helpNextButton.setText("Slutför guide");
-            helpNextButton.setText("Avsluta");
-            helpNextButton.setStyle("-fx-background-color:  #F79204;");
         } else {
             helpQuitButton.setDisable(false);
-            helpNextButton.setOnAction((actionEvent) -> nextHelp());
-            helpNextButton.setText("Nästa steg");
-            helpNextButton.setStyle("-fx-background-color:  #E54545;");
+
         }
 
         if (helpIndex - 1 < 0) {
@@ -205,7 +202,31 @@ public class HelpPanel extends AnchorPane {
         } else {
             helpPrevButton.setDisable(false);
         }
+        updateNextButton();
+    }
 
+    private void updateNextButton() {
+        if (helpIndex + 1 >= helpArray.length) {
+            helpNextButton.setOnAction((actionEvent) -> hideHelp());
+            helpNextButton.setText("Avsluta");
+            if (nextButtonIsHovered) {
+                helpNextButton.setStyle("-fx-background-color: #D57002;");
+                setCursor(Cursor.HAND);
+            } else {
+                helpNextButton.setStyle("-fx-background-color: #F79204;");
+                setCursor(Cursor.DEFAULT);
+            }
+        } else {
+            helpNextButton.setOnAction((actionEvent) -> nextHelp());
+            helpNextButton.setText("Nästa steg");
+            if (nextButtonIsHovered) {
+                helpNextButton.setStyle("-fx-background-color: #D43434;");
+                setCursor(Cursor.HAND);
+            } else {
+                helpNextButton.setStyle("-fx-background-color: #E54545;");
+                setCursor(Cursor.DEFAULT);
+            }
+        }
     }
 
     public void showHelp() {
@@ -233,5 +254,17 @@ public class HelpPanel extends AnchorPane {
     @FXML
     public void hideHelp() {
         toBack();
+    }
+
+    @FXML
+    private void nextButtonHoverEnter() {
+        nextButtonIsHovered = true;
+        updateNextButton();
+    }
+
+    @FXML
+    private void nextButtonHoverExit() {
+        nextButtonIsHovered = false;
+        updateNextButton();
     }
 }
