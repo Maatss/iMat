@@ -654,10 +654,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
         if (deliveryDate != null) {
             for (Node n : timeSelectionPane.getChildren()) {
                 temp = (TimeSelectionPanel) n;
-                if (temp.getDeliveryDate().getMonth() == deliveryDate.getMonth() &&
-                        temp.getDeliveryDate().getDate() == deliveryDate.getDate()) {
-                    switch (model.getDeliveryTime()) {
-                        case ("8-10"):
+                 if(isSameDate(temp, deliveryDate)){
+                    switch(Model.getDeliveryTime()){
+                        case("8-10"):
                             timeButton = temp.getTimeSelectOne();
                             break;
                         case ("10-12"):
@@ -679,6 +678,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 }
             }
         }
+    }
+
+    private boolean isSameDate(TimeSelectionPanel temp, Date deliveryDate) {
+        return temp.getDeliveryDate().getMonth() == deliveryDate.getMonth() &&
+                temp.getDeliveryDate().getDate() == deliveryDate.getDate();
     }
 
     // Navigation
