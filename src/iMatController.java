@@ -107,6 +107,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private Label undoClearHelpTextLabel;
     private List<ShoppingItem> clearedCart = new ArrayList<>();
+    private boolean emptyCartPaneIsHovered;
 
     // Checkout pane ONE
     @FXML
@@ -258,6 +259,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         categoryLabel.setText("Alla varor");
         noResultsLabel.setText("");
         savedLabel.setText("");
+        emptyCartPaneIsHovered = false;
         productsNoResultsTopLabel.setVisible(false);
         productsNoResultsBottomLabel.setVisible(false);
         categoriesHandler = CategoriesHandler.getInstance(this, userCategoriesVBox, categoryVBox);
@@ -445,6 +447,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     // Category pane actions
+
     /**
      * See which category was pressed and update the product pane based on that
      */
@@ -705,12 +708,18 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void updateCartCheckoutButton(boolean allowEmptyLabel) {
         if (model.getCountInShoppingCart() > 0) {
             cartGoToCheckoutButton.setDisable(false);
-            cartEmptyCartPane.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
+            cartEmptyCartPane.setDisable(false);
+            if (emptyCartPaneIsHovered) {
+                cartEmptyCartPane.setStyle("-fx-background-color: #D43434; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
+            } else {
+                cartEmptyCartPane.setStyle("-fx-background-color: #E54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
+            }
             if (allowEmptyLabel) {
                 cartIsEmptyLabel.toBack();
             }
         } else {
             cartGoToCheckoutButton.setDisable(true);
+            cartEmptyCartPane.setDisable(true);
             cartEmptyCartPane.setStyle("-fx-background-color: #BEBEBE; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
             if (allowEmptyLabel) {
                 cartIsEmptyLabel.toFront();
@@ -718,27 +727,32 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
+    @FXML
+    private void emptyCartPaneHoverEnter() {
+        emptyCartPaneIsHovered = true;
+        updateCartCheckoutButton(true);
+        cartEmptyCartPane.setCursor(Cursor.HAND);
+    }
+
+    @FXML
+    private void emptyCartPaneHoverExit() {
+        emptyCartPaneIsHovered = false;
+        updateCartCheckoutButton(true);
+        cartEmptyCartPane.setCursor(Cursor.DEFAULT);
+    }
+
     public void updateCheckoutTimeButton() {
         if (Model.getDeliveryTime() == null || Model.getDeliveryTime().isEmpty()) {
             checkoutMoveToStepTwoButton.setDisable(true);
-            checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
-            checkoutTimeNotSelectedLabel.setVisible(true);
             //TODO view label that says user needs to select a time first
         } else {
             checkoutMoveToStepTwoButton.setDisable(false);
-            checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
-            checkoutTimeNotSelectedLabel.setVisible(false);
             updateCheckoutSelectedTimeLabel();
-            checkoutSelectedTimeLabel.setVisible(true);
         }
     }
 
     public void updateCheckoutSelectedTimeLabel() {
         checkoutSelectedTimeLabel.setText("Vald tid:\n" + Model.getDeliveryDateDDM() + " " + Model.getDeliveryTime());
-    }
-
-    private void updateCheckoutViewTwoButton() {
-
     }
 
     public void openCheckoutView() {
@@ -757,7 +771,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void openCheckoutViewTwo() {
         checkoutPane.toBack();
         checkoutTwoPane.toFront();
-        updateCheckoutViewTwoButton();
     }
 
     public void closeCheckoutViewTwo() {
@@ -1294,7 +1307,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     private void removeCardErrorStyle() {
-
         cvcTF.setStyle("");
         cardNumberTF.setStyle("");
         cardNameTF.setStyle("");
