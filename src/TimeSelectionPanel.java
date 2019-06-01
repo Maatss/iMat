@@ -98,7 +98,7 @@ public class TimeSelectionPanel extends AnchorPane {
     private void updateModelDeliveryDate(){
         Model.setDeliveryDateWeekday(dayOfWeekLabel.getText());
         Model.setDeliveryDateDDM(dateLabel.getText());
-
+        Model.setDeliveryDate(new Date(deliveryDate.getTime()));
     }
 
     private void updateCheckoutTimeButton(){
@@ -113,13 +113,11 @@ public class TimeSelectionPanel extends AnchorPane {
     public void decrementDay(){
         deliveryDate = new Date(deliveryDate.getTime()-(24*60*60*1000));
         updateDateLabels();
-        updateModelDeliveryDate();
     }
 
     public void incrementDay(){
         deliveryDate = new Date(deliveryDate.getTime()+(24*60*60*1000));
         updateDateLabels();
-        updateModelDeliveryDate();
     }
 
     public Date getDeliveryDate() {
@@ -128,5 +126,21 @@ public class TimeSelectionPanel extends AnchorPane {
 
     public void setDeliveryDate(Date deliveryDate) {
         this.deliveryDate = deliveryDate;
+    }
+
+    public Button getTimeSelectOne() {
+        return timeSelectOne;
+    }
+
+    public Button getTimeSelectTwo() {
+        return timeSelectTwo;
+    }
+
+    public Button getTimeSelectThree() {
+        return timeSelectThree;
+    }
+
+    public Button getTimeSelectFour() {
+        return timeSelectFour;
     }
 }
