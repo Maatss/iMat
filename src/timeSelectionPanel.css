@@ -1,5 +1,6 @@
 .not-selected-button{
     -fx-font-size: 18px;
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
 }
 
 .weekday-text{
@@ -8,4 +9,14 @@
 
 .date-text{
     -fx-font-size: 25px;
+}
+
+.red-button-selected{
+    -fx-background-color: #e54545;
+    -fx-background-radius: 5;
+    -fx-border-color:  #404040;
+    -fx-border-radius: 5;
+    -fx-border-width: 2;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
 }

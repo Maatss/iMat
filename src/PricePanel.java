@@ -75,7 +75,7 @@ public class PricePanel extends AnchorPane {
     private void handleAddAction() { //TODO copy final version of method in ProductPanel when it's done there
         System.out.println("Add " + product.getName());
         model.addToShoppingCart(product);
-        updateCountAndCountLabel(); //todo update count in productpanels when closing shopping cart?
+        updateCountAndCountLabel();
         updatePriceSumLabel();
     }
 
