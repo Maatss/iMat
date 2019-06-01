@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="445c0166-ee2d-4a41-a5d8-1f5a7ade7787" name="Default Changelist" comment="Exempel finns nu på hur man kan få kategorier att ladda, man behöver dock lösa på något sätt för att lägga ihop de kategorier vi har valt att klumpa tillsammans">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HelpHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelpHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/HelpPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HelpPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/helpPanel.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/helpPanel.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/iMat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMat.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/iMatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/iMatController.java" afterDir="false" />
     </list>
@@ -25,23 +25,25 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+          <entry key="fxml" value="2" />
           <entry key="java" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JAVA" value="2" />
+          <entry key="XML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="fxml" value="3" />
-          <entry key="java" value="1240" />
+          <entry key="java" value="2009" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1240" />
+          <entry key="JAVA" value="2009" />
           <entry key="XML" value="3" />
         </counts>
       </usages-collector>
@@ -52,11 +54,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/iMatController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="308" column="28" lean-forward="true" selection-start-line="308" selection-start-column="28" selection-end-line="308" selection-end-column="28" />
+            <state relative-caret-position="451">
+              <caret line="382" column="45" lean-forward="true" selection-start-line="382" selection-start-column="45" selection-end-line="382" selection-end-column="45" />
+              <folding>
+                <element signature="e#10053#10054#0" expanded="true" />
+                <element signature="e#10080#10081#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,11 +80,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HelpPanel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="94" column="48" lean-forward="true" selection-start-line="94" selection-start-column="48" selection-end-line="94" selection-end-column="48" />
+            <state relative-caret-position="397">
+              <caret line="175" column="57" lean-forward="true" selection-start-line="175" selection-start-column="57" selection-end-line="175" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2587#2588#0" expanded="true" />
@@ -93,8 +99,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/HelpHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="380">
-              <caret line="23" column="35" lean-forward="true" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+            <state relative-caret-position="476">
+              <caret line="28" column="51" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="51" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#949#950#0" expanded="true" />
@@ -291,10 +297,10 @@
         <option value="$PROJECT_DIR$/src/CategoryPanel.java" />
         <option value="$PROJECT_DIR$/src/iMatCSS.css" />
         <option value="$PROJECT_DIR$/src/helpPanel.fxml" />
-        <option value="$PROJECT_DIR$/src/iMatController.java" />
-        <option value="$PROJECT_DIR$/src/iMatController.java" />
         <option value="$PROJECT_DIR$/src/HelpHandler.java" />
         <option value="$PROJECT_DIR$/src/HelpPanel.java" />
+        <option value="$PROJECT_DIR$/src/iMatController.java" />
+        <option value="$PROJECT_DIR$/src/iMatController.java" />
       </list>
     </option>
   </component>
@@ -333,7 +339,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559387173279" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559397199137" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
@@ -347,14 +353,15 @@
     <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\hugos\Documents\School\DAT216\Projekt\src" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\hugos\Documents\School\DAT216\Projekt\lib" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\hugos\Documents\School\DAT216\Projekt\lib" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Mats Cedervall\OneDrive - Chalmers tekniska hogskola\DAT216\iMat\src" />
+      <recent name="C:\Users\hugos\Documents\School\DAT216\Projekt\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -502,8 +509,8 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8423989" visible="true" weight="0.21108742" />
-      <window_info id="Structure" order="1" sideWeight="0.15760112" side_tool="true" visible="true" weight="0.21108742" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.8426052" visible="true" weight="0.21108742" />
+      <window_info id="Structure" order="1" sideWeight="0.15739484" side_tool="true" visible="true" weight="0.21108742" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -511,7 +518,7 @@
       <window_info id="Favorites" order="6" sideWeight="0.5008881" side_tool="true" weight="0.27044535" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.5195228" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.22234273" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20065077" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.37811485" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -797,10 +804,14 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/iMatTESTNING.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/HelpHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="23" column="35" lean-forward="true" selection-start-line="23" selection-start-column="35" selection-end-line="23" selection-end-column="35" />
+        <state relative-caret-position="476">
+          <caret line="28" column="51" selection-start-line="28" selection-start-column="22" selection-end-line="28" selection-end-column="51" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#949#950#0" expanded="true" />
@@ -811,23 +822,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/iMatController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="308" column="28" lean-forward="true" selection-start-line="308" selection-start-column="28" selection-end-line="308" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/HelpPanel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="94" column="48" lean-forward="true" selection-start-line="94" selection-start-column="48" selection-end-line="94" selection-end-column="48" />
+        <state relative-caret-position="397">
+          <caret line="175" column="57" lean-forward="true" selection-start-line="175" selection-start-column="57" selection-end-line="175" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2587#2588#0" expanded="true" />
             <element signature="e#2622#2623#0" expanded="true" />
             <element signature="e#2976#2977#0" expanded="true" />
             <element signature="e#3000#3001#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/iMatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="382" column="45" lean-forward="true" selection-start-line="382" selection-start-column="45" selection-end-line="382" selection-end-column="45" />
+          <folding>
+            <element signature="e#10053#10054#0" expanded="true" />
+            <element signature="e#10080#10081#0" expanded="true" />
           </folding>
         </state>
       </provider>

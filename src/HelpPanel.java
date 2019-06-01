@@ -32,12 +32,14 @@ public class HelpPanel extends AnchorPane {
     @FXML
     private Button helpPrevButton;
 
+    private iMatController imatController;
     private int helpIndex;
     private String[] helpArray;
 
     private Shape shadowRegion;
 
-    public HelpPanel() {
+    public HelpPanel(iMatController imatController) {
+        this.imatController = imatController;
         this.helpIndex = 0;
         this.helpArray = new String[]{
                 "Här kan du söka bland olika kategorier.",
@@ -75,28 +77,35 @@ public class HelpPanel extends AnchorPane {
     }
 
     private void updateDialog() {
+        imatController.handleLogoAction();
         switch (helpIndex) {
-            case (0):
-
+            case (0): //Categories
+                helpDialogAnchorPane.setLayoutX(450);
+                helpDialogAnchorPane.setLayoutY(350);
                 break;
-            case (1):
-
+            case (1): //Search field
+                helpDialogAnchorPane.setLayoutX(250);
+                helpDialogAnchorPane.setLayoutY(260);
                 break;
-            case (2):
-
+            case (2): // Min Profil sida
+                helpDialogAnchorPane.setLayoutX(380);
+                helpDialogAnchorPane.setLayoutY(80);
                 break;
-            case (3):
-
+            case (3): //Tidigare köp
+                helpDialogAnchorPane.setLayoutX(380);
+                helpDialogAnchorPane.setLayoutY(127);
                 break;
-            case (4):
-
+            case (4): //Lägga till vara i varukorg
+                helpDialogAnchorPane.setLayoutX(100);
+                helpDialogAnchorPane.setLayoutY(500);
                 break;
-            case (5):
+            case (5): //Navigera till startsida via logga
                 helpDialogAnchorPane.setLayoutX(240);
                 helpDialogAnchorPane.setLayoutY(260);
                 break;
-            case (6):
-
+            case (6): //Varukorg
+                helpDialogAnchorPane.setLayoutX(900);
+                helpDialogAnchorPane.setLayoutY(250);
                 break;
             default:
                 break;
@@ -105,28 +114,40 @@ public class HelpPanel extends AnchorPane {
 
     private void updateArrow() {
         switch (helpIndex) {
-            case (0):
-
+            case (0): //Categories
+                helpArrowImageView.setLayoutX(250);
+                helpArrowImageView.setLayoutY(375);
+                helpArrowImageView.setRotate(180);
                 break;
-            case (1):
-
+            case (1): //Search field
+                helpArrowImageView.setLayoutX(450);
+                helpArrowImageView.setLayoutY(100);
+                helpArrowImageView.setRotate(270);
                 break;
-            case (2):
-
+            case (2): // Min Profil sida
+                helpArrowImageView.setLayoutX(200);
+                helpArrowImageView.setLayoutY(102);
+                helpArrowImageView.setRotate(180);
                 break;
-            case (3):
-
+            case (3): //Tidigare köp
+                helpArrowImageView.setLayoutX(200);
+                helpArrowImageView.setLayoutY(149);
+                helpArrowImageView.setRotate(180);
                 break;
-            case (4):
-
+            case (4): //Lägga till vara i varukorg
+                helpArrowImageView.setLayoutX(305);
+                helpArrowImageView.setLayoutY(250);
+                helpArrowImageView.setRotate(90);
                 break;
-            case (5):
+            case (5): //Navigera till startsida via logga
                 helpArrowImageView.setLayoutX(115);
                 helpArrowImageView.setLayoutY(120);
                 helpArrowImageView.setRotate(235);
                 break;
-            case (6):
-
+            case (6): //Varukorg
+                helpArrowImageView.setLayoutX(1250);
+                helpArrowImageView.setLayoutY(100);
+                helpArrowImageView.setRotate(270);
                 break;
             default:
                 break;
@@ -135,33 +156,33 @@ public class HelpPanel extends AnchorPane {
 
     private void updateShadowRegion() {
         shadowRegion = new Rectangle(0, 0, 1500, 850);
-        Shape mask;
+        Shape mask = new Rectangle();
         switch (helpIndex) {
-            case (0):
-
+            case (0): //Categories
+                mask = new Rectangle(0, 300, 210, 325);
                 break;
-            case (1):
-
+            case (1): //Search field
+                mask = new Rectangle(190, 20, 925, 75);
                 break;
-            case (2):
-
+            case (2): // Min Profil sida
+                mask = new Rectangle(0, 150, 210, 55);
                 break;
-            case (3):
-
+            case (3): //Tidigare köp
+                mask = new Rectangle(0, 197, 210, 55);
                 break;
-            case (4):
-
+            case (4): //Lägga till vara i varukorg
+                mask = new Rectangle(368, 412, 45, 45);
                 break;
-            case (5):
+            case (5): //Navigera till startsida via logga
                 mask = new Circle(99, 74, 80);
-                shadowRegion = Shape.subtract(shadowRegion, mask);
                 break;
-            case (6):
-
+            case (6): //Varukorg
+                mask = new Rectangle(1150, 0, 340, 107);
                 break;
             default:
                 break;
         }
+        shadowRegion = Shape.subtract(shadowRegion, mask);
         setClip(shadowRegion);
     }
 

@@ -45,6 +45,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private AnchorPane appPane;
 
+    // Help start Pane
+    @FXML
+    private AnchorPane helpStartPane;
+    @FXML
+    private Label helpStartLabel;
+
     // Welcome Pane
     @FXML
     protected AnchorPane welcomePane; // Loot - I must use 'protected' for it to work?
@@ -260,7 +266,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         productsNoResultsTopLabel.setVisible(false);
         productsNoResultsBottomLabel.setVisible(false);
         categoriesHandler = CategoriesHandler.getInstance(this, userCategoriesVBox, categoryVBox);
-        helpHandler = HelpHandler.getInstance(appPane);
+        helpHandler = HelpHandler.getInstance(this, appPane);
         loadAllProductPanels();
 
         profileLabelsHideVisibility();
@@ -311,7 +317,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
-    private void handleLogoAction() {
+    public void handleLogoAction() {
         showAllProducts();
         categoriesHandler.clearCategorySelection(true);
     }
@@ -364,6 +370,23 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void handleSearchButtonHoverExit() {
         searchButton.setStyle("-fx-background-color:  #e54545; -fx-background-radius: 14; -fx-border-color:  #101010A0; -fx-border-radius: 7; -fx-border-width: 3;");
         searchButton.setCursor(Cursor.DEFAULT);
+    }
+
+    @FXML
+    private void handleHelpStartAction() {
+        helpHandler.show();
+    }
+
+    @FXML
+    private void handleHelpStartHoverEnter() {
+        helpStartLabel.setStyle("-fx-underline: true;");
+        helpStartPane.setCursor(Cursor.HAND);
+    }
+
+    @FXML
+    private void handleHelpStartHoverExit() {
+        helpStartLabel.setStyle("");
+        helpStartPane.setCursor(Cursor.DEFAULT);
     }
 
     private void showProductsPane() {

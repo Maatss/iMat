@@ -18,17 +18,17 @@ public class HelpHandler extends AnchorPane {
 
     }
 
-    public static HelpHandler getInstance(AnchorPane appPane) {
+    public static HelpHandler getInstance(iMatController imatController, AnchorPane appPane) {
         if (instance == null) {
             instance = new HelpHandler();
-            instance.init(appPane);
+            instance.init(imatController, appPane);
         }
         return instance;
     }
 
-    private void init(AnchorPane appPane) {
+    private void init(iMatController imatController, AnchorPane appPane) {
         this.appPane = appPane;
-        this.helpPanel = new HelpPanel();
+        this.helpPanel = new HelpPanel(imatController);
         appPane.getChildren().add(helpPanel);
         helpPanel.toFront();
     }

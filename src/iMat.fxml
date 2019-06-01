@@ -709,5 +709,19 @@
             </Label>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="helpStartPane" layoutX="1344.0" layoutY="116.0" onMouseEntered="#handleHelpStartHoverEnter" onMouseExited="#handleHelpStartHoverExit" onMouseReleased="#handleHelpStartAction" prefHeight="36.0" prefWidth="130.0">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="3.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/HelpIcon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="helpStartLabel" layoutX="45.0" layoutY="10.0" mouseTransparent="true" text="Visa guide">
+               <font>
+                  <Font name="Lucida Bright Regular" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
