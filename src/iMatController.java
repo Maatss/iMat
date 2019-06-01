@@ -41,6 +41,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private boolean isInvoicePayment;
 
 
+    // App pane
+    @FXML
+    private AnchorPane appPane;
+
     // Welcome Pane
     @FXML
     protected AnchorPane welcomePane; // Loot - I must use 'protected' for it to work?
@@ -48,10 +52,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
     protected Button acceptHelpButton;
     @FXML
     protected Button denyHelpButton;
-
-    // Help pane
-    @FXML
-    private AnchorPane helpBaseAnchorPane;
 
     // Shopping Pane
     @FXML
@@ -248,7 +248,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private TitledPane snacksCategory;
     // Other variables
     private final Model model = Model.getInstance();
-//    private HelpHandler helpHandler = HelpHandler.getInstance();
+    private HelpHandler helpHandler;
     private List<ProductPanel> allProductPanels = new ArrayList<>();
 
     @Override
@@ -260,6 +260,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         productsNoResultsTopLabel.setVisible(false);
         productsNoResultsBottomLabel.setVisible(false);
         categoriesHandler = CategoriesHandler.getInstance(this, userCategoriesVBox, categoryVBox);
+        helpHandler = HelpHandler.getInstance(appPane);
         loadAllProductPanels();
 
         profileLabelsHideVisibility();
@@ -288,9 +289,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         model.setDoShowHelpWizard(true);
         welcomePane.toBack();
         showProductsPane();
-//        helpBaseAnchorPane.toFront();
-//        helpHandler.showHelp(0);
-
+        helpHandler.show();
     }
 
     @FXML
@@ -298,7 +297,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         model.setDoShowHelpWizard(false);
         welcomePane.toBack();
         showProductsPane();
-//        helpHandler.hideHelp();
+        helpHandler.hide();
     }
 
     // Shop pane actions

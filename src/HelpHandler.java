@@ -6,9 +6,11 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import org.omg.SendingContext.RunTime;
 
+import javax.management.MBeanConstructorInfo;
 import java.io.IOException;
 
 public class HelpHandler extends AnchorPane {
+    private AnchorPane appPane;
     private HelpPanel helpPanel;
     private static HelpHandler instance;
 
@@ -16,15 +18,26 @@ public class HelpHandler extends AnchorPane {
 
     }
 
-    public static HelpHandler getInstance() {
+    public static HelpHandler getInstance(AnchorPane appPane) {
         if (instance == null) {
             instance = new HelpHandler();
-            instance.init();
+            instance.init(appPane);
         }
         return instance;
     }
 
-    private void init() {
+    private void init(AnchorPane appPane) {
+        this.appPane = appPane;
         this.helpPanel = new HelpPanel();
+        appPane.getChildren().add(helpPanel);
+        helpPanel.toFront();
+    }
+
+    public void show() {
+        helpPanel.showHelp();
+    }
+
+    public void hide() {
+        helpPanel.hideHelp();
     }
 }

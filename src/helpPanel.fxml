@@ -3,31 +3,43 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="850.0" prefWidth="1500.0" style="-fx-background-color: #40404070;" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
-<!--<AnchorPane fx:id="bottomHelpAnchorPane" prefHeight="850.0" prefWidth="1500.0" style="-fx-background-color: #0404070;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HelpPanel">-->
+<fx:root prefHeight="850.0" prefWidth="1500.0" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<!--<AnchorPane fx:id="helpAnchorPane" prefHeight="850.0" prefWidth="1500.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">-->
    <children>
-      <AnchorPane layoutX="164.0" layoutY="133.0" prefHeight="165.0" prefWidth="420.0" style="-fx-background-color: #FEFEFE; -fx-background-radius: 5; -fx-border-color: #404040; -fx-border-width: 4; -fx-border-radius: 5;">
+      <ImageView fx:id="helpArrowImageView" fitHeight="150.0" fitWidth="200.0" layoutX="115.0" layoutY="120.0" pickOnBounds="true" preserveRatio="true" rotate="235.0">
+         <image>
+            <Image url="@images/HelpArrow.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="helpDialogAnchorPane" layoutX="240.0" layoutY="260.0" prefHeight="199.0" prefWidth="581.0" style="-fx-background-color: #FEFEFE; -fx-background-radius: 15; -fx-border-color: #404040; -fx-border-width: 6; -fx-border-radius: 5;">
          <children>
-            <Label alignment="CENTER" layoutX="95.0" layoutY="10.0" prefHeight="31.0" prefWidth="234.0" text="Hjälpsteg 1 / 10">
+            <Label fx:id="helpTitleLabel" alignment="CENTER" layoutX="184.0" layoutY="24.0" prefHeight="31.0" prefWidth="234.0" text="Hjälpsteg 5 / 10">
                <font>
                   <Font size="22.0" />
                </font>
             </Label>
-            <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="52.0" prefHeight="59.0" prefWidth="391.0" text="Hjälptexten ligger här">
+            <Label fx:id="helpTextLabel" alignment="TOP_LEFT" layoutX="103.0" layoutY="66.0" prefHeight="59.0" prefWidth="391.0" text="Genom att klicka på loggan kan du alltid gå till startsidan, oavsett var du är i programmet." wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Separator layoutX="112.0" layoutY="43.0" prefWidth="200.0" />
-            <Button layoutX="302.0" layoutY="119.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="104.0" stylesheets="@iMatCSS.css" text="Nästa steg">
+            <Separator layoutX="201.0" layoutY="57.0" prefWidth="200.0" />
+            <Button fx:id="helpPrevButton" layoutX="289.0" layoutY="147.0" mnemonicParsing="false" onAction="#prevHelp" prefHeight="41.0" prefWidth="158.0" stylesheets="@iMatCSS.css" text="Föregående steg">
                <font>
                   <Font size="16.0" />
                </font>
             </Button>
-            <Button layoutX="12.0" layoutY="117.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="92.0" stylesheets="@iMatCSS.css" text="Avsluta">
+            <Button fx:id="helpNextButton" layoutX="464.0" layoutY="147.0" mnemonicParsing="false" onAction="#nextHelp" prefHeight="30.0" prefWidth="105.0" stylesheets="@iMatCSS.css" text="Nästa steg">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="helpQuitButton" layoutX="12.0" layoutY="146.0" mnemonicParsing="false" onAction="#hideHelp" prefHeight="30.0" prefWidth="105.0" stylesheets="@iMatCSS.css" text="Avsluta">
                <font>
                   <Font size="16.0" />
                </font>

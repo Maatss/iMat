@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1500.0" stylesheets="@iMatCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
+<AnchorPane id="AnchorPane" fx:id="appPane" prefHeight="850.0" prefWidth="1500.0" stylesheets="@iMatCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
    <children>
       <AnchorPane fx:id="welcomePane" prefHeight="850.0" prefWidth="1500.0" style="-fx-background-color: #101010DE;">
          <children>
@@ -685,45 +685,6 @@
             </AnchorPane>
          </children>
       </StackPane>
-      <AnchorPane fx:id="helpBaseAnchorPane" prefHeight="850.0" prefWidth="1500.0" style="-fx-background-color: #000000D0;">
-         <children>
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="106.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true" rotate="235.0">
-               <image>
-                  <Image url="@images/HelpArrow.png" />
-               </image>
-            </ImageView>
-            <AnchorPane fx:id="helpAnchorPane" layoutX="219.0" layoutY="241.0" prefHeight="199.0" prefWidth="581.0" style="-fx-background-color: #FEFEFE; -fx-background-radius: 15; -fx-border-color: #404040; -fx-border-width: 6; -fx-border-radius: 5;">
-               <children>
-                  <Label fx:id="helpTitleLabel" alignment="CENTER" layoutX="184.0" layoutY="24.0" prefHeight="31.0" prefWidth="234.0" text="Hjälpsteg 5 / 10">
-                     <font>
-                        <Font size="22.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="helpTextLabel" alignment="TOP_LEFT" layoutX="103.0" layoutY="66.0" prefHeight="59.0" prefWidth="391.0" text="Genom att klicka på loggan kan du alltid gå till startsidan, oavsett var du är i programmet." wrapText="true">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Label>
-                  <Separator layoutX="201.0" layoutY="57.0" prefWidth="200.0" />
-                  <Button fx:id="helpNextButton" layoutX="464.0" layoutY="147.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" stylesheets="@iMatCSS.css" text="Nästa steg">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="helpPrevButton" layoutX="12.0" layoutY="146.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="105.0" stylesheets="@iMatCSS.css" text="Avsluta">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-                  <Button fx:id="helpNextButton1" layoutX="289.0" layoutY="147.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="158.0" stylesheets="@iMatCSS.css" text="Föregående steg">
-                     <font>
-                        <Font size="16.0" />
-                     </font>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
       <AnchorPane fx:id="homeButtonAnchorPane" layoutX="25.5" layoutY="5.0">
          <children>
             <ImageView fx:id="homeImageView" fitHeight="160.0" fitWidth="160.0" layoutX="-6.0" layoutY="-10.0" onMouseEntered="#handleLogoHoverEnter" onMouseExited="#handleLogoHoverExit" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">
