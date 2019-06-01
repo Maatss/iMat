@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="850.0" prefWidth="1500.0" stylesheets="@iMatCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
+<AnchorPane id="AnchorPane" fx:id="appPane" prefHeight="850.0" prefWidth="1500.0" stylesheets="@iMatCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
    <children>
       <StackPane fx:id="homeScreen" prefHeight="850.0" prefWidth="1500.0">
          <children>
@@ -482,25 +482,6 @@
                                     </ScrollPane>
                                  </children>
                               </AnchorPane>
-                              <AnchorPane fx:id="productsAnchorPane" layoutX="15.0" layoutY="69.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
-                                 <children>
-                                    <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1250.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <content>
-                                          <FlowPane fx:id="productsFlowPane" hgap="6.0" layoutX="15.0" prefHeight="660.0" prefWidth="1230.0" style="-fx-background-color: #EFEFEF;" vgap="6.0" />
-                                       </content>
-                                    </ScrollPane>
-                                    <Label fx:id="productsNoResultsTopLabel" alignment="CENTER" layoutX="450.0" layoutY="250.0" prefHeight="61.0" prefWidth="367.0" text="Inga sökträffar." textAlignment="CENTER" wrapText="true">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Label>
-                                    <Label fx:id="productsNoResultsBottomLabel" alignment="CENTER" layoutX="378.0" layoutY="275.0" prefHeight="61.0" prefWidth="514.0" text="Kanske hittar du det du söker i någon av våra kategorier." textAlignment="CENTER" wrapText="true">
-                                       <font>
-                                          <Font size="20.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </AnchorPane>
                               <AnchorPane fx:id="newAccountPane" layoutY="69.0" prefHeight="435.0" prefWidth="786.0" style="-fx-background-color: #FFFFFF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
                                  <children>
                                     <Label layoutX="50.0" layoutY="20.0" prefHeight="44.0" prefWidth="138.0" text="Mina uppgifter:">
@@ -661,6 +642,25 @@
                                     </Label>
                                  </children>
                               </AnchorPane>
+                              <AnchorPane fx:id="productsAnchorPane" layoutX="15.0" layoutY="69.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="69.0">
+                                 <children>
+                                    <ScrollPane fx:id="productsScrollPane" hbarPolicy="NEVER" prefHeight="660.0" prefWidth="1250.0" style="-fx-background-color: transparent;" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <content>
+                                          <FlowPane fx:id="productsFlowPane" hgap="6.0" layoutX="15.0" prefHeight="660.0" prefWidth="1230.0" style="-fx-background-color: #EFEFEF;" vgap="6.0" />
+                                       </content>
+                                    </ScrollPane>
+                                    <Label fx:id="productsNoResultsTopLabel" alignment="CENTER" layoutX="450.0" layoutY="250.0" prefHeight="61.0" prefWidth="367.0" text="Inga sökträffar." textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="productsNoResultsBottomLabel" alignment="CENTER" layoutX="378.0" layoutY="275.0" prefHeight="61.0" prefWidth="514.0" text="Kanske hittar du det du söker i någon av våra kategorier." textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
                            </children>
                         </AnchorPane>
                      </items>
@@ -669,6 +669,20 @@
             </AnchorPane>
          </children>
       </StackPane>
+      <AnchorPane fx:id="helpStartPane" layoutX="1344.0" layoutY="116.0" onMouseEntered="#handleHelpStartHoverEnter" onMouseExited="#handleHelpStartHoverExit" onMouseReleased="#handleHelpStartAction" prefHeight="36.0" prefWidth="130.0">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="36.0" layoutX="3.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/HelpIcon.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="helpStartLabel" layoutX="45.0" layoutY="10.0" mouseTransparent="true" text="Visa guide">
+               <font>
+                  <Font name="Lucida Bright Regular" size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
       <AnchorPane fx:id="homeButtonAnchorPane" layoutX="25.5" layoutY="5.0">
          <children>
             <ImageView fx:id="homeImageView" fitHeight="160.0" fitWidth="160.0" layoutX="-6.0" layoutY="-10.0" onMouseEntered="#handleLogoHoverEnter" onMouseExited="#handleLogoHoverExit" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">

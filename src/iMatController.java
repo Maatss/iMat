@@ -31,7 +31,15 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private boolean isCardPayment;
     private boolean isInvoicePayment;
 
+    // App pane
+    @FXML
+    private AnchorPane appPane;
 
+    // Help start Pane
+    @FXML
+    private AnchorPane helpStartPane;
+    @FXML
+    private Label helpStartLabel;
 
     // Welcome Pane
     @FXML
@@ -241,6 +249,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private TitledPane snacksCategory;
     // Other variables
     private final Model model = Model.getInstance();
+    private HelpHandler helpHandler;
     private List<ProductPanel> allProductPanels = new ArrayList<>();
 
     @Override
@@ -252,6 +261,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         productsNoResultsTopLabel.setVisible(false);
         productsNoResultsBottomLabel.setVisible(false);
         categoriesHandler = CategoriesHandler.getInstance(this, userCategoriesVBox, categoryVBox);
+        helpHandler = HelpHandler.getInstance(this, appPane);
         loadAllProductPanels();
 
         profileLabelsHideVisibility();
@@ -280,6 +290,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         model.setDoShowHelpWizard(true);
         welcomePane.toBack();
         showProductsPane();
+        helpHandler.show();
     }
 
     @FXML
@@ -287,6 +298,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         model.setDoShowHelpWizard(false);
         welcomePane.toBack();
         showProductsPane();
+        helpHandler.hide();
     }
 
     // Shop pane actions
@@ -300,7 +312,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     @FXML
-    private void handleLogoAction() {
+    public void handleLogoAction() {
         showAllProducts();
         categoriesHandler.clearCategorySelection(true);
     }
@@ -353,6 +365,23 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void handleSearchButtonHoverExit() {
         searchButton.setStyle("-fx-background-color:  #e54545; -fx-background-radius: 14; -fx-border-color:  #101010A0; -fx-border-radius: 7; -fx-border-width: 3;");
         searchButton.setCursor(Cursor.DEFAULT);
+    }
+
+    @FXML
+    private void handleHelpStartAction() {
+        helpHandler.show(0);
+    }
+
+    @FXML
+    private void handleHelpStartHoverEnter() {
+        helpStartLabel.setStyle("-fx-underline: true;");
+        helpStartPane.setCursor(Cursor.HAND);
+    }
+
+    @FXML
+    private void handleHelpStartHoverExit() {
+        helpStartLabel.setStyle("");
+        helpStartPane.setCursor(Cursor.DEFAULT);
     }
 
     private void showProductsPane() {
@@ -810,7 +839,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
-    public void updateCheckoutTimeButton(){
+    public void updateCheckoutTimeButton() {
         if (Model.getDeliveryTime() == null || Model.getDeliveryTime().isEmpty()) {
             checkoutMoveToStepTwoButton.setDisable(true);
             checkoutMoveToStepTwoButton.setStyle("-fx-background-color: #e54545; -fx-background-radius: 5; -fx-border-color:  #404040; -fx-border-radius: 5; -fx-border-width: 2;");
@@ -829,7 +858,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         checkoutSelectedTimeLabel.setText("Vald tid:\n" + Model.getDeliveryDateDDM() + " " + Model.getDeliveryTime());
     }
 
-    private void updateCheckoutViewTwoButton(){
+    private void updateCheckoutViewTwoButton() {
 
     }
 
@@ -1068,11 +1097,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     }
 
-    private ProductPanel findProductPanel(Product product){
+    private ProductPanel findProductPanel(Product product) {
         ProductPanel temp = allProductPanels.get(0);
 
-        for(ProductPanel panel: allProductPanels){
-            if(panel.getProduct() == product){
+        for (ProductPanel panel : allProductPanels) {
+            if (panel.getProduct() == product) {
                 return panel;
             }
         }
@@ -1114,9 +1143,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
         if (!cardInfoIsShown) {
 
-            profileGridPane.add(cardComboBox,0,0,2,1);
-            profileGridPane.add(cardNumberTF, 0, 1,2,1);
-            profileGridPane.add(cardNameTF, 0, 2,2,1);
+            profileGridPane.add(cardComboBox, 0, 0, 2, 1);
+            profileGridPane.add(cardNumberTF, 0, 1, 2, 1);
+            profileGridPane.add(cardNameTF, 0, 2, 2, 1);
             profileGridPane.add(cardMonthCombo, 0, 3);
             profileGridPane.add(cardYearCombo, 1, 3);
             profileGridPane.add(cvcTF, 0, 4);
