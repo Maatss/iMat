@@ -5,10 +5,7 @@
 import javafx.scene.image.Image;
 import se.chalmers.cse.dat216.project.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -25,8 +22,9 @@ public class Model {
     private final ArrayList<String> years = new ArrayList<String>(Arrays.asList("19", "20", "21", "22", "23", "24", "25"));
 
     private static String deliveryTime;
-    private static String deliveryDateDay;
-    private static String deliveryDate;
+    private static String deliveryDateWeekday;
+    private static String deliveryDateDDM;
+    private static Date deliveryDate;
 
     private boolean doShowHelpWizard = false;
 
@@ -82,11 +80,11 @@ public class Model {
         return iMatDataHandler.getFXImage(p, width, height);
     }
 
-    public void addToShoppingCart(Product p) { //todo some sort of feedback that the action succeeded/failed?
+    public void addToShoppingCart(Product p) {
         addToShoppingCart(p, 1);
     }
 
-    public void addToShoppingCart(Product p, double amount) { //todo some sort of feedback that the action succeeded/failed?
+    public void addToShoppingCart(Product p, double amount) {
         boolean gotStacked = false;
         for (ShoppingItem cartItem : getShoppingCart().getItems()) {
             if (cartItem.getProduct().getProductId() == p.getProductId()) {
@@ -103,7 +101,7 @@ public class Model {
         }
     }
 
-    public void removeFromShoppingCart(Product p, double amount) { //todo some sort of feedback that the action succeeded/failed?
+    public void removeFromShoppingCart(Product p, double amount) {
         for (ShoppingItem cartItem : getShoppingCart().getItems()) {
             if (cartItem.getProduct().getProductId() == p.getProductId()) {
                 if (cartItem.getAmount() <= amount) {
@@ -117,7 +115,7 @@ public class Model {
         }
     }
 
-    public void removeFromShoppingCart(Product p) { //todo some sort of feedback that the action succeeded/failed?
+    public void removeFromShoppingCart(Product p) {
         removeFromShoppingCart(p, 1);
     }
 
@@ -167,19 +165,27 @@ public class Model {
         return deliveryTime;
     }
 
-    public static void setDeliveryDateDay(String deliveryDateDay) {
-        Model.deliveryDateDay = deliveryDateDay;
+    public static void setDeliveryDateWeekday(String deliveryDateWeekday) {
+        Model.deliveryDateWeekday = deliveryDateWeekday;
     }
 
-    public static String getDeliveryDateDay() {
-        return deliveryDateDay;
+    public static String getDeliveryDateWeekday() {
+        return deliveryDateWeekday;
     }
 
-    public static String getDeliveryDate() {
+    public static String getDeliveryDateDDM() {
+        return deliveryDateDDM;
+    }
+
+    public static void setDeliveryDateDDM(String deliveryDateDDM) {
+        Model.deliveryDateDDM = deliveryDateDDM;
+    }
+
+    public static Date getDeliveryDate() {
         return deliveryDate;
     }
 
-    public static void setDeliveryDate(String deliveryDate) {
+    public static void setDeliveryDate(Date deliveryDate) {
         Model.deliveryDate = deliveryDate;
     }
 

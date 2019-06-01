@@ -721,18 +721,50 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private void handleShowEarlierTimes() {
         timeSelectionPane.getChildren().forEach(timeSelectionPanel -> ((TimeSelectionPanel) timeSelectionPanel).decrementDay());
+        clearSelectedTimeButtonStyle();
+        updateSelectedTimeButton();
     }
 
     @FXML
     private void handleShowLaterTimes() {
         timeSelectionPane.getChildren().forEach(timeSelectionPanel -> ((TimeSelectionPanel) timeSelectionPanel).incrementDay());
+        clearSelectedTimeButtonStyle();
+        updateSelectedTimeButton();
     }
 
-    /*public void returnToCartViewFromCheckout() {
-        closeCheckoutView();
-        closeCheckoutViewTwo();
-        openCartView();
-    }*/
+    private void updateSelectedTimeButton(){
+        TimeSelectionPanel temp;
+        Button timeButton = null;
+        Date deliveryDate = Model.getDeliveryDate();
+        if(deliveryDate != null){
+            for(Node n : timeSelectionPane.getChildren()){
+                temp = (TimeSelectionPanel) n;
+                 if(temp.getDeliveryDate().getMonth() == deliveryDate.getMonth() &&
+                        temp.getDeliveryDate().getDate() == deliveryDate.getDate()){
+                    switch(model.getDeliveryTime()){
+                        case("8-10"):
+                            timeButton = temp.getTimeSelectOne();
+                            break;
+                        case("10-12"):
+                            timeButton = temp.getTimeSelectTwo();
+                            break;
+                        case("12-14"):
+                            timeButton = temp.getTimeSelectThree();
+                            break;
+                        case("14-16"):
+                            timeButton = temp.getTimeSelectFour();
+                            break;
+                        default:
+                            System.out.println("Error: Date not matched to any time.");
+                    }
+                    if(timeButton != null){
+                        selectedTimeButton = timeButton;
+                        selectedTimeButton.setStyle("-fx-text-fill: white; -fx-background-color:  #e54545; -fx-background-radius: 8; -fx-border-color:  #101010; -fx-border-radius: 5; -fx-border-width: 1;");
+                    }
+                }
+            }
+        }
+    }
 
     public void returnToTimeSelectAction() {
         closeCheckoutViewTwo();
@@ -794,7 +826,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     public void updateCheckoutSelectedTimeLabel(){
-        checkoutSelectedTimeLabel.setText("Vald tid:\n" + Model.getDeliveryDate() + " " + Model.getDeliveryTime());
+        checkoutSelectedTimeLabel.setText("Vald tid:\n" + Model.getDeliveryDateDDM() + " " + Model.getDeliveryTime());
     }
 
     private void updateCheckoutViewTwoButton(){
@@ -806,6 +838,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateCheckoutTimetable();
         cartPane.toBack();
         checkoutPane.toFront();
+        updateSelectedTimeButton();
     }
 
     public void closeCheckoutView() {
@@ -1108,8 +1141,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     public void clearSelectedTimeAndSaveNew(Button button){
-        selectedTimeButton.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color");
+        clearSelectedTimeButtonStyle();
         selectedTimeButton = button;
+    }
+
+    public void clearSelectedTimeButtonStyle(){
+        selectedTimeButton.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color");
     }
 
 

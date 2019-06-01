@@ -22,7 +22,7 @@ public class TimeSelectionPanel extends AnchorPane {
     @FXML
     private Button timeSelectFour;
 
-    Date deliveryDate;
+    private Date deliveryDate;
     private iMatController controller;
     private String selectedStyle = "-fx-text-fill: white; -fx-background-color:  #e54545; -fx-background-radius: 8; -fx-border-color:  #101010; -fx-border-radius: 5; -fx-border-width: 1;";
 
@@ -96,8 +96,9 @@ public class TimeSelectionPanel extends AnchorPane {
     }
 
     private void updateModelDeliveryDate(){
-        Model.setDeliveryDateDay(dayOfWeekLabel.getText());
-        Model.setDeliveryDate(dateLabel.getText());
+        Model.setDeliveryDateWeekday(dayOfWeekLabel.getText());
+        Model.setDeliveryDateDDM(dateLabel.getText());
+        Model.setDeliveryDate(new Date(deliveryDate.getTime()));
     }
 
     private void updateCheckoutTimeButton(){
@@ -112,12 +113,34 @@ public class TimeSelectionPanel extends AnchorPane {
     public void decrementDay(){
         deliveryDate = new Date(deliveryDate.getTime()-(24*60*60*1000));
         updateDateLabels();
-        updateModelDeliveryDate();
     }
 
     public void incrementDay(){
         deliveryDate = new Date(deliveryDate.getTime()+(24*60*60*1000));
         updateDateLabels();
-        updateModelDeliveryDate();
+    }
+
+    public Date getDeliveryDate() {
+        return deliveryDate;
+    }
+
+    public void setDeliveryDate(Date deliveryDate) {
+        this.deliveryDate = deliveryDate;
+    }
+
+    public Button getTimeSelectOne() {
+        return timeSelectOne;
+    }
+
+    public Button getTimeSelectTwo() {
+        return timeSelectTwo;
+    }
+
+    public Button getTimeSelectThree() {
+        return timeSelectThree;
+    }
+
+    public Button getTimeSelectFour() {
+        return timeSelectFour;
     }
 }
