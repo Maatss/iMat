@@ -188,9 +188,16 @@ public class HelpPanel extends AnchorPane {
 
     private void updateButtons() {
         if (helpIndex + 1 >= helpArray.length) {
-            helpNextButton.setDisable(true);
+            helpQuitButton.setDisable(true);
+            helpNextButton.setOnAction((actionEvent) -> hideHelp());
+//            helpNextButton.setText("Slutför guide");
+            helpNextButton.setText("Avsluta");
+            helpNextButton.setStyle("-fx-background-color:  #F79204;");
         } else {
-            helpNextButton.setDisable(false);
+            helpQuitButton.setDisable(false);
+            helpNextButton.setOnAction((actionEvent) -> nextHelp());
+            helpNextButton.setText("Nästa steg");
+            helpNextButton.setStyle("-fx-background-color:  #E54545;");
         }
 
         if (helpIndex - 1 < 0) {

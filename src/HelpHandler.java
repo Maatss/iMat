@@ -30,11 +30,16 @@ public class HelpHandler extends AnchorPane {
         this.appPane = appPane;
         this.helpPanel = new HelpPanel(imatController);
         appPane.getChildren().add(helpPanel);
-        helpPanel.toFront();
+        helpPanel.toBack();
+//        helpPanel.toFront();
     }
 
     public void show() {
-        helpPanel.showHelp();
+        show(0);
+    }
+
+    public void show(int index) {
+        helpPanel.showHelp(index);
     }
 
     public void hide() {

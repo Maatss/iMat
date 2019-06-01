@@ -374,7 +374,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleHelpStartAction() {
-        helpHandler.show();
+        helpHandler.show(0);
     }
 
     @FXML
