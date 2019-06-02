@@ -1022,9 +1022,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
         String paymentOption = customer.getMobilePhoneNumber();
         if(paymentOption.equals("Card")){
             cardRadioButton.fire();
+            cardRadioButton.setSelected(true);
 //            handleCardOption();
         }else if(paymentOption.equals("Invoice")){
             invoiceRadioButton.fire();
+            invoiceRadioButton.setSelected(true);
         }
     }
 
@@ -1041,16 +1043,19 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleSaveAction(ActionEvent event) {
+        Customer customer = model.getCustomer();
         if (allFieldsFilled()) {
             updateCustomer();
             if (isCardPayment) {
                 updateCard();
                 setCardPayment(true);
                 setInvoicePayment(false);
+                customer.setMobilePhoneNumber("Card");
             }
             if (isInvoicePayment) {
                 setInvoicePayment(true);
                 setCardPayment(false);
+                customer.setMobilePhoneNumber("Invoice");
             }
             savedLabel.setText("Sparat!");
             fadeTransition(savedLabel);
@@ -1115,8 +1120,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void handleCardOption() {
         profileGridPane.setVisible(true);
         showCardInformation();
-        setInvoicePayment(false);
-        setCardPayment(true);
+//        setInvoicePayment(false);
+//        setCardPayment(true);
         choosePaymentLabel.setVisible(false);
         cardRadioButton.setStyle("");
         invoiceRadioButton.setStyle("");
@@ -1131,9 +1136,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
             setCardInfoIsShown(true);
         }
-
-        Customer customer = model.getCustomer();
-        customer.setMobilePhoneNumber("Card");
     }
 
     @FXML
@@ -1141,15 +1143,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
         profileGridPane.setVisible(false);
         hideCardInformation();
         removeCardErrorStyle();
-        setCardPayment(false);
-        setInvoicePayment(true);
+//        setCardPayment(false);
+//        setInvoicePayment(true);
         choosePaymentLabel.setVisible(false);
         cardRadioButton.setStyle("");
         invoiceRadioButton.setStyle("");
-
-
-        Customer customer = model.getCustomer();
-        customer.setMobilePhoneNumber("Invoice");
     }
 
     public void clearSelectedTimeAndSaveNew(Button button) {
@@ -1219,15 +1217,18 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     private boolean allFieldsFilled() {
         if (firstNameTFisfilled() && lastNameTFisfilled() && addressTFisFilled() && postCodeTFisFilled() &&
-                postAddressTFisFilled() && phoneTFisFilled() && (isCardPayment || isInvoicePayment)) {
-            if (isCardPayment) {
+                postAddressTFisFilled() && phoneTFisFilled() && (cardRadioButton.isSelected() || invoiceRadioButton.isSelected())) {
+            if (cardRadioButton.isSelected()) {
+                setCardPayment(true);
+                setInvoicePayment(false);
                 if (allCardFieldsAreFilled()) {
                     return true;
                 } else {
                     checkMissingFields();
                 }
-
             } else {
+                setInvoicePayment(true);
+                setCardPayment(false);
                 return true;
             }
 
@@ -1466,8 +1467,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
             cardRadioButton.setSelected(true);
             invoiceRadioButton.setSelected(false);
             checkoutInvoiceOptionRB.setSelected(false);
-        }
-        if (isInvoicePayment) {
+        } else if (isInvoicePayment) {
             invoiceRadioButton.setSelected(true);
             checkoutInvoiceOptionRB.setSelected(true);
             checkoutCardOptionRB.setSelected(false);
