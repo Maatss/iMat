@@ -694,7 +694,17 @@
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
+                                    <Label fx:id="productsNoFavoritesTopLabel" alignment="CENTER" layoutX="450.0" layoutY="250.0" prefHeight="61.0" prefWidth="367.0" text="Du har inte lagt till några favoriter." textAlignment="CENTER" wrapText="true" visible="false">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
                                     <Label fx:id="productsNoResultsBottomLabel" alignment="CENTER" layoutX="378.0" layoutY="275.0" prefHeight="61.0" prefWidth="514.0" text="Kanske hittar du det du söker i någon av våra kategorier." textAlignment="CENTER" wrapText="true">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="productsNoFavoritesBottomLabel" alignment="CENTER" layoutX="378.0" layoutY="295.0" prefHeight="61.0" prefWidth="514.0" text="Favoritmarkera produkter genom att klicka på stjärnan uppe till vänster på en produkt." textAlignment="CENTER" wrapText="true">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
