@@ -34,6 +34,7 @@ public class PricePanel extends AnchorPane {
     private final Model model = Model.getInstance();
     private Product product;
     private int count;
+    private boolean countTxtfldIsHovered;
 
 
     public PricePanel(Product productIn) {
@@ -49,6 +50,7 @@ public class PricePanel extends AnchorPane {
         }
 
         this.product = productIn;
+        countTxtfldIsHovered = false;
         productNameLabel.setText(product.getName());
         updateCountAndCountLabel();
         updateProductPriceLabel();
@@ -163,11 +165,27 @@ public class PricePanel extends AnchorPane {
         }
     }
 
-    private void updateTextFieldColor() {
+    /*private void updateTextFieldColor() {
         if (count > 0) {
             productCountTextField.setStyle("-fx-background-color: e64545; -fx-text-fill: white;");
         } else {
             productCountTextField.setStyle("-fx-control-inner-background-color: white;");
+        }
+    }*/
+
+    private void updateTextFieldColor() {
+        if (count > 0) {
+            if (countTxtfldIsHovered) {
+                productCountTextField.setStyle("-fx-background-color: b43133; -fx-text-fill: white;");
+            } else {
+                productCountTextField.setStyle("-fx-background-color: e64545; -fx-text-fill: white;");
+            }
+        } else {
+            if (countTxtfldIsHovered) {
+                productCountTextField.setStyle("-fx-background-color: cccccc;");
+            } else {
+                productCountTextField.setStyle("-fx-control-inner-background-color: white;");
+            }
         }
     }
 
@@ -216,5 +234,17 @@ public class PricePanel extends AnchorPane {
             return false;
         }
         return true;
+    }
+
+    @FXML
+    private void handleProdTxtFldHoverEnter() {
+        countTxtfldIsHovered = true;
+        updateTextFieldColor();
+    }
+
+    @FXML
+    private void handleProdTxtFldHoverExit() {
+        countTxtfldIsHovered = false;
+        updateTextFieldColor();
     }
 }
