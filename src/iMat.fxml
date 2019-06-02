@@ -256,68 +256,6 @@
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="checkoutTwoPane" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
-               <children>
-                  <AnchorPane fx:id="checkoutTwoPopupPane" layoutX="400.0" layoutY="150.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="150.0">
-                     <children>
-                        <AnchorPane fx:id="checkoutTwoHeaderPane" prefHeight="75.0" prefWidth="700.0" style="-fx-background-color: #e23636;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Button fx:id="checkoutReturnToStepOneButton" alignment="CENTER" layoutX="12.0" layoutY="16.0" mnemonicParsing="false" onAction="#closeCheckoutViewTwo" prefHeight="45.0" prefWidth="97.0" styleClass="popup-go-back-button" text="Tillbaka" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <Label alignment="CENTER" layoutX="201.0" layoutY="7.0" text="Personuppgifter" textFill="WHITE" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
-                                 <font>
-                                    <Font name="System Bold" size="40.0" />
-                                 </font>
-                              </Label>
-                              <Separator layoutX="548.0" layoutY="14.0" orientation="VERTICAL" prefHeight="50.0" AnchorPane.rightAnchor="150.0" />
-                              <Label layoutX="566.0" layoutY="21.0" text="Steg 2 av 3" textFill="WHITE" AnchorPane.rightAnchor="25.0">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="checkoutTwoContentPane" prefHeight="375.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
-                           <children>
-                              <AnchorPane fx:id="clientDataPane" prefHeight="300.0" prefWidth="500.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0">
-                                 <children>
-                                    <Label alignment="CENTER_RIGHT" layoutX="108.0" layoutY="53.0" prefWidth="140.0" text="Förnamn:" />
-                                    <Label alignment="CENTER_RIGHT" layoutX="108.0" layoutY="93.0" prefWidth="140.0" text="Efternamn:" />
-                                    <Label alignment="CENTER_RIGHT" layoutX="108.0" layoutY="133.0" prefWidth="140.0" text="Adress:" />
-                                    <Label alignment="CENTER_RIGHT" layoutX="108.0" layoutY="173.0" prefWidth="140.0" text="Postnummer:" />
-                                    <Label alignment="CENTER_RIGHT" layoutX="108.0" layoutY="213.0" prefWidth="140.0" text="Ort:" />
-                                    <Label alignment="CENTER_RIGHT" layoutX="108.0" layoutY="253.0" prefWidth="140.0" text="Telefonnummer:" />
-                                    <Label alignment="CENTER_RIGHT" layoutX="108.0" layoutY="293.0" prefWidth="140.0" text="Betalsätt:" />
-                                    <TextField layoutX="257.0" layoutY="48.0" promptText="Karl" />
-                                    <TextField layoutX="257.0" layoutY="88.0" promptText="Karlsson" />
-                                    <TextField layoutX="257.0" layoutY="128.0" promptText="Smörgatan 32" />
-                                    <TextField layoutX="257.0" layoutY="168.0" promptText="413 20" />
-                                    <TextField layoutX="257.0" layoutY="208.0" promptText="Mölndal" />
-                                    <TextField layoutX="257.0" layoutY="248.0" promptText="0700 123456" />
-                                    <RadioButton layoutX="257.0" layoutY="293.0" mnemonicParsing="false" text="Kort" />
-                                    <RadioButton layoutX="319.0" layoutY="293.0" mnemonicParsing="false" text="Faktura" />
-                                 </children>
-                              </AnchorPane>
-                              <Button fx:id="checkoutMoveToStepThreeButton" maxWidth="154.0" minWidth="128.0" mnemonicParsing="false" onAction="#openCheckoutViewThree" prefHeight="52.0" prefWidth="154.0" stylesheets="@iMatCSS.css" text="Nästa steg" textFill="WHITE" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0">
-                                 <font>
-                                    <Font name="System Bold" size="22.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
             <AnchorPane fx:id="checkoutThreePane" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
                <children>
                   <AnchorPane fx:id="checkoutThreePopupPane" layoutX="400.0" layoutY="150.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="150.0">
@@ -715,6 +653,142 @@
                         </AnchorPane>
                      </items>
                   </SplitPane>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="checkoutTwoPane" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+               <children>
+                  <AnchorPane fx:id="checkoutTwoPopupPane" layoutX="400.0" layoutY="150.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="150.0">
+                     <children>
+                        <AnchorPane fx:id="checkoutTwoHeaderPane" prefHeight="75.0" prefWidth="700.0" style="-fx-background-color: #e23636;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Button fx:id="checkoutReturnToStepOneButton" alignment="CENTER" layoutX="12.0" layoutY="16.0" mnemonicParsing="false" onAction="#closeCheckoutViewTwo" prefHeight="45.0" prefWidth="97.0" styleClass="popup-go-back-button" text="Tillbaka" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label alignment="CENTER" layoutX="201.0" layoutY="7.0" text="Personuppgifter" textFill="WHITE" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
+                                 <font>
+                                    <Font name="System Bold" size="40.0" />
+                                 </font>
+                              </Label>
+                              <Separator layoutX="548.0" layoutY="14.0" orientation="VERTICAL" prefHeight="50.0" AnchorPane.rightAnchor="150.0" />
+                              <Label layoutX="566.0" layoutY="21.0" text="Steg 2 av 3" textFill="WHITE" AnchorPane.rightAnchor="25.0">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="checkoutTwoContentPane" prefHeight="375.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+                           <children>
+                              <AnchorPane fx:id="clientDataPane" prefHeight="300.0" prefWidth="500.0" style="-fx-border-color: black;" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="10.0">
+                                 <children>
+                                    <Label alignment="CENTER_RIGHT" layoutY="60.0" prefWidth="140.0" text="Förnamn:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <Label alignment="CENTER_RIGHT" layoutY="108.0" prefWidth="140.0" text="Efternamn:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <Label alignment="CENTER_RIGHT" layoutY="153.0" prefWidth="140.0" text="Adress:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <Label alignment="CENTER_RIGHT" layoutY="198.0" prefWidth="140.0" text="Postnummer:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <Label alignment="CENTER_RIGHT" layoutY="243.0" prefWidth="140.0" text="Ort:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <Label alignment="CENTER_RIGHT" layoutY="293.0" prefWidth="140.0" text="Telefonnummer:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <Label alignment="CENTER_RIGHT" layoutX="434.0" layoutY="60.0" prefHeight="20.0" prefWidth="66.0" text="Betalsätt:">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></Label>
+                                    <TextField fx:id="checkoutFirstNameTF" layoutX="150.0" layoutY="60.0" promptText="Karl" />
+                                    <TextField fx:id="checkoutLastNameTF" layoutX="150.0" layoutY="108.0" promptText="Karlsson" />
+                                    <TextField fx:id="checkoutAddressTF" layoutX="150.0" layoutY="153.0" promptText="Smörgatan 32" />
+                                    <TextField fx:id="checkoutPostCodeTF" layoutX="150.0" layoutY="198.0" promptText="413 20" />
+                                    <TextField fx:id="checkoutPostAddressTF" layoutX="150.0" layoutY="243.0" promptText="Mölndal" />
+                                    <TextField fx:id="checkoutPhoneTF" layoutX="150.0" layoutY="293.0" promptText="0700 123456" />
+                                    <RadioButton fx:id="checkoutCardOptionRB" layoutX="520.0" layoutY="76.0" mnemonicParsing="false" onAction="#handleCheckoutCardOption" text="Kort">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></RadioButton>
+                                    <RadioButton fx:id="checkoutInvoiceOptionRB" layoutX="520.0" layoutY="103.0" mnemonicParsing="false" onAction="#handleCheckoutInvoiceOption" text="Faktura">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font></RadioButton>
+                                    <Separator layoutX="326.0" layoutY="50.0" orientation="VERTICAL" prefHeight="300.0" />
+                                    <AnchorPane fx:id="checkoutCardInfoAP" layoutX="329.0" layoutY="133.0" prefHeight="237.0" prefWidth="360.0">
+                                       <children>
+                                          <Label alignment="CENTER_RIGHT" layoutY="20.0" prefWidth="170.0" text="Korttyp:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutY="55.0" prefWidth="170.0" text="Kortnummer:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutY="90.0" prefWidth="170.0" text="Namn:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutY="125.0" prefWidth="170.0" text="Giltighetsdatum (MM/ÅÅ):">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <Label alignment="CENTER_RIGHT" layoutY="160.0" prefWidth="170.0" text="CVC:">
+                                             <font>
+                                                <Font size="14.0" />
+                                             </font>
+                                          </Label>
+                                          <ComboBox fx:id="checkoutCardTypeCB" layoutX="190.0" layoutY="20.0" prefWidth="170.0" />
+                                          <ComboBox fx:id="checkoutCardMonthCB" layoutX="190.0" layoutY="125.0" prefWidth="70.0" />
+                                          <ComboBox fx:id="checkoutCardYearCB" layoutX="274.0" layoutY="125.0" prefWidth="70.0" />
+                                          <TextField fx:id="checkoutCardNumberTF" layoutX="190.0" layoutY="55.0" prefWidth="170.0" />
+                                          <TextField fx:id="checkoutCardNameTF" layoutX="190.0" layoutY="90.0" prefWidth="170.0" />
+                                          <TextField fx:id="checkoutCvcTF" layoutX="190.0" layoutY="160.0" prefWidth="70.0" />
+                                          <Separator layoutX="40.0" layoutY="-1.0" prefWidth="280.0" />
+                                       </children>
+                                    </AnchorPane>
+                                    <Label layoutX="120.0" layoutY="16.0" text="Personuppgifter">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                    <Label layoutX="490.0" layoutY="16.0" text="Betalning">
+                                       <font>
+                                          <Font name="System Bold" size="18.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                              <Button fx:id="checkoutMoveToStepThreeButton" maxWidth="154.0" minWidth="128.0" mnemonicParsing="false" onAction="#openCheckoutViewThree" prefHeight="52.0" prefWidth="154.0" stylesheets="@iMatCSS.css" text="Nästa steg" textFill="WHITE" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
          </children>
