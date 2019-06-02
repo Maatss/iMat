@@ -1436,12 +1436,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void handleCheckoutCardOption() {
         checkoutCardInfoAP.setVisible(true);
         checkoutInvoiceOptionRB.setSelected(false);
+        checkoutCardOptionRB.setSelected(true);
     }
 
     @FXML
     private void handleCheckoutInvoiceOption() {
         checkoutCardInfoAP.setVisible(false);
         checkoutCardOptionRB.setSelected(false);
+        checkoutInvoiceOptionRB.setSelected(true);
     }
 
     private void updatePaymentOption() {
@@ -1459,5 +1461,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
+    
 
 }

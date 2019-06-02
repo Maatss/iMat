@@ -770,7 +770,7 @@
                                           <Separator layoutX="40.0" layoutY="-1.0" prefWidth="280.0" />
                                        </children>
                                     </AnchorPane>
-                                    <Label layoutX="120.0" layoutY="16.0" text="Personuppgifter">
+                                    <Label layoutX="120.0" layoutY="16.0" text="Mina uppgifter">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
