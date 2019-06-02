@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -46,6 +47,8 @@ public class ProductPanel extends AnchorPane {
     private final static double kImageWidth = 100.0;
     private final static double kImageRatio = 0.75;
 
+    private Tooltip favoriteTooltip;
+
     private boolean favoriteIsHovered;
     private boolean countTxtfldIsHovered;
     private boolean removeBtnIsHovered;
@@ -63,6 +66,7 @@ public class ProductPanel extends AnchorPane {
         }
 
         this.product = product;
+        setTooltips();
 
         favoriteIsHovered = false;
         countTxtfldIsHovered = false;
@@ -95,6 +99,14 @@ public class ProductPanel extends AnchorPane {
                     }
                 }
         );
+    }
+
+    private void setTooltips() {
+        favoriteTooltip = new Tooltip("Klicka här för att lägga till produkten i dina favoriter.");
+        Tooltip.install(favoriteItemImageView, favoriteTooltip);
+        Tooltip.install(addButtonImageView, new Tooltip("Klicka här för att lägga i en vara i varukorgen."));
+        Tooltip.install(removeButtonImageView, new Tooltip("Klicka här för att plocka bort en vara från varukorgen."));
+        Tooltip.install(countTextField, new Tooltip("Klicka här för att ange ett önskat antal varor som ska läggas i varukorgen."));
     }
 
     @FXML
@@ -156,12 +168,14 @@ public class ProductPanel extends AnchorPane {
             } else {
                 iconPath = "images/Favorite/FavoriteFilled.png";
             }
+            favoriteTooltip.setText("Klicka här för att ta bort produkten från dina favoriter.");
         } else {
             if (favoriteIsHovered) {
                 iconPath = "images/Favorite/FavoriteEmptyAdd.png";
             } else {
                 iconPath = "images/Favorite/FavoriteEmpty.png";
             }
+            favoriteTooltip.setText("Klicka här för att lägga till produkten i dina favoriter.");
         }
         favoriteItemImageView.setImage(getImage(iconPath));
     }

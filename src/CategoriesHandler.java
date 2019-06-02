@@ -1,6 +1,7 @@
 import javafx.fxml.FXML;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
@@ -36,11 +37,16 @@ public class CategoriesHandler {
         this.categoryPanels = new ArrayList<>();
         this.subCategoryButtons = new ArrayList<>();
         setupVBoxes();
+        setTooltips();
 
         userCategoriesVBox.toFront();
         categoryVBox.toFront();
     }
 
+    private void setTooltips() {
+        categoryPanels.forEach(panel -> Tooltip.install(panel.getCategoryHeaderAnchorPane(), new Tooltip("Klicka här för öppna angiven sida.")));
+        subCategoryButtons.forEach(button -> Tooltip.install(button, new Tooltip("Klicka här för öppna angiven sida.")));
+    }
 
     private void setupVBoxes() {
         List<PliantButton> tempButtons;

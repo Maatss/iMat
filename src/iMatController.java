@@ -114,9 +114,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private AnchorPane checkoutPane;
     @FXML
-    private FlowPane timeSelectionPane;
+    private Button returnToCartButton;
     @FXML
-    private ImageView returnToCartImageView;
+    private FlowPane timeSelectionPane;
     @FXML
     private Button checkoutMoveToStepTwoButton;
     @FXML
@@ -133,11 +133,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private AnchorPane checkoutTwoPane;
     @FXML
+    private Button checkoutReturnToStepOneButton;
+    @FXML
     private Button checkoutMoveToStepThreeButton;
 
     // Checkout pane THREE
     @FXML
     private AnchorPane checkoutThreePane;
+    @FXML
+    private Button checkoutReturnToStepTwoButton;
+    @FXML
+    private Button checkoutCompletePurchaseButton;
 
     // Thanks for your purchase pane
     @FXML
@@ -312,7 +318,30 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateCheckoutCardInfo();
         updatePaymentOption();
         checkoutCardOptionRB.setSelected(true);
-        
+        setTooltips();
+    }
+
+    private void setTooltips() {
+        Tooltip.install(homeImageView, new Tooltip("Klicka här för att gå till startsidan."));
+        Tooltip.install(cartAnchorPane, new Tooltip("Klicka här för att öppna varukorgen."));
+        Tooltip.install(helpStartPane, new Tooltip("Klicka här för visa hjälpguiden igen."));
+        Tooltip.install(searchField, new Tooltip("Klicka här för söka efter varor med egna sökord."));
+        Tooltip.install(searchButton, new Tooltip("Klicka här för göra en sökning baserad på de angivna sökorden."));
+        Tooltip.install(cartCloseButton, new Tooltip("Klicka här för stänga varukorgen och återgå till föregående sida."));
+        Tooltip.install(cartEmptyCartPane, new Tooltip("Klicka här för att tömma varukorgen. Det går att ångra efteråt."));
+        Tooltip.install(cartGoToCheckoutButton, new Tooltip("Klicka här för att gå vidare med ditt köp till kassasteg 1."));
+
+        Tooltip.install(returnToCartButton, new Tooltip("Klicka här för att gå tillbaka till varukorgen."));
+        Tooltip.install(checkoutEarlierTimesButton, new Tooltip("Klicka här för att visa leveranstider under ett tidigare datum."));
+        Tooltip.install(checkoutLaterTimesButton, new Tooltip("Klicka här för att visa leveranstider under ett senare datum."));
+        Tooltip.install(checkoutMoveToStepTwoButton, new Tooltip("Klicka här för att gå vidare till kassasteg 2. Du måste ha angett en leveranstid för knappen ska vara tillgänglig."));
+
+        Tooltip.install(checkoutReturnToStepOneButton, new Tooltip("Klicka här för återgå till kassasteg 1."));
+        Tooltip.install(checkoutMoveToStepThreeButton, new Tooltip("Klicka här för att gå vidare till kassasteg 3."));
+
+        Tooltip.install(checkoutReturnToStepTwoButton, new Tooltip("Klicka här för återgå till kassasteg 2."));
+        Tooltip.install(checkoutCompletePurchaseButton, new Tooltip("Klicka här för att genomföra köpet."));
+
     }
 
     // Welcome pane actions

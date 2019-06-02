@@ -3,6 +3,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -71,6 +72,13 @@ public class PricePanel extends AnchorPane {
                     }
                 }
         );
+        setTooltips();
+    }
+
+    private void setTooltips() {
+        Tooltip.install(addButtonImageView, new Tooltip("Klicka här för att lägga i en vara i varukorgen."));
+        Tooltip.install(removeButtonImageView, new Tooltip("Klicka här för att plocka bort en vara från varukorgen."));
+        Tooltip.install(productCountTextField, new Tooltip("Klicka här för att ange ett önskat antal varor som ska läggas i varukorgen."));
     }
 
     @FXML

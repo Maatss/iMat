@@ -3,6 +3,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class TimeSelectionPanel extends AnchorPane {
     private iMatController controller;
     private String selectedStyle = "-fx-text-fill: white; -fx-background-color:  #e54545; -fx-background-radius: 8; -fx-border-color:  #101010; -fx-border-radius: 5; -fx-border-width: 1;";
 
-    public TimeSelectionPanel(Date date, iMatController controller){
+    public TimeSelectionPanel(Date date, iMatController controller) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("TimeSelectionPanel.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -44,19 +45,28 @@ public class TimeSelectionPanel extends AnchorPane {
 
         //Just to avoid NPE first time
         controller.selectedTimeButton = timeSelectFour;
+
+        setTooltips();
     }
 
-    private String convertDateToDay(Date date){
-        switch(date.getDay()){
+    private void setTooltips() {
+        Tooltip.install(timeSelectOne, new Tooltip("Klicka här för att ange detta tidspan som leveranstid."));
+        Tooltip.install(timeSelectTwo, new Tooltip("Klicka här för att ange detta tidspan som leveranstid."));
+        Tooltip.install(timeSelectThree, new Tooltip("Klicka här för att ange detta tidspan som leveranstid."));
+        Tooltip.install(timeSelectFour, new Tooltip("Klicka här för att ange detta tidspan som leveranstid."));
+    }
+
+    private String convertDateToDay(Date date) {
+        switch (date.getDay()) {
             case (0):
                 return "Söndag";
-            case(1):
+            case (1):
                 return "Måndag";
             case (2):
                 return "Tisdag";
             case (3):
                 return "Onsdag";
-            case(4):
+            case (4):
                 return "Torsdag";
             case (5):
                 return "Fredag";
@@ -67,7 +77,8 @@ public class TimeSelectionPanel extends AnchorPane {
         }
     }
 
-    @FXML private void handleTimeSelectOne(){
+    @FXML
+    private void handleTimeSelectOne() {
         updateModelDeliveryDate();
         Model.setDeliveryTime("8-10");
         updateCheckoutTimeButton();
@@ -75,7 +86,9 @@ public class TimeSelectionPanel extends AnchorPane {
         timeSelectOne.setStyle(selectedStyle);
         timeSelectOne.setCursor(Cursor.DEFAULT);
     }
-    @FXML private void handleTimeSelectTwo(){
+
+    @FXML
+    private void handleTimeSelectTwo() {
         updateModelDeliveryDate();
         Model.setDeliveryTime("10-12");
         updateCheckoutTimeButton();
@@ -83,7 +96,9 @@ public class TimeSelectionPanel extends AnchorPane {
         timeSelectTwo.setStyle(selectedStyle);
         timeSelectTwo.setCursor(Cursor.DEFAULT);
     }
-    @FXML private void handleTimeSelectThree(){
+
+    @FXML
+    private void handleTimeSelectThree() {
         updateModelDeliveryDate();
         Model.setDeliveryTime("12-14");
         updateCheckoutTimeButton();
@@ -91,7 +106,9 @@ public class TimeSelectionPanel extends AnchorPane {
         timeSelectThree.setStyle(selectedStyle);
         timeSelectThree.setCursor(Cursor.DEFAULT);
     }
-    @FXML private void handleTimeSelectFour(){
+
+    @FXML
+    private void handleTimeSelectFour() {
         updateModelDeliveryDate();
         Model.setDeliveryTime("14-16");
         updateCheckoutTimeButton();
@@ -100,28 +117,28 @@ public class TimeSelectionPanel extends AnchorPane {
         timeSelectFour.setCursor(Cursor.DEFAULT);
     }
 
-    private void updateModelDeliveryDate(){
+    private void updateModelDeliveryDate() {
         Model.setDeliveryDateWeekday(dayOfWeekLabel.getText());
         Model.setDeliveryDateDDM(dateLabel.getText());
         Model.setDeliveryDate(new Date(deliveryDate.getTime()));
     }
 
-    private void updateCheckoutTimeButton(){
+    private void updateCheckoutTimeButton() {
         controller.updateCheckoutTimeButtons();
     }
 
-    private void updateDateLabels(){
+    private void updateDateLabels() {
         dateLabel.setText(deliveryDate.getDate() + "/" + (deliveryDate.getMonth() + 1));
         dayOfWeekLabel.setText(convertDateToDay(deliveryDate));
     }
 
-    public void decrementDay(){
-        deliveryDate = new Date(deliveryDate.getTime()-(24*60*60*1000));
+    public void decrementDay() {
+        deliveryDate = new Date(deliveryDate.getTime() - (24 * 60 * 60 * 1000));
         updateDateLabels();
     }
 
-    public void incrementDay(){
-        deliveryDate = new Date(deliveryDate.getTime()+(24*60*60*1000));
+    public void incrementDay() {
+        deliveryDate = new Date(deliveryDate.getTime() + (24 * 60 * 60 * 1000));
         updateDateLabels();
     }
 

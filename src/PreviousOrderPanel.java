@@ -4,6 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import se.chalmers.cse.dat216.project.Order;
@@ -78,6 +79,12 @@ public class PreviousOrderPanel extends AnchorPane {
         }
         String price = String.format("%.2f Kr", totalPrice);
         priceLabel.setText(price);
+        setTooltips();
+    }
+
+    private void setTooltips() {
+        Tooltip.install(addToCartButton, new Tooltip("Klicka här för att lägga till alla varor från det här köpet i din varukorg."));
+        Tooltip.install(topBarAnchorPane, new Tooltip("Klicka här för att visa mer detaljer om köpet."));
     }
 
     private String capitalizeFirstLetter(String inString) {
