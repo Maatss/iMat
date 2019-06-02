@@ -626,13 +626,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleUndoClearCartAction() {
-        undoClearCartButton.setVisible(false);
-        undoClearHelpTextLabel.setVisible(false);
+        hideUndoClearedCart();
         for (ShoppingItem si : clearedCart) {
             model.getShoppingCart().addItem(si);
         }
         closeCartView();
         openCartView();
+    }
+
+    private void hideUndoClearedCart(){
+        undoClearCartButton.setVisible(false);
+        undoClearHelpTextLabel.setVisible(false);
     }
 
     // Checkout Pane actions
@@ -660,9 +664,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
         if (deliveryDate != null) {
             for (Node n : timeSelectionPane.getChildren()) {
                 temp = (TimeSelectionPanel) n;
-                 if(isSameDate(temp, deliveryDate)){
-                    switch(Model.getDeliveryTime()){
-                        case("8-10"):
+                if (isSameDate(temp, deliveryDate)) {
+                    switch (Model.getDeliveryTime()) {
+                        case ("8-10"):
                             timeButton = temp.getTimeSelectOne();
                             break;
                         case ("10-12"):
@@ -761,10 +765,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateShowEarlierTimesButton();
     }
 
-    private void updateShowEarlierTimesButton(){
-        if(isSameDate((TimeSelectionPanel) timeSelectionPane.getChildren().get(0), new Date())){
+    private void updateShowEarlierTimesButton() {
+        if (isSameDate((TimeSelectionPanel) timeSelectionPane.getChildren().get(0), new Date())) {
             checkoutEarlierTimesButton.setDisable(true);
-        }else{
+        } else {
             checkoutEarlierTimesButton.setDisable(false);
         }
     }
@@ -844,6 +848,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateProductCounts();
         updateTotalPrice();
         updateCartCheckoutButton(false);
+        if(!model.getShoppingCart().getItems().isEmpty()){
+            hideUndoClearedCart();
+        }
     }
 
     private void updateProductCounts() {
