@@ -77,6 +77,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private Label productsNoResultsBottomLabel;
     @FXML
+    private Label productsNoFavoritesTopLabel;
+    @FXML
+    private Label productsNoFavoritesBottomLabel;
+    @FXML
     private Button searchButton;
 
     @FXML
@@ -401,6 +405,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
         } else {
             productsNoResultsTopLabel.setVisible(true);
             productsNoResultsBottomLabel.setVisible(true);
+            productsNoFavoritesTopLabel.setVisible(false);
+            productsNoFavoritesBottomLabel.setVisible(false);
         }
     }
 
@@ -599,6 +605,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
         } else if (category.equals("favoritesCategory")) {
             updateProductList(model.getFavoriteProducts());
             showProductsPane(); //Basically resets resultscreen
+            if(model.getFavoriteProducts().isEmpty()){ //ugly fix to say no favorites have been added
+                productsNoResultsTopLabel.setVisible(false);
+                productsNoResultsBottomLabel.setVisible(false);
+                productsNoFavoritesTopLabel.setVisible(true);
+                productsNoFavoritesBottomLabel.setVisible(true);
+            }
         } else if (pc != null) {
             updateProductList(model.getCategoryProducts(pc));
             showProductsPane(); //Basically resets resultscreen
@@ -828,20 +840,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         previousOrdersPane.toFront();
     }
 
-    @FXML
-    private void handleReturnToCartHoverEnter() {
-        returnToCartImageView.setImage(new Image("images/shoppingCartBackDark.png"));
-    }
-
-    @FXML
-    private void handleReturnToCartHoverExit() {
-        returnToCartImageView.setImage(new Image("images/shoppingCartBack.png"));
-    }
-
-    private void closeReceiptsView() {
-        //todo / other branch
-    }
-
     // Shop pane methods
     @Override
     public void shoppingCartChanged(CartEvent evt) {
@@ -868,11 +866,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     private void updateCheckoutTimetable() {
         timeSelectionPane.getChildren().clear();
-        Date d = new Date();
+        Date date = new Date();
         for (int i = 0; i < 4; i++) {
-            timeSelectionPane.getChildren().add(new TimeSelectionPanel(d, this));
+            timeSelectionPane.getChildren().add(new TimeSelectionPanel(date, this));
             //plus a day
-            d = new Date(d.getTime() + (24 * 60 * 60 * 1000));
+            date = new Date(date.getTime() + (24 * 60 * 60 * 1000));
         }
     }
 
@@ -1095,7 +1093,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     public void clearSelectedTimeButtonStyle() {
-        selectedTimeButton.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color");
+        selectedTimeButton.setStyle("");
     }
 
 

@@ -74,7 +74,7 @@ public class PricePanel extends AnchorPane {
     }
 
     @FXML
-    private void handleAddAction() { //TODO copy final version of method in ProductPanel when it's done there
+    private void handleAddAction() {
         System.out.println("Add " + product.getName());
         model.addToShoppingCart(product);
         updateCountAndCountLabel();
