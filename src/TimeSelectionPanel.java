@@ -1,5 +1,6 @@
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Cursor;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
@@ -72,6 +73,7 @@ public class TimeSelectionPanel extends AnchorPane {
         updateCheckoutTimeButton();
         controller.clearSelectedTimeAndSaveNew(timeSelectOne);
         timeSelectOne.setStyle(selectedStyle);
+        timeSelectOne.setCursor(Cursor.DEFAULT);
     }
     @FXML private void handleTimeSelectTwo(){
         updateModelDeliveryDate();
@@ -79,6 +81,7 @@ public class TimeSelectionPanel extends AnchorPane {
         updateCheckoutTimeButton();
         controller.clearSelectedTimeAndSaveNew(timeSelectTwo);
         timeSelectTwo.setStyle(selectedStyle);
+        timeSelectTwo.setCursor(Cursor.DEFAULT);
     }
     @FXML private void handleTimeSelectThree(){
         updateModelDeliveryDate();
@@ -86,6 +89,7 @@ public class TimeSelectionPanel extends AnchorPane {
         updateCheckoutTimeButton();
         controller.clearSelectedTimeAndSaveNew(timeSelectThree);
         timeSelectThree.setStyle(selectedStyle);
+        timeSelectThree.setCursor(Cursor.DEFAULT);
     }
     @FXML private void handleTimeSelectFour(){
         updateModelDeliveryDate();
@@ -93,6 +97,7 @@ public class TimeSelectionPanel extends AnchorPane {
         updateCheckoutTimeButton();
         controller.clearSelectedTimeAndSaveNew(timeSelectFour);
         timeSelectFour.setStyle(selectedStyle);
+        timeSelectFour.setCursor(Cursor.DEFAULT);
     }
 
     private void updateModelDeliveryDate(){

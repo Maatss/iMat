@@ -240,14 +240,14 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </Button>
-                              <Label fx:id="checkoutTimeNotSelectedLabel" prefHeight="54.0" prefWidth="153.0" text="Du måste välja en tid för att gå vidare." wrapText="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="650.0">
+                              <Label fx:id="checkoutTimeNotSelectedLabel" alignment="TOP_CENTER" maxHeight="61.0" maxWidth="235.0" minHeight="61.0" minWidth="235.0" prefHeight="61.0" prefWidth="235.0" text="Du måste välja en tid för att gå vidare." textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="15.0">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="19.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="checkoutSelectedTimeLabel" prefHeight="54.0" prefWidth="153.0" text="Vald tid:&#10;28/5 8-10" visible="false" wrapText="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="650.0">
+                              <Label fx:id="checkoutSelectedTimeLabel" alignment="TOP_CENTER" maxHeight="61.0" maxWidth="235.0" minHeight="61.0" minWidth="235.0" prefHeight="61.0" prefWidth="235.0" text="Vald tid:&#10;28/5 8-10" textAlignment="CENTER" visible="false" wrapText="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="15.0">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="19.0" />
                                  </font>
                               </Label>
                            </children>
@@ -632,7 +632,7 @@
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="productsNoFavoritesTopLabel" alignment="CENTER" layoutX="450.0" layoutY="250.0" prefHeight="61.0" prefWidth="367.0" text="Du har inte lagt till några favoriter." textAlignment="CENTER" wrapText="true" visible="false">
+                                    <Label fx:id="productsNoFavoritesTopLabel" alignment="CENTER" layoutX="450.0" layoutY="250.0" prefHeight="61.0" prefWidth="367.0" text="Du har inte lagt till några favoriter." textAlignment="CENTER" visible="false" wrapText="true">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -653,6 +653,11 @@
                         </AnchorPane>
                      </items>
                   </SplitPane>
+                  <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="19.5" layoutY="-5.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/iMatLogo4.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="checkoutTwoPane" layoutX="10.0" layoutY="10.0" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
@@ -811,12 +816,7 @@
          <children>
             <ImageView fx:id="homeImageView" fitHeight="160.0" fitWidth="160.0" layoutX="-6.0" layoutY="-10.0" onMouseEntered="#handleLogoHoverEnter" onMouseExited="#handleLogoHoverExit" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/iMatLogo4.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="160.0" fitWidth="160.0" layoutX="-6.0" layoutY="-10.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/iMatLogo4.png" />
+                  <Image url="@images/iMatLogo2.png" />
                </image>
             </ImageView>
             <Label layoutX="37.0" layoutY="105.0" mouseTransparent="true" text="Startsida" textFill="WHITE">

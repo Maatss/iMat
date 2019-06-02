@@ -18,10 +18,7 @@ import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.*;
 
 import java.net.URL;
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 public class iMatController implements Initializable, ShoppingCartListener {
@@ -338,8 +335,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Shop pane actions
     private void maskHomeButton() {
         Circle circle = new Circle();
-        circle.setCenterX(73.3);
-        circle.setCenterY(70);
+        circle.setCenterX(77);
+        circle.setCenterY(73);
         circle.setRadius(70);
         Shape mask = circle;
         homeImageView.setClip(mask);
@@ -440,12 +437,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
         categoryLabel.setText("Alla varor");
         noResultsLabel.setText("");
 
-        productsFlowPane.getChildren().clear();
+        List<Product> products = new ArrayList<>();
 
         for (ProductPanel panel : allProductPanels) {
-            productsFlowPane.getChildren().add(panel);
+            products.add(panel.getProduct());
         }
 
+        updateProductList(products);
         showProductsPane();
     }
 
@@ -631,7 +629,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         } else if (category.equals("favoritesCategory")) {
             updateProductList(model.getFavoriteProducts());
             showProductsPane(); //Basically resets resultscreen
-            if(model.getFavoriteProducts().isEmpty()){ //ugly fix to say no favorites have been added
+            if (model.getFavoriteProducts().isEmpty()) { //ugly fix to say no favorites have been added
                 productsNoResultsTopLabel.setVisible(false);
                 productsNoResultsBottomLabel.setVisible(false);
                 productsNoFavoritesTopLabel.setVisible(true);
@@ -672,7 +670,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         openCartView();
     }
 
-    private void hideUndoClearedCart(){
+    private void hideUndoClearedCart() {
         undoClearCartButton.setVisible(false);
         undoClearHelpTextLabel.setVisible(false);
     }
@@ -722,6 +720,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
                     if (timeButton != null) {
                         selectedTimeButton = timeButton;
                         selectedTimeButton.setStyle("-fx-text-fill: white; -fx-background-color:  #e54545; -fx-background-radius: 8; -fx-border-color:  #101010; -fx-border-radius: 5; -fx-border-width: 1;");
+                        selectedTimeButton.setCursor(Cursor.DEFAULT);
+                    } else {
+                        timeButton.setCursor(Cursor.HAND);
                     }
                 }
             }
@@ -814,7 +815,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void updateCheckoutSelectedTimeLabel() {
         checkoutTimeNotSelectedLabel.setVisible(false);
         checkoutSelectedTimeLabel.setVisible(true);
-        checkoutSelectedTimeLabel.setText("Vald tid:\n" + Model.getDeliveryDateDDM() + " " + Model.getDeliveryTime());
+        checkoutSelectedTimeLabel.setText(String.format("Vald tid:\n%s kl: %s", Model.getDeliveryDateDDM(), Model.getDeliveryTime()));
     }
 
     public void openCheckoutView() {
@@ -873,7 +874,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateProductCounts();
         updateTotalPrice();
         updateCartCheckoutButton(false);
-        if(!model.getShoppingCart().getItems().isEmpty()){
+        if (!model.getShoppingCart().getItems().isEmpty()) {
             hideUndoClearedCart();
         }
     }
@@ -884,11 +885,32 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     private void updateProductList(List<Product> products) {
         productsFlowPane.getChildren().clear();
+        sortProducts(products);
 
         for (Product product : products) {
             ProductPanel temp = findProductPanel(product);
             productsFlowPane.getChildren().add(temp);
         }
+    }
+
+    private void sortProducts(List<Product> products) {
+        List<Product> favorites = new ArrayList<>();
+        List<Product> nonFavorites = new ArrayList<>();
+
+        products.forEach((product) -> {
+            if (model.checkIfFavorite(product)) {
+                favorites.add(product);
+            } else {
+                nonFavorites.add(product);
+            }
+        });
+
+        Collections.sort(favorites, (productOne, productTwo) -> (productOne.getName().compareTo(productTwo.getName())));
+        Collections.sort(nonFavorites, (productOne, productTwo) -> (productOne.getName().compareTo(productTwo.getName())));
+
+        products.clear();
+        products.addAll(favorites);
+        products.addAll(nonFavorites);
     }
 
     private void updateCheckoutTimetable() {
@@ -1079,7 +1101,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
             fadeOut.play();
         });
         transition.play();
-
     }
 
     @FXML
@@ -1093,7 +1114,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         invoiceRadioButton.setStyle("");
 
         if (!cardInfoIsShown) {
-
             profileGridPane.add(cardComboBox, 0, 0, 2, 1);
             profileGridPane.add(cardNumberTF, 0, 1, 2, 1);
             profileGridPane.add(cardNameTF, 0, 2, 2, 1);
@@ -1102,8 +1122,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
             profileGridPane.add(cvcTF, 0, 4);
 
             setCardInfoIsShown(true);
-
-
         }
     }
 
@@ -1127,6 +1145,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     public void clearSelectedTimeButtonStyle() {
         selectedTimeButton.setStyle("");
+        selectedTimeButton.setCursor(Cursor.HAND);
     }
 
 
