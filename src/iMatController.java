@@ -316,8 +316,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     // Shop pane actions
     private void maskHomeButton() {
         Circle circle = new Circle();
-        circle.setCenterX(73.3);
-        circle.setCenterY(70);
+        circle.setCenterX(77);
+        circle.setCenterY(73);
         circle.setRadius(70);
         Shape mask = circle;
         homeImageView.setClip(mask);
