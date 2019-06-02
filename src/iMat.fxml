@@ -770,6 +770,7 @@
                                           <Separator layoutX="40.0" layoutY="-1.0" prefWidth="280.0" />
                                        </children>
                                     </AnchorPane>
+                                    <Button mnemonicParsing="false" onAction="#handleCheckoutSaveAction" text="Spara" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" />
                                     <Label layoutX="120.0" layoutY="16.0" text="Mina uppgifter">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
@@ -780,6 +781,7 @@
                                           <Font name="System Bold" size="18.0" />
                                        </font>
                                     </Label>
+                                    <Label fx:id="checkoutSavedLabel" text="Sparat!" visible="false" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="410.0" />
                                  </children>
                               </AnchorPane>
                               <Button fx:id="checkoutMoveToStepThreeButton" maxWidth="154.0" minWidth="128.0" mnemonicParsing="false" onAction="#openCheckoutViewThree" prefHeight="52.0" prefWidth="154.0" stylesheets="@iMatCSS.css" text="Nästa steg" textFill="WHITE" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0">

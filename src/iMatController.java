@@ -181,6 +181,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private Label savedLabel;
     @FXML
+    private Label checkoutSavedLabel;
+    @FXML
     private RadioButton cardRadioButton;
     @FXML
     private RadioButton invoiceRadioButton;
@@ -998,6 +1000,26 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     }
 
+    private void updateCardFromCheckout() {
+
+        CreditCard card = model.getCreditCard();
+
+        card.setCardNumber(checkoutCardNumberTF.getText());
+        card.setHoldersName(checkoutCardNameTF.getText());
+
+        String selectedValue = (String) checkoutCardTypeCB.getSelectionModel().getSelectedItem();
+        card.setCardType(selectedValue);
+
+        selectedValue = (String) checkoutCardMonthCB.getSelectionModel().getSelectedItem();
+        card.setValidMonth(Integer.parseInt(selectedValue));
+
+        selectedValue = (String) checkoutCardYearCB.getSelectionModel().getSelectedItem();
+        card.setValidYear(Integer.parseInt(selectedValue));
+
+        card.setVerificationCode(Integer.parseInt(checkoutCvcTF.getText()));
+
+    }
+
     private void updateYourProfilePanel() {
         Customer customer = model.getCustomer();
 
@@ -1023,7 +1045,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         if(paymentOption.equals("Card")){
             cardRadioButton.fire();
             cardRadioButton.setSelected(true);
-//            handleCardOption();
         }else if(paymentOption.equals("Invoice")){
             invoiceRadioButton.fire();
             invoiceRadioButton.setSelected(true);
@@ -1041,24 +1062,58 @@ public class iMatController implements Initializable, ShoppingCartListener {
         customer.setPhoneNumber(phoneNumberTextField.getText());
     }
 
+    private void updateCustomerFromCheckout() {
+        Customer customer = model.getCustomer();
+
+        customer.setFirstName(checkoutFirstNameTF.getText());
+        customer.setLastName(checkoutLastNameTF.getText());
+        customer.setAddress(checkoutAddressTF.getText());
+        customer.setPostCode(checkoutPostCodeTF.getText());
+        customer.setPostAddress(checkoutPostAddressTF.getText());
+        customer.setPhoneNumber(checkoutPhoneTF.getText());
+    }
+
     @FXML
     private void handleSaveAction(ActionEvent event) {
         Customer customer = model.getCustomer();
         if (allFieldsFilled()) {
             updateCustomer();
-            if (isCardPayment) {
+            if (cardRadioButton.isSelected()) {
                 updateCard();
                 setCardPayment(true);
                 setInvoicePayment(false);
                 customer.setMobilePhoneNumber("Card");
             }
-            if (isInvoicePayment) {
+            if (invoiceRadioButton.isSelected()) {
                 setInvoicePayment(true);
                 setCardPayment(false);
                 customer.setMobilePhoneNumber("Invoice");
             }
             savedLabel.setText("Sparat!");
             fadeTransition(savedLabel);
+            hideAllProfileErrorMessages();
+        }
+    }
+
+    @FXML
+    private void handleCheckoutSaveAction(ActionEvent event) {
+        Customer customer = model.getCustomer();
+        if (allCheckoutFieldsFilled()) {
+            updateCustomerFromCheckout();
+            if (checkoutCardOptionRB.isSelected()) {
+                updateCardFromCheckout();
+                setCardPayment(true);
+                setInvoicePayment(false);
+                customer.setMobilePhoneNumber("Card");
+            }
+            if (checkoutInvoiceOptionRB.isSelected()) {
+                setInvoicePayment(true);
+                setCardPayment(false);
+                customer.setMobilePhoneNumber("Invoice");
+            }
+            checkoutSavedLabel.setText("Sparat!");
+            fadeTransition(checkoutSavedLabel);
+            //some sort of response that it saved
             hideAllProfileErrorMessages();
         }
     }
@@ -1238,12 +1293,42 @@ public class iMatController implements Initializable, ShoppingCartListener {
         return false;
     }
 
+    private boolean allCheckoutFieldsFilled() {
+        if (checkoutFirstNameTF.getLength() > 0 && checkoutLastNameTF.getLength() > 0 && checkoutAddressTF.getLength() > 0
+                && checkoutPostCodeTF.getLength() > 0 && checkoutPostAddressTF.getLength()  > 0 && checkoutPhoneTF.getLength() > 0
+                && (checkoutCardOptionRB.isSelected() || checkoutInvoiceOptionRB.isSelected())) {
+            if (checkoutCardOptionRB.isSelected()) {
+                setCardPayment(true);
+                setInvoicePayment(false);
+                if (allCheckoutCardFieldsAreFilled()) {
+                    return true;
+                } else {
+                    checkMissingFields();
+                }
+            } else {
+                setInvoicePayment(true);
+                setCardPayment(false);
+                return true;
+            }
+
+        } else {
+            checkMissingFields();
+        }
+        return false;
+    }
+
     private boolean firstNameTFisfilled() {
         return firstNameTextField.getText().length() > 0;
     }
 
     private boolean allCardFieldsAreFilled() {
         return (cardNameIsFilled() && cardNumberTFisFilled() && CVCisFilled());
+    }
+
+    private boolean allCheckoutCardFieldsAreFilled() {
+        return (checkoutCardNameTF.getLength() > 0 &&
+                    checkoutCardNumberTF.getLength() > 0 &&
+                        checkoutCvcTF.getLength() > 0);
     }
 
     private boolean lastNameTFisfilled() {
