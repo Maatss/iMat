@@ -252,6 +252,24 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private TitledPane pantryCategory;
     @FXML
     private TitledPane snacksCategory;
+
+    //checkout profile information
+    @FXML private TextField checkoutFirstNameTF;
+    @FXML private TextField checkoutLastNameTF;
+    @FXML private TextField checkoutAddressTF;
+    @FXML private TextField checkoutPostCodeTF;
+    @FXML private TextField checkoutPostAddressTF;
+    @FXML private TextField checkoutPhoneTF;
+    @FXML private AnchorPane checkoutCardInfoAP;
+    @FXML private RadioButton checkoutCardOptionRB;
+    @FXML private RadioButton checkoutInvoiceOptionRB;
+    @FXML private ComboBox checkoutCardTypeCB;
+    @FXML private TextField checkoutCardNumberTF;
+    @FXML private TextField checkoutCardNameTF;
+    @FXML private ComboBox checkoutCardMonthCB;
+    @FXML private ComboBox checkoutCardYearCB;
+    @FXML private TextField checkoutCvcTF;
+
     // Other variables
     private final Model model = Model.getInstance();
     private HelpHandler helpHandler;
@@ -288,6 +306,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 });
             }
         });
+        updateCheckoutCardInfo();
+        updatePaymentOption();
+        checkoutCardOptionRB.setSelected(true);
+        
     }
 
     // Welcome pane actions
@@ -793,6 +815,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     public void openCheckoutViewTwo() {
+        updateCheckoutProfileInfo();
         checkoutPane.toBack();
         checkoutTwoPane.toFront();
     }
@@ -990,6 +1013,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
             updateCustomer();
             if (isCardPayment) {
                 updateCard();
+                setCardPayment(true);
+                setInvoicePayment(false);
+            }
+            if (isInvoicePayment) {
+                setInvoicePayment(true);
+                setCardPayment(false);
             }
             savedLabel.setText("Sparat!");
             fadeTransition(savedLabel);
@@ -1147,6 +1176,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
         cardComboBox.getItems().addAll("Visa", "Mastercard", "American Express");
         cardYearCombo.getItems().addAll("19", "20", "21", "22", "23", "24", "25");
         cardMonthCombo.getItems().addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
+
+        checkoutCardTypeCB.getItems().addAll("Visa", "Mastercard", "American Express");
+        checkoutCardYearCB.getItems().addAll("19", "20", "21", "22", "23", "24", "25");
+        checkoutCardMonthCB.getItems().addAll("01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12");
     }
 
     private boolean allFieldsFilled() {
@@ -1337,6 +1370,72 @@ public class iMatController implements Initializable, ShoppingCartListener {
         cvcTF.setStyle("");
         cardNumberTF.setStyle("");
         cardNameTF.setStyle("");
+    }
+
+    private void updateCheckoutProfileInfo() {
+        Customer customer = model.getCustomer();
+
+        checkoutFirstNameTF.setText(customer.getFirstName());
+        checkoutLastNameTF.setText(customer.getLastName());
+        checkoutAddressTF.setText(customer.getAddress());
+        checkoutPostCodeTF.setText(customer.getPostCode());
+        checkoutPostAddressTF.setText(customer.getPostAddress());
+        checkoutPhoneTF.setText(customer.getPhoneNumber());
+        updateCheckoutPaymentOption();
+    }
+
+    private void updateCheckoutCardInfo() {
+        CreditCard card = model.getCreditCard();
+
+        checkoutCardNumberTF.setText(card.getCardNumber());
+        checkoutCardNameTF.setText(card.getHoldersName());
+
+        checkoutCardTypeCB.getSelectionModel().select(card.getCardType());
+        checkoutCardMonthCB.getSelectionModel().select("" + card.getValidMonth());
+        checkoutCardYearCB.getSelectionModel().select("" + card.getValidYear());
+
+        checkoutCvcTF.setText("" + card.getVerificationCode());
+    }
+
+    private void updateCheckoutPaymentOption() {
+        if (isCardPayment) {
+            checkoutCardOptionRB.setSelected(true);
+            checkoutInvoiceOptionRB.setSelected(false);
+            checkoutCardInfoAP.setVisible(true);
+            updateCheckoutCardInfo();
+        }
+        if (isInvoicePayment) {
+            checkoutInvoiceOptionRB.setSelected(true);
+            checkoutCardOptionRB.setSelected(false);
+            checkoutCardInfoAP.setVisible(false);
+        }
+    }
+
+    @FXML
+    private void handleCheckoutCardOption() {
+        checkoutCardInfoAP.setVisible(true);
+        checkoutInvoiceOptionRB.setSelected(false);
+    }
+
+    @FXML
+    private void handleCheckoutInvoiceOption() {
+        checkoutCardInfoAP.setVisible(false);
+        checkoutCardOptionRB.setSelected(false);
+    }
+
+    private void updatePaymentOption() {
+        if (isCardPayment) {
+            checkoutCardOptionRB.setSelected(true);
+            cardRadioButton.setSelected(true);
+            invoiceRadioButton.setSelected(false);
+            checkoutInvoiceOptionRB.setSelected(false);
+        }
+        if (isInvoicePayment) {
+            invoiceRadioButton.setSelected(true);
+            checkoutInvoiceOptionRB.setSelected(true);
+            checkoutCardOptionRB.setSelected(false);
+            cardRadioButton.setSelected(false);
+        }
     }
 
 
