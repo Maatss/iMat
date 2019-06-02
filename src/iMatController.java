@@ -795,7 +795,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void updateCheckoutSelectedTimeLabel() {
         checkoutTimeNotSelectedLabel.setVisible(false);
         checkoutSelectedTimeLabel.setVisible(true);
-        checkoutSelectedTimeLabel.setText("Vald tid:\n" + Model.getDeliveryDateDDM() + " " + Model.getDeliveryTime());
+        checkoutSelectedTimeLabel.setText(String.format("Vald tid:\n%s kl: %s", Model.getDeliveryDateDDM(), Model.getDeliveryTime()));
     }
 
     public void openCheckoutView() {
