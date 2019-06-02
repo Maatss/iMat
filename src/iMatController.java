@@ -866,11 +866,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     private void updateCheckoutTimetable() {
         timeSelectionPane.getChildren().clear();
-        Date d = new Date();
+        Date date = new Date();
         for (int i = 0; i < 4; i++) {
-            timeSelectionPane.getChildren().add(new TimeSelectionPanel(d, this));
+            timeSelectionPane.getChildren().add(new TimeSelectionPanel(date, this));
             //plus a day
-            d = new Date(d.getTime() + (24 * 60 * 60 * 1000));
+            date = new Date(date.getTime() + (24 * 60 * 60 * 1000));
         }
     }
 
@@ -1093,7 +1093,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
     }
 
     public void clearSelectedTimeButtonStyle() {
-        selectedTimeButton.setStyle("-fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color");
+        selectedTimeButton.setStyle("");
     }
 
 
