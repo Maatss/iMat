@@ -270,6 +270,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
         emptyCartPaneIsHovered = false;
         productsNoResultsTopLabel.setVisible(false);
         productsNoResultsBottomLabel.setVisible(false);
+        productsNoFavoritesTopLabel.setVisible(false);
+        productsNoFavoritesBottomLabel.setVisible(false);
         categoriesHandler = CategoriesHandler.getInstance(this, userCategoriesVBox, categoryVBox);
         helpHandler = HelpHandler.getInstance(this, appPane);
         loadAllProductPanels();
@@ -402,6 +404,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
         if (productsFlowPane.getChildren().size() > 0) {
             productsNoResultsTopLabel.setVisible(false);
             productsNoResultsBottomLabel.setVisible(false);
+            productsNoFavoritesTopLabel.setVisible(false);
+            productsNoFavoritesBottomLabel.setVisible(false);
         } else {
             productsNoResultsTopLabel.setVisible(true);
             productsNoResultsBottomLabel.setVisible(true);
