@@ -609,7 +609,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         } else if (category.equals("favoritesCategory")) {
             updateProductList(model.getFavoriteProducts());
             showProductsPane(); //Basically resets resultscreen
-            if(model.getFavoriteProducts().isEmpty()){ //ugly fix to say no favorites have been added
+            if (model.getFavoriteProducts().isEmpty()) { //ugly fix to say no favorites have been added
                 productsNoResultsTopLabel.setVisible(false);
                 productsNoResultsBottomLabel.setVisible(false);
                 productsNoFavoritesTopLabel.setVisible(true);
@@ -650,7 +650,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         openCartView();
     }
 
-    private void hideUndoClearedCart(){
+    private void hideUndoClearedCart() {
         undoClearCartButton.setVisible(false);
         undoClearHelpTextLabel.setVisible(false);
     }
@@ -700,6 +700,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
                     if (timeButton != null) {
                         selectedTimeButton = timeButton;
                         selectedTimeButton.setStyle("-fx-text-fill: white; -fx-background-color:  #e54545; -fx-background-radius: 8; -fx-border-color:  #101010; -fx-border-radius: 5; -fx-border-width: 1;");
+                        selectedTimeButton.setCursor(Cursor.DEFAULT);
+                    } else {
+                        timeButton.setCursor(Cursor.HAND);
                     }
                 }
             }
@@ -850,7 +853,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateProductCounts();
         updateTotalPrice();
         updateCartCheckoutButton(false);
-        if(!model.getShoppingCart().getItems().isEmpty()){
+        if (!model.getShoppingCart().getItems().isEmpty()) {
             hideUndoClearedCart();
         }
     }
@@ -1050,7 +1053,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
             fadeOut.play();
         });
         transition.play();
-
     }
 
     @FXML
@@ -1064,7 +1066,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         invoiceRadioButton.setStyle("");
 
         if (!cardInfoIsShown) {
-
             profileGridPane.add(cardComboBox, 0, 0, 2, 1);
             profileGridPane.add(cardNumberTF, 0, 1, 2, 1);
             profileGridPane.add(cardNameTF, 0, 2, 2, 1);
@@ -1073,8 +1074,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
             profileGridPane.add(cvcTF, 0, 4);
 
             setCardInfoIsShown(true);
-
-
         }
     }
 
@@ -1098,6 +1097,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     public void clearSelectedTimeButtonStyle() {
         selectedTimeButton.setStyle("");
+        selectedTimeButton.setCursor(Cursor.HAND);
     }
 
 
