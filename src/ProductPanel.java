@@ -278,13 +278,13 @@ public class ProductPanel extends AnchorPane {
         addProductsTextField(countTextField.getText());
     }
 
-    private void addProductsTextField(String inputText) { //Todo fix crash when double/float is entered
+    private void addProductsTextField(String inputText) {
         if (isNumeric(inputText) || inputText.length() == 0) {    //If valid case
             int amount;
             if (inputText.length() == 0) {
                 amount = 0;
             } else {
-                amount = Integer.parseInt(inputText);
+                amount = (int) Double.parseDouble(inputText);
             }
 
             int oldAmount = countCurrentItem();                        // Get the old value
