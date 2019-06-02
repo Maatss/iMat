@@ -24,6 +24,50 @@
 
 <AnchorPane id="AnchorPane" fx:id="appPane" prefHeight="850.0" prefWidth="1500.0" stylesheets="@iMatCSS.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="iMatController">
    <children>
+      <AnchorPane fx:id="welcomePane" prefHeight="850.0" prefWidth="1500.0" style="-fx-background-color: #101010DE;">
+         <children>
+            <AnchorPane layoutX="300.0" layoutY="141.0" prefHeight="559.0" prefWidth="947.0" style="-fx-background-color: #FEFEFEDE; -fx-background-color: white; -fx-background-radius: 35;">
+               <children>
+                  <Label layoutX="256.0" layoutY="29.0" prefHeight="112.0" prefWidth="453.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="66.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="homeImageView1" fitHeight="206.0" fitWidth="249.0" layoutX="370.0" layoutY="118.0" onMouseEntered="#handleLogoHoverEnter" onMouseExited="#handleLogoHoverExit" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/iMatLogo4.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="acceptHelpButton" layoutX="484.0" layoutY="461.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="328.0" stylesheets="@iMatCSS.css" text="Ja, ge mig en kort introduktion" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="19.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="denyHelpButton" layoutX="192.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="49.0" prefWidth="254.0" stylesheets="@iMatCSS.css" text="Nej, jag klarar mig själv!" textFill="WHITE">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label layoutX="134.0" layoutY="371.0" prefHeight="72.0" prefWidth="675.0" text="Det verkar som att det är första gången som du använder vår tjänst, vill du ha hjälp medan du handlar?" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="372.0" layoutY="334.0" prefHeight="44.0" prefWidth="202.0" text="(kort introduktion)" textAlignment="CENTER" wrapText="true">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
       <StackPane fx:id="homeScreen" prefHeight="850.0" prefWidth="1500.0">
          <children>
             <AnchorPane fx:id="accountPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
@@ -168,90 +212,6 @@
                               </AnchorPane>
                            </items>
                         </SplitPane>
-                     </children>
-                  </AnchorPane>
-               </children>
-            </AnchorPane>
-            <AnchorPane fx:id="checkoutPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
-               <children>
-                  <AnchorPane fx:id="checkoutPopupPane" layoutX="400.0" layoutY="150.0" maxHeight="450.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="150.0">
-                     <children>
-                        <AnchorPane fx:id="checkoutHeaderPane" prefHeight="75.0" prefWidth="700.0" style="-fx-background-color: #e23636;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Button fx:id="returnToCartButton" alignment="CENTER" layoutX="12.0" layoutY="16.0" mnemonicParsing="false" onAction="#closeCheckoutView" prefHeight="45.0" prefWidth="97.0" styleClass="popup-go-back-button" stylesheets="@iMatCSS.css" text="Tillbaka" textAlignment="CENTER" wrapText="true">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <Label alignment="CENTER" layoutX="196.0" layoutY="7.0" text="Ange leveranstid" textFill="WHITE" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
-                                 <font>
-                                    <Font name="System Bold" size="40.0" />
-                                 </font>
-                              </Label>
-                              <Separator layoutX="548.0" layoutY="14.0" orientation="VERTICAL" prefHeight="50.0" AnchorPane.rightAnchor="150.0" />
-                              <Label layoutX="566.0" layoutY="21.0" text="Steg 1 av 3" textFill="WHITE" AnchorPane.rightAnchor="25.0">
-                                 <font>
-                                    <Font size="24.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="checkoutContentPane" maxHeight="375.0" prefHeight="375.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
-                           <children>
-                              <AnchorPane maxHeight="275.0" prefHeight="275.0" prefWidth="600.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="25.0">
-                                 <children>
-                                    <FlowPane fx:id="timeSelectionPane" hgap="3.0" layoutY="18.0" maxHeight="275.0" maxWidth="600.0" prefHeight="275.0" prefWidth="600.0" prefWrapLength="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                                 </children>
-                              </AnchorPane>
-                              <Button fx:id="checkoutEarlierTimesButton" alignment="TOP_CENTER" layoutX="2.0" layoutY="121.0" mnemonicParsing="false" onAction="#handleShowEarlierTimes" prefHeight="72.0" prefWidth="93.0" stylesheets="@iMatCSS.css" text="Tidigare" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="120.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <ImageView fitHeight="58.0" fitWidth="54.0" layoutX="16.0" layoutY="142.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="90.0" AnchorPane.leftAnchor="16.0">
-                                 <image>
-                                    <Image url="@images/DoubleArrow.png" />
-                                 </image>
-                              </ImageView>
-                              <Button fx:id="checkoutLaterTimesButton" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="609.0" layoutY="123.0" mnemonicParsing="false" onAction="#handleShowLaterTimes" prefHeight="72.0" prefWidth="93.0" stylesheets="@iMatCSS.css" text="Senare" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="120.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <ImageView fitHeight="58.0" fitWidth="54.0" layoutX="632.0" layoutY="142.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="270.0" AnchorPane.rightAnchor="16.0">
-                                 <image>
-                                    <Image url="@images/DoubleArrow.png" />
-                                 </image>
-                              </ImageView>
-                              <Button fx:id="checkoutMoveToStepTwoButton" layoutX="289.0" layoutY="321.0" maxWidth="154.0" minWidth="128.0" mnemonicParsing="false" onAction="#openCheckoutViewTwo" prefHeight="52.0" prefWidth="154.0" stylesheets="@iMatCSS.css" text="Nästa steg" textFill="WHITE" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0">
-                                 <font>
-                                    <Font name="System Bold" size="22.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <Label fx:id="checkoutTimeNotSelectedLabel" alignment="TOP_CENTER" maxHeight="61.0" maxWidth="235.0" minHeight="61.0" minWidth="235.0" prefHeight="61.0" prefWidth="235.0" text="Du måste välja en tid för att gå vidare." textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="15.0">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="checkoutSelectedTimeLabel" alignment="TOP_CENTER" maxHeight="61.0" maxWidth="235.0" minHeight="61.0" minWidth="235.0" prefHeight="61.0" prefWidth="235.0" text="Vald tid:&#10;28/5 8-10" textAlignment="CENTER" visible="false" wrapText="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="15.0">
-                                 <font>
-                                    <Font size="19.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
                      </children>
                   </AnchorPane>
                </children>
@@ -722,6 +682,90 @@
                   </ImageView>
                </children>
             </AnchorPane>
+            <AnchorPane fx:id="checkoutPane" prefHeight="600.0" prefWidth="1000.0" style="-fx-background-color: rgba(0, 0, 0, 0.75);">
+               <children>
+                  <AnchorPane fx:id="checkoutPopupPane" layoutX="400.0" layoutY="150.0" maxHeight="450.0" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #e0e0e0;" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="150.0">
+                     <children>
+                        <AnchorPane fx:id="checkoutHeaderPane" prefHeight="75.0" prefWidth="700.0" style="-fx-background-color: #e23636;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Button fx:id="returnToCartButton" alignment="CENTER" layoutX="12.0" layoutY="16.0" mnemonicParsing="false" onAction="#closeCheckoutView" prefHeight="45.0" prefWidth="97.0" styleClass="popup-go-back-button" stylesheets="@iMatCSS.css" text="Tillbaka" textAlignment="CENTER" wrapText="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label alignment="CENTER" layoutX="196.0" layoutY="7.0" text="Ange leveranstid" textFill="WHITE" AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="200.0">
+                                 <font>
+                                    <Font name="System Bold" size="40.0" />
+                                 </font>
+                              </Label>
+                              <Separator layoutX="548.0" layoutY="14.0" orientation="VERTICAL" prefHeight="50.0" AnchorPane.rightAnchor="150.0" />
+                              <Label layoutX="566.0" layoutY="21.0" text="Steg 1 av 3" textFill="WHITE" AnchorPane.rightAnchor="25.0">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="checkoutContentPane" maxHeight="375.0" prefHeight="375.0" prefWidth="700.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="75.0">
+                           <children>
+                              <AnchorPane maxHeight="275.0" prefHeight="275.0" prefWidth="600.0" AnchorPane.bottomAnchor="75.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="25.0">
+                                 <children>
+                                    <FlowPane fx:id="timeSelectionPane" hgap="3.0" layoutY="18.0" maxHeight="275.0" maxWidth="600.0" prefHeight="275.0" prefWidth="600.0" prefWrapLength="1000.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                              <Button fx:id="checkoutEarlierTimesButton" alignment="TOP_CENTER" layoutX="2.0" layoutY="121.0" mnemonicParsing="false" onAction="#handleShowEarlierTimes" prefHeight="72.0" prefWidth="93.0" stylesheets="@iMatCSS.css" text="Tidigare" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.leftAnchor="2.0" AnchorPane.topAnchor="120.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <ImageView fitHeight="58.0" fitWidth="54.0" layoutX="16.0" layoutY="142.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="90.0" AnchorPane.leftAnchor="16.0">
+                                 <image>
+                                    <Image url="@images/DoubleArrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="checkoutLaterTimesButton" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="609.0" layoutY="123.0" mnemonicParsing="false" onAction="#handleShowLaterTimes" prefHeight="72.0" prefWidth="93.0" stylesheets="@iMatCSS.css" text="Senare" textAlignment="CENTER" textFill="WHITE" wrapText="true" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="120.0">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <ImageView fitHeight="58.0" fitWidth="54.0" layoutX="632.0" layoutY="142.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="270.0" AnchorPane.rightAnchor="16.0">
+                                 <image>
+                                    <Image url="@images/DoubleArrow.png" />
+                                 </image>
+                              </ImageView>
+                              <Button fx:id="checkoutMoveToStepTwoButton" layoutX="289.0" layoutY="321.0" maxWidth="154.0" minWidth="128.0" mnemonicParsing="false" onAction="#openCheckoutViewTwo" prefHeight="52.0" prefWidth="154.0" stylesheets="@iMatCSS.css" text="Nästa steg" textFill="WHITE" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0">
+                                 <font>
+                                    <Font name="System Bold" size="22.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </Button>
+                              <Label fx:id="checkoutTimeNotSelectedLabel" alignment="TOP_CENTER" maxHeight="61.0" maxWidth="235.0" minHeight="61.0" minWidth="235.0" prefHeight="61.0" prefWidth="235.0" text="Du måste välja en tid för att gå vidare." textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="15.0">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="checkoutSelectedTimeLabel" alignment="TOP_CENTER" maxHeight="61.0" maxWidth="235.0" minHeight="61.0" minWidth="235.0" prefHeight="61.0" prefWidth="235.0" text="Vald tid:&#10;28/5 8-10" textAlignment="CENTER" visible="false" wrapText="true" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="650.0" AnchorPane.rightAnchor="15.0">
+                                 <font>
+                                    <Font size="19.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </AnchorPane>
          </children>
       </StackPane>
       <AnchorPane fx:id="helpStartPane" layoutX="1344.0" layoutY="116.0" onMouseEntered="#handleHelpStartHoverEnter" onMouseExited="#handleHelpStartHoverExit" onMouseReleased="#handleHelpStartAction" prefHeight="36.0" prefWidth="130.0">
@@ -755,50 +799,6 @@
                   <Font name="Lucida Bright Regular" size="16.0" />
                </font>
             </Label>
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="welcomePane" prefHeight="850.0" prefWidth="1500.0" style="-fx-background-color: #101010DE;">
-         <children>
-            <AnchorPane layoutX="300.0" layoutY="141.0" prefHeight="559.0" prefWidth="947.0" style="-fx-background-color: #FEFEFEDE; -fx-background-color: white; -fx-background-radius: 35;">
-               <children>
-                  <Label layoutX="256.0" layoutY="29.0" prefHeight="112.0" prefWidth="453.0" text="Välkommen till" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="66.0" />
-                     </font>
-                  </Label>
-                  <ImageView fx:id="homeImageView1" fitHeight="206.0" fitWidth="249.0" layoutX="370.0" layoutY="118.0" onMouseEntered="#handleLogoHoverEnter" onMouseExited="#handleLogoHoverExit" onMouseReleased="#handleLogoAction" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/iMatLogo4.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="acceptHelpButton" layoutX="484.0" layoutY="461.0" mnemonicParsing="false" onAction="#handleAcceptHelpAction" prefHeight="65.0" prefWidth="328.0" stylesheets="@iMatCSS.css" text="Ja, ge mig en kort introduktion" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="19.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="denyHelpButton" layoutX="192.0" layoutY="469.0" mnemonicParsing="false" onAction="#handleDenyHelpAction" prefHeight="49.0" prefWidth="254.0" stylesheets="@iMatCSS.css" text="Nej, jag klarar mig själv!" textFill="WHITE">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Label layoutX="134.0" layoutY="371.0" prefHeight="72.0" prefWidth="675.0" text="Det verkar som att det är första gången som du använder vår tjänst, vill du ha hjälp medan du handlar?" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="372.0" layoutY="334.0" prefHeight="44.0" prefWidth="202.0" text="(kort introduktion)" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
