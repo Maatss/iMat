@@ -187,6 +187,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private Label savedLabel;
     @FXML
+    private Label checkoutSavedLabel;
+    @FXML
     private RadioButton cardRadioButton;
     @FXML
     private RadioButton invoiceRadioButton;
@@ -1027,6 +1029,26 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     }
 
+    private void updateCardFromCheckout() {
+
+        CreditCard card = model.getCreditCard();
+
+        card.setCardNumber(checkoutCardNumberTF.getText());
+        card.setHoldersName(checkoutCardNameTF.getText());
+
+        String selectedValue = (String) checkoutCardTypeCB.getSelectionModel().getSelectedItem();
+        card.setCardType(selectedValue);
+
+        selectedValue = (String) checkoutCardMonthCB.getSelectionModel().getSelectedItem();
+        card.setValidMonth(Integer.parseInt(selectedValue));
+
+        selectedValue = (String) checkoutCardYearCB.getSelectionModel().getSelectedItem();
+        card.setValidYear(Integer.parseInt(selectedValue));
+
+        card.setVerificationCode(Integer.parseInt(checkoutCvcTF.getText()));
+
+    }
+
     private void updateYourProfilePanel() {
         Customer customer = model.getCustomer();
 
@@ -1047,6 +1069,15 @@ public class iMatController implements Initializable, ShoppingCartListener {
         cardYearCombo.getSelectionModel().select("" + card.getValidYear());
 
         cvcTF.setText("" + card.getVerificationCode());
+
+        String paymentOption = customer.getMobilePhoneNumber();
+        if(paymentOption.equals("Card")){
+            cardRadioButton.fire();
+            cardRadioButton.setSelected(true);
+        }else if(paymentOption.equals("Invoice")){
+            invoiceRadioButton.fire();
+            invoiceRadioButton.setSelected(true);
+        }
     }
 
     private void updateCustomer() {
@@ -1060,21 +1091,58 @@ public class iMatController implements Initializable, ShoppingCartListener {
         customer.setPhoneNumber(phoneNumberTextField.getText());
     }
 
+    private void updateCustomerFromCheckout() {
+        Customer customer = model.getCustomer();
+
+        customer.setFirstName(checkoutFirstNameTF.getText());
+        customer.setLastName(checkoutLastNameTF.getText());
+        customer.setAddress(checkoutAddressTF.getText());
+        customer.setPostCode(checkoutPostCodeTF.getText());
+        customer.setPostAddress(checkoutPostAddressTF.getText());
+        customer.setPhoneNumber(checkoutPhoneTF.getText());
+    }
+
     @FXML
     private void handleSaveAction(ActionEvent event) {
+        Customer customer = model.getCustomer();
         if (allFieldsFilled()) {
             updateCustomer();
-            if (isCardPayment) {
+            if (cardRadioButton.isSelected()) {
                 updateCard();
                 setCardPayment(true);
                 setInvoicePayment(false);
+                customer.setMobilePhoneNumber("Card");
             }
-            if (isInvoicePayment) {
+            if (invoiceRadioButton.isSelected()) {
                 setInvoicePayment(true);
                 setCardPayment(false);
+                customer.setMobilePhoneNumber("Invoice");
             }
             savedLabel.setText("Sparat!");
             fadeTransition(savedLabel);
+            hideAllProfileErrorMessages();
+        }
+    }
+
+    @FXML
+    private void handleCheckoutSaveAction(ActionEvent event) {
+        Customer customer = model.getCustomer();
+        if (allCheckoutFieldsFilled()) {
+            updateCustomerFromCheckout();
+            if (checkoutCardOptionRB.isSelected()) {
+                updateCardFromCheckout();
+                setCardPayment(true);
+                setInvoicePayment(false);
+                customer.setMobilePhoneNumber("Card");
+            }
+            if (checkoutInvoiceOptionRB.isSelected()) {
+                setInvoicePayment(true);
+                setCardPayment(false);
+                customer.setMobilePhoneNumber("Invoice");
+            }
+            checkoutSavedLabel.setText("Sparat!");
+            fadeTransition(checkoutSavedLabel);
+            //todo some sort of response that it saved
             hideAllProfileErrorMessages();
         }
     }
@@ -1136,8 +1204,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
     public void handleCardOption() {
         profileGridPane.setVisible(true);
         showCardInformation();
-        setInvoicePayment(false);
-        setCardPayment(true);
+//        setInvoicePayment(false);
+//        setCardPayment(true);
         choosePaymentLabel.setVisible(false);
         cardRadioButton.setStyle("");
         invoiceRadioButton.setStyle("");
@@ -1159,12 +1227,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
         profileGridPane.setVisible(false);
         hideCardInformation();
         removeCardErrorStyle();
-        setCardPayment(false);
-        setInvoicePayment(true);
+//        setCardPayment(false);
+//        setInvoicePayment(true);
         choosePaymentLabel.setVisible(false);
         cardRadioButton.setStyle("");
         invoiceRadioButton.setStyle("");
-
     }
 
     public void clearSelectedTimeAndSaveNew(Button button) {
@@ -1234,15 +1301,42 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     private boolean allFieldsFilled() {
         if (firstNameTFisfilled() && lastNameTFisfilled() && addressTFisFilled() && postCodeTFisFilled() &&
-                postAddressTFisFilled() && phoneTFisFilled() && (isCardPayment || isInvoicePayment)) {
-            if (isCardPayment) {
+                postAddressTFisFilled() && phoneTFisFilled() && (cardRadioButton.isSelected() || invoiceRadioButton.isSelected())) {
+            if (cardRadioButton.isSelected()) {
+                setCardPayment(true);
+                setInvoicePayment(false);
                 if (allCardFieldsAreFilled()) {
                     return true;
                 } else {
                     checkMissingFields();
                 }
-
             } else {
+                setInvoicePayment(true);
+                setCardPayment(false);
+                return true;
+            }
+
+        } else {
+            checkMissingFields();
+        }
+        return false;
+    }
+
+    private boolean allCheckoutFieldsFilled() {
+        if (checkoutFirstNameTF.getLength() > 0 && checkoutLastNameTF.getLength() > 0 && checkoutAddressTF.getLength() > 0
+                && checkoutPostCodeTF.getLength() > 0 && checkoutPostAddressTF.getLength()  > 0 && checkoutPhoneTF.getLength() > 0
+                && (checkoutCardOptionRB.isSelected() || checkoutInvoiceOptionRB.isSelected())) {
+            if (checkoutCardOptionRB.isSelected()) {
+                setCardPayment(true);
+                setInvoicePayment(false);
+                if (allCheckoutCardFieldsAreFilled()) {
+                    return true;
+                } else {
+                    checkMissingFields();
+                }
+            } else {
+                setInvoicePayment(true);
+                setCardPayment(false);
                 return true;
             }
 
@@ -1258,6 +1352,12 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     private boolean allCardFieldsAreFilled() {
         return (cardNameIsFilled() && cardNumberTFisFilled() && CVCisFilled());
+    }
+
+    private boolean allCheckoutCardFieldsAreFilled() {
+        return (checkoutCardNameTF.getLength() > 0 &&
+                    checkoutCardNumberTF.getLength() > 0 &&
+                        checkoutCvcTF.getLength() > 0);
     }
 
     private boolean lastNameTFisfilled() {
@@ -1465,12 +1565,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private void handleCheckoutCardOption() {
         checkoutCardInfoAP.setVisible(true);
         checkoutInvoiceOptionRB.setSelected(false);
+        checkoutCardOptionRB.setSelected(true);
     }
 
     @FXML
     private void handleCheckoutInvoiceOption() {
         checkoutCardInfoAP.setVisible(false);
         checkoutCardOptionRB.setSelected(false);
+        checkoutInvoiceOptionRB.setSelected(true);
     }
 
     private void updatePaymentOption() {
@@ -1479,8 +1581,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
             cardRadioButton.setSelected(true);
             invoiceRadioButton.setSelected(false);
             checkoutInvoiceOptionRB.setSelected(false);
-        }
-        if (isInvoicePayment) {
+        } else if (isInvoicePayment) {
             invoiceRadioButton.setSelected(true);
             checkoutInvoiceOptionRB.setSelected(true);
             checkoutCardOptionRB.setSelected(false);
@@ -1488,5 +1589,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         }
     }
 
+    
 
 }
