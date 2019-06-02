@@ -261,21 +261,36 @@ public class iMatController implements Initializable, ShoppingCartListener {
     private TitledPane snacksCategory;
 
     //checkout profile information
-    @FXML private TextField checkoutFirstNameTF;
-    @FXML private TextField checkoutLastNameTF;
-    @FXML private TextField checkoutAddressTF;
-    @FXML private TextField checkoutPostCodeTF;
-    @FXML private TextField checkoutPostAddressTF;
-    @FXML private TextField checkoutPhoneTF;
-    @FXML private AnchorPane checkoutCardInfoAP;
-    @FXML private RadioButton checkoutCardOptionRB;
-    @FXML private RadioButton checkoutInvoiceOptionRB;
-    @FXML private ComboBox checkoutCardTypeCB;
-    @FXML private TextField checkoutCardNumberTF;
-    @FXML private TextField checkoutCardNameTF;
-    @FXML private ComboBox checkoutCardMonthCB;
-    @FXML private ComboBox checkoutCardYearCB;
-    @FXML private TextField checkoutCvcTF;
+    @FXML
+    private TextField checkoutFirstNameTF;
+    @FXML
+    private TextField checkoutLastNameTF;
+    @FXML
+    private TextField checkoutAddressTF;
+    @FXML
+    private TextField checkoutPostCodeTF;
+    @FXML
+    private TextField checkoutPostAddressTF;
+    @FXML
+    private TextField checkoutPhoneTF;
+    @FXML
+    private AnchorPane checkoutCardInfoAP;
+    @FXML
+    private RadioButton checkoutCardOptionRB;
+    @FXML
+    private RadioButton checkoutInvoiceOptionRB;
+    @FXML
+    private ComboBox checkoutCardTypeCB;
+    @FXML
+    private TextField checkoutCardNumberTF;
+    @FXML
+    private TextField checkoutCardNameTF;
+    @FXML
+    private ComboBox checkoutCardMonthCB;
+    @FXML
+    private ComboBox checkoutCardYearCB;
+    @FXML
+    private TextField checkoutCvcTF;
 
     // Other variables
     private final Model model = Model.getInstance();
@@ -318,7 +333,75 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateCheckoutCardInfo();
         updatePaymentOption();
         checkoutCardOptionRB.setSelected(true);
+        setAccountDetailsListeners();
         setTooltips();
+    }
+
+    private void setAccountDetailsListeners() {
+        firstNameTextField.focusedProperty().addListener((listener, oldVal, newVal) -> {
+            if (newVal) {
+                Platform.runLater(() -> {
+                    saveButtonSetDisabled(false);
+                });
+            }
+        });
+
+        lastNameTextField.focusedProperty().addListener((listener, oldVal, newVal) -> {
+            if (newVal) {
+                Platform.runLater(() -> {
+                    saveButtonSetDisabled(false);
+                });
+            }
+        });
+
+        addressTextField.focusedProperty().addListener((listener, oldVal, newVal) -> {
+            if (newVal) {
+                Platform.runLater(() -> {
+                    saveButtonSetDisabled(false);
+                });
+            }
+        });
+
+        postCodeTextField.focusedProperty().addListener((listener, oldVal, newVal) -> {
+            if (newVal) {
+                Platform.runLater(() -> {
+                    saveButtonSetDisabled(false);
+                });
+            }
+        });
+
+        postAddressTextField.focusedProperty().addListener((listener, oldVal, newVal) -> {
+            if (newVal) {
+                Platform.runLater(() -> {
+                    saveButtonSetDisabled(false);
+                });
+            }
+        });
+
+        phoneNumberTextField.focusedProperty().addListener((listener, oldVal, newVal) -> {
+            if (newVal) {
+                Platform.runLater(() -> {
+                    saveButtonSetDisabled(false);
+                });
+            }
+        });
+
+        cardRadioButton.focusedProperty().addListener((listener, oldVal, newVal) -> {
+            if (newVal) {
+                Platform.runLater(() -> {
+                    saveButtonSetDisabled(false);
+                });
+            }
+        });
+
+        invoiceRadioButton.focusedProperty().addListener((listener, oldVal, newVal) -> {
+            if (newVal) {
+                Platform.runLater(() -> {
+                    saveButtonSetDisabled(false);
+                });
+            }
+        });
+// set on credit card elements as well
     }
 
     private void setTooltips() {
@@ -1076,9 +1159,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
             savedLabel.setText("Sparat!");
             fadeTransition(savedLabel);
             hideAllProfileErrorMessages();
+            cartTotalPriceLabel.requestFocus(); // Simply to switch focus
+            saveButtonSetDisabled(true);
         }
     }
-
 
     private void updateCreditCard() {
         CreditCard card = model.getCreditCard();
@@ -1119,6 +1203,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
         yearCombo.getItems().addAll(model.getYears());
     }
 
+    private void saveButtonSetDisabled(boolean bool) {
+        saveButton.setDisable(bool);
+    }
 
     private void fadeTransition(Node node) {
         TranslateTransition transition = new TranslateTransition();
@@ -1151,6 +1238,15 @@ public class iMatController implements Initializable, ShoppingCartListener {
             profileGridPane.add(cvcTF, 0, 4);
 
             setCardInfoIsShown(true);
+            profileGridPane.getChildren().forEach(element -> {
+                element.focusedProperty().addListener((listener, oldVal, newVal) -> {
+                    if (newVal) {
+                        Platform.runLater(() -> {
+                            saveButtonSetDisabled(false);
+                        });
+                    }
+                });
+            });
         }
     }
 
@@ -1194,7 +1290,6 @@ public class iMatController implements Initializable, ShoppingCartListener {
         cardNumberMissingLabel.setVisible(false);
         cardNameMissingLabel.setVisible(false);
         CVCmissingLabel.setVisible(false);
-
     }
 
     private void showCardInformation() {
@@ -1216,11 +1311,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
         CVCmissingLabel.setVisible(false);
     }
 
-
     private void setCardInfoIsShown(boolean set) {
         this.cardInfoIsShown = set;
     }
-
 
     private void fillProfileComboBoxes() {
         cardComboBox.getItems().addAll("Visa", "Mastercard", "American Express");

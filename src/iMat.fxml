@@ -627,7 +627,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </RadioButton>
-                                    <Button fx:id="saveButton" layoutX="1001.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleSaveAction" prefHeight="55.0" prefWidth="98.0" text="Spara">
+                                    <Button fx:id="saveButton" disable="true" layoutX="1001.0" layoutY="580.0" mnemonicParsing="false" onAction="#handleSaveAction" prefHeight="55.0" prefWidth="98.0" text="Spara">
                                        <font>
                                           <Font size="14.0" />
                                        </font>
