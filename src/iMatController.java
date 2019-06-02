@@ -119,6 +119,10 @@ public class iMatController implements Initializable, ShoppingCartListener {
     @FXML
     private Button checkoutMoveToStepTwoButton;
     @FXML
+    private Button checkoutEarlierTimesButton;
+    @FXML
+    private Button checkoutLaterTimesButton;
+    @FXML
     private Label checkoutTimeNotSelectedLabel;
     @FXML
     private Label checkoutSelectedTimeLabel;
@@ -622,13 +626,17 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     @FXML
     private void handleUndoClearCartAction() {
-        undoClearCartButton.setVisible(false);
-        undoClearHelpTextLabel.setVisible(false);
+        hideUndoClearedCart();
         for (ShoppingItem si : clearedCart) {
             model.getShoppingCart().addItem(si);
         }
         closeCartView();
         openCartView();
+    }
+
+    private void hideUndoClearedCart(){
+        undoClearCartButton.setVisible(false);
+        undoClearHelpTextLabel.setVisible(false);
     }
 
     // Checkout Pane actions
@@ -638,6 +646,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         timeSelectionPane.getChildren().forEach(timeSelectionPanel -> ((TimeSelectionPanel) timeSelectionPanel).decrementDay());
         clearSelectedTimeButtonStyle();
         updateSelectedTimeButton();
+        updateShowEarlierTimesButton();
     }
 
     @FXML
@@ -645,6 +654,7 @@ public class iMatController implements Initializable, ShoppingCartListener {
         timeSelectionPane.getChildren().forEach(timeSelectionPanel -> ((TimeSelectionPanel) timeSelectionPanel).incrementDay());
         clearSelectedTimeButtonStyle();
         updateSelectedTimeButton();
+        updateShowEarlierTimesButton();
     }
 
     private void updateSelectedTimeButton() {
@@ -654,9 +664,8 @@ public class iMatController implements Initializable, ShoppingCartListener {
         if (deliveryDate != null) {
             for (Node n : timeSelectionPane.getChildren()) {
                 temp = (TimeSelectionPanel) n;
-                if (temp.getDeliveryDate().getMonth() == deliveryDate.getMonth() &&
-                        temp.getDeliveryDate().getDate() == deliveryDate.getDate()) {
-                    switch (model.getDeliveryTime()) {
+                if (isSameDate(temp, deliveryDate)) {
+                    switch (Model.getDeliveryTime()) {
                         case ("8-10"):
                             timeButton = temp.getTimeSelectOne();
                             break;
@@ -679,6 +688,11 @@ public class iMatController implements Initializable, ShoppingCartListener {
                 }
             }
         }
+    }
+
+    private boolean isSameDate(TimeSelectionPanel temp, Date deliveryDate) {
+        return temp.getDeliveryDate().getMonth() == deliveryDate.getMonth() &&
+                temp.getDeliveryDate().getDate() == deliveryDate.getDate();
     }
 
     // Navigation
@@ -741,26 +755,36 @@ public class iMatController implements Initializable, ShoppingCartListener {
         cartEmptyCartPane.setCursor(Cursor.DEFAULT);
     }
 
-    public void updateCheckoutTimeButton() {
+    public void updateCheckoutTimeButtons() {
         if (Model.getDeliveryTime() == null || Model.getDeliveryTime().isEmpty()) {
             checkoutMoveToStepTwoButton.setDisable(true);
-            //TODO view label that says user needs to select a time first
         } else {
             checkoutMoveToStepTwoButton.setDisable(false);
             updateCheckoutSelectedTimeLabel();
         }
+        updateShowEarlierTimesButton();
+    }
+
+    private void updateShowEarlierTimesButton() {
+        if (isSameDate((TimeSelectionPanel) timeSelectionPane.getChildren().get(0), new Date())) {
+            checkoutEarlierTimesButton.setDisable(true);
+        } else {
+            checkoutEarlierTimesButton.setDisable(false);
+        }
     }
 
     public void updateCheckoutSelectedTimeLabel() {
+        checkoutTimeNotSelectedLabel.setVisible(false);
+        checkoutSelectedTimeLabel.setVisible(true);
         checkoutSelectedTimeLabel.setText("Vald tid:\n" + Model.getDeliveryDateDDM() + " " + Model.getDeliveryTime());
     }
 
     public void openCheckoutView() {
-        updateCheckoutTimeButton();
         updateCheckoutTimetable();
         cartPane.toBack();
         checkoutPane.toFront();
         updateSelectedTimeButton();
+        updateCheckoutTimeButtons();
     }
 
     public void closeCheckoutView() {
@@ -824,6 +848,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
         updateProductCounts();
         updateTotalPrice();
         updateCartCheckoutButton(false);
+        if(!model.getShoppingCart().getItems().isEmpty()){
+            hideUndoClearedCart();
+        }
     }
 
     private void updateProductCounts() {

@@ -102,7 +102,7 @@ public class TimeSelectionPanel extends AnchorPane {
     }
 
     private void updateCheckoutTimeButton(){
-        controller.updateCheckoutTimeButton();
+        controller.updateCheckoutTimeButtons();
     }
 
     private void updateDateLabels(){
