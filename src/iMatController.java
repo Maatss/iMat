@@ -18,10 +18,7 @@ import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.*;
 
 import java.net.URL;
-import java.util.Date;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 
 public class iMatController implements Initializable, ShoppingCartListener {
@@ -418,12 +415,13 @@ public class iMatController implements Initializable, ShoppingCartListener {
         categoryLabel.setText("Alla varor");
         noResultsLabel.setText("");
 
-        productsFlowPane.getChildren().clear();
+        List<Product> products = new ArrayList<>();
 
         for (ProductPanel panel : allProductPanels) {
-            productsFlowPane.getChildren().add(panel);
+            products.add(panel.getProduct());
         }
 
+        updateProductList(products);
         showProductsPane();
     }
 
@@ -864,11 +862,32 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
     private void updateProductList(List<Product> products) {
         productsFlowPane.getChildren().clear();
+        sortProducts(products);
 
         for (Product product : products) {
             ProductPanel temp = findProductPanel(product);
             productsFlowPane.getChildren().add(temp);
         }
+    }
+
+    private void sortProducts(List<Product> products) {
+        List<Product> favorites = new ArrayList<>();
+        List<Product> nonFavorites = new ArrayList<>();
+
+        products.forEach((product) -> {
+            if (model.checkIfFavorite(product)) {
+                favorites.add(product);
+            } else {
+                nonFavorites.add(product);
+            }
+        });
+
+        Collections.sort(favorites, (productOne, productTwo) -> (productOne.getName().compareTo(productTwo.getName())));
+        Collections.sort(nonFavorites, (productOne, productTwo) -> (productOne.getName().compareTo(productTwo.getName())));
+
+        products.clear();
+        products.addAll(favorites);
+        products.addAll(nonFavorites);
     }
 
     private void updateCheckoutTimetable() {
