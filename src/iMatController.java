@@ -1018,6 +1018,14 @@ public class iMatController implements Initializable, ShoppingCartListener {
         cardYearCombo.getSelectionModel().select("" + card.getValidYear());
 
         cvcTF.setText("" + card.getVerificationCode());
+
+        String paymentOption = customer.getMobilePhoneNumber();
+        if(paymentOption.equals("Card")){
+            cardRadioButton.fire();
+//            handleCardOption();
+        }else if(paymentOption.equals("Invoice")){
+            invoiceRadioButton.fire();
+        }
     }
 
     private void updateCustomer() {
@@ -1123,6 +1131,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
 
             setCardInfoIsShown(true);
         }
+
+        Customer customer = model.getCustomer();
+        customer.setMobilePhoneNumber("Card");
     }
 
     @FXML
@@ -1136,6 +1147,9 @@ public class iMatController implements Initializable, ShoppingCartListener {
         cardRadioButton.setStyle("");
         invoiceRadioButton.setStyle("");
 
+
+        Customer customer = model.getCustomer();
+        customer.setMobilePhoneNumber("Invoice");
     }
 
     public void clearSelectedTimeAndSaveNew(Button button) {
