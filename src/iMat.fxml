@@ -632,7 +632,7 @@
                                           <Font size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="productsNoFavoritesTopLabel" alignment="CENTER" layoutX="450.0" layoutY="250.0" prefHeight="61.0" prefWidth="367.0" text="Du har inte lagt till några favoriter." textAlignment="CENTER" wrapText="true" visible="false">
+                                    <Label fx:id="productsNoFavoritesTopLabel" alignment="CENTER" layoutX="450.0" layoutY="250.0" prefHeight="61.0" prefWidth="367.0" text="Du har inte lagt till några favoriter." textAlignment="CENTER" visible="false" wrapText="true">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -765,7 +765,7 @@
                                           <Separator layoutX="40.0" layoutY="-1.0" prefWidth="280.0" />
                                        </children>
                                     </AnchorPane>
-                                    <Label layoutX="120.0" layoutY="16.0" text="Personuppgifter">
+                                    <Label layoutX="120.0" layoutY="16.0" text="Mina uppgifter">
                                        <font>
                                           <Font name="System Bold" size="18.0" />
                                        </font>
